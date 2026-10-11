@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZAWEDNI — vue présentateur</title>
+  <link rel="icon" href="assets/deck/logo-green.png">
+  <link rel="stylesheet" href="/src/presenter/presenter.css">
+</head>
+<body>
+  <header>
+    <button id="timer" title="Cliquer pour remettre à zéro">00:00</button>
+    <div id="where"><b id="pos">—</b><span id="src"></span></div>
+    <div id="status" class="off">Fenêtre jury absente</div>
+    <span id="clock"></span>
+  </header>
+  <main>
+    <section id="now"><h2>Maintenant</h2><div id="script"></div><div id="next"></div></section>
+    <aside>
+      <section id="after"><h2>Ensuite</h2><div id="afterBody"></div></section>
+      <section id="map"><h2>Parcours</h2><ol id="list"></ol></section>
+      <p class="keys">→ Espace PageDown : suivant · ← PageUp : précédent · 1–4 : scène · Début : retour au début · + / − : taille du texte</p>
+    </aside>
+  </main>
+  <script type="module" src="/src/presenter/presenter.js"></script>
+</body>
+</html>

@@ -6,16 +6,17 @@ import { STATES } from '../content/states.js';
 import { updatePanels, setCover, panelStagePoint } from '../content/panels.js';
 import { shotAt } from '../camera/rig.js';
 import { buildShots, LIFT } from '../camera/shots.js';
-import { anchors, setFeedback } from '../world/world.js';
+import { anchors, roadCurve, setFeedback } from '../world/world.js';
 import { motion } from './prefs.js';
+import { routePath } from '../characters/path.ts';
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const smooth = x => { x = clamp(x); return x * x * (3 - 2 * x); };
 const V = (...a) => new THREE.Vector3(...a);
 
 export class Director {
-  constructor({ camera, actors, onState, still = false }) {
-    Object.assign(this, { camera, actors, onState, still });
+  constructor({ camera, actors, onState, onFrame, still = false, fast = false }) {
+    Object.assign(this, { camera, actors, onState, onFrame, still, fast });
     this.shots = buildShots();
     this.i = 0; this.tr = null; this.instantFrames = 0;
   }
@@ -25,6 +26,7 @@ export class Director {
   get moving() { return !!this.tr && performance.now() / 1000 - this.tr.t0 < this.tr.D; }
 
   go(i, { instant = false } = {}) {
+    if (!Number.isInteger(i) || !Number.isFinite(i)) return;
     i = clamp(i, 0, STATES.length - 1);
     if (this.tr) this.settle();
     if (i === this.i && !instant) return;
@@ -32,8 +34,18 @@ export class Director {
     const to = STATES[i], back = i < from, jump = Math.abs(i - from) > 1;
     if (instant) { this.tr = null; this.instantFrames = 2; }
     else {
-      const D = motion.reduced ? .35 : back || jump ? .8 : to.duration || .9;
-      this.tr = { from: STATES[from], to, t0: performance.now() / 1000, D, back: back || jump };
+      const D = this.fast ? .03 : motion.reduced ? .35 : back || jump ? .8 : to.duration || .9;
+      this.tr = { from: STATES[from], to, t0: performance.now() / 1000, D, back: back || jump, paths: {}, walks: {} };
+      for (const [name, spec] of Object.entries(to.actors)) {
+        if (spec.route && !back && !jump) {
+          this.tr.paths[name] = routePath(roadCurve, anchors[STATES[from].actors[name].at], anchors[spec.at], anchors[`stopT${spec.route.from}`], anchors[`stopT${spec.route.to}`]);
+        }
+        if (spec.walk) {
+          const segs = [[]]; for (const n of spec.walk) n === '|' ? segs.push([]) : segs.at(-1).push(anchors[n].clone());
+          const lens = segs.map(seg => seg.slice(1).reduce((length, p, j) => length + p.distanceTo(seg[j]), 0));
+          this.tr.walks[name] = { segs, lens, total: lens.reduce((x, y) => x + y, 0) };
+        }
+      }
     }
     try { history.replaceState(null, '', `#${to.id}`); } catch { /* file:// in some browsers */ }
     this.onState?.(this);
@@ -46,9 +58,9 @@ export class Director {
   frame(now) {
     const tr = this.tr, to = this.state;
     let t = Infinity, D = 1, from = to;
-    if (tr) { t = now - tr.t0; D = tr.D; from = tr.from; if (t >= D + 2.6) this.tr = null; }
+    if (tr) { t = now - tr.t0; D = tr.D; from = tr.from; if (t >= D + (this.fast ? .05 : 2.6)) this.tr = null; }
     const k = clamp(t / D);
-    document.body.classList.toggle('instant', this.instantFrames > 0); if (this.instantFrames > 0) this.instantFrames--;
+    document.body.classList.toggle('instant', this.instantFrames > 0 || this.fast); if (this.instantFrames > 0) this.instantFrames--;
 
     // camera
     const a = this.shots[from.shot], b = this.shots[to.shot];
@@ -65,6 +77,7 @@ export class Director {
     });
     setCover(to.cover || 'gone');
     updatePanels(vis, this.camera, to);
+    this.onFrame?.(vis, to, k, from);
     setFeedback(to.feedback ? smooth((t - appear - .2) / .8) : from.feedback && tr ? 1 - smooth(t / .4) : 0);
 
     // characters
@@ -97,11 +110,23 @@ export class Director {
       lookW: sB.face === 'camera' ? 0 : 1, look: this.target(sB.face, end, to), opacity: 1, still };
     if (!tr) return pose;
 
+    const route = tr.paths[name];
+    if (route && !motion.reduced) {
+      const u = clamp((t - D * .08) / (D * .82));
+      const A = .12, vm = 1 / (1 - A);
+      const pace = u < A ? vm * u * u / (2 * A) : u > 1 - A ? 1 - vm * (1 - u) * (1 - u) / (2 * A) : vm * (u - A / 2);
+      const sample = route.sample(pace);
+      pose.pos = sample.position; pose.walkDist = sample.distance;
+      pose.walkW = u > 0 && u < 1 ? 1 : u >= 1 ? 1 - smooth((t - D * .9) / .3) : 0;
+      pose.yaw = u < 1 ? sample.yaw : lerpAngle(sample.yaw, faceB, smooth((t - D * .9) / .45));
+      pose.lookW *= u >= 1 ? smooth((t - D * .9) / .5) : 0;
+      pose.pointW *= u >= 1 ? smooth((t - appear) / .45) : 0;
+      return pose;
+    }
     const forwardWalk = !tr.back && sB.walk && !motion.reduced;
     if (forwardWalk) {
       // path: anchor names, '|' = an off-screen jump between two places (done while the camera is high)
-      const segs = [[]]; for (const n of sB.walk) n === '|' ? segs.push([]) : segs.at(-1).push(anchors[n].clone());
-      const lens = segs.map(s => s.slice(1).reduce((L, p, j) => L + p.distanceTo(s[j]), 0)), total = lens.reduce((x, y) => x + y, 0);
+      const { segs, lens, total } = tr.walks[name];
       const w0 = D * .08, w1 = D * .9, u = clamp((t - w0) / (w1 - w0));
       const A = .12, vm = 1 / (1 - A);   // trapezoid speed: short start and stop, constant pace between
       const d = total * (u < A ? vm * u * u / (2 * A) : u > 1 - A ? 1 - vm * (1 - u) * (1 - u) / (2 * A) : vm * (u - A / 2));

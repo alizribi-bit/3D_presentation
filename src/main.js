@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { preload } from './world/assets.js';
-import { buildWorld } from './world/world.js';
+import { buildWorld, anchors } from './world/world.js';
 import { quality, applyQuality, toggleQuality } from './world/quality.js';
 import { buildPanels } from './content/panels.js';
 import { STATES, SCENES, indexOf } from './content/states.js';
@@ -12,6 +12,11 @@ import { Director } from './nav/director.js';
 import { bindKeys } from './nav/keys.js';
 import { toggleMotion } from './nav/prefs.js';
 import { link } from './presenter/link.js';
+import { PROTOTYPE } from './nav/mode.js';
+import { parseCommand } from './nav/commands.ts';
+import { preloadEvidence, EvidencePanel } from './story/evidence.ts';
+import { FilmPlayer } from './media/player.ts';
+import { StoryWorld } from './world/story.ts';
 import { applyShot } from './camera/rig.js';
 
 const Q = new URLSearchParams(location.search);
@@ -45,9 +50,15 @@ function resize() {
 }
 addEventListener('resize', resize);
 
-await preload();
+try { await Promise.all([preload(), PROTOTYPE ? Promise.resolve() : preloadEvidence()]); } catch (error) {
+  const veil = document.getElementById('veil'); veil.classList.add('error'); veil.textContent = 'La présentation ne peut pas charger ses fichiers locaux. Relancez le serveur local puis rechargez cette fenêtre.'; throw error;
+}
 buildWorld(scene);
+const storyWorld = PROTOTYPE ? null : new StoryWorld(scene, anchors);
 buildPanels();
+const stage = document.getElementById('stage');
+const evidence = PROTOTYPE ? null : new EvidencePanel(stage);
+const film = PROTOTYPE ? null : new FilmPlayer(stage);
 const actors = { guide: new Actor('guide', 1.76), rep: new Actor('rep', 1.8) };
 for (const a of Object.values(actors)) scene.add(a.root);
 applyQuality(renderer, sun); resize();
@@ -58,9 +69,9 @@ const ch = link(m => {
   if (m.t === 'hello') announce();
   if (m.t === 'cmd') command(m.cmd);
 });
-function announce() { ch.send({ t: 'state', id: director.state.id, i: director.i, total: STATES.length }); }
+function announce() { film?.show(director.state, !Q.has('test')); ch.send({ t: 'state', id: director.state.id, i: director.i, total: STATES.length }); }
 
-const director = new Director({ camera, actors, onState: announce, still: Q.has('still') });
+const director = new Director({ camera, actors, onState: announce, still: Q.has('still'), fast: Q.has('test') && Q.has('fast'), onFrame: (visible, state, k, from) => { evidence?.show(state, visible.has('evidence')); storyWorld?.frame(state, k, from); } });
 const fromHash = indexOf(location.hash.slice(1));
 director.go(fromHash >= 0 ? fromHash : 0, { instant: true });
 addEventListener('hashchange', () => { const i = indexOf(location.hash.slice(1)); if (i >= 0 && i !== director.i) director.go(i, { instant: true }); });
@@ -69,15 +80,16 @@ let notesWin = null;
 function openNotes() {
   const pv = /(?:^|&)pv=(-?\d+),(-?\d+),(\d+),(\d+)/.exec(location.search.slice(1));   // ?pv=x,y,w,h (present.sh) or ?pv=auto
   const feat = pv ? `left=${pv[1]},top=${pv[2]},width=${pv[3]},height=${pv[4]}` : 'width=1280,height=800';
-  notesWin = window.open('presenter.html', 'zs3d-presenter', feat);
+  notesWin = window.open(`presenter.html${PROTOTYPE ? '?prototype' : ''}`, 'zs3d-presenter', feat);
   if (pv && notesWin) try { notesWin.moveTo(+pv[1], +pv[2]); notesWin.resizeTo(+pv[3], +pv[4]); } catch { /* the window manager decides */ }
 }
-function command(cmd) {
+function command(raw) {
+  const parsed = parseCommand(raw, STATES.length, SCENES); if (!parsed) return;
+  if (parsed.kind === 'index') { director.go(parsed.index); return; }
+  const cmd = parsed.action;
   if (cmd === 'next') director.next();
   else if (cmd === 'prev') director.prev();
   else if (cmd === 'home') director.go(0);
-  else if (cmd.startsWith('scene:')) director.go(SCENES[cmd.slice(6)]);
-  else if (cmd.startsWith('go:')) director.go(+cmd.slice(3));
   else if (cmd === 'fullscreen') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {});
   else if (cmd === 'quality') { toggleQuality(); applyQuality(renderer, sun); renderer.shadowMap.needsUpdate = true; }
   else if (cmd === 'motion') toggleMotion();
@@ -108,4 +120,4 @@ renderer.setAnimationLoop(() => {
 });
 document.getElementById('veil').classList.add('off');
 if (/(?:^|&)pv=/.test(location.search.slice(1))) setTimeout(openNotes, 300);
-window.__story = { renderer, ready: true, get settled() { return director.settled; }, get state() { return director.state.id; }, go: i => director.go(i), director };
+window.__story = { renderer, ready: true, get settled() { return director.settled; }, get state() { return director.state.id; }, go: (i, options) => director.go(i, options), states: STATES.map(s => ({ id: s.id, source: s.source, shot: s.shot })), director };

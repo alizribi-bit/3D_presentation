@@ -1,6 +1,8 @@
 # Plan court : des 4 scènes aux 41 séquences
 
-À lancer seulement après le retour d'Ali sur le prototype (monde, personnages, pointage, transitions).
+Extension autorisée par Ali le 2026-10-11 et implémentée : 41 séquences, 106 états.
+Les 65 clics de la source sont les révélations internes ; avec les entrées de séquence,
+le parcours demande 105 pressions suivant. Résultats et prochaines étapes : `HANDOFF.md`.
 Même méthode : chaque état est une ligne de données (`src/content/states.js`) qui cite sa source
 (`script_rows.py`) ; le texte projeté reste celui de `deck.html`, vérifié par `npm run check`.
 
@@ -16,17 +18,17 @@ Même méthode : chaque état est une ligne de données (`src/content/states.js`
 
 ## Ordre de travail
 
-1. Corrections demandées par Ali sur le prototype (style, personnages, geste de pointage, rythme).
+1. Prototype conservé sous `?prototype` ; extension autorisée dans `AGENTS.md`.
 2. Lots 1 à 6 dans l'ordre, un lot = une livraison courte avec images, `npm run verify` et `npm run check` au vert.
 3. Le film : `<video>` local, ses commandes ne font pas avancer la présentation, quitter la scène arrête la lecture,
    la vue présentateur reste muette.
 4. Répétition complète chronométrée : référence ≈ 20 min film compris ; mesurer ce qu'ajoutent les trajets
    (≈ 3 s chacun) et les compenser par des trajets plus courts, jamais en coupant le discours.
 
-## Points à décider avec Ali
+## Points à évaluer pendant la répétition
 
-- Rythme : le prototype ajoute un clic par rapport au deck (10 au lieu de 9 pour ces états). Sur 65 clics,
-  garder ces ajouts limités aux changements de lieu.
+- Rythme : 41 entrées + 65 révélations = 106 états, soit 105 pressions suivant.
+  Aucun état supplémentaire hors source dans le parcours complet. Les six arrivées durent 2,4 secondes.
 - Les retours en arrière font disparaître et réapparaître les personnages au lieu de les faire marcher à reculons :
   à confirmer.
 - Le geste de pointage (main ouverte, index tendu) est à juger sur le rendu réel.

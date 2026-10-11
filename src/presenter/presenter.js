@@ -2,12 +2,15 @@
 // its keys and clicks become commands for the jury window. Opened late or reloaded, it asks ("hello") and catches up.
 import { STATES } from '../content/states.js';
 import { link } from './link.js';
+import { PROTOTYPE } from '../nav/mode.js';
+import sequences from '../../content/source/sequences.json';
 import { NAV } from '../nav/keys.js';
 
 const $ = id => document.getElementById(id);
-const SCENE_NAMES = { A: 'A · Ouverture et monde', B: 'B · Place de l’achat local', C: 'C · Grille d’évaluation', D: 'D · Zone DevSecOps' };
-const TITLES = { couverture: 'Couverture', sommaire: 'Sommaire', probleme: 'Le problème à résoudre', reponse: 'La réponse de ZAWEDNI',
-  modele: 'Business Model Canvas · complément', ch3: 'Ouverture du chapitre 3', devsecops: 'Le cycle DevSecOps' };
+document.querySelector('.keys').textContent = `→ Espace PageDown : suivant · ← PageUp : précédent · ${PROTOTYPE ? '1–4 : scène' : '1–6 : chapitre'} · Home / End : début / fin · + / − : taille du texte`;
+const SCENE_NAMES = PROTOTYPE ? { A: 'A · Ouverture et monde', B: 'B · Place de l’achat local', C: 'C · Grille d’évaluation', D: 'D · Zone DevSecOps' } : {0:'Ouverture',1:'01 · Contexte et objectifs',2:'02 · Développement de la plateforme',3:'03 · Architecture et démarche DevSecOps',4:'04 · Chaîne CI/CD et déploiement',5:'05 · Supervision et validation',6:'06 · Bilan et perspectives'};
+const TITLES = PROTOTYPE ? { couverture: 'Couverture', sommaire: 'Sommaire', probleme: 'Le problème à résoudre', reponse: 'La réponse de ZAWEDNI',
+  modele: 'Business Model Canvas · complément', ch3: 'Ouverture du chapitre 3', devsecops: 'Le cycle DevSecOps' } : Object.fromEntries(sequences.map(s => [s.id, s.title]));
 const KIND = { say: '', read: 'À lire à l’écran', added: 'Ajout (transition)' };
 let cur = null, lastSeen = 0;
 
@@ -46,7 +49,7 @@ function show(id) {
   if (n) {
     const h = document.createElement('b'); h.textContent = `${n.id} · ${n.source.seq}`; ab.append(h, document.createElement('br'));
     const first = n.notes.script[0]; ab.append(first ? (first[0] === 'read' ? `À lire : « ${first[1]} »` : first[1]) : n.notes.silent || '');
-  } else ab.textContent = 'Fin du prototype.';
+  } else ab.textContent = PROTOTYPE ? 'Fin du prototype.' : 'Fin de la présentation.';
   for (const li of $('list').querySelectorAll('li[data-i]')) li.classList.toggle('cur', +li.dataset.i === i);
   $('list').querySelector('li.cur')?.scrollIntoView({ block: 'nearest' });
 }
@@ -55,13 +58,14 @@ function show(id) {
 let scene = '';
 STATES.forEach((s, i) => {
   if (s.scene !== scene) { scene = s.scene; const h = document.createElement('li'); h.innerHTML = `<span class="scene"></span>`; h.firstChild.textContent = SCENE_NAMES[scene]; $('list').append(h); }
-  const li = document.createElement('li'); li.dataset.i = i;
+  const li = document.createElement('li'); li.dataset.i = i; li.tabIndex = 0; li.setAttribute('role', 'button'); li.setAttribute('aria-label', `${TITLES[s.source.seq]}, étape ${s.source.step}`);
   const b = document.createElement('b'); b.textContent = s.id; const t = document.createElement('span'); t.textContent = `${TITLES[s.source.seq]}${s.added ? ' · ajout' : ''}`;
   li.append(b, t); li.onclick = () => ch.send({ t: 'cmd', cmd: `go:${i}` }); $('list').append(li);
 });
 
 addEventListener('keydown', e => {
   if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === 'Enter' && e.target instanceof HTMLElement && e.target.closest('li[data-i]')) { e.preventDefault(); ch.send({t:'cmd',cmd:`go:${e.target.closest('li[data-i]').dataset.i}`}); return; }
   if (e.key === '+' || e.key === '=') { size(1); return; }
   if (e.key === '-') { size(-1); return; }
   const cmd = NAV[e.key]; if (!cmd) return;

@@ -1,81 +1,94 @@
-# HANDOFF — prototype 4 scènes (2026-10-11)
+# Session handoff — 2026-10-11
 
-## Ouvrir
+## Current status
 
-Une fois, avec Internet : `npm install && npm run build`. Puis, depuis n'importe quel dossier :
-`~/Desktop/zawedni-story-3d/present.sh` (détails, touches et dépannage : `PRESENTER.md`).
+The four-scene prototype has been extended into the full presentation: all 41 accepted
+source sequences, 106 explicit states, 105 next presses, six chapter locations and complete
+synchronized presenter notes. The 65 source clicks count internal reveals; sequence entries
+account for the rest. The original 11-state prototype remains accessible with `?prototype`.
 
-Parcours : 11 états, 10 clics. A0 basmala → A1 couverture → A2 monde/Sommaire → B1 trajet vers la place,
-le problème → B2 la réponse, le représentant désigne la grille → C1 zoom sur le tableau de la grille (web + mobile)
-→ C2 recul : la chaîne grille → validation → marché → suivi → C3 vue du parcours (ouverture du ch. 3)
-→ D1 trajet vers la zone DevSecOps, le cycle → D2 croisement Sécurité, retour des observations → D3 vue du parcours.
+Ali authorizes all ordinary project work without repeated confirmation (AGENTS.md).
+Project `.codex/config.toml` sets `approval_policy = "never"` and workspace-write access to
+this project. The global Codex configuration marks this project trusted; its previous version
+is backed up at `/home/ali/.codex/config.toml.before-story-3d-20261011`.
+Start the next session in `/home/ali/Desktop/zawedni-story-3d` to load project settings.
+Active/managed session policies can override these settings; do not bypass them.
 
-## Projet source préservé
+## Implemented
 
-Rien n'a été modifié dans `~/Desktop/zawedni-video-pfe` (deck, `soutenance.zip`, film, launcher, application).
-`scripts/check-source.sh` vérifie les empreintes MD5 de `deck.html`, `script_rows.py`, du film et du deck dans
-l'archive : tout est identique. Le `git status` de ce dépôt est le même qu'au début du travail.
-Copies de référence du discours : `content/source/` (`script_rows.py`, `SCRIPT.md`, `PLAN_PRESENTATION.md`).
+- Exact speech imported from the accepted script; 106 canonical local DOM/SVG evidence
+  frames and 29 original assets, including the corrected 90-second film.
+- Typed domain, navigation validation, cached continuous guide routes and delivery logic.
+- Detailed workshop with real interface screenshots; 3D architecture; delivery parcel and
+  gates that block a failed version; monitoring room with real screenshots and alert route;
+  belvedere and native video player; final overview.
+- Full chapter shortcuts 1–6, Home/End, reduced motion and quality toggle, synchronized notes,
+  late-presenter recovery, prototype compatibility and accessible presenter map entries.
+- Fixed native-player focus stealing clicker keys, audio continuing after leaving the film,
+  late-playback races, conclusion contrast and overlapping 3D architecture labels.
+- Last small changes: presenter shortcut help now says 1–6; new regression assertion for it;
+  removed unused architecture-node bookkeeping. Production build was regenerated afterward.
 
-## Fichiers principaux
+The accepted source in `/home/ali/Desktop/zawedni-video-pfe` is read-only. Source fingerprints,
+film and archive checks passed. Runtime assets are self-contained in this project.
 
-| Fichier | Rôle |
-| --- | --- |
-| `src/content/states.js` | les 11 états : source, plan caméra, panneaux, personnages, notes (à dire / à lire / ajout) |
-| `src/content/panels.js` | panneaux du jury, texte exact des slides |
-| `src/world/places.js`, `world.js` | route, six lieux, décor, ancres 3D |
-| `src/camera/shots.js` | plans de caméra par lieu |
-| `src/characters/actors.js` | personnages : marche, pointage, regard |
-| `src/nav/director.js`, `keys.js` | navigation déterministe, touches |
-| `src/main.js`, `index.html` | fenêtre jury |
-| `presenter.html`, `src/presenter/` | vue présentateur, synchronisée par `BroadcastChannel` |
-| `present.sh` | lanceur deux écrans |
-| `specs/001-prototype-4-scenes/` | spec, plan, tâches (Spec Kit) |
+## Verified results and exact stopping point
 
-## Assets et licences (tous CC0 1.0)
+- 10/10 unit tests passed, including source coverage, unsafe navigation, route sampling,
+  blocked/resumed delivery, automatic and manual late video playback.
+- Strict TypeScript check passed for new TypeScript modules. Legacy JavaScript is not covered
+  by `checkJs`; do not claim the entire old codebase was converted to strict TypeScript.
+- Content/source checks passed: 41 sequences, 106 frames, 106 speech states, 29 unchanged assets.
+- Production build and shell syntax checks passed. `npm audit`: zero reported vulnerabilities.
+- Latest completed full browser run: **34/34 passed**; all 106 states traversed forward/back,
+  canonical evidence matched, 16 representative images matched after forward/back/reload,
+  real walking/interruption and native video checks passed, no external/missing requests or
+  JavaScript errors. Presenter worst observed synchronization was 13 ms, late opening 214 ms.
+  Report: `review/full/verify/report.json` (ignored QA output).
+- That completed run preceded the last presenter-help correction. The suite now has **35**
+  checks. Rerun it against the latest build before declaring final validation complete.
+- `npm run verify:prototype` was still running when Ali requested this handoff. Its first 17
+  checks passed; final image comparisons and overall result were not yet collected. Rerun
+  if that background session cannot be recovered. Do not claim a completed 21/21 result.
+- `scripts/measure-full.mjs` is ready but has **not been run**. No full-version FPS results yet.
+- Connected screens were detected: HDMI 1366×768 and laptop 1920×1080. The new full version
+  has not yet been relaunched and checked physically on both screens. Old prototype launcher
+  results belong only to `HANDOFF-PROTOTYPE.md`.
 
-| Asset | Auteur | Source |
-| --- | --- | --- |
-| Casual Character (guide), Business Man (représentant) | Quaternius | poly.pizza `kZ3DmIoGip`, `JFrLIKqvCH` |
-| Market Stand, Market Scene | Quaternius | poly.pizza `DGIM5HGISb`, `LkNRqxdCKp` |
-| Computer Screen | Quaternius | poly.pizza `V5Qo141OcB` |
-| City Kit Commercial, Suburban, Roads ; Food Kit ; Nature Kit | Kenney | kenney.nl (`License.txt` : CC0) |
+Ali requested a session switch at this point. Do not rebuild the whole project from scratch.
 
-Logos, captures (`v6-sup-piliers.jpg`, `v3-mob-evaluation.jpg`) et fontes viennent du deck accepté, sans retouche.
-Téléchargements bruts dans `assets-src/` (hors git) ; `scripts/import-assets.sh` recopie la sélection dans `public/models/`.
+## Resume here
 
-## Vérifications réellement faites
+1. Read `AGENTS.md`, this handoff, `README.md`, `PLAN-41.md` and
+   `specs/002-full-presentation/`. Load relevant skills before further coding.
+2. Confirm the local build server at `http://127.0.0.1:4317`; it currently serves `dist/`.
+   If absent: `python3 -m http.server 4317 --bind 127.0.0.1 --directory dist`.
+3. Run `npm test`, `npm run typecheck`, `npm run check`, `npm run build`, then
+   `npm run verify` and `npm run verify:prototype`. Run GPU-heavy browser suites sequentially.
+4. Run `node scripts/measure-full.mjs` without other QA browsers competing for the GPU.
+   It measures six chapter arrivals at normal/light quality and writes
+   `review/full/performance.json`. Report actual numbers and headless limitations.
+5. Relaunch `./present.sh` and review projector/notes placement, real sound, readability and
+   clicker behavior. Complete a timed spoken rehearsal (reference approximately 20 minutes
+   including the film) and a manual disconnected-network check. Do not shorten accepted speech.
+6. Update results here, finish the remaining task boxes and make a selective local checkpoint.
 
-- `npm run verify` (Chrome réel, GPU de la machine, deux fenêtres ensemble) : **21/21**. Avant/arrière, 20 clics
-  rapides, touches après un clic souris, molette sans effet, sauts de scène, vue présentateur ouverte en retard
-  (état affiché en 147 ms), rechargement de chaque fenêtre, présentateur sans 3D ni média, même image pour chaque
-  état en avant, en arrière et après rechargement, **aucune requête hors 127.0.0.1**, aucune erreur JavaScript.
-- `npm run check` : empreintes des sources ; chaque phrase à dire ou à lire existe dans `script_rows.py` ;
-  les 69 textes projetés existent dans `deck.html` ; aucun mot interdit.
-- `present.sh` lancé pour de vrai depuis `/tmp` : serveur démarré, fenêtre jury en plein écran sur le HDMI
-  (1366×768), vue présentateur sur l'écran du portable, statut « Fenêtre jury connectée ».
-- Images : `review/states/*.png` (les 11 états en 1920×1080), `review/contact-sheet.png`.
-  Enregistrement : `review/parcours.mp4` (39 s).
-- Fluidité, Chrome sans fenêtre (headless) sur l'Intel UHD de cette machine, 1920×1080, images/s moyennes
-  pendant chaque mouvement :
+## Files and review artifacts
 
-  | | A1 | A2 | B1 | B2 | C1 | C2 | C3 | D1 | D2 | D3 |
-  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-  | normal | 64 | 59 | 48 | 53 | 46 | 55 | 54 | 51 | 40 | 42 |
-  | léger | 62 | 57 | 48 | 52 | 52 | 49 | 52 | 48 | 36 | 51 |
+`src/story/itinerary.ts` owns source-to-state mapping; `src/story/delivery.ts` owns delivery
+positions; `src/characters/path.ts` owns cached route samples; `src/nav/director.js` owns state
+transitions; `src/world/story.ts` owns story props; `src/story/evidence.ts` renders local
+canonical frames; `src/media/` owns the native player and playback lifecycle.
 
-## Limites connues
+Review gallery: `review/full/index.html`; contact sheet: `review/full/contact-sheet.png`;
+41 sequence-end screenshots: `review/full/states/`; browser captures: `review/full/verify/`.
+The existing prototype recording and its assets remain available. No new full-run recording yet.
 
-- Les mesures d'images/s viennent d'un Chrome headless (capture d'écran comprise) ; le niveau léger n'y change
-  presque rien, ce qui montre que la limite n'est pas le GPU. À juger sur la vraie fenêtre plein écran.
-- Le test « sans réseau » est fait en bloquant toute requête externe dans le navigateur, pas en coupant le Wi-Fi :
-  à refaire une fois à la main (voir `PRESENTER.md`).
-- Les contrôles automatiques ne valident pas l'esthétique : le jugement des personnages et du pointage reste à Ali.
-- En arrière, les personnages disparaissent et réapparaissent à leur place au lieu de remarcher à reculons.
-- Le geste de pointage est un bras tendu, main ouverte, index aligné : pas de vraie main à un doigt (modèle CC0).
-- C1, C2, C3 et D3 sont des états ajoutés (signalés « ajout » dans la vue présentateur) ; une phrase ajoutée en D1
-  remplace « Ces outils forment un cycle continu. », car la slide des outils n'est pas dans le prototype.
+## Git state and preservation
 
-## Reste à faire
-
-Après le retour d'Ali : corrections du prototype, puis l'extension aux 41 séquences (`PLAN-41.md`).
+Prototype checkpoint: `9729dbb` (`chore: checkpoint completed four-scene presentation prototype`).
+The full extension, config, new tests and this handoff are currently **uncommitted** on disk.
+Do not discard them. There are unrelated pre-existing Spec Kit changes in
+`.specify/scripts/bash/`, extension/workflow metadata and `.claude/skills/speckit-git-*`.
+Preserve those; do not stage the entire directory blindly. The old prototype handoff is saved
+as `HANDOFF-PROTOTYPE.md` for historical verification and license details.

@@ -7,7 +7,14 @@ set -u
 DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 PORT=4317
 URL="http://127.0.0.1:$PORT"
-SWAP=; [ "${1:-}" = "--swap" ] && SWAP=1
+SWAP=; MODE_QUERY=
+for arg in "$@"; do
+  case "$arg" in
+    --swap) SWAP=1 ;;
+    --prototype) MODE_QUERY="prototype&" ;;
+    *) echo "Usage: $0 [--swap] [--prototype]"; exit 2 ;;
+  esac
+done
 LOG="${XDG_RUNTIME_DIR:-/tmp}/zawedni-story-3d-server.log"
 
 if [ ! -f "$DIR/dist/index.html" ] || [ ! -f "$DIR/dist/presenter.html" ]; then
@@ -44,12 +51,12 @@ FLAGS=(--ozone-platform=x11 --user-data-dir="$PROF" --no-first-run --no-default-
 if [ -z "$EXT" ] || [ -z "$INT" ] || [ "${EXT#*+}" = "${INT#*+}" ]; then
   echo "Un seul écran, ou deux écrans en miroir : les deux fenêtres s'ouvrent sur le même écran."
   echo "Pour deux écrans : Paramètres > Écrans > « Joindre », puis relancez ./present.sh"
-  nohup google-chrome "${FLAGS[@]}" --start-maximized "$URL/?pv=auto#A0" >/dev/null 2>&1 &
+  nohup google-chrome "${FLAGS[@]}" --start-maximized "$URL/?${MODE_QUERY}pv=auto#A0" >/dev/null 2>&1 &
   exit 0
 fi
 [ -n "$SWAP" ] && { T=$EXT; EXT=$INT; INT=$T; }
 IFS='x+' read -r EW EH EX EY <<< "$EXT"
 IFS='x+' read -r IW IH IX IY <<< "$INT"
 nohup google-chrome "${FLAGS[@]}" --window-position="$EX,$EY" --window-size="$EW,$EH" --start-fullscreen \
-  "$URL/?pv=$IX,$IY,$IW,$IH#A0" >/dev/null 2>&1 &
+  "$URL/?${MODE_QUERY}pv=$IX,$IY,$IW,$IH#A0" >/dev/null 2>&1 &
 echo "Présentation : écran $EW×$EH · notes : écran $IW×$IH. Touches : → / ← (ou le clicker), F plein écran, N rouvre les notes."

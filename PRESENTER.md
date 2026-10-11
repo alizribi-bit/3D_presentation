@@ -33,7 +33,7 @@ le script l'affiche.
 | --- | --- |
 | → · Espace · PageDown · clicker | suivant |
 | ← · PageUp | précédent |
-| 1 – 4 | début de la scène A, B, C, D |
+| 1 – 6 | début du chapitre correspondant (0 ou Home : ouverture) |
 | Début (Home) | retour au début |
 | F | plein écran (fenêtre jury) |
 | N | rouvrir la vue présentateur si on l'a fermée |
@@ -54,4 +54,19 @@ les sauts ; ouverte en retard ou rechargée, elle affiche aussitôt l'état cour
 - **Pas de vue présentateur** : **N** dans la fenêtre jury.
 - **« Le port 4317 est déjà pris »** : une autre application l'utilise ; la fermer, ou changer `PORT` dans `present.sh`.
 - **Image saccadée** : **L** (qualité légère, même rendu).
-- Vérification sans réseau : couper le Wi-Fi, lancer `present.sh`, parcourir A0 → D3.
+- Vérification sans réseau : couper le Wi-Fi, lancer `present.sh`, parcourir couverture → conclusion.
+
+## Version complète et prototype
+
+Le lancement par défaut affiche les 41 séquences : 106 états, 105 pressions suivant.
+« 65 clics » dans le script source désigne les révélations internes, sans les entrées de séquence.
+`present.sh --prototype` ouvre les 11 états A0 → D3 d'origine (touches 1–4).
+Dans la version complète, End atteint la conclusion ; 1–6 atteignent les chapitres.
+La vidéo locale corrigée dure 90 secondes : ses contrôles souris ne font pas avancer le parcours.
+Après une interaction souris avec le lecteur, le clicker reprend le parcours. Si on entre dans
+le lecteur par Tab, ses commandes clavier natives restent disponibles. Quitter le film le pause
+et remet le temps à zéro. Le présentateur n'a ni lecteur ni son.
+
+Configuration Codex : `.codex/config.toml` demande `approval_policy = "never"` dans ce projet.
+Démarrer les prochaines sessions dans ce dossier pour la charger. La politique d'une session
+active ou une politique administrée peut rester prioritaire ; le fichier ne les modifie pas.

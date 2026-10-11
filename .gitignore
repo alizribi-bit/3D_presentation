@@ -4,3 +4,5 @@ assets-src/
 *.log
 .env*
 review/dev/
+
+review/full/verify/

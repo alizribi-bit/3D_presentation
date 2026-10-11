@@ -2,6 +2,7 @@
 // (typographic apostrophes as on the slides). A panel either sits at a fixed place on the stage or follows a
 // 3D anchor (projected every frame). Nothing here is clickable.
 import * as THREE from 'three';
+import sequences from '../../content/source/sequences.json';
 import { PLACES, ROLE } from '../world/places.js';
 import { anchors, STAGES } from '../world/world.js';
 
@@ -59,6 +60,20 @@ export const PANELS = {
   fb: { cls: 'fb-line', fixed: [150, 900, 1620], html: `Les observations reviennent vers le développement pour préparer les corrections` },
   secline: { cls: 'sec-line', fixed: [150, 966, 1620], html: `<b>Sécurité :</b> analyses avant publication · accès protégés au déploiement · surveillance pendant l’exploitation` },
 };
+for (const seq of sequences.filter(s => ['architecture','routage','isolation','secrets','chaine','log4j'].includes(s.id))) {
+  PANELS[`story-title-${seq.id}`] = { cls:'title-chip', fixed:[96,64,1050], html:`<p class="kicker">${seq.chapter === 4 ? 'Chaîne CI/CD et déploiement' : 'Architecture et démarche DevSecOps'}</p><h2>${esc(seq.title)}</h2>` };
+}
+const NODE_OFFSETS = [[-50,35],[0,-5],[0,115],[-70,-25],[-20,20],[-25,-55],[40,-5],[60,20],[20,45]];
+['Utilisateurs', 'Ingress NGINX', 'site client · administration', 'API', "service d'IA", 'PostgreSQL + volume', 'GitHub', 'ArgoCD', 'ACR'].forEach((text,i) => {
+  PANELS[`node-${i}`] = { cls:'node-tag architecture-tag', anchor:()=>anchors[`nodeTag${i}`], offset:NODE_OFFSETS[i], html:esc(text) };
+});
+['Contrôles', 'Images', 'GitOps'].forEach((text,i) => {
+  PANELS[`gate-${i}`] = { cls:'node-tag', anchor:()=>anchors[`gateTag${i}`], html:esc(text) };
+});
+PANELS['blocked-proof'] = { cls:'board blocked-proof', fixed:[1150,230,680], html:'<p class="kicker">CVE-2021-44228 (Log4Shell)</p><h2>Rien n’est publié.</h2><p>Exemple : pipeline backend, avec la dépendance log4j 2.14.1 ajoutée exprès</p><p>CVE-2021-44228 (Log4Shell) : le pipeline devient rouge</p>' };
+PANELS['delivery-caption'] = { cls:'board', fixed:[200,900,1520], html:'<div class="chain"><div class="link"><b>GitHub</b></div><div class="link"><b>ACR</b></div><div class="link"><b>ArgoCD</b></div><div class="link"><b>AKS</b></div></div>' };
+PANELS['film-title'] = { cls: 'title-chip', fixed: [330, 64, 1470], html: `<p class="kicker">Bilan et perspectives · Vidéo</p><h2>Le parcours d'une version, du code au suivi</h2>` };
+PLACES.forEach(p => { PANELS[`chapter-${p.id}`] = { cls: 'chapter-card', fixed: [1150, 85, 670], html: `<p class="kicker">${p.id}</p><h2>${esc(p.title)}</h2><p>${esc(p.line)}</p>` }; });
 STAGES.forEach(([, name], i) => { PANELS[`stage${i}`] = { cls: 'stage-tag', anchor: () => anchors[`stageTag${i}`], html: name }; });
 PLACES.forEach(p => {
   PANELS[`l${p.id}`] = { cls: `label${p.below ? ' below' : ''}`, anchor: () => anchors[`label${p.id}`], pin: 64,
@@ -75,6 +90,7 @@ export function buildPanels() {
     if (p.anchor) { el.style.left = '0px'; el.style.top = '0px'; }
     if (p.fixed) { el.style.left = `${p.fixed[0]}px`; el.style.top = `${p.fixed[1]}px`; if (p.fixed[2]) el.style.width = `${p.fixed[2]}px`; }
     stage().appendChild(el); els[id] = el;
+    if (p.offset) { const line = document.createElementNS('http://www.w3.org/2000/svg','path'); line.id = `leader-${id}`; document.getElementById('leaders').append(line); }
   }
   els.cover.classList.add('on');
 }
@@ -90,10 +106,13 @@ export function toStage(p, camera) {
 export function updatePanels(visible, camera, state) {
   for (const [id, p] of Object.entries(PANELS)) {
     const el = els[id], on = visible.has(id);
+    if (p.offset) document.getElementById(`leader-${id}`).style.display = on ? '' : 'none';
     if (el.classList.contains('on') !== on) el.classList.toggle('on', on);
     if (p.anchor && (on || el.classList.contains('on'))) {
       const [x, y] = toStage(p.anchor(), camera);
-      el.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;   // no layout per frame: left/top stay 0
+      const [dx,dy] = p.offset || [0,0];
+      el.style.translate = `${(x+dx).toFixed(1)}px ${(y+dy).toFixed(1)}px`;
+      if (p.offset) document.getElementById(`leader-${id}`).setAttribute('d', `M${x},${y}L${x+dx},${y+dy}`);   // no layout per frame: left/top stay 0
     }
   }
   for (const pl of PLACES) els[`l${pl.id}`].classList.toggle('visited', !!state?.visited?.includes(pl.id));
@@ -107,6 +126,7 @@ export function setCover(mode) {   // 'basmala' | 'full' | 'gone'
 
 // Centre of a panel element (or a part of it), in stage pixels: what a character points at.
 export function panelStagePoint(id) {
+  if (id === 'evidence') return [380, 500];
   const el = id === 'reponse-key' ? els.reponse.querySelector('.answer.key') : els[id];
   const st = stage().getBoundingClientRect(), r = el.getBoundingClientRect(), s = st.width / 1920;
   return [(r.left - st.left) / s, (r.top + r.height / 2 - st.top) / s];

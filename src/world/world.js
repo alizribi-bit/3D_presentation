@@ -187,7 +187,7 @@ function market(world) {
 // ── 02 · platform workshop (silhouette) ─────────────────────────────────────────────────────────
 function atelier(world) {
   const pl = place('02'), [x, z] = pl.center; plaza(world, pl, 7.5, '#e4ece2', '#c5d6c6');
-  put(world, 'commercial/building-b', V(x - 1.5, .34, z + 2.8), 6, Math.PI);
+  put(world, 'commercial/building-b', V(x - 1.5, .34, z - 4.8), 6, Math.PI);
   // two big devices: a web screen and a phone, the platform's two faces
   const scr = put(world, 'props/computer-screen', V(x + 3.6, .34, z - 1.2), 2.4, -.5);
   const phone = mesh(new RoundedBoxGeometry(1, 1.9, .18, 4, .14), mat('#1d3a2b')); phone.position.set(x + 5.4, 1.3, z + 1); phone.rotation.y = -.7; world.add(phone);
@@ -284,21 +284,13 @@ function delivery(world) {
     [-1.2, 1.2].forEach(dz => { const p = mesh(new RoundedBoxGeometry(.32, 3, .32, 2, .1), mat('#ffffff')); p.position.set(0, 1.5, dz); g.add(p); });
     const top = mesh(new RoundedBoxGeometry(.4, .4, 2.8, 2, .12), mat(c)); top.position.set(0, 3.1, 0); g.add(top);
   });
-  const box = new RoundedBoxGeometry(.8, .6, .8, 2, .08);
-  [-5.6, -2, 2, 5.6].forEach(dx => { const b = mesh(box, mat('#c99a62')); b.position.set(x + dx, y + 1.45, z); world.add(b); });
+
 }
 
 // ── 05 · supervision centre (silhouette): a building with a screen wall and an antenna ───────────
 function supervision(world) {
   const pl = place('05'), [x, z] = pl.center; plaza(world, pl, 8.5, '#e1e9f2', '#bccbdd');
-  put(world, 'commercial/building-e', V(x, .34, z - 2.5), 10, 0);
-  const wall = mesh(new RoundedBoxGeometry(6.4, 3.4, .3, 3, .1), mat('#22303f')); wall.position.set(x, 2.4, z + 3.4); world.add(wall);
-  const c = document.createElement('canvas'); c.width = 512; c.height = 256; const g = c.getContext('2d');
-  g.fillStyle = '#1b2633'; g.fillRect(0, 0, 512, 256);
-  g.strokeStyle = '#5be38f'; g.lineWidth = 5; g.beginPath(); for (let i = 0; i <= 40; i++) g.lineTo(20 + i * 11.8, 150 - Math.sin(i * .45) * 40 - i * 1.2); g.stroke();
-  g.strokeStyle = '#7fb2ee'; g.beginPath(); for (let i = 0; i <= 40; i++) g.lineTo(20 + i * 11.8, 210 - Math.cos(i * .3) * 18); g.stroke();
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
-  const face = new THREE.Mesh(new THREE.PlaneGeometry(6, 3), new THREE.MeshBasicMaterial({ map: t })); face.position.set(0, 0, .16); wall.add(face);
+  put(world, 'commercial/building-e', V(x + 2.5, .34, z - 9), 8, 0);
   const mast = mesh(new THREE.CylinderGeometry(.12, .16, 6, 12), mat('#ffffff')); mast.position.set(x + 5.5, 3.3, z - .5); world.add(mast);
   const dish = mesh(new THREE.SphereGeometry(1, 28, 14, 0, Math.PI * 2, 0, Math.PI / 3.2), mat('#ffffff', { side: THREE.DoubleSide })); dish.position.set(x + 5.5, 6, z - .5); dish.rotation.x = -1.1; world.add(dish);
 }

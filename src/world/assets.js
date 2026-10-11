@@ -1,5 +1,6 @@
 // Preloads every model of the prototype before the first state is shown (FR-024): nothing pops in late.
 import * as THREE from 'three';
+import assetManifest from '../../content/source/assets-manifest.json';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 
@@ -26,8 +27,7 @@ export const MODEL_URLS = {
   ...Object.fromEntries(COMMERCIAL.map(n => [`commercial/${n}`, `models/commercial/${n}.glb`])),
   ...Object.fromEntries(SUBURBAN.map(n => [`suburban/${n}`, `models/suburban/${n}.glb`])),
 };
-export const IMAGE_URLS = ['assets/deck/v6-sup-piliers.jpg', 'assets/deck/v3-mob-evaluation.jpg', 'assets/deck/logo-green.png',
-  'assets/deck/logo-isima.png'];
+export const IMAGE_URLS = assetManifest.assets.filter(a => /\.(png|jpg|jpeg|webp)$/.test(a.file)).map(a => a.file);
 
 const cache = {};
 

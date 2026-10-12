@@ -1,29 +1,32 @@
 // Real-browser checks of the prototype, on the built version (dist/) served like present.sh does.
-//   node scripts/verify.mjs [baseURL]     default http://127.0.0.1:4317 (start it with ./present.sh or python3 -m http.server)
+//   node scripts/verify.mjs [baseURL]     default http://127.0.0.1:4318 (start it with ./present.sh or python3 -m http.server)
 // Chrome with the machine's GPU (Vulkan), 1920×1080, jury and presenter windows in one browser context.
 // Every request to another host is blocked and counted. Screenshots go to review/verify/.
 import { chromium } from 'playwright-core';
-import { mkdirSync } from 'node:fs';
+import { qaArgs } from './qa-browser.mjs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
-const BASE = process.argv[2] || 'http://127.0.0.1:4317';
+const QUALITY = process.env.QA_QUALITY || 'normal';
+const BASE = process.argv[2] || 'http://127.0.0.1:4318';
 const OUT = new URL('../review/verify/', import.meta.url).pathname; mkdirSync(OUT, { recursive: true });
 const IDS = ['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'C3', 'D1', 'D2', 'D3'];
 const results = []; const ok = (name, pass, info = '') => { results.push({ name, pass, info }); console.log(`${pass ? 'PASS' : 'FAIL'}  ${name}${info ? `  — ${info}` : ''}`); };
 
-const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--use-angle=vulkan', '--enable-features=Vulkan', '--ignore-gpu-blocklist'] });
+const browser = await chromium.launch({ channel: 'chrome', headless: true, args: qaArgs });
 const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 } });
 const external = [], errors = [];
 await ctx.route('**/*', r => { const u = new URL(r.request().url()); if (u.hostname !== '127.0.0.1' && u.hostname !== 'localhost') { external.push(u.href); return r.abort(); } return r.continue(); });
 const watch = p => { p.on('pageerror', e => errors.push(String(e))); p.on('console', m => { if (m.type() === 'error') errors.push(m.text()); }); };
 
+try {
 const jury = await ctx.newPage(); watch(jury);
-await jury.goto(`${BASE}/?prototype&test&still#A0`);
+await jury.goto(`${BASE}/?prototype&test&still&q=${QUALITY}#A0`);
 await jury.waitForFunction(() => window.__story?.ready, null, { timeout: 60000 });
 const pres = await ctx.newPage(); watch(pres);
 await pres.goto(`${BASE}/presenter.html?prototype`);
 const state = () => jury.evaluate(() => __story.state);
-const settled = () => jury.waitForFunction(() => __story.settled, null, { timeout: 15000 });
+const settled = () => jury.waitForFunction(() => __story.settled, null, { timeout: 15000, polling: 100 });
 const presAt = async id => { const t = Date.now(); try { await pres.waitForFunction(i => __presenter.cur === i, id, { timeout: 2000 }); return Date.now() - t; } catch { return Infinity; } };
 
 // 1 · forward and back, one press = one state, presenter follows
@@ -86,7 +89,7 @@ const shot = async (id, how) => { await settled(); await jury.waitForTimeout(700
 await jury.evaluate(() => __story.go(0)); await settled();
 for (let i = 0; i < 11; i++) { if (i) { await jury.keyboard.press('ArrowRight'); } await shot(IDS[i], 'forward'); }
 for (let i = 10; i >= 0; i--) { if (i < 10) { await jury.keyboard.press('ArrowLeft'); } await shot(IDS[i], 'back'); }
-for (const id of IDS) { await jury.goto(`${BASE}/?prototype&test&still&r=${id}#${id}`); await jury.waitForFunction(() => window.__story?.ready, null, { timeout: 60000 }); await shot(id, 'reload'); }
+for (const id of IDS) { await jury.goto(`${BASE}/?prototype&test&still&q=${QUALITY}&r=${id}#${id}`); await jury.waitForFunction(() => window.__story?.ready, null, { timeout: 60000 }); await shot(id, 'reload'); }
 try {
   const diff = execFileSync('python3', [new URL('./compare.py', import.meta.url).pathname, OUT, ...IDS], { encoding: 'utf8' });
   const bad = diff.split('\n').filter(l => l.startsWith('DIFF'));
@@ -96,7 +99,8 @@ try {
 ok('no request left this machine (offline-safe)', external.length === 0, external.length ? [...new Set(external)].slice(0, 5).join(' ') : 'all from 127.0.0.1');
 const errs = [...new Set(errors)].filter(e => !/PCFSoftShadowMap/.test(e));
 ok('no JavaScript error in either window', errs.length === 0, errs.slice(0, 3).join(' | '));
-await browser.close();
+} catch (error) { ok('browser suite completes', false, String(error)); console.log('navigation diagnostic', await ctx.pages()[0]?.evaluate(() => ({state:__story.state,settled:__story.settled,transition:__story.director.tr,clock:performance.now()/1000})).catch(()=>null)); } finally { await browser.close(); }
+writeFileSync(`${OUT}report.json`, JSON.stringify({ date: new Date().toISOString(), rendererMode: process.env.QA_RENDERER || 'vulkan', quality: QUALITY, results, external, errors }, null, 2));
 const failed = results.filter(r => !r.pass).length;
 console.log(`\n${results.length - failed}/${results.length} checks passed`);
 process.exit(failed ? 1 : 0);

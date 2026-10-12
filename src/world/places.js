@@ -10,7 +10,7 @@ export const ROAD = [
 export const ROLE = { local: '#c98a3c', green: '#0d7b3c', tech: '#2f6db3', attention: '#e8742c' };
 
 export const PLACES = [
-  { id: '01', title: 'Contexte et objectifs', line: 'La startup, le problème et la solution proposée',
+  { id: '01', title: 'Contexte et objectifs', line: "ZAWEDNI, les objectifs et l'organisation du projet",
     role: 'local', center: [-31, -1.5], label: [-31, 7, -8] },
   { id: '02', title: 'Développement de la plateforme', line: 'Les choix techniques, la conception et les interfaces',
     role: 'green', center: [-12, 19], label: [-12, 0, 26], below: true },
@@ -20,8 +20,8 @@ export const PLACES = [
     role: 'tech', center: [24, 12], label: [24, 0, 19.5], below: true },
   { id: '05', title: 'Supervision et validation', line: 'Le suivi des services et les résultats des essais',
     role: 'tech', center: [37, -17], label: [37, 11, -21] },
-  { id: '06', title: 'Bilan et perspectives', line: 'Les apports du mémoire et les prochaines étapes',
-    role: 'green', center: [52, 2], label: [52, 7.5, -1] },
+  { id: '06', title: 'Bilan, perspectives et conclusion', line: 'Les apports du mémoire et les prochaines étapes',
+    role: 'green', center: [52, 2], label: [48, 7.5, -1] },
 ];
 
 export const place = id => PLACES.find(p => p.id === id);

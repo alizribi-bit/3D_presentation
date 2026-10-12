@@ -9,6 +9,8 @@ import { buildShots, LIFT } from '../camera/shots.js';
 import { anchors, roadCurve, setFeedback } from '../world/world.js';
 import { motion } from './prefs.js';
 import { routePath } from '../characters/path.ts';
+import { arrivalWalk } from '../characters/arrival.ts';
+import { getEvidenceTargetPoint, calculatePointWeight } from '../characters/pose.ts';
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const smooth = x => { x = clamp(x); return x * x * (3 - 2 * x); };
@@ -19,6 +21,8 @@ export class Director {
     Object.assign(this, { camera, actors, onState, onFrame, still, fast });
     this.shots = buildShots();
     this.i = 0; this.tr = null; this.instantFrames = 0;
+    this.stateT0 = performance.now() / 1000;
+    this.evidencePointCache = new Map();
   }
 
   get state() { return STATES[this.i]; }
@@ -32,6 +36,7 @@ export class Director {
     if (i === this.i && !instant) return;
     const from = this.i; this.i = i;
     const to = STATES[i], back = i < from, jump = Math.abs(i - from) > 1;
+    this.stateT0 = performance.now() / 1000;
     if (instant) { this.tr = null; this.instantFrames = 2; }
     else {
       const D = this.fast ? .03 : motion.reduced ? .35 : back || jump ? .8 : to.duration || .9;
@@ -57,9 +62,9 @@ export class Director {
   // ── per frame ─────────────────────────────────────────────────────────────────────────────────
   frame(now) {
     const tr = this.tr, to = this.state;
-    let t = Infinity, D = 1, from = to;
+    let t = now - this.stateT0, D = 1, from = to;
     if (tr) { t = now - tr.t0; D = tr.D; from = tr.from; if (t >= D + (this.fast ? .05 : 2.6)) this.tr = null; }
-    const k = clamp(t / D);
+    const k = tr ? clamp(t / D) : 1;
     document.body.classList.toggle('instant', this.instantFrames > 0 || this.fast); if (this.instantFrames > 0) this.instantFrames--;
 
     // camera
@@ -90,33 +95,84 @@ export class Director {
     return null;
   }
   // A DOM panel seen as a point in the world, at the depth of the character who points at it.
-  panelWorld(ref, from) {
-    const [sx, sy] = panelStagePoint(ref);
+  panelWorld(ref, from, state) {
+    let sx = 1100, sy = 480;
+    if (ref === 'evidence') {
+      let foundDom = false;
+      const cacheKey = `${state.id}:${innerWidth}:${innerHeight}`;
+      const cached = this.evidencePointCache.get(cacheKey);
+      if (cached) { [sx, sy] = cached; foundDom = true; }
+      if (typeof document !== 'undefined') {
+        const stageEl = document.getElementById('stage');
+        const evEl = document.getElementById('p-evidence');
+        if (!foundDom && stageEl && evEl && evEl.shadowRoot && evEl.dataset.frame === state.id) {
+          const candidates = [...evEl.shadowRoot.querySelectorAll('[data-focus], [data-active], .focus, .key'),
+            ...evEl.shadowRoot.querySelectorAll('img:not([hidden]), svg:not([hidden]), h2')];
+          const targetEl = candidates.find(element => {
+            const css = getComputedStyle(element);
+            return css.visibility !== 'hidden' && css.display !== 'none' && css.opacity !== '0';
+          });
+          if (targetEl) {
+            const rect = targetEl.getBoundingClientRect();
+            const sRect = stageEl.getBoundingClientRect();
+            const s = sRect.width / 1920;
+            if (s > 0 && rect.width > 0 && rect.height > 0) {
+              sx = (rect.left + rect.width / 2 - sRect.left) / s;
+              sy = (rect.top + rect.height / 2 - sRect.top) / s;
+              foundDom = true;
+              // Surface reveal/layout transitions last at most 0.65 s. Cache only their stable geometry.
+              if (performance.now() / 1000 - this.stateT0 > .7) this.evidencePointCache.set(cacheKey, [sx, sy]);
+            }
+          }
+        }
+      }
+      if (!foundDom && state?.source) {
+        [sx, sy] = getEvidenceTargetPoint(state.source.seq, state.source.step);
+      }
+    } else {
+      [sx, sy] = panelStagePoint(ref);
+    }
     const ndc = V(sx / 1920 * 2 - 1, 1 - sy / 1080 * 2, .5).unproject(this.camera);
     const dir = ndc.sub(this.camera.position).normalize(), dist = this.camera.position.distanceTo(from);
     return this.camera.position.clone().addScaledVector(dir, dist * .92);
   }
   target(ref, at, state) {
     if (state?.actors[ref]) return anchors[state.actors[ref].at].clone().add(V(0, 1.55, 0));   // another character: look at the face
-    return this.point(ref) ?? this.panelWorld(ref, at);
+    return this.point(ref) ?? this.panelWorld(ref, at, state);
   }
 
   pose(name, from, to, tr, t, D, appear) {
     const sA = from.actors[name], sB = to.actors[name], still = this.still || /[?&]still/.test(location.search);
     const end = anchors[sB.at].clone(), start = anchors[sA.at].clone();
     const yawTo = (p, q) => Math.atan2(q.x - p.x, q.z - p.z);
-    const faceB = yawTo(end, this.target(sB.face, end, to)), faceA = yawTo(start, this.target(sA.face, start, from));
-    const pose = { pos: end, yaw: faceB, walkDist: 0, walkW: 0, pointW: sB.point ? 1 : 0, aim: sB.point ? this.target(sB.point, end, to) : null,
-      lookW: sB.face === 'camera' ? 0 : 1, look: this.target(sB.face, end, to), opacity: 1, still };
+    const targetLook = this.target(sB.face, end, to);
+    const faceB = yawTo(end, targetLook);
+    const faceA = yawTo(start, this.target(sA.face, start, from));
+
+    const pointTarget = sB.point ? this.target(sB.point, end, to) : null;
+    const pointW = sB.point ? calculatePointWeight(t, appear) : 0;
+
+    const pose = {
+      pos: end,
+      yaw: faceB,
+      walkDist: 0,
+      walkW: 0,
+      pointW: still ? (sB.point ? 1 : 0) : pointW,
+      aim: pointTarget,
+      lookW: sB.face === 'camera' ? 0 : 1,
+      look: targetLook,
+      opacity: 1,
+      still,
+      instant: this.instantFrames > 0 || still || motion.reduced
+    };
     if (!tr) return pose;
 
     const route = tr.paths[name];
     if (route && !motion.reduced) {
-      const u = clamp((t - D * .08) / (D * .82));
-      const A = .12, vm = 1 / (1 - A);
-      const pace = u < A ? vm * u * u / (2 * A) : u > 1 - A ? 1 - vm * (1 - u) * (1 - u) / (2 * A) : vm * (u - A / 2);
-      const sample = route.sample(pace);
-      pose.pos = sample.position; pose.walkDist = sample.distance;
+      const arrival = arrivalWalk(t, D, route.length), u = arrival.progress;
+      if (arrival.departure) return { ...pose, pos: start, yaw: faceA, opacity: arrival.opacity, pointW: 0, lookW: 0 };
+      const sample = route.sample((arrival.offset + arrival.distance) / Math.max(route.length, 1e-6));
+      pose.pos = sample.position; pose.walkDist = arrival.distance; pose.opacity = arrival.opacity;
       pose.walkW = u > 0 && u < 1 ? 1 : u >= 1 ? 1 - smooth((t - D * .9) / .3) : 0;
       pose.yaw = u < 1 ? sample.yaw : lerpAngle(sample.yaw, faceB, smooth((t - D * .9) / .45));
       pose.lookW *= u >= 1 ? smooth((t - D * .9) / .5) : 0;
@@ -127,15 +183,17 @@ export class Director {
     if (forwardWalk) {
       // path: anchor names, '|' = an off-screen jump between two places (done while the camera is high)
       const { segs, lens, total } = tr.walks[name];
-      const w0 = D * .08, w1 = D * .9, u = clamp((t - w0) / (w1 - w0));
-      const A = .12, vm = 1 / (1 - A);   // trapezoid speed: short start and stop, constant pace between
-      const d = total * (u < A ? vm * u * u / (2 * A) : u > 1 - A ? 1 - vm * (1 - u) * (1 - u) / (2 * A) : vm * (u - A / 2));
+      const w1 = D * .92;
+      const arrival = arrivalWalk(t, D, total), u = arrival.progress;
+      if (arrival.departure) return { ...pose, pos: start, yaw: faceA, opacity: arrival.opacity, pointW: 0, lookW: 0 };
+      const d = arrival.offset + arrival.distance;
+      pose.opacity = arrival.opacity;
       let left = d, si = 0; while (si < segs.length - 1 && left > lens[si]) { left -= lens[si]; si++; }
       const s = segs[si]; let j = 0; while (j < s.length - 2 && left > s[j].distanceTo(s[j + 1])) { left -= s[j].distanceTo(s[j + 1]); j++; }
       const p0 = s[j], p1 = s[Math.min(j + 1, s.length - 1)], segL = Math.max(1e-6, p0.distanceTo(p1));
       pose.pos = p0.clone().lerp(p1, clamp(left / segL));
       const moving = u > 0 && u < 1;
-      pose.walkDist = d; pose.walkW = moving ? 1 : u >= 1 ? 1 - smooth((t - w1) / .3) : 0;
+      pose.walkDist = arrival.distance; pose.walkW = moving ? 1 : u >= 1 ? 1 - smooth((t - w1) / .3) : 0;
       const yawWalk = yawTo(p0, p1);
       pose.yaw = u < 1 ? yawWalk : lerpAngle(yawWalk, faceB, smooth((t - w1) / .45));
       if (segs.length > 1) {   // fade around the jump so no one sees it
@@ -151,10 +209,6 @@ export class Director {
       pose.yaw = lerpAngle(faceA, faceB, smooth(t / .5));
       pose.lookW = (sA.face === 'camera' ? 0 : 1) + (pose.lookW - (sA.face === 'camera' ? 0 : 1)) * smooth(t / .5);
     }
-    // pointing comes in when its target appears, goes out at once
-    const pA = sA.point ? 1 : 0, pB = sB.point ? 1 : 0;
-    pose.pointW = pB > pA ? smooth((t - appear - .1) / .45) : pB < pA ? 1 - smooth(t / .3) : pB;
-    if (!pose.aim && sA.point) pose.aim = this.target(sA.point, start, from);
     return pose;
   }
 }

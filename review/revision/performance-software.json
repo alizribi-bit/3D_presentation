@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-12T12:40:28.206Z",
+  "method": "Chrome headless, 1920×1080, Vulkan; normal animation, no test/still flags or screenshot during measurements",
+  "hardware": {
+    "renderer": "ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 20.1.2 256 bits) (0x00000000)), llvmpipe)",
+    "drawCalls": 150,
+    "triangles": 119030
+  },
+  "measurements": [
+    {
+      "quality": "normal",
+      "coldReadyMs": 6347
+    },
+    {
+      "quality": "normal",
+      "from": "sommaire-1",
+      "to": "startup-0",
+      "meanFps": 7.3,
+      "p5Fps": 0.6,
+      "frames": 7
+    },
+    {
+      "quality": "normal",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "meanFps": 2.8,
+      "p5Fps": 1.5,
+      "frames": 14
+    },
+    {
+      "quality": "normal",
+      "from": "parcours-app-4",
+      "to": "ch3-0",
+      "meanFps": 2.5,
+      "p5Fps": 2,
+      "frames": 13
+    },
+    {
+      "quality": "normal",
+      "from": "secrets-3",
+      "to": "ch4-0",
+      "meanFps": 2.6,
+      "p5Fps": 2.3,
+      "frames": 14
+    },
+    {
+      "quality": "normal",
+      "from": "tracabilite-4",
+      "to": "ch5-0",
+      "meanFps": 2.7,
+      "p5Fps": 2.1,
+      "frames": 14
+    },
+    {
+      "quality": "normal",
+      "from": "validation-1",
+      "to": "ch6-0",
+      "meanFps": 4.9,
+      "p5Fps": 1.5,
+      "frames": 16
+    },
+    {
+      "quality": "light",
+      "coldReadyMs": 6350
+    },
+    {
+      "quality": "light",
+      "from": "sommaire-1",
+      "to": "startup-0",
+      "meanFps": 2.5,
+      "p5Fps": 0.5,
+      "frames": 9
+    },
+    {
+      "quality": "light",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "meanFps": 1.5,
+      "p5Fps": 1.3,
+      "frames": 7
+    },
+    {
+      "quality": "light",
+      "from": "parcours-app-4",
+      "to": "ch3-0",
+      "meanFps": 1.4,
+      "p5Fps": 1.3,
+      "frames": 7
+    },
+    {
+      "quality": "light",
+      "from": "secrets-3",
+      "to": "ch4-0",
+      "meanFps": 1.7,
+      "p5Fps": 1.4,
+      "frames": 8
+    },
+    {
+      "quality": "light",
+      "from": "tracabilite-4",
+      "to": "ch5-0",
+      "meanFps": 1.6,
+      "p5Fps": 1.4,
+      "frames": 8
+    },
+    {
+      "quality": "light",
+      "from": "validation-1",
+      "to": "ch6-0",
+      "meanFps": 1.9,
+      "p5Fps": 1.7,
+      "frames": 10
+    }
+  ]
+}

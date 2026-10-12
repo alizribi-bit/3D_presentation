@@ -1,49 +1,53 @@
-# ZAWEDNI Story 3D
+# ZAWEDNI Story 3D — révision 44
 
-Présentation de soutenance guidée dans un monde 3D continu : achat local, atelier de la plateforme,
-zone DevSecOps, livraison, supervision, bilan. Les 41 séquences et le discours du deck accepté
-sont conservés. Les 65 révélations internes et les entrées de séquence donnent 106 états et
-105 pressions « suivant ». Le prototype initial reste disponible avec `?prototype`.
+Présentation guidée dans six lieux 3D, avec jury et présentateur synchronisés.
+44 séquences, 70 révélations, 114 états, 113 pressions suivant. Discours complet :
+[docs/SCRIPT-44.md](docs/SCRIPT-44.md). Durée estimée : environ 24 minutes,
+avec une fourchette de 22 à 26,5 minutes ; aucun discours n’est supprimé.
 
-## Préparer et présenter
+## Présenter hors ligne
+
+Le build `dist/` est livré prêt. Python 3 et Google Chrome doivent déjà être installés.
+Depuis n’importe quel dossier :
 
 ```bash
-npm ci
-npm run build
-./present.sh
-./present.sh --swap
-./present.sh --prototype
+/home/ali/Desktop/zawedni-story-3d/present.sh
+/home/ali/Desktop/zawedni-story-3d/present.sh --swap
 ```
 
-Node 20.20 ou ultérieur pour les outils ; Python 3 et Google Chrome pour le lancement et la QA.
-Lanceur hors ligne : jury en plein écran sur le projecteur, notes sur l'ordinateur.
-Touches → / Espace / PageDown, ← / PageUp ; 1–6 : chapitres ; Home / End ; F : plein écran ;
-N : notes ; M : mouvement réduit ; L : qualité légère. Les commandes natives de la vidéo restent
-utilisables ; les touches reprennent le parcours après usage de la souris.
+Le port local est **4318**. `ZS3D_PORT=4320 ./present.sh` permet de le changer.
+Le lanceur vérifie que le serveur sert le build courant. Deux fenêtres s’ouvrent ;
+le présentateur n’a ni rendu WebGL ni lecteur média. Guide : [PRESENTER.md](PRESENTER.md).
 
-## Développer et vérifier
+## Développement et vérification
 
 ```bash
-npm run dev
+npm ci                       # préparation seulement, pas le jour de la soutenance
 npm test
 npm run typecheck
 npm run check
 npm run build
-# Le build doit être servi sur 127.0.0.1:4317 : present.sh ou le serveur Python ci-dessous.
-python3 -m http.server 4317 --bind 127.0.0.1 --directory dist
+python3 -m http.server 4318 --bind 127.0.0.1 --directory dist
 npm run verify
-npm run verify:prototype
-node scripts/measure-full.mjs
+VIEWPORT=1366x768 npm run verify
+node scripts/verify-revision.mjs
+VIEWPORT=1366x768 node scripts/verify-revision.mjs
+QA_RENDERER=default npm run verify:prototype
+QA_RENDERER=default node scripts/verify-media.mjs
+node scripts/test-launcher.mjs
+node scripts/measure-full.mjs  # seul navigateur QA actif
 ```
 
-`npm run check` contrôle les empreintes de la source, chaque segment du discours, les 106 frames
-canoniques et les copies des assets. `npm run verify` exerce réellement Chrome : navigation complète,
-notes synchronisées, retours/rechargements, commandes vidéo, console et requêtes hors machine.
-`npm run import:content` régénère les preuves depuis le deck immuable (lecture seule) : ne pas lancer
-ceci contre un ancien deck ou un autre film. Les preuves exportées sont du DOM/SVG/image local,
-sans scripts de l'ancien deck. Le navigateur livré ne dépend pas du dossier source.
+Touches →/Espace/PageDown, ←/PageUp, 1–6, Home/End, F, N, M, L.
+Le film final dure 90 secondes ; un retour ou rechargement affiche l’affiche sans
+lecture automatique. Les commandes du lecteur ne changent pas de séquence.
 
-Architecture : `src/story/` porte le modèle typé, le parcours et les preuves ; `src/nav/` le pilotage ;
-`src/characters/path.ts` les trajets ; `src/world/story.ts` les lieux et objets narratifs ;
-`src/media/` le lecteur et son cycle de vie. Plan : `specs/002-full-presentation/`.
-Voir `AGENTS.md`, `HANDOFF.md`, `PRESENTER.md` et `content/source/assets-manifest.json`.
+Les sources classiques restent en lecture seule. Leur provenance v7 est conservée
+sans changement d’empreinte. La révision locale et ses phrases exactes sont contrôlées
+séparément. **Ne pas relancer l’ancien import de contenu** ; le générateur local est
+`node scripts/revise-content.mjs`. Il conserve les captures existantes, utilise la
+capture réelle d’envoi, puis applique les diagrammes et corrections locales.
+
+Plan : [docs/PLAN-44.md](docs/PLAN-44.md). Handoff : [HANDOFF.md](HANDOFF.md).
+Résultats et limites : [docs/REVIEW.md](docs/REVIEW.md). Licences :
+[public/licenses/README.md](public/licenses/README.md).

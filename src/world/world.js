@@ -1,5 +1,7 @@
 // The ZAWEDNI world: a light plateau, a road (the roadmap) and six places. Built once; states only move the camera.
 import * as THREE from 'three';
+import { sceneProps } from './scene-props.ts';
+import { decorateMonitorScreen } from './monitor.ts';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { instance, fit, image } from './assets.js';
@@ -34,6 +36,7 @@ export function buildWorld(scene) {
 // which keeps a modest integrated GPU fluid. Transparent and multi-material meshes stay as they are.
 function bake(world) {
   world.updateMatrixWorld(true);
+  const inverseRoot = world.matrixWorld.clone().invert();
   const groups = new Map(), done = [];
   world.traverse(m => {
     if (!m.isMesh || m.isSkinnedMesh || Array.isArray(m.material) || m.material.transparent || m.userData.keep) return;
@@ -41,7 +44,7 @@ function bake(world) {
     const mt = m.material, look = `${mt.type}|${mt.color?.getHex()}|${mt.emissive?.getHex()}|${mt.emissiveIntensity}|${mt.map?.uuid}|${mt.side}|${mt.roughness}|${mt.toneMapped}`;
     const key = `${look}|${sig}|${m.castShadow}`;
     let geo = g.index ? g.toNonIndexed() : g.clone();
-    geo.applyMatrix4(m.matrixWorld);
+    geo.applyMatrix4(inverseRoot.clone().multiply(m.matrixWorld));
     for (const k of Object.keys(geo.morphAttributes)) delete geo.morphAttributes[k];
     if (!groups.has(key)) groups.set(key, { mat: m.material, cast: m.castShadow, geos: [] });
     groups.get(key).geos.push(geo); done.push(m);
@@ -184,29 +187,43 @@ function market(world) {
   anchors.market = V(x, 0, z);
 }
 
+function decorMonitor(world, pos, size, rotY = 0) {
+  const monitor = put(world, 'props/computer-screen', pos, size, rotY);
+  decorateMonitorScreen(monitor, image('assets/deck/logo-green.png'));
+  return monitor;
+}
+
 // ── 02 · platform workshop (silhouette) ─────────────────────────────────────────────────────────
 function atelier(world) {
   const pl = place('02'), [x, z] = pl.center; plaza(world, pl, 7.5, '#e4ece2', '#c5d6c6');
   put(world, 'commercial/building-b', V(x - 1.5, .34, z - 4.8), 6, Math.PI);
   // two big devices: a web screen and a phone, the platform's two faces
-  const scr = put(world, 'props/computer-screen', V(x + 3.6, .34, z - 1.2), 2.4, -.5);
+  decorMonitor(world, V(x + 3.6, .34, z - 1.2), 2.4, -.45);
   const phone = mesh(new RoundedBoxGeometry(1, 1.9, .18, 4, .14), mat('#1d3a2b')); phone.position.set(x + 5.4, 1.3, z + 1); phone.rotation.y = -.7; world.add(phone);
   const glass = mesh(new RoundedBoxGeometry(.84, 1.66, .02, 3, .1), mat('#5be38f', { emissive: '#2f9d63', emissiveIntensity: .35 })); glass.position.set(0, 0, .1); phone.add(glass);
+  phone.userData.keep = true;
+  glass.userData.keep = true;
+  sceneProps.set('atelier-phone', phone);
   anchors.atelier = V(x, 0, z);
 }
 
 // ── 03 · cloud zone: the DevSecOps loop, racks and screens ──────────────────────────────────────
 export const LOOP = { a: 6.2, sy: 1.15 };
+function localLoopPoint(t, ly = 0) {
+  const s = Math.sin(t), c = Math.cos(t), d = 1 + s * s;
+  return V(LOOP.a * c / d, ly, LOOP.sy * LOOP.a * s * c / d);
+}
 export function loopPoint(t, y = 0) {
-  const s = Math.sin(t), c = Math.cos(t), d = 1 + s * s, [x, z] = place('03').center;
-  return V(x + LOOP.a * c / d, y, z + LOOP.sy * LOOP.a * s * c / d);
+  const [x, z] = place('03').center;
+  const lp = localLoopPoint(t, y);
+  return V(x + lp.x, y, z + lp.z);
 }
 export const STAGES = [[.8, 'Planifier'], [1, 'Coder'], [1.2, 'Construire et tester'], [1.8, 'Livrer et déployer'], [2, 'Exploiter'], [.2, 'Superviser']];
 let feedbackMat;
-function loopRibbon(t0, t1, width, y, n = 140) {
+function localLoopRibbon(t0, t1, width, y, n = 140) {
   const pos = [], idx = [];
   for (let i = 0; i <= n; i++) {
-    const t = t0 + (t1 - t0) * i / n, p = loopPoint(t, y), q = loopPoint(t + .001, y), tan = q.sub(p).normalize(), side = V(-tan.z, 0, tan.x);
+    const t = t0 + (t1 - t0) * i / n, p = localLoopPoint(t, y), q = localLoopPoint(t + .001, y), tan = q.sub(p).normalize(), side = V(-tan.z, 0, tan.x);
     pos.push(p.x + side.x * width / 2, y, p.z + side.z * width / 2, p.x - side.x * width / 2, y, p.z - side.z * width / 2);
     if (i < n) { const k = i * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); }
   }
@@ -216,63 +233,89 @@ function loopRibbon(t0, t1, width, y, n = 140) {
 function cloud(world) {
   const pl = place('03'), [x, z] = pl.center; plaza(world, pl, 10.5, '#dfe7f1', '#b3c4d8');
   const y = .36;
-  // raised base under the loop, then the two lobes (development: green, operations: deep green), as in the deck
+
+  // Inclined presentation group for DevSecOps loop with depth facing spectator
+  const loopGroup = new THREE.Group();
+  loopGroup.position.set(x, y + 3.1, z);
+  loopGroup.rotation.x = .55;
+  world.add(loopGroup);
+
+  const plinthBase = mesh(new RoundedBoxGeometry(16, .24, 9.6, 3, .12), mat('#e4ecf4'), false);
+  plinthBase.position.set(0, -.12, 0); loopGroup.add(plinthBase);
+
+  // raised base under the loop, then the two lobes (development: green, operations: deep green)
   const ds = { side: THREE.DoubleSide };
-  world.add(mesh(loopRibbon(Math.PI * .5, Math.PI * 2.5, 1.9, y + .04), mat('#c9d6e4', ds), false));
-  world.add(mesh(loopRibbon(Math.PI * .5, Math.PI * 1.5, 1.15, y + .1), mat('#0d7b3c', ds), false));
-  world.add(mesh(loopRibbon(Math.PI * 1.5, Math.PI * 2.5, 1.15, y + .1), mat('#083f1f', ds), false));
+  loopGroup.add(mesh(localLoopRibbon(Math.PI * .5, Math.PI * 2.5, 1.9, .04), mat('#c9d6e4', ds), false));
+  loopGroup.add(mesh(localLoopRibbon(Math.PI * .5, Math.PI * 1.5, 1.15, .1), mat('#0d7b3c', ds), false));
+  loopGroup.add(mesh(localLoopRibbon(Math.PI * 1.5, Math.PI * 2.5, 1.15, .1), mat('#083f1f', ds), false));
   feedbackMat = new THREE.MeshStandardMaterial({ color: '#5be38f', emissive: '#5be38f', emissiveIntensity: .55, transparent: true, opacity: 0, roughness: .6, side: THREE.DoubleSide });
-  const fb = new THREE.Mesh(loopRibbon(Math.PI * .2, Math.PI * .8, .42, y + .16), feedbackMat); world.add(fb);
+  const fb = new THREE.Mesh(localLoopRibbon(Math.PI * .2, Math.PI * .8, .42, .16), feedbackMat); loopGroup.add(fb);
+
   // chevrons showing the direction of travel
   const chev = new THREE.Shape(); chev.moveTo(-.18, -.22); chev.lineTo(.12, 0); chev.lineTo(-.18, .22); chev.lineTo(-.06, 0); chev.closePath();
   const cg = new THREE.ShapeGeometry(chev); cg.rotateX(-Math.PI / 2);
   [.9, 1.1, 1.9, 2.1, .65, 1.35, 1.65, 2.35].forEach(k => {
-    const t = k * Math.PI, p = loopPoint(t, y + .13), q = loopPoint(t + .01, y + .13), c = new THREE.Mesh(cg, mat('#ffffff'));
-    c.position.copy(p); c.rotation.y = Math.atan2(-(q.z - p.z), q.x - p.x); world.add(c);
+    const t = k * Math.PI, p = localLoopPoint(t, .13), q = localLoopPoint(t + .01, .13), c = new THREE.Mesh(cg, mat('#ffffff'));
+    c.position.copy(p); c.rotation.y = Math.atan2(-(q.z - p.z), q.x - p.x); loopGroup.add(c);
   });
+
   // six stage bollards on the band
   STAGES.forEach(([k, name], i) => {
-    const p = loopPoint(k * Math.PI, y), dev = k > .5 && k < 1.5;
-    const b = mesh(new THREE.CylinderGeometry(.42, .5, .5, 28), mat('#ffffff')); b.position.set(p.x, y + .3, p.z); world.add(b);
-    const ring = mesh(new THREE.TorusGeometry(.4, .08, 10, 32), mat(dev ? '#0d7b3c' : '#083f1f')); ring.rotation.x = Math.PI / 2; ring.position.set(p.x, y + .56, p.z); world.add(ring);
-    anchors[`stage${i}`] = V(p.x, y + .6, p.z);
-    // label outside the loop, as in the deck: above, below or beside its marker
-    const off = [[0, 1.5, -1.1], [-2.1, .7, 0], [0, .1, 1.7], [0, 1.5, -1.1], [2.1, .7, 0], [0, .1, 1.7]][i];
-    anchors[`stageTag${i}`] = V(p.x + off[0], y + off[1], p.z + off[2]);
+    const p = localLoopPoint(k * Math.PI, .1), dev = k > .5 && k < 1.5;
+    const b = mesh(new THREE.CylinderGeometry(.42, .5, .5, 28), mat('#ffffff')); b.position.set(p.x, .35, p.z); loopGroup.add(b);
+    const ring = mesh(new THREE.TorusGeometry(.4, .08, 10, 32), mat(dev ? '#0d7b3c' : '#083f1f')); ring.rotation.x = Math.PI / 2; ring.position.set(p.x, .61, p.z); loopGroup.add(ring);
+    loopGroup.updateMatrixWorld(true);
+    const worldP = b.getWorldPosition(new THREE.Vector3());
+    anchors[`stage${i}`] = worldP.clone();
+    const off = [[0, 1.4, -1.0], [-2.0, .7, 0], [0, .2, 1.6], [0, 1.4, -1.0], [2.0, 1.7, -.1], [0, .2, 1.6]][i];
+    anchors[`stageTag${i}`] = b.position.clone().add(V(...off)).applyMatrix4(loopGroup.matrixWorld);
   });
+
   // security at the crossing: a shield on a plinth
-  const cx = loopPoint(Math.PI / 2, y);
-  const plinth = mesh(new THREE.CylinderGeometry(.9, 1, .5, 36), mat('#ffffff')); plinth.position.set(cx.x, y + .3, cx.z); world.add(plinth);
+  const cx = localLoopPoint(Math.PI / 2, .1);
+  const plinth = mesh(new THREE.CylinderGeometry(.9, 1, .5, 36), mat('#ffffff')); plinth.position.set(cx.x, .35, cx.z); loopGroup.add(plinth);
   const sh = new THREE.Shape(); sh.moveTo(0, .9); sh.quadraticCurveTo(.55, .78, .72, .7); sh.lineTo(.68, .1); sh.quadraticCurveTo(.55, -.55, 0, -.9); sh.quadraticCurveTo(-.55, -.55, -.68, .1); sh.lineTo(-.72, .7); sh.quadraticCurveTo(-.55, .78, 0, .9);
   const shield = mesh(new THREE.ExtrudeGeometry(sh, { depth: .22, bevelEnabled: true, bevelSize: .06, bevelThickness: .06, bevelSegments: 3 }), mat('#0d7b3c'));
-  shield.position.set(cx.x, y + 1.75, cx.z - .1); world.add(shield);
-  const ring = mesh(new THREE.TorusGeometry(1.05, .07, 10, 48), mat('#5be38f', { emissive: '#5be38f', emissiveIntensity: .25 })); ring.position.set(cx.x, y + 1.75, cx.z); world.add(ring);
-  anchors.crossing = V(cx.x, y + 1.7, cx.z);
-  // server racks behind the loop: rounded cabinets with LED strips (built here, no CC0 rack model found)
+  shield.position.set(cx.x, 1.8, cx.z - .1); loopGroup.add(shield);
+  const ring = mesh(new THREE.TorusGeometry(1.05, .07, 10, 48), mat('#5be38f', { emissive: '#5be38f', emissiveIntensity: .25 })); ring.position.set(cx.x, 1.8, cx.z); loopGroup.add(ring);
+  loopGroup.updateMatrixWorld(true);
+  anchors.crossing = shield.getWorldPosition(new THREE.Vector3());
+  anchors.secuLabel = anchors.crossing.clone().add(V(0, 1.8, -0.8));
+
+  // server racks behind the loop: rounded cabinets with LED strips
   const rack = new RoundedBoxGeometry(1.5, 3.1, 1.2, 3, .12), rm = mat('#3b4b5e', { roughness: .7 }), led = new THREE.BoxGeometry(1.1, .05, .02);
   const ledM = [mat('#5be38f', { emissive: '#5be38f', emissiveIntensity: .9 }), mat('#7fb2ee', { emissive: '#7fb2ee', emissiveIntensity: .9 })];
   for (let i = 0; i < 5; i++) {
     const r = mesh(rack, rm); r.position.set(x - 4.2 + i * 1.75, y + 1.55, z - 7.6); world.add(r);
     for (let k = 0; k < 7; k++) { const l = new THREE.Mesh(led, ledM[(i + k) % 2]); l.position.set(0, -1.1 + k * .36, .61); r.add(l); }
   }
+
   // a soft cloud above the racks: the zone's sign
   const cm = mat('#ffffff', { roughness: 1 }), cloudG = new THREE.Group(); cloudG.position.set(x, y + 6.2, z - 7.8); world.add(cloudG);
   [[0, 0, 0, 1.5], [-1.5, -.3, .1, 1.1], [1.6, -.25, 0, 1.15], [.7, .55, -.1, 1.05], [-.8, .45, .1, 1], [2.6, -.55, 0, .75], [-2.6, -.55, 0, .7]]
     .forEach(([cx, cy, cz, r]) => { const b = mesh(new THREE.IcosahedronGeometry(r, 3), cm); b.position.set(cx, cy, cz); b.scale.y = .82; cloudG.add(b); });
-  // screens on the sides
-  put(world, 'props/computer-screen', V(x - 9, y, z - 2.5), 2.2, .9);
-  put(world, 'props/computer-screen', V(x + 9, y, z - 2.5), 2.2, -.9);
-  // the guide stands just outside the loop's left end, so he never covers the texts at the bottom
-  const lv = loopPoint(Math.PI, y);
+
+  // screens on the sides with ZAWEDNI logo
+  decorMonitor(world, V(x - 9, y, z - 2.5), 2.2, .45);
+  decorMonitor(world, V(x + 9, y, z - 2.5), 2.2, -.45);
+
+  // Bake this reading prop separately so the architecture board can replace it without overlap.
+  bake(loopGroup);
+  loopGroup.traverse(object => { object.userData.keep = true; });
+  loopGroup.name = 'devsecops-cycle';
+  sceneProps.set('devsecops-cycle', loopGroup);
+
+  // guide placement
+  loopGroup.updateMatrixWorld(true);
+  const lv = localLoopPoint(Math.PI, 0).applyMatrix4(loopGroup.matrixWorld);
   anchors.guideSpot03 = V(lv.x - 2.6, y, lv.z + 3.4);
   const stop3 = anchors.stop03, dir3 = V(anchors.guideSpot03.x - stop3.x, 0, anchors.guideSpot03.z - stop3.z).normalize();
   anchors.guideIn03 = anchors.guideSpot03.clone().addScaledVector(dir3, -3.6);
-  anchors.lobeDev = loopPoint(Math.PI, y + .3).lerp(V(x, y + .3, z), .42);
-  anchors.lobeOps = loopPoint(0, y + .3).lerp(V(x, y + .3, z), .42);
-  anchors.secuLabel = V(cx.x, y + 3.3, cx.z - 1.2);
+  anchors.lobeDev = localLoopPoint(Math.PI, .3).applyMatrix4(loopGroup.matrixWorld);
+  anchors.lobeOps = localLoopPoint(0, .3).applyMatrix4(loopGroup.matrixWorld);
   anchors.cloud = V(x, 0, z);
 }
-export function setFeedback(w) { feedbackMat.opacity = w; }
+export function setFeedback(w) { if (feedbackMat) feedbackMat.opacity = w; }
 
 // ── 04 · delivery line (silhouette): a conveyor through check arches ────────────────────────────
 function delivery(world) {

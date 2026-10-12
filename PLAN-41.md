@@ -1,3 +1,9 @@
+# Plan historique de la base 41
+
+La révision courante contient 44 séquences / 114 états / 113 pressions.
+Voir [docs/PLAN-44.md](docs/PLAN-44.md) et [HANDOFF.md](HANDOFF.md).
+Le plan initial ci-dessous est conservé pour la provenance.
+
 # Plan court : des 4 scènes aux 41 séquences
 
 Extension autorisée par Ali le 2026-10-11 et implémentée : 41 séquences, 106 états.

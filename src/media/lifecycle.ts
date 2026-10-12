@@ -1,4 +1,4 @@
-export interface VideoPort { pause(): void; play(): Promise<void>; currentTime: number; muted: boolean; }
+export interface VideoPort { pause(): void; play(): Promise<void>; currentTime: number; muted: boolean; load?(): void; }
 export class VideoLifecycle {
   private key: string | null = null;
   constructor(private readonly video: VideoPort) {}
@@ -6,7 +6,9 @@ export class VideoLifecycle {
     const key = step === null ? null : String(step);
     if (key === this.key) return true;
     const was = this.key; this.key = key;
-    if (step === null || step === 0) { this.video.pause(); this.video.currentTime = 0; return true; }
+    if (step === null || step === 0) { this.video.pause(); this.video.currentTime = 0;
+      // Reset the native show-poster flag too: seeking alone can retain the first decoded frame.
+      this.video.load?.(); return true; }
     if (was === null) this.video.currentTime = 0;
     if (!autoplay) return true;
     return this.play();

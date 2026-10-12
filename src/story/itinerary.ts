@@ -41,10 +41,11 @@ export function makeItinerary(sequences: readonly Sequence[]): StoryState[] {
         panels.push('evidence'); extras.evidence = { seq: row.id, step };
         guide.face = 'evidence'; guide.point = 'evidence';
       }
-      if (['architecture', 'routage', 'isolation', 'secrets'].includes(row.id) && step === 0) {
+      if (row.id === 'architecture' && step === 0) {
         shot = 'architecture'; panels.splice(0, panels.length, `story-title-${row.id}`, 'node-0', 'node-1', 'node-2', 'node-3', 'node-4', 'node-5', 'node-6', 'node-7', 'node-8');
         delete extras.evidence; guide.face = 'camera'; delete guide.point;
       }
+      if (row.id === 'sequence' || row.id === 'parcours-app') shot = 'workshopProof';
       if (row.id === 'chaine') {
         panels.splice(0, panels.length, 'story-title-chaine', 'gate-0', 'gate-1', 'gate-2', 'delivery-caption');
         delete extras.evidence; guide.face = 'gateTag1'; guide.point = 'gateTag1';
@@ -56,7 +57,7 @@ export function makeItinerary(sequences: readonly Sequence[]): StoryState[] {
       if (row.id === 'video' && step === 1) { notes.script = []; notes.silent = chunk.trim().replace(/^\(|\)$/g, ''); }
       states.push({ id: `${row.id}-${step}`, scene: String(chapter), chapter, place, title: row.title,
         source: { seq: row.id, step }, move: row.id === 'couverture' ? 'cut' : travel ? 'travel' : 'reveal', shot,
-        panels, duration: travel ? 2.4 : opener ? 1.5 : .65,
+        panels, duration: travel ? 5.2 : opener ? 1.5 : .65,
         actors: { guide, rep: { at: 'repSpot', face: row.id === 'acteurs' ? 'camera' : 'easel' } },
         notes, visited: places.filter((_, i) => i < chapter - 1), ...extras });
       previousPlace = place;

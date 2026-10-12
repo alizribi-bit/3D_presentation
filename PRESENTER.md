@@ -1,72 +1,63 @@
-# Présenter avec deux écrans
+# Guide présentateur — révision 44
 
-## Une seule fois, avec Internet
+## Lancer
+
+Le build livré fonctionne hors ligne. Python 3 et Google Chrome sont déjà nécessaires
+sur la machine préparée. Aucun npm install ni téléchargement n’est requis au lancement.
 
 ```bash
-cd ~/Desktop/zawedni-story-3d
-npm install && npm run build
+/home/ali/Desktop/zawedni-story-3d/present.sh
+/home/ali/Desktop/zawedni-story-3d/present.sh --swap
 ```
 
-Ensuite, plus rien n'est téléchargé : `dist/` contient la page, les modèles, les images et les fontes.
-Il faut seulement `python3` et Google Chrome, déjà présents sur la machine.
+Le serveur écoute sur 127.0.0.1:4318. `ZS3D_PORT=4320` change ce port si nécessaire.
+Le jury ouvre automatiquement les notes. N les rouvre si la fenêtre a été fermée.
+Un profil Chrome distinct est utilisé. En mode miroir ou écran unique, les deux
+fenêtres restent sur ce même écran. Les essais automatisés de placement simulent
+les écrans ; ils ne constituent pas un essai sur deux écrans physiques.
 
-## Le jour de la soutenance
+## Commander
 
-1. Brancher le projecteur, puis dans **Paramètres > Écrans**, choisir **« Joindre les écrans »** (pas « Miroir »).
-2. Lancer, depuis n'importe quel dossier :
-
-   ```bash
-   ~/Desktop/zawedni-story-3d/present.sh          # jury sur le projecteur, notes sur l'ordinateur
-   ~/Desktop/zawedni-story-3d/present.sh --swap   # l'inverse
-   ```
-
-Le script démarre le serveur local (ou réutilise celui qui tourne), ouvre la fenêtre jury en plein écran sur
-le projecteur, et la fenêtre jury ouvre elle-même la vue présentateur sur l'écran de l'ordinateur.
-Il utilise un profil Chrome à part (`~/.cache/zawedni-story-3d-chrome`) : votre Chrome habituel n'est pas touché.
-
-Si un seul écran est détecté (ou en miroir), les deux fenêtres s'ouvrent sur le même écran : le dire suffit,
-le script l'affiche.
-
-## Pendant la présentation
-
-| Touche (dans l'une ou l'autre fenêtre) | Effet |
+| Touche | Effet |
 | --- | --- |
-| → · Espace · PageDown · clicker | suivant |
-| ← · PageUp | précédent |
-| 1 – 6 | début du chapitre correspondant (0 ou Home : ouverture) |
-| Début (Home) | retour au début |
-| F | plein écran (fenêtre jury) |
-| N | rouvrir la vue présentateur si on l'a fermée |
-| L | qualité légère / normale |
-| M | mouvement réduit |
-| + / − | taille du texte des notes (vue présentateur) |
+| →, Espace, PageDown | Suivant |
+| ←, PageUp | Précédent |
+| 1–6 | Début du chapitre |
+| Home / End | Début / conclusion |
+| N | Rouvrir les notes |
+| F | Plein écran du jury |
+| M | Mouvement réduit |
+| L | Qualité légère et suppression du flou coûteux |
+| + / − dans les notes | Taille du discours |
 
-Un clic sur une ligne du « Parcours » de la vue présentateur y amène la fenêtre jury.
-La souris et la molette n'avancent jamais la présentation.
+La souris sur le lecteur et la molette ne font pas avancer la présentation.
+Les lignes du parcours des notes permettent de sauter directement à un état.
+Les notes montrent le discours à dire, les phrases [lire], le prochain clic et le chapitre.
+Elles suivent les retours, les sauts et les rechargements, même ouvertes tardivement.
 
-La vue présentateur montre, pour l'état à l'écran : les **phrases à dire**, les phrases **« À lire à l'écran »**,
-les **ajouts (transition)** signalés à part, puis **« Prochain clic → »**. Elle suit seule l'avant, l'arrière et
-les sauts ; ouverte en retard ou rechargée, elle affiche aussitôt l'état courant. Elle n'a ni 3D ni son.
+## Repères
 
-## Si quelque chose ne va pas
+44 séquences, 114 états et 113 pressions suivant. Les 70 révélations internes ne
+comptent pas les entrées de séquence. Aucun clic supplémentaire n’est consacré aux trajets.
+La dernière partie est « Bilan, perspectives et conclusion ».
 
-- **La fenêtre jury n'est pas sur le projecteur** : la glisser dessus, puis **F**.
-- **Pas de vue présentateur** : **N** dans la fenêtre jury.
-- **« Le port 4317 est déjà pris »** : une autre application l'utilise ; la fermer, ou changer `PORT` dans `present.sh`.
-- **Image saccadée** : **L** (qualité légère, même rendu).
-- Vérification sans réseau : couper le Wi-Fi, lancer `present.sh`, parcourir couverture → conclusion.
+Les interfaces suivent cinq états : Envoi de la grille, Remplissage, Décision,
+Résultats, Marché local. Les deux étapes d’administration n’ont ni téléphone ni APK.
+Le diagramme technique conserve trois états, quatre participants et le contrôle API.
 
-## Version complète et prototype
+Le film final de 90 secondes vient après les perspectives, avant la conclusion.
+Avancer de son affiche à sa lecture démarre le film avec le son ; si le navigateur
+refuse, utiliser « Lire la vidéo ». Ses commandes permettent pause et reprise.
+Quitter arrête et rembobine. Revenir ou recharger garde l’affiche sans lecture fantôme.
+Le présentateur reste muet, sans lecteur et sans second WebGL.
 
-Le lancement par défaut affiche les 41 séquences : 106 états, 105 pressions suivant.
-« 65 clics » dans le script source désigne les révélations internes, sans les entrées de séquence.
-`present.sh --prototype` ouvre les 11 états A0 → D3 d'origine (touches 1–4).
-Dans la version complète, End atteint la conclusion ; 1–6 atteignent les chapitres.
-La vidéo locale corrigée dure 90 secondes : ses contrôles souris ne font pas avancer le parcours.
-Après une interaction souris avec le lecteur, le clicker reprend le parcours. Si on entre dans
-le lecteur par Tab, ses commandes clavier natives restent disponibles. Quitter le film le pause
-et remet le temps à zéro. Le présentateur n'a ni lecteur ni son.
+## Rythme et secours
 
-Configuration Codex : `.codex/config.toml` demande `approval_policy = "never"` dans ce projet.
-Démarrer les prochaines sessions dans ce dossier pour la charger. La politique d'une session
-active ou une politique administrée peut rester prioritaire ; le fichier ne les modifie pas.
+Estimation explicite : 2 250 mots, film 90 s, transitions 100,75 s, pauses de lecture
+169,5 s. Environ 24 min à 125 mots/min ; 22 à 26,5 min selon le débit.
+Cette estimation ne remplace pas une répétition parlée chronométrée.
+Le discours intégral est dans docs/SCRIPT-44.md ; ne pas le couper pour compenser les trajets.
+
+Si le rendu est saccadé, L réduit la qualité et le flou. M supprime les mouvements.
+Si le serveur sert une autre version, le lanceur refuse sa réutilisation : choisir
+un port libre avec ZS3D_PORT. Conserver un exemplaire de l’archive extraite et prête.

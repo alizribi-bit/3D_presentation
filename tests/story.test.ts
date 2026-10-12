@@ -8,7 +8,8 @@ import { CatmullRomCurve3, Vector3 } from 'three';
 import { VideoLifecycle, type VideoPort } from '../src/media/lifecycle.ts';
 
 test('all accepted source steps and speech are present once, in order', () => {
-  assert.equal(rows.length, 41); assert.equal(FULL_STATES.length, 106);
+  assert.equal(rows.length, 44);
+  assert.equal(FULL_STATES.length, rows.reduce((total, row) => total + row.steps + 1, 0));
   for (const row of rows) {
     const states = FULL_STATES.filter(s => s.source.seq === row.id);
     assert.deepEqual(states.map(s => s.source.step), Array.from({ length: row.steps + 1 }, (_, i) => i));

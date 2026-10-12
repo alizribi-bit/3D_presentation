@@ -8,6 +8,9 @@ export function applyQuality(renderer, sun) {
   renderer.setPixelRatio(light ? 1 : Math.min(window.devicePixelRatio, 2));
   const size = light ? 2048 : 4096;
   if (sun.shadow.mapSize.x !== size) { sun.shadow.mapSize.set(size, size); sun.shadow.map?.dispose(); sun.shadow.map = null; }
+  if (typeof document !== 'undefined') {
+    document.body.classList.toggle('quality-light', light);
+  }
 }
 export function toggleQuality() {
   quality.level = quality.level === 'light' ? 'normal' : 'light';

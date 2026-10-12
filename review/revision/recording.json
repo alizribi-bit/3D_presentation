@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-12T13:39:33.677Z",
+  "rendererMode": "vulkan",
+  "viewport": {
+    "width": 1366,
+    "height": 768
+  },
+  "normalTimeline": true,
+  "reducedMotion": false,
+  "still": false,
+  "fast": false,
+  "audioRecorded": false,
+  "samples": [
+    {
+      "id": "sommaire-1",
+      "recordedAt": 1791812272723
+    },
+    {
+      "id": "startup-0",
+      "recordedAt": 1791812281553
+    },
+    {
+      "id": "methodologie-1",
+      "recordedAt": 1791812282566
+    },
+    {
+      "id": "sequence-0",
+      "recordedAt": 1791812294812
+    },
+    {
+      "id": "sequence-1",
+      "recordedAt": 1791812299187
+    },
+    {
+      "id": "sequence-2",
+      "recordedAt": 1791812303483
+    },
+    {
+      "id": "parcours-app-0",
+      "recordedAt": 1791812307802
+    },
+    {
+      "id": "parcours-app-1",
+      "recordedAt": 1791812312165
+    },
+    {
+      "id": "parcours-app-2",
+      "recordedAt": 1791812316476
+    },
+    {
+      "id": "devsecops-0",
+      "recordedAt": 1791812321019
+    },
+    {
+      "id": "devsecops-1",
+      "recordedAt": 1791812325271
+    },
+    {
+      "id": "architecture-0",
+      "recordedAt": 1791812329506
+    },
+    {
+      "id": "isolation-0",
+      "recordedAt": 1791812333841
+    },
+    {
+      "id": "isolation-1",
+      "recordedAt": 1791812338157
+    },
+    {
+      "id": "chaine-0",
+      "recordedAt": 1791812342648
+    },
+    {
+      "id": "chaine-1",
+      "recordedAt": 1791812346907
+    },
+    {
+      "id": "chaine-2",
+      "recordedAt": 1791812351118
+    },
+    {
+      "id": "chaine-3",
+      "recordedAt": 1791812355353
+    },
+    {
+      "id": "alerte-0",
+      "recordedAt": 1791812359756
+    },
+    {
+      "id": "alerte-1",
+      "recordedAt": 1791812363970
+    },
+    {
+      "id": "alerte-2",
+      "recordedAt": 1791812368252
+    },
+    {
+      "id": "retour-1",
+      "recordedAt": 1791812372735
+    }
+  ],
+  "errors": []
+}

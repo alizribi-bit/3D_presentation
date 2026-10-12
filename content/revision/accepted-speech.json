@@ -1,0 +1,140 @@
+{
+  "revision": "44-2026-10-12",
+  "authority": "Ali — prompt complet de mise à jour",
+  "sequences": [
+    {
+      "id": "sommaire",
+      "title": "Sommaire",
+      "chapter": 0,
+      "steps": 1,
+      "speech": [
+        "Voici le plan. ",
+        "On commence par ZAWEDNI, le problème, les besoins et l'organisation du travail. On passe ensuite au développement de la plateforme. Puis, on explique l'architecture DevSecOps, la chaîne de livraison et la supervision. On termine par le bilan, les perspectives et la conclusion."
+      ]
+    },
+    {
+      "id": "startup",
+      "title": "La startup ZAWEDNI",
+      "chapter": 1,
+      "steps": 1,
+      "speech": [
+        "ZAWEDNI est une startup tunisienne créée en décembre 2025 par Ali Zribi et Hadil Ben Masseoud. Elle a la forme juridique d'une SARL et elle est installée à la pépinière d'entreprises de Mahdia. ",
+        "Elle propose un service qui relie l'achat local à une démarche de responsabilité sociétale des entreprises, ou RSE. Le projet comprend la plateforme web et mobile, puis les moyens de la déployer, de protéger ses données et de suivre son fonctionnement."
+      ]
+    },
+    {
+      "id": "problematique",
+      "title": "Les enjeux du projet",
+      "chapter": 1,
+      "steps": 1,
+      "speech": [
+        "Le projet doit proposer une application simple à utiliser et une plateforme fiable au quotidien. On retrouve ces enjeux dans le développement, la livraison, la sécurité et la supervision. ",
+        "[lire] « Comment concevoir une plateforme web et mobile fluide et fiable, de son développement à son exploitation ? »"
+      ]
+    },
+    {
+      "id": "besoins",
+      "title": "Besoins du projet",
+      "chapter": 1,
+      "steps": 1,
+      "speech": [
+        "On précise ensuite ce que la solution doit faire. La plateforme couvre l'évaluation et les échanges entre entreprises. La chaîne DevSecOps doit construire les versions, les contrôler, les déployer et suivre les services. ",
+        "On précise aussi les qualités attendues : protéger les données, faciliter la maintenance, retrouver l'origine des versions et maîtriser le coût. Ces besoins servent de repères pour les choix techniques et leur validation."
+      ]
+    },
+    {
+      "id": "methodologie",
+      "title": "Organisation du travail",
+      "chapter": 1,
+      "steps": 1,
+      "speech": [
+        "On organise le travail en sprints, à partir d'un backlog de tâches. Chaque sprint a un objectif. On réalise, on teste, puis on présente le résultat. Les retours permettent de préparer la suite. ",
+        "La chaîne DevSecOps se construit en trois releases et cinq sprints. [lire] « Release 1 : préparer l'environnement. » [lire] « Release 2 : automatiser la livraison. » [lire] « Release 3 : suivre et protéger les services. »"
+      ]
+    },
+    {
+      "id": "sequence",
+      "title": "De l'inscription à l'accès au marché",
+      "chapter": 2,
+      "steps": 2,
+      "speech": [
+        "Pour utiliser ZAWEDNI, l'entreprise commence par créer son compte. L'administrateur lui envoie ensuite la grille d'évaluation. Les fonctions métier restent verrouillées jusqu'à l'approbation.",
+        "L'entreprise remplit la grille et la soumet. L'administrateur examine les réponses, puis approuve ou rejette la grille.",
+        "Si la grille est approuvée, l'accès est autorisé. Sinon, il reste bloqué. L'API vérifie cette décision avant d'autoriser les fonctions concernées."
+      ]
+    },
+    {
+      "id": "parcours-app",
+      "title": "Un même parcours sur le web et le mobile",
+      "chapter": 2,
+      "steps": 4,
+      "speech": [
+        "Après la création du compte, l'administrateur envoie la grille à l'entreprise.",
+        "L'entreprise remplit la grille sur le web ou le mobile, puis la soumet.",
+        "L'administrateur examine les réponses et approuve ou rejette la grille.",
+        "Après approbation, l'entreprise consulte ses résultats.",
+        "Elle peut ensuite accéder au marché local."
+      ]
+    },
+    {
+      "id": "isolation",
+      "title": "Isolation réseau",
+      "chapter": 3,
+      "steps": 1,
+      "speech": [
+        "Le routage dirige une demande vers le bon service. L'isolation réseau limite ensuite les échanges. Le backend peut joindre la base, mais une interface ne peut pas y accéder directement. ",
+        "[lire] « NetworkPolicies : elles définissent les échanges autorisés entre les services concernés. » [lire] « Calico : il applique ces règles et bloque les échanges non autorisés. »"
+      ]
+    },
+    {
+      "id": "alerte",
+      "title": "De l'erreur à la notification",
+      "chapter": 5,
+      "steps": 2,
+      "speech": [
+        "On provoque des erreurs pendant un test sur staging. Cela déclenche une alerte. [lire] « FIRING : l'alerte est active. »",
+        "On arrête ensuite les erreurs du test. [lire] « Arrêt des erreurs de test. » [lire] « La condition d'alerte disparaît. » [lire] « RESOLVED : l'alerte n'est plus active. »",
+        "[lire] « Prometheus détecte. Alertmanager notifie. Ils ne corrigent pas l'application. »"
+      ]
+    },
+    {
+      "id": "validation",
+      "title": "Résultats de validation",
+      "chapter": 5,
+      "steps": 1,
+      "speech": [
+        "On commence par les vérifications sur staging et les données. [lire] « Parcours et droits vérifiés. » [lire] « Restauration vérifiée. »",
+        "On passe ensuite à la production et au mobile. [lire] « Parcours métier et guide pour une stratégie RSE testés. » [lire] « APK Android distribué par Azure Blob. »"
+      ]
+    },
+    {
+      "id": "ch6",
+      "title": "Bilan, perspectives et conclusion",
+      "chapter": 6,
+      "steps": 0,
+      "speech": [
+        "On termine avec le bilan et les prochaines étapes du projet."
+      ]
+    },
+    {
+      "id": "video",
+      "title": "Le parcours d'une version, du code au suivi",
+      "chapter": 6,
+      "steps": 1,
+      "speech": [
+        "Pour terminer, cette vidéo résume le parcours d'une version, du code au suivi de la plateforme. ",
+        " (Laisser jouer le film, une minute trente, sans parler. À la fin, passer à la conclusion.)"
+      ]
+    },
+    {
+      "id": "retour",
+      "title": "Conclusion",
+      "chapter": 6,
+      "steps": 1,
+      "speech": [
+        "ZAWEDNI relie l'achat local à l'évaluation et au suivi des pratiques RSE. Le projet associe cette plateforme web et mobile à une chaîne DevSecOps. ",
+        "On automatise la livraison, on intègre les contrôles de sécurité et on suit les services. Cela répond à la problématique présentée au début. Merci pour votre attention."
+      ]
+    }
+  ]
+}

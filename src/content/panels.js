@@ -53,7 +53,7 @@ export const PANELS = {
   chaine: { cls: 'board', fixed: [190, 700, 1540], html: `<p class="kicker">Contexte et objectifs · La solution</p>
     <div class="chain">${ANSWERS.map(([h], i) => `<div class="link${i ? '' : ' key'}"><b>${h}</b></div>`).join('')}</div>
     <div class="back"></div>` },
-  'cycle-title': { cls: 'title-chip', fixed: [96, 64], html: `<p class="kicker">Architecture et démarche DevSecOps · Démarche</p><h2>Le cycle DevSecOps</h2>` },
+  'cycle-title': { cls: 'title-chip', fixed: [96, 24], html: `<p class="kicker">Architecture et démarche DevSecOps · Démarche</p><h2>Le cycle DevSecOps</h2>` },
   'side-dev': { cls: 'side', anchor: () => anchors.lobeDev, html: `<b style="color:var(--green)">Développement</b><span>Préparer et vérifier</span>` },
   'side-ops': { cls: 'side', anchor: () => anchors.lobeOps, html: `<b style="color:var(--green-d)">Exploitation</b><span>Déployer et observer</span>` },
   secu: { cls: 'side card', anchor: () => anchors.secuLabel, html: `<b style="color:var(--ink);font-size:30px">Sécurité</b><span style="font-size:22px">tout au long du cycle</span>` },
@@ -72,7 +72,7 @@ const NODE_OFFSETS = [[-50,35],[0,-5],[0,115],[-70,-25],[-20,20],[-25,-55],[40,-
 });
 PANELS['blocked-proof'] = { cls:'board blocked-proof', fixed:[1150,230,680], html:'<p class="kicker">CVE-2021-44228 (Log4Shell)</p><h2>Rien n’est publié.</h2><p>Exemple : pipeline backend, avec la dépendance log4j 2.14.1 ajoutée exprès</p><p>CVE-2021-44228 (Log4Shell) : le pipeline devient rouge</p>' };
 PANELS['delivery-caption'] = { cls:'board', fixed:[200,900,1520], html:'<div class="chain"><div class="link"><b>GitHub</b></div><div class="link"><b>ACR</b></div><div class="link"><b>ArgoCD</b></div><div class="link"><b>AKS</b></div></div>' };
-PANELS['film-title'] = { cls: 'title-chip', fixed: [330, 64, 1470], html: `<p class="kicker">Bilan et perspectives · Vidéo</p><h2>Le parcours d'une version, du code au suivi</h2>` };
+PANELS['film-title'] = { cls: 'title-chip', fixed: [330, 64, 1470], html: `<p class="kicker">Bilan, perspectives et conclusion · Vidéo</p><h2>Le parcours d'une version, du code au suivi</h2>` };
 PLACES.forEach(p => { PANELS[`chapter-${p.id}`] = { cls: 'chapter-card', fixed: [1150, 85, 670], html: `<p class="kicker">${p.id}</p><h2>${esc(p.title)}</h2><p>${esc(p.line)}</p>` }; });
 STAGES.forEach(([, name], i) => { PANELS[`stage${i}`] = { cls: 'stage-tag', anchor: () => anchors[`stageTag${i}`], html: name }; });
 PLACES.forEach(p => {
@@ -111,7 +111,8 @@ export function updatePanels(visible, camera, state) {
     if (p.anchor && (on || el.classList.contains('on'))) {
       const [x, y] = toStage(p.anchor(), camera);
       const [dx,dy] = p.offset || [0,0];
-      el.style.translate = `${(x+dx).toFixed(1)}px ${(y+dy).toFixed(1)}px`;
+      const translation = `${(x+dx).toFixed(1)}px ${(y+dy).toFixed(1)}px`;
+      if (el.style.translate !== translation) el.style.translate = translation;
       if (p.offset) document.getElementById(`leader-${id}`).setAttribute('d', `M${x},${y}L${x+dx},${y+dy}`);   // no layout per frame: left/top stay 0
     }
   }

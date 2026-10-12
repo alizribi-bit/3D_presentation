@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-12T13:37:25.173Z",
+  "rendererMode": "vulkan",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "results": [
+    {
+      "name": "all six roadmap markers are within the viewport",
+      "pass": true,
+      "detail": "[{\"id\":\"p-l01\",\"left\":474.1000061035156,\"right\":792.0999755859375,\"top\":208.43124389648438,\"bottom\":336.3999938964844,\"inside\":true},{\"id\":\"p-l02\",\"left\":672.7000122070312,\"right\":990.7000122070312,\"top\":860.7000122070312,\"bottom\":1010.7625122070312,\"inside\":true},{\"id\":\"p-l03\",\"left\":918.0999755859375,\"right\":1236.0999755859375,\"top\":88.640625,\"bottom\":243,\"inside\":true},{\"id\":\"p-l04\",\"left\":1177.699951171875,\"right\":1495.699951171875,\"top\":786.7999877929688,\"bottom\":914.7687377929688,\"inside\":true},{\"id\":\"p-l05\",\"left\":1295.199951171875,\"right\":1613.199951171875,\"top\":71.73126220703125,\"bottom\":199.70001220703125,\"inside\":true},{\"id\":\"p-l06\",\"left\":1468.300048828125,\"right\":1786.300048828125,\"top\":262.73126220703125,\"bottom\":390.70001220703125,\"inside\":true}]"
+    },
+    {
+      "name": "BMC 1 keeps the real highlighted source crop",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "BMC 2 keeps the real highlighted source crop",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "BMC 3 keeps the real highlighted source crop",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "every [lire] phrase is projected word for word in its state",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "interface state 0 restores real images and has no phone or APK",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/admin-envoi-grille.png\",\"complete\":true,\"width\":605.72216796875,\"height\":670.800048828125,\"naturalRatio\":0.9029982363315696}]"
+    },
+    {
+      "name": "assignment state uses the new real administration capture",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "assignment modal is enlarged and preserves its full proportions",
+      "pass": true,
+      "detail": "{\"src\":\"assets/deck/admin-envoi-grille.png\",\"complete\":true,\"width\":605.72216796875,\"height\":670.800048828125,\"naturalRatio\":0.9029982363315696}"
+    },
+    {
+      "name": "interface state 1 restores real images and pairs web and mobile",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v6-sup-piliers.jpg\",\"complete\":true,\"width\":856.56005859375,\"height\":393.4768981933594,\"naturalRatio\":2.17687074829932},{\"src\":\"assets/deck/v3-mob-evaluation.jpg\",\"complete\":true,\"width\":240.800048828125,\"height\":529.760009765625,\"naturalRatio\":0.4622222222222222}]"
+    },
+    {
+      "name": "interface state 2 restores real images and has no phone or APK",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v7-adm-revue.jpg\",\"complete\":true,\"width\":1013.066650390625,\"height\":670.7865600585938,\"naturalRatio\":1.5102481121898597}]"
+    },
+    {
+      "name": "interface state 3 restores real images and pairs web and mobile",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v6-sup-revue.jpg\",\"complete\":true,\"width\":856.56005859375,\"height\":509.64410400390625,\"naturalRatio\":1.680672268907563},{\"src\":\"assets/deck/v3-mob-status_approved.jpg\",\"complete\":true,\"width\":240.800048828125,\"height\":529.760009765625,\"naturalRatio\":0.4622222222222222}]"
+    },
+    {
+      "name": "interface state 4 restores real images and pairs web and mobile",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v3-buy-marketplace.jpg\",\"complete\":true,\"width\":820.0906982421875,\"height\":512.5465698242188,\"naturalRatio\":1.6},{\"src\":\"assets/deck/v3-mob-marketplace_companies.jpg\",\"complete\":true,\"width\":240.800048828125,\"height\":529.760009765625,\"naturalRatio\":0.4622222222222222}]"
+    },
+    {
+      "name": "interface state 3 restores real images and pairs web and mobile",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v6-sup-revue.jpg\",\"complete\":true,\"width\":856.56005859375,\"height\":509.64410400390625,\"naturalRatio\":1.680672268907563},{\"src\":\"assets/deck/v3-mob-status_approved.jpg\",\"complete\":true,\"width\":240.800048828125,\"height\":529.760009765625,\"naturalRatio\":0.4622222222222222}]"
+    },
+    {
+      "name": "interface state 2 restores real images and has no phone or APK",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v7-adm-revue.jpg\",\"complete\":true,\"width\":1013.066650390625,\"height\":670.7865600585938,\"naturalRatio\":1.5102481121898597}]"
+    },
+    {
+      "name": "interface state 1 restores real images and pairs web and mobile",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/v6-sup-piliers.jpg\",\"complete\":true,\"width\":856.56005859375,\"height\":393.4768981933594,\"naturalRatio\":2.17687074829932},{\"src\":\"assets/deck/v3-mob-evaluation.jpg\",\"complete\":true,\"width\":240.800048828125,\"height\":529.760009765625,\"naturalRatio\":0.4622222222222222}]"
+    },
+    {
+      "name": "interface state 0 restores real images and has no phone or APK",
+      "pass": true,
+      "detail": "[{\"src\":\"assets/deck/admin-envoi-grille.png\",\"complete\":true,\"width\":605.72216796875,\"height\":670.800048828125,\"naturalRatio\":0.9029982363315696}]"
+    },
+    {
+      "name": "assignment state uses the new real administration capture",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "assignment modal is enlarged and preserves its full proportions",
+      "pass": true,
+      "detail": "{\"src\":\"assets/deck/admin-envoi-grille.png\",\"complete\":true,\"width\":605.72216796875,\"height\":670.800048828125,\"naturalRatio\":0.9029982363315696}"
+    },
+    {
+      "name": "technical sequence diagram 0 keeps four participants",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "technical sequence diagram 1 keeps four participants",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "technical sequence diagram 2 keeps four participants",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "API diagram includes the access alternative",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "devsecops-0 keeps all cycle labels within the viewport",
+      "pass": true,
+      "detail": "[{\"id\":\"p-side-dev\",\"left\":533.2000122070312,\"right\":851.5750122070312,\"top\":439.79998779296875,\"bottom\":531.9874877929688,\"inside\":true},{\"id\":\"p-side-ops\",\"left\":1386.800048828125,\"right\":1673.159423828125,\"top\":439.79998779296875,\"bottom\":531.9874877929688,\"inside\":true},{\"id\":\"p-secu\",\"left\":960,\"right\":1234.171875,\"top\":233.8000030517578,\"bottom\":323.19061279296875,\"inside\":true},{\"id\":\"p-stage0\",\"left\":705.5,\"right\":851.328125,\"top\":181,\"bottom\":229,\"inside\":true},{\"id\":\"p-stage1\",\"left\":378.20001220703125,\"right\":496.93438720703125,\"top\":414.1000061035156,\"bottom\":462.1000061035156,\"inside\":true},{\"id\":\"p-stage2\",\"left\":678.9000244140625,\"right\":971.8062744140625,\"top\":703.2999877929688,\"bottom\":751.2999877929688,\"inside\":true},{\"id\":\"p-stage3\",\"left\":1214.5,\"right\":1480.1875,\"top\":181,\"bottom\":229,\"inside\":true},{\"id\":\"p-stage4\",\"left\":1565.5,\"right\":1716.6875,\"top\":370.79998779296875,\"bottom\":418.79998779296875,\"inside\":true},{\"id\":\"p-stage5\",\"left\":1241.0999755859375,\"right\":1419.8187255859375,\"top\":703.2999877929688,\"bottom\":751.2999877929688,\"inside\":true}]"
+    },
+    {
+      "name": "devsecops-0 shows both decorative monitor fronts with their original logo",
+      "pass": true,
+      "detail": "[0.9322811453091397,0.9322811449095665]"
+    },
+    {
+      "name": "devsecops-0 keeps its text labels separate",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "devsecops-1 keeps all cycle labels within the viewport",
+      "pass": true,
+      "detail": "[{\"id\":\"p-side-dev\",\"left\":510.8999938964844,\"right\":829.2750244140625,\"top\":422.8999938964844,\"bottom\":515.0875244140625,\"inside\":true},{\"id\":\"p-side-ops\",\"left\":1409.0999755859375,\"right\":1695.4593505859375,\"top\":422.8999938964844,\"bottom\":515.0875244140625,\"inside\":true},{\"id\":\"p-secu\",\"left\":960,\"right\":1234.171875,\"top\":205.10000610351562,\"bottom\":294.4906311035156,\"inside\":true},{\"id\":\"p-stage0\",\"left\":691.7000122070312,\"right\":837.5281372070312,\"top\":149.8000030517578,\"bottom\":197.8000030517578,\"inside\":true},{\"id\":\"p-stage1\",\"left\":346.70001220703125,\"right\":465.43438720703125,\"top\":395.8999938964844,\"bottom\":443.8999938964844,\"inside\":true},{\"id\":\"p-stage2\",\"left\":663.5,\"right\":956.40625,\"top\":701.5999755859375,\"bottom\":749.5999755859375,\"inside\":true},{\"id\":\"p-stage3\",\"left\":1228.300048828125,\"right\":1493.987548828125,\"top\":149.8000030517578,\"bottom\":197.8000030517578,\"inside\":true},{\"id\":\"p-stage4\",\"left\":1599.800048828125,\"right\":1750.987548828125,\"top\":350.29998779296875,\"bottom\":398.29998779296875,\"inside\":true},{\"id\":\"p-stage5\",\"left\":1256.5,\"right\":1435.21875,\"top\":701.5999755859375,\"bottom\":749.5999755859375,\"inside\":true}]"
+    },
+    {
+      "name": "devsecops-1 shows both decorative monitor fronts with their original logo",
+      "pass": true,
+      "detail": "[0.9330102258675992,0.9330102255471777]"
+    },
+    {
+      "name": "devsecops-1 keeps its text labels separate",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "architecture board replaces the cycle without overlapping geometry",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "isolation has a separate network board and forbidden interface-to-database example",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "glass panel keeps its content opaque and uses a translucent surface",
+      "pass": true,
+      "detail": "{\"background\":\"rgba(255, 255, 255, 0.84)\",\"opacity\":\"1\",\"blur\":\"blur(18px)\"}"
+    },
+    {
+      "name": "light quality removes expensive panel blur",
+      "pass": true,
+      "detail": "none"
+    },
+    {
+      "name": "normal-speed travel interruption selects the correct next state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "actual animated skeleton stays stable across 300 repeated procedural poses",
+      "pass": true,
+      "detail": "4.2146848510894035e-8 rad"
+    },
+    {
+      "name": "camera remains stationary during diagram reading",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "notes open as a synchronized second window without media or WebGL",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "launching with pv=auto opens both synchronized windows automatically",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no external requests or browser errors",
+      "pass": true,
+      "detail": "{\"errors\":[],\"external\":[]}"
+    }
+  ],
+  "errors": [],
+  "external": []
+}

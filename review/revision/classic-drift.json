@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-10-12T13:40:40.611Z",
+  "historicalSnapshotPreserved": true,
+  "files": [
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/soutenance/deck.html",
+      "originalSha256": "1e4f9bb1673b899ec75b21e06dc12b491b2b8de3ec047dc36b34e4c5148fe2b1",
+      "observedSha256": "56125be856dba02c88dee383c7360db793ef6aaaac113306fe0087364b0b6cf7",
+      "changed": true,
+      "mtime": "2026-10-12T13:23:05.879Z"
+    },
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/soutenance/build/script_rows.py",
+      "originalSha256": "07960f5261bf55c62a7276e9230beef64bb09ee5b9580828e35f7060181dddd2",
+      "observedSha256": "4f25b3c028ec67a4ca4a63b9c7859cfeb77df3c6e48e989568455dba4df02059",
+      "changed": true,
+      "mtime": "2026-10-12T12:59:50.881Z"
+    },
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/soutenance/media/zawedni-devsecops.mp4",
+      "originalSha256": "40662b8314da42a51513dc52bb3d634cf6db43d058b8613f2c524d636e2fba3d",
+      "observedSha256": "40662b8314da42a51513dc52bb3d634cf6db43d058b8613f2c524d636e2fba3d",
+      "changed": false,
+      "mtime": "2026-10-10T18:27:52.343Z"
+    },
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/soutenance.zip",
+      "originalSha256": "b76aebafaabe9581fc4843bc8bd53f10234d773af6f7ee0030bc2b09156875b2",
+      "observedSha256": "282a95c7965c16c7fec0f7cbef67a6807aacebc070f81aa79d72b59066eb5381",
+      "changed": true,
+      "mtime": "2026-10-12T13:25:21.057Z"
+    },
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/soutenance-v9.zip",
+      "originalSha256": "b76aebafaabe9581fc4843bc8bd53f10234d773af6f7ee0030bc2b09156875b2",
+      "observedSha256": "282a95c7965c16c7fec0f7cbef67a6807aacebc070f81aa79d72b59066eb5381",
+      "changed": true,
+      "mtime": "2026-10-12T13:25:20.897Z"
+    },
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/soutenance-v8.zip",
+      "originalSha256": "1a1332735200345e26d6235d71ddf4847974ad02c4c69ab622933c060f583d4e",
+      "observedSha256": "1a1332735200345e26d6235d71ddf4847974ad02c4c69ab622933c060f583d4e",
+      "changed": false,
+      "mtime": "2026-10-11T17:16:33.738Z"
+    },
+    {
+      "file": "/home/ali/Desktop/zawedni-video-pfe/backups/soutenance-v7-accepted.zip",
+      "originalSha256": "f0fc87a0257fbc1bea3e281357de6582f4c33e444dbd32263f508a8e1ebcdcb4",
+      "observedSha256": "f0fc87a0257fbc1bea3e281357de6582f4c33e444dbd32263f508a8e1ebcdcb4",
+      "changed": false,
+      "mtime": "2026-10-11T16:51:19.235Z"
+    }
+  ]
+}

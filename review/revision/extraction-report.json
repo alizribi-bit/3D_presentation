@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-12T13:54:04.803Z",
+  "rendererMode": "vulkan",
+  "base": "http://127.0.0.1:4319",
+  "extractedBuildSha256": "37e38bff170bd2794233f9424bd6c22454fdf8feacff2f8d5bf75b08c130c9c5",
+  "results": [
+    {
+      "name": "extracted build contains 114 states and loads its 44 local frames",
+      "pass": true
+    },
+    {
+      "name": "extracted assignment proof loads the real new capture",
+      "pass": true
+    },
+    {
+      "name": "extracted presenter synchronizes without second WebGL or audio",
+      "pass": true
+    },
+    {
+      "name": "extracted keyboard reaches conclusion",
+      "pass": true
+    },
+    {
+      "name": "extracted final film is local, 90 seconds and unmuted",
+      "pass": true
+    },
+    {
+      "name": "extracted runtime makes no external or failing request",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "external": []
+}

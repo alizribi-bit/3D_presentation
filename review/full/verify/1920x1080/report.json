@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-12T13:33:43.994Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "results": [
+    {
+      "name": "all 114 built states match the revised source order",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "forward clicker/keyboard traversal visits every source state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all displayed evidence frames equal the canonical source export",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "presenter follows every source state",
+      "pass": true,
+      "detail": "worst observed 13 ms"
+    },
+    {
+      "name": "conclusion uses readable text on the light theme",
+      "pass": true,
+      "detail": "rgb(21, 26, 23)"
+    },
+    {
+      "name": "last state is bounded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "backward traversal visits all 114 states",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "first state is bounded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "rapid interruption preserves exactly one state per press",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all six chapter shortcuts work from the presenter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "presenter explains the six chapter shortcuts",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Home returns to the opening",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "End reaches the conclusion",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "clicker keys work after a mouse click",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "wheel cannot advance the presentation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "malformed channel messages cannot change state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "representative states match forward/back/reload screenshots",
+      "pass": true,
+      "detail": "26 states"
+    },
+    {
+      "name": "presenter opened late recovers the current source state",
+      "pass": true,
+      "detail": "166 ms"
+    },
+    {
+      "name": "jury reload preserves state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "presenter reload preserves synchronization",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "presenter contains no WebGL canvas or audio/video",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "jury has no speaker notes or navigation buttons",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "local corrected film has native controls and audible playback",
+      "pass": true,
+      "detail": "90.00 s"
+    },
+    {
+      "name": "native play button starts the film",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mouse interaction with the player does not advance state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "clicker works after player interaction",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "leaving the film pauses audio and resets the clock",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "chapter travel shows a local arrival walk with valid character pose",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "interrupting a real camera/character transition advances correctly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion reaches the same source state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "quality toggle retains navigation state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original four-scene prototype remains available",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no failed local asset or content requests",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no external request is required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no JavaScript errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "external": [],
+  "failedRequests": [],
+  "errors": []
+}

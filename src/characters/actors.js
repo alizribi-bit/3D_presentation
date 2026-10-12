@@ -3,6 +3,7 @@
 // distance covered (no sliding feet), the pointing arm is aimed at the real position of its target each frame.
 import * as THREE from 'three';
 import { instance, gltf } from '../world/assets.js';
+import { clampHeadDirection } from './pose.ts';
 
 const V = () => new THREE.Vector3(), Q = () => new THREE.Quaternion();
 const CLIP = n => `CharacterArmature|${n}`;
@@ -33,6 +34,7 @@ export class Actor {
     const act = n => { const a = this.mixer.clipAction(THREE.AnimationClip.findByName(g.animations, CLIP(n))); a.play(); a.setEffectiveWeight(0); return a; };
     this.idle = act('Idle'); this.walk = act('Walk');
     this.bones = {}; this.model.traverse(b => { if (b.isBone) this.bones[b.name.replace(/[^A-Za-z0-9]/g, '')] = b; });
+    this.smoothedLook = null;
     // height from the skeleton in the idle pose (a skinned mesh's bounding box is not reliable here): feet on y = 0
     this.idle.setEffectiveWeight(1); this.mixer.update(0); this.model.updateMatrixWorld(true);
     const head = this.bones.Head.getWorldPosition(V()), foot = this.bones.FootL.getWorldPosition(V());
@@ -40,6 +42,7 @@ export class Actor {
     this.model.scale.multiplyScalar(s); this.model.updateMatrixWorld(true);
     this.model.position.y -= this.bones.FootL.getWorldPosition(V()).y - .07 * height;
     this.cycle = this.measureStride();   // metres per walk cycle at this scale
+    this.animatedQuats = Object.fromEntries(Object.entries(this.bones).map(([name, bone]) => [name, bone.quaternion.clone()]));
   }
 
   // Foot travel over one walk cycle, measured on the clip itself.
@@ -58,13 +61,25 @@ export class Actor {
   // pose: { pos, yaw, walkDist, walkW, pointW, aim (Vector3|null), lookW, look (Vector3|null), opacity, still }
   apply(pose, clock) {
     this.root.position.copy(pose.pos); this.root.rotation.y = pose.yaw;
+
+    // Restore the previous animation output, never a procedurally adjusted bone. The mixer may
+    // skip unchanged tracks on repeated timestamps, so resetting to bind pose would lose animation.
+    for (const [name, b] of Object.entries(this.bones)) {
+      b.quaternion.copy(this.animatedQuats[name]);
+    }
+
     const wd = this.walk.getClip().duration, id = this.idle.getClip().duration;
     this.walk.time = ((pose.walkDist / this.cycle) % 1) * wd;
     this.idle.time = pose.still ? 0 : clock % id;
     this.walk.setEffectiveWeight(pose.walkW); this.idle.setEffectiveWeight(1 - pose.walkW);
     this.mixer.update(0);
+    for (const [name, bone] of Object.entries(this.bones)) {
+      bone.quaternion.normalize();
+      this.animatedQuats[name].copy(bone.quaternion);
+    }
     this.model.updateMatrixWorld(true);
-    if (pose.look && pose.lookW > 0) this.lookAt(pose.look, pose.lookW);
+
+    if (pose.look && pose.lookW > 0) this.lookAt(pose.look, pose.lookW, !!(pose.still || pose.instant));
     if (pose.aim && pose.pointW > 0) this.point(pose.aim, pose.pointW);
     const o = pose.opacity ?? 1;
     for (const m of this.mats) { m.transparent = o < 1; m.opacity = o; m.depthWrite = o > .5; }
@@ -98,17 +113,19 @@ export class Actor {
   }
 
   point(target, w) {
+    if (w <= 0.001) return;
     const s = this.side(target), up = this.bones[`UpperArm${s}`], lo = this.bones[`LowerArm${s}`], wr = this.bones[`Wrist${s}`];
+    if (!up || !lo || !wr) return;
     const a = V(), b = V(), c = V();
-    // 1 · straighten the elbow (a little bend stays)
+    // 1 · straighten the elbow (a gentle natural bend stays)
     up.getWorldPosition(a); lo.getWorldPosition(b); wr.getWorldPosition(c);
     const u = b.clone().sub(a).normalize(), f = c.clone().sub(b).normalize();
     Actor.rotateWorld(lo, Q().setFromUnitVectors(f, u), w * .85);
-    // 2 · aim the whole arm at the target, raised no higher than needed
+    // 2 · aim the whole arm at the specific target, raised no higher than needed
     up.getWorldPosition(a); wr.getWorldPosition(c);
     const cur = c.clone().sub(a).normalize(), want = target.clone().sub(a).normalize();
     Actor.rotateWorld(up, Q().setFromUnitVectors(cur, want), w);
-    // 3 · open hand in line with the forearm, index straight
+    // 3 · open hand in line with forearm, index straight
     lo.getWorldPosition(b); wr.getWorldPosition(c);
     const fa = c.clone().sub(b).normalize();
     for (const n of ['Index1', 'Index2', 'Index3']) {
@@ -118,15 +135,26 @@ export class Actor {
     }
   }
 
-  lookAt(target, w) {
-    for (const [n, k] of [['Neck', .4], ['Head', .6]]) {
+  lookAt(target, w, deterministic = false) {
+    if (w <= 0.001) return;
+    if (deterministic || !this.smoothedLook) this.smoothedLook = target.clone();
+    else this.smoothedLook.lerp(target, 0.2);
+
+    const fwd = V().set(0, 0, 1).applyQuaternion(this.root.quaternion);
+    const p = V();
+    const anchorBone = this.bones.Head || this.bones.Neck;
+    if (anchorBone) anchorBone.getWorldPosition(p);
+    else p.copy(this.root.position).add(V(0, 1.6, 0));
+
+    const want = this.smoothedLook.clone().sub(p);
+    const { clampedDir } = clampHeadDirection(fwd, want);
+
+    for (const [n, k] of [['Neck', 0.4], ['Head', 0.6]]) {
       const b = this.bones[n]; if (!b) continue;
-      const p = V(); b.getWorldPosition(p);
-      const fwd = V().set(0, 0, 1).applyQuaternion(this.root.quaternion);   // the body's facing
-      const want = target.clone().sub(p).normalize();
-      want.y *= .6;
-      const q = Q().setFromUnitVectors(fwd, want.normalize());
-      Actor.rotateWorld(b, Q().identity().slerp(q, Math.min(1, k * 1.2)), w);
+      const curWorldQ = Q(); b.getWorldQuaternion(curWorldQ);
+      const boneFwd = V().set(0, 0, 1).applyQuaternion(curWorldQ);
+      const rot = Q().setFromUnitVectors(boneFwd, clampedDir);
+      Actor.rotateWorld(b, rot, w * k);
     }
   }
 }

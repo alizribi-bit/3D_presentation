@@ -6,3 +6,8 @@ assets-src/
 review/dev/
 
 review/full/verify/
+
+release/
+review/verify/
+review/revision/recording-tmp/
+__pycache__/

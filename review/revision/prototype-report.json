@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-12T11:52:27.219Z",
+  "rendererMode": "default",
+  "quality": "normal",
+  "results": [
+    {
+      "name": "10 presses forward (→, Espace, PageDown) visit A0…D3 in order",
+      "pass": true,
+      "info": "A0 A1 A2 B1 B2 C1 C2 C3 D1 D2 D3"
+    },
+    {
+      "name": "presenter follows every forward step in < 0.5 s",
+      "pass": true,
+      "info": "max 24 ms"
+    },
+    {
+      "name": "→ on the last state does nothing",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "10 presses back (←, PageUp) visit D3…A0 in order",
+      "pass": true,
+      "info": "D3 D2 D1 C3 C2 C1 B2 B1 A2 A1 A0"
+    },
+    {
+      "name": "← on the first state does nothing",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "20 fast presses (90 ms apart) land on the expected state",
+      "pass": true,
+      "info": "C1 vs C1"
+    },
+    {
+      "name": "presenter ends on the same state after fast presses",
+      "pass": true,
+      "info": "3 ms"
+    },
+    {
+      "name": "→ pressed in the presenter window advances the jury window",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "keys still work after a mouse click in the jury window",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mouse wheel changes nothing",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "keys still work after a mouse click in the presenter window",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "scene keys 1–4 and Début jump to the right states (from the presenter window)",
+      "pass": true,
+      "info": "3→C1 4→D1 1→A0 2→B1 Home→A0"
+    },
+    {
+      "name": "a presenter window opened late shows the current state (C1) at once",
+      "pass": true,
+      "info": "2583 ms after navigation"
+    },
+    {
+      "name": "reloading the jury window keeps the state",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "after a jury reload the presenter still follows",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "reloading the presenter window keeps the state",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "the presenter window has no 3D canvas and no media",
+      "pass": true,
+      "info": "{\"canvas\":0,\"media\":0}"
+    },
+    {
+      "name": "the jury window shows no notes and no buttons",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "each state gives the same image forward, back and after reload",
+      "pass": true,
+      "info": "all 11 states within tolerance"
+    },
+    {
+      "name": "no request left this machine (offline-safe)",
+      "pass": true,
+      "info": "all from 127.0.0.1"
+    },
+    {
+      "name": "no JavaScript error in either window",
+      "pass": true,
+      "info": ""
+    }
+  ],
+  "external": [],
+  "errors": []
+}

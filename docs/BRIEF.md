@@ -1,3 +1,9 @@
+# Directive actuelle — révision 44
+
+Le prompt complet d’Ali du 11/12 octobre 2026 remplace les anciens transferts de contenu.
+La mise à jour 3D est autorisée : voir PLAN-44.md, SCRIPT-44.md et ../HANDOFF.md.
+Le texte ci-dessous est conservé comme historique du prototype ; ses anciens jalons et totaux ne sont plus les exigences courantes.
+
 # ZAWEDNI — nouveau projet de présentation 3D narrative
 
 Tu travailles avec Ali sur sa soutenance de mémoire. La présentation actuelle est terminée et acceptée. Elle reste son premier choix. Ali veut maintenant explorer une deuxième version dans un projet indépendant : une présentation qui raconte l'histoire de ZAWEDNI à travers un monde 3D, une roadmap et des déplacements de caméra, avec des personnages animés.

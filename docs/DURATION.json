@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-12T11:38:43.932Z",
+  "method": "Estimate: full spoken and [lire] text, 110–140 words/minute, all transitions counted sequentially, 1.5 s reading pause/state, final 90 s film. No speech is removed.",
+  "sequences": 44,
+  "states": 114,
+  "reveals": 70,
+  "nextPresses": 113,
+  "spokenWords": 2250,
+  "transitionSeconds": 100.75000000000017,
+  "travelSeconds": 31.2,
+  "readingPauseSeconds": 169.5,
+  "filmSeconds": 90,
+  "ranges": [
+    {
+      "wordsPerMinute": 110,
+      "speechSeconds": 1227.2727272727273,
+      "totalMinutes": 26.458712121212123
+    },
+    {
+      "wordsPerMinute": 125,
+      "speechSeconds": 1080,
+      "totalMinutes": 24.00416666666667
+    },
+    {
+      "wordsPerMinute": 140,
+      "speechSeconds": 964.2857142857143,
+      "totalMinutes": 22.07559523809524
+    }
+  ],
+  "timedRehearsal": false
+}

@@ -16,6 +16,7 @@ import { PROTOTYPE } from './nav/mode.js';
 import { parseCommand } from './nav/commands.ts';
 import { preloadEvidence, EvidencePanel } from './story/evidence.ts';
 import { FilmPlayer } from './media/player.ts';
+import { shouldAutoplayFilm } from './media/transition.ts';
 import { StoryWorld } from './world/story.ts';
 import { applyShot } from './camera/rig.js';
 
@@ -54,7 +55,7 @@ try { await Promise.all([preload(), PROTOTYPE ? Promise.resolve() : preloadEvide
   const veil = document.getElementById('veil'); veil.classList.add('error'); veil.textContent = 'La présentation ne peut pas charger ses fichiers locaux. Relancez le serveur local puis rechargez cette fenêtre.'; throw error;
 }
 buildWorld(scene);
-const storyWorld = PROTOTYPE ? null : new StoryWorld(scene, anchors);
+const storyWorld = PROTOTYPE ? null : new StoryWorld(scene, anchors, () => { renderer.shadowMap.needsUpdate = true; });
 buildPanels();
 const stage = document.getElementById('stage');
 const evidence = PROTOTYPE ? null : new EvidencePanel(stage);
@@ -69,7 +70,13 @@ const ch = link(m => {
   if (m.t === 'hello') announce();
   if (m.t === 'cmd') command(m.cmd);
 });
-function announce() { film?.show(director.state, !Q.has('test')); ch.send({ t: 'state', id: director.state.id, i: director.i, total: STATES.length }); }
+let previousMediaIndex = -1;
+function announce() {
+  const autoplay = !Q.has('test') && shouldAutoplayFilm(STATES[previousMediaIndex]?.media ?? null, director.state.media ?? null, director.i > previousMediaIndex);
+  film?.show(director.state, autoplay);
+  previousMediaIndex = director.i;
+  ch.send({ t: 'state', id: director.state.id, i: director.i, total: STATES.length });
+}
 
 const director = new Director({ camera, actors, onState: announce, still: Q.has('still'), fast: Q.has('test') && Q.has('fast'), onFrame: (visible, state, k, from) => { evidence?.show(state, visible.has('evidence')); storyWorld?.frame(state, k, from); } });
 const fromHash = indexOf(location.hash.slice(1));

@@ -1,7 +1,7 @@
 import { chromium } from 'playwright-core';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { qaArgs } from './qa-browser.mjs';
-const out = 'review/chapter3-lines', base = 'http://127.0.0.1:4320';
+const out = 'review/chapter3-lines', base = process.argv[2] || 'http://127.0.0.1:4320';
 mkdirSync(`${out}/screenshots`, { recursive: true });
 const report = { checks: [], samples: [], errors: [], external: [], missing: [], clockModified: false,
   continuousGPUDrawing: false, worldUpdatesSuspendedDuringNativeEffects: true };

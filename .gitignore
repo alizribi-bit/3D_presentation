@@ -1,13 +1,33 @@
+# Installed dependencies and generated output
 node_modules/
 dist/
-assets-src/
-*.log
-.env*
-review/dev/
-
-review/full/verify/
-
+review/
 release/
-review/verify/
-review/revision/recording-tmp/
+handoff-export/
+*.log
 __pycache__/
+*.py[cod]
+
+# Local source archives and the protected classic snapshot
+assets-src/
+.backups/
+content/reference/classic-final/
+*.zip
+*.tar
+*.tar.gz
+
+# Credentials and machine-specific settings
+.env
+.env.*
+*.pem
+*.key
+.aws/
+.agents/
+.claude/
+.codex/
+.slides/
+.specify/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,6 +1,0 @@
-
-> check
-> scripts/check-source.sh && node --import tsx scripts/check-content-current.mjs
-
-PASS historical provenance, 8 original assets and 1 real new capture.
-PASS active reference: 35 slides, 51 reveals, 86 states and exact notes/frames.

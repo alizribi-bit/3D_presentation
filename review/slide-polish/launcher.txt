@@ -1,3 +1,0 @@
-Build actuel vérifié : 05097a323a59d8d2
-Projet servi : /home/ali/Desktop/ZAWEDNI_3D_20MIN/dist · http://127.0.0.1:4320 · mode complet
-Build : 05097a323a59d8d25fd3aecdf1c75a36a268b6493f37f6afa695d67df572e497

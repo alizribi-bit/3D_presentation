@@ -2,12 +2,12 @@
 
 Les captures, les logos ZAWEDNI/ISIMa et le film sont les fichiers réels fournis
 avec la présentation d’Ali. Leurs empreintes sont conservées dans
-`content/source/assets-manifest.json` ; la nouvelle capture d’administration est
-décrite dans `content/revision-assets.json`. Ils ne sont pas placés sous CC0.
+`content/source/assets-manifest.json` pour les médias validés. Ils ne sont pas
+placés sous CC0.
 
 Les packs Kenney sont distribués sous CC0 ; leurs textes originaux sont dans
 `kenney/`. Les modèles Quaternius suivants ont été acquis via Poly Pizza sous
-CC0 1.0, selon les pages de provenance déjà conservées dans le projet :
+CC0 1.0, selon les pages de provenance suivantes :
 
 | Asset | Auteur | Page originale |
 | --- | --- | --- |

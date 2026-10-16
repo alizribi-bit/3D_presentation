@@ -1,9 +1,10 @@
 // Real native player behavior with automatic playback enabled, unlike the test-mode traversal.
 import { chromium } from 'playwright-core';
 import { qaArgs } from './qa-browser.mjs';
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 const base = process.argv[2] || 'http://127.0.0.1:4320';
+mkdirSync(new URL('../review/classic/', import.meta.url), { recursive: true });
 const browser = await chromium.launch({channel:'chrome',headless:true,args:qaArgs});
 const results = [], errors = [];
 const check = (name, pass, detail) => { results.push({name,pass,detail});console.log(`${pass?'PASS':'FAIL'} ${name}`); };

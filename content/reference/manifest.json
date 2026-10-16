@@ -1,6 +1,6 @@
 {
   "capturedAt": "2026-10-13T16:16:42.584Z",
-  "root": "/home/ali/Desktop/ZAWEDNI_3D_20MIN/content/reference/classic-final",
+  "root": "content/reference",
   "files": {
     "deck.html": "1d8d0e86152870eade0d8ef367b745a67d817e88e5ae3d41b9ddd915eecccf5e",
     "deck.offline.html": "1d8d0e86152870eade0d8ef367b745a67d817e88e5ae3d41b9ddd915eecccf5e",
@@ -9202,7 +9202,6 @@
     }
   ],
   "speechSource": {
-    "root": "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN",
     "model": "speech-content_20min.py",
     "sha256": "e6470dc3227b3c2c3da58cfe459ab96c75f75c40df9ed0a1c214cf5977d1d3d2",
     "changedStates": [

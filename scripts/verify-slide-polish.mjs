@@ -45,7 +45,13 @@ try {
       await page.waitForFunction(() => document.querySelector('#p-evidence').shadowRoot.querySelector('.deck')
         .getAnimations({ subtree: true }).every(a => a.playState === 'finished' || a.playState === 'idle'));
     };
-    const place = async id => { await page.evaluate(id => __story.go(__story.states.findIndex(s => s.id === id), { instant: true }), id); await at(id); };
+    const place = async id => {
+      await page.evaluate(id => __story.go(__story.states.findIndex(s => s.id === id), { instant: true }), id);
+      await at(id);
+      // Initial panel CSS can outlive an instant camera placement. Finish that
+      // preparation before observing the next reveal's board visibility.
+      await page.waitForFunction(() => +getComputedStyle(document.querySelector('#p-evidence')).opacity === 1);
+    };
     for (const id of ids) {
       const previous = await page.evaluate(id => __story.states[__story.states.findIndex(s => s.id === id) - 1].id, id);
       await place(previous);

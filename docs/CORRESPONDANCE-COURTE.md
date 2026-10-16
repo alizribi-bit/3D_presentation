@@ -42,6 +42,6 @@ Les mêmes 35 slides et 51 révélations donnent 86 états 3D. Les IDs restent s
 
 BMC : `modele-0` montre l’image complète ; `modele-1` révèle simultanément clients et valeur. Vidéo : `video-0` introduit le film en slide 34 ; `video-1` lance la lecture. `retour-0` reprend après le film, `retour-1` ouvre le cadrage sur le monde.
 
-Discours exact et repères de clic : `SCRIPT-ACTUEL.md`. Le JSON détaillé `CORRESPONDANCE.json` donne les textes, images et notes par état.
+Discours exact et repères de clic : `SCRIPT-ACTUEL.md`. Le manifeste `../content/reference/manifest.json` conserve les textes, images, notes et empreintes par état.
 
 `deliveryReveal` réserve le haut au schéma et le bas au convoyeur, sur cinq états seulement : `chaine-1..3` et `log4j-1..2`. Le cadrage reste fixe entre leurs étapes et revient à `delivery` à la slide suivante.

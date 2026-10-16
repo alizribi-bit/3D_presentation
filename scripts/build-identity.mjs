@@ -17,9 +17,17 @@ export function buildIdentity() {
     const root = path.resolve(import.meta.dirname, '..'), build = path.join(root, 'dist');
     const builtFiles = {}, sourceFiles = {};
     for (const file of await files(build)) if (!file.endsWith('/build-info.json')) builtFiles[path.relative(build, file)] = hash(await readFile(file));
-    for (const dir of ['src', 'content/source', 'content/reference', 'public']) for (const file of await files(path.join(root, dir))) sourceFiles[path.relative(root, file)] = hash(await readFile(file));
+    for (const dir of ['src', 'content/source', 'public']) for (const file of await files(path.join(root, dir))) sourceFiles[path.relative(root, file)] = hash(await readFile(file));
+    // Only the portable reference is part of the build. The protected local
+    // classic-final snapshot is deliberately excluded from public checkouts.
+    for (const entry of await readdir(path.join(root, 'content/reference'), { withFileTypes: true })) {
+      if (entry.isFile()) {
+        const relative = `content/reference/${entry.name}`;
+        sourceFiles[relative] = hash(await readFile(path.join(root, relative)));
+      }
+    }
     for (const file of ['index.html', 'presenter.html', 'vite.config.js', 'package.json', 'package-lock.json', 'present.sh', 'scripts/check-build.py', 'scripts/serve.py', 'scripts/build-identity.mjs']) sourceFiles[file] = hash(await readFile(path.join(root, file)));
     const buildId = hash(JSON.stringify(builtFiles));
-    await writeFile(path.join(build, 'build-info.json'), JSON.stringify({ project: 'ZAWEDNI_3D_20MIN', projectRoot: root, buildId, reference: JSON.parse(await readFile(path.join(root, 'content/reference/manifest.json'))).files, files: builtFiles, sourceFiles }, null, 2) + '\n');
+    await writeFile(path.join(build, 'build-info.json'), JSON.stringify({ project: 'ZAWEDNI_3D_20MIN', buildId, reference: JSON.parse(await readFile(path.join(root, 'content/reference/manifest.json'))).files, files: builtFiles, sourceFiles }, null, 2) + '\n');
   } };
 }

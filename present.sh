@@ -2,7 +2,7 @@
 # ZAWEDNI Story 3D — la soutenance sur deux écrans, en une commande :
 #   fenêtre jury en plein écran sur l'écran externe (HDMI), vue présentateur sur l'écran de l'ordinateur.
 # Usage : ./present.sh [--swap]      (--swap : jury sur l'ordinateur, notes sur l'écran externe)
-# Préparation, une seule fois et avec Internet : npm install && npm run build   (voir PRESENTER.md)
+# Préparation, une seule fois et avec Internet : npm ci && npm run build (voir README.md)
 set -eu
 DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 PORT="${ZS3D_PORT:-4320}"
@@ -22,7 +22,7 @@ LOG="${XDG_RUNTIME_DIR:-/tmp}/ZAWEDNI_3D_20MIN-server.log"
 
 if [ ! -f "$DIR/dist/index.html" ] || [ ! -f "$DIR/dist/presenter.html" ] || [ ! -f "$DIR/dist/build-info.json" ]; then
   echo "La version de présentation n'est pas construite. Une seule fois, avec Internet :"
-  echo "  cd \"$DIR\" && npm install && npm run build"
+  echo "  cd \"$DIR\" && npm ci && npm run build"
   exit 1
 fi
 

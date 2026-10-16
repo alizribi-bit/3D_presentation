@@ -1,0 +1,5 @@
+{
+  path: '/home/ali/Desktop/ZAWEDNI_3D_20MIN/review/chapter3-lines/video/page@0c18014a4694b1825516dd751c799027.webm',
+  startSeconds: 32.207,
+  durationSeconds: 12.165999999999997
+}

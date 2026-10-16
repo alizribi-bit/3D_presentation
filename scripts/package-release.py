@@ -7,7 +7,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'release'
 OUT.mkdir(exist_ok=True)
-ARCHIVE = OUT / 'zawedni-story-3d-44.zip'
+REVISION = 'animations-corrigees'
+ARCHIVE = OUT / f'zawedni-story-3d-{REVISION}.zip'
 sha = lambda data: hashlib.sha256(data).hexdigest()
 files = set()
 for folder in ['src', 'scripts', 'tests', 'content', 'public', 'dist', 'docs']:
@@ -16,21 +17,15 @@ for filename in ['README.md', 'HANDOFF.md', 'PRESENTER.md', 'DESIGN.md', 'AGENTS
                  'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.js',
                  'index.html', 'presenter.html', 'present.sh']:
     files.add(ROOT / filename)
-review = ROOT / 'review/revision'
-files.update(path for path in review.glob('*') if path.is_file() and path.suffix in ['.png', '.json', '.html', '.webm', '.diff'])
-for resolution in ['1920x1080', '1366x768']:
-    folder = review / resolution
-    files.update(path for path in folder.glob('*') if path.is_file())
-    report = ROOT / f'review/full/verify/{resolution}/report.json'
-    if report.exists():
-        files.add(report)
-performance = ROOT / 'review/full/performance.json'
-if performance.exists():
-    files.add(performance)
+review = ROOT / 'review/animation-correction-2026-10-12'
+files.update(path for path in review.iterdir() if path.is_file() and path.suffix in ['.png', '.json', '.mp4', '.md', '.vtt'])
+# Historical v7 provenance is required by check-provenance; local backup copies are not.
+files = {path for path in files if not ('content/history' in str(path.relative_to(ROOT)) and 'v7' not in path.parts)}
 files = {path for path in files if '__pycache__' not in path.parts and path.suffix not in ['.pyc', '.log', '.zip']}
 manifest = {str(path.relative_to(ROOT)): sha(path.read_bytes()) for path in sorted(files)}
 manifest_path = OUT / 'DELIVERY-MANIFEST.json'
-manifest_path.write_text(json.dumps({'revision': '44', 'files': manifest}, indent=2) + '\n')
+reference = json.loads((ROOT / 'content/reference/manifest.json').read_text())
+manifest_path.write_text(json.dumps({'revision': REVISION, 'reference': reference['files'], 'counts': reference['counts'], 'files': manifest}, indent=2) + '\n')
 with zipfile.ZipFile(ARCHIVE, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
     for path in sorted(files):
         archive.write(path, 'zawedni-story-3d/' + str(path.relative_to(ROOT)))

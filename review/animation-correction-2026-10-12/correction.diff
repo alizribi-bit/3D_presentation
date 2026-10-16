@@ -1,0 +1,1037 @@
+--- avant/src/nav/director.js
++++ apres/src/nav/director.js
+@@ -9,7 +9,8 @@
+ import { motion } from './prefs.js';
+ import { TravelPath, routePath } from '../characters/path.ts';
+ import { arrivalWalk } from '../characters/arrival.ts';
+-import { transitionTiming, transitionFrame } from './timeline.ts';
++import { transitionTiming, transitionFrame, contentStart } from './timeline.ts';
++import { classifyTransition, visiblePanels } from './transition-plan.ts';
+ import { getEvidenceTargetPoint, calculatePointWeight } from '../characters/pose.ts';
+ 
+ const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+@@ -30,22 +31,47 @@
+   get settled() { return !this.tr; }
+   get moving() { return !!this.tr && transitionFrame(this.tr.timing, performance.now() / 1000 - this.tr.t0).phase === 'move'; }
+ 
+-  go(i, { instant = false } = {}) {
++  go(i, { instant = false, intent = 'jump' } = {}) {
+     if (!Number.isInteger(i) || !Number.isFinite(i)) return;
+     i = clamp(i, 0, STATES.length - 1);
+     if (i === this.i && !instant) return;
+     const from = this.renderedState;
+     const shot = this.camera.userData.lookTarget ? captureShot(this.camera) : this.shots[from.shot];
+     const starts = { ...this.renderedPoses };
++    const to = STATES[i], now = performance.now() / 1000;
++    const previous = this.tr;
+     this.i = i;
+-    const to = STATES[i], now = performance.now() / 1000;
++    // Retarget content at the same arrival anchors without restarting the flight, relocation or walk.
++    // Camera alone gets a remaining-time segment from its actually rendered pose.
++    if (!instant && previous && ['travel', 'relocate'].includes(previous.plan.kind) && to.place === previous.to.place
++      && (now - previous.t0 < previous.timing.arrival || shotDistance(shot, this.shots[to.shot]) < 1e-5)
++      && Object.entries(to.actors).every(([name, spec]) => spec.at === previous.to.actors[name].at)) {
++      previous.to = to;
++      const retargetPlan = classifyTransition(previous.from, to, 'next', 1, 1);
++      previous.plan = { ...previous.plan, hiddenPanels: [...new Set([...previous.plan.hiddenPanels, ...retargetPlan.hiddenPanels])] };
++      for (const id of previous.plan.hiddenPanels) {
++        const el = document.getElementById(`p-${id}`);
++        if (el) el.dataset.directed = 'true';
++      }
++      previous.shot = shot; previous.cameraStart = Math.max(0, now - previous.t0 - previous.timing.exit);
++      previous.cameraDuration = Math.max(0, previous.D - previous.cameraStart);
++      previous.lift = 0;
++      this.evidencePointCache.clear();
++      this.notify(to);
++      return;
++    }
++    this.releasePanels();
+     this.stateT0 = now;
+     this.evidencePointCache.clear();
+     if (instant) { this.tr = null; this.instantUntil = now + .05; }
+     else {
+       const lift = LIFT[`${from.shot}>${to.shot}`] ?? 0;
++      const distance = shotDistance(shot, this.shots[to.shot]);
++      const actorDistance = Math.max(0, ...Object.entries(to.actors).map(([name, spec]) =>
++        (starts[name]?.pos ?? anchors[from.actors[name].at]).distanceTo(anchors[spec.at])));
++      const plan = classifyTransition(from, to, intent, distance, actorDistance);
+       const paths = {};
+-      for (const [name, spec] of Object.entries(to.actors)) {
++      for (const [name, spec] of plan.walk ? Object.entries(to.actors) : []) {
+         const start = starts[name]?.pos ?? anchors[from.actors[name].at];
+         const end = anchors[spec.at];
+         if (start.distanceTo(end) < 1e-5) continue;
+@@ -56,16 +82,31 @@
+         } else paths[name] = new TravelPath([start, end]);
+       }
+       const walkingLength = Math.max(0, ...Object.values(paths).map(path => path.length));
+-      const timing = transitionTiming(shotDistance(shot, this.shots[to.shot], lift), walkingLength, motion.reduced, this.fast);
+-      this.tr = { from, to, shot, starts, t0: now, timing, D: timing.movement, lift, paths,
++      const travelLift = plan.kind === 'travel' ? lift : 0;
++      const timing = transitionTiming(shotDistance(shot, this.shots[to.shot], travelLift),
++        plan.walk ? walkingLength : 0, motion.reduced, this.fast, plan.kind, plan.hiddenPanels.length > 0, this.contentOpacity);
++      this.tr = { from, to, shot, starts, t0: now, timing, D: timing.movement, lift: travelLift, paths: plan.walk ? paths : {}, plan,
++        cameraStart: 0, cameraDuration: timing.movement,
+         reduced: motion.reduced, initialOpacity: this.contentOpacity };
+-    }
++      for (const id of plan.hiddenPanels) {
++        const el = document.getElementById(`p-${id}`);
++        if (el) el.dataset.directed = 'true';
++      }
++    }
++    this.notify(to);
++  }
++  notify(to) {
+     try { history.replaceState(null, '', `#${to.id}`); } catch { /* file:// in some browsers */ }
+     this.onState?.(this);
+   }
+-  next() { this.go(this.i + 1); }
+-  prev() { this.go(this.i - 1); }
+-  settle() { this.tr = null; this.instantUntil = performance.now() / 1000 + .05; }
++  next() { this.go(this.i + 1, { intent: 'next' }); }
++  prev() { this.go(this.i - 1, { intent: 'prev' }); }
++  releasePanels() {
++    for (const el of document.querySelectorAll('[data-directed]')) {
++      delete el.dataset.directed; el.style.removeProperty('opacity'); el.style.removeProperty('transform');
++    }
++  }
++  settle() { this.releasePanels(); this.tr = null; this.instantUntil = performance.now() / 1000 + .05; }
+ 
+   // ── per frame ─────────────────────────────────────────────────────────────────────────────────
+   frame(now) {
+@@ -75,28 +116,31 @@
+       : { phase: 'done', opacity: 1, progress: 1, movementTime: 0, complete: true };
+     const outgoing = timeline.phase === 'exit';
+     const display = outgoing ? tr.from : to;
+-    const visible = outgoing || timeline.phase === 'enter' || timeline.phase === 'done';
+     const from = tr?.from ?? to, k = timeline.progress;
+     this.contentOpacity = timeline.opacity;
+     this.renderedState = display;
+     document.body.classList.toggle('instant', now < this.instantUntil || this.fast);
+ 
+-    shotAt(this.camera, tr?.shot ?? this.shots[to.shot], this.shots[to.shot], k, tr?.lift ?? 0);
++    const cameraK = tr ? (tr.cameraDuration ? clamp((timeline.movementTime - tr.cameraStart) / tr.cameraDuration) : k) : 1;
++    shotAt(this.camera, tr?.shot ?? this.shots[to.shot], this.shots[to.shot], cameraK, tr?.lift ?? 0,
++      tr && ['approach', 'object', 'world', 'relocate'].includes(tr.plan.kind) ? 'soft' : 'travel');
+     this.camera.updateMatrixWorld(true);
+ 
+-    // Hide the entire content layer even when both states reuse the same evidence container.
+-    // Opacity has no independent CSS timer: the movement cannot start with residual glass visible.
++    // The stage stays stable; only explicitly selected blocking panels use this clock.
+     const stage = document.getElementById('stage');
+-    stage.style.opacity = String(timeline.opacity);
+-    stage.style.visibility = timeline.opacity > 0 ? 'visible' : 'hidden';
+-    stage.inert = !visible;
++    stage.style.opacity = '1'; stage.style.visibility = 'visible'; stage.inert = false;
+     stage.dataset.phase = timeline.phase;
+-    document.body.classList.add('timeline');
+-    const vis = new Set(visible ? display.panels : []);
++    stage.dataset.transition = tr?.plan.kind ?? 'content';
++    const vis = tr ? visiblePanels(tr.from.panels, to.panels, tr.plan, timeline.phase, timeline.opacity) : new Set(to.panels);
++    for (const id of tr?.plan.hiddenPanels ?? []) {
++      const el = document.getElementById(`p-${id}`);
++      if (el) { el.style.opacity = String(vis.has(id) ? timeline.opacity : 0); el.style.transform = 'none'; }
++    }
++    if (tr && timeline.phase !== 'enter' && timeline.phase !== 'done' && !outgoing) vis.delete('film-title');
+     setCover(display.cover || 'gone');
+     updatePanels(vis, this.camera, display);
+     this.onFrame?.(vis, display, k, from);
+-    const appear = tr ? tr.timing.arrival - tr.timing.exit : 0;
++    const appear = tr ? contentStart(tr.timing, tr.plan.hiddenPanels.length > 0) - tr.timing.exit : 0;
+     const poseTime = tr ? Math.max(0, elapsed - tr.timing.exit) : elapsed;
+     setFeedback(display.feedback ? (outgoing ? 1 : smooth((poseTime - appear) / .8)) : 0);
+ 
+@@ -108,8 +152,9 @@
+     }
+     if (tr && timeline.complete) {
+       this.tr = null;
++      this.releasePanels();
+       // Keep pointing/reveal time continuous after completion rather than replaying the gesture.
+-      this.stateT0 = tr.t0 + tr.timing.arrival;
++      this.stateT0 = tr.t0 + contentStart(tr.timing, tr.plan.hiddenPanels.length > 0);
+     }
+   }
+ 
+@@ -188,9 +233,9 @@
+       look: targetLook,
+       opacity: 1,
+       still,
+-      instant: performance.now() / 1000 < this.instantUntil || still || tr?.reduced
++      instant: performance.now() / 1000 < this.instantUntil || still || tr?.reduced || this.fast
+     };
+-    if (!tr || tr.reduced || !D) return pose;
++    if (!tr || tr.reduced || this.fast || !D) return pose;
+ 
+     const route = tr.paths[name];
+     if (route) {
+@@ -207,7 +252,8 @@
+     }
+     if (!start.equals(end)) {
+       pose.pos = t < D / 2 ? start : end; pose.yaw = t < D / 2 ? faceA : faceB;
+-      pose.opacity = clamp(Math.abs(t - D / 2) / (D / 2) * 2 - .2);
++      pose.opacity = t < D / 2 ? (tr.starts[name]?.opacity ?? 1) * (1 - smooth(t / (D / 2)))
++        : smooth((t - D / 2) / (D / 2));
+     } else {
+       pose.yaw = lerpAngle(faceA, faceB, smooth(t / .5));
+       pose.lookW = (sA.face === 'camera' ? 0 : 1) + (pose.lookW - (sA.face === 'camera' ? 0 : 1)) * smooth(t / .5);
+--- avant/src/nav/timeline.ts
++++ apres/src/nav/timeline.ts
+@@ -1,47 +1,46 @@
+ import { minimumArrivalDuration } from '../characters/arrival.ts';
+-
++import type { TransitionKind } from './transition-plan.ts';
+ export interface TransitionTiming {
+-  readonly exit: number;
+-  readonly movement: number;
+-  readonly settle: number;
+-  readonly enter: number;
+-  readonly arrival: number;
+-  readonly total: number;
++  readonly exit: number; readonly movement: number; readonly settle: number;
++  readonly enter: number; readonly arrival: number; readonly total: number;
+ }
+ export interface TransitionFrame {
+   readonly phase: 'exit' | 'move' | 'settle' | 'enter' | 'done';
+-  readonly opacity: number;
+-  readonly progress: number;
+-  readonly movementTime: number;
+-  readonly complete: boolean;
++  readonly opacity: number; readonly progress: number; readonly movementTime: number; readonly complete: boolean;
+ }
+ const clamp = (n: number, min = 0, max = 1): number => Math.min(max, Math.max(min, n));
+ const smooth = (n: number): number => { const k = clamp(n); return k * k * (3 - 2 * k); };
+-
+-/** Distance is measured along the camera curve, including its lift and change of framing.
+- * Visible walking covers the final 2.6 m; the long relocation happens while faded out.
+- * Its 38% movement window needs enough time to stay below 1.8 m/s, even on reverse/jump. */
+-export function transitionTiming(distance: number, walkingLength: number, reduced = false, fast = false): TransitionTiming {
+-  const moves = distance > 1e-5 || walkingLength > 1e-5;
+-  const walkMinimum = minimumArrivalDuration(walkingLength);
+-  const movement = fast ? (moves ? .03 : 0) : reduced ? 0
+-    : moves ? clamp(Math.max(distance / 14, walkMinimum), .65, 6.5) : 0;
+-  const exit = fast ? .01 : moves && !reduced ? .24 : .12;
+-  const settle = movement ? .18 : 0;
+-  const enter = fast ? .01 : moves && !reduced ? .3 : .18;
+-  const arrival = exit + movement + settle;
++export const WORLD_RETURN_DURATION = 1.75;
++/** Content changes have no exit or empty stage. Only forward travel budgets terminal walking.
++ * The opacity output belongs to selected obstructing panels, never the stage itself. */
++export function transitionTiming(distance: number, walkingLength: number, reduced = false, fast = false,
++  kind: TransitionKind = distance < 1e-5 && walkingLength < 1e-5 ? 'content' : 'travel',
++  occludes = kind !== 'content' && kind !== 'approach', initialOpacity = 1): TransitionTiming {
++  let movement = kind === 'content' ? 0 : kind === 'world' ? WORLD_RETURN_DURATION
++    : kind === 'relocate' ? .75 : kind === 'travel'
++      ? clamp(Math.max(distance / 14, minimumArrivalDuration(walkingLength)), 4.5, 5.2)
++      : clamp(distance / 14, .65, 1);
++  if (reduced) movement = 0;
++  else if (fast && movement) movement = .03;
++  // An already invisible panel needs no second exit when navigation is interrupted.
++  const exit = occludes && initialOpacity > 0 ? (fast ? .01 : reduced ? .08 : .16) : 0;
++  const enter = occludes ? (fast ? .01 : reduced ? .12 : .2) : 0;
++  const settle = 0, arrival = exit + movement;
+   return { exit, movement, settle, enter, arrival, total: arrival + enter };
+ }
+-
+-/** One absolute timestamp drives content opacity, camera progress and the walk distance.
+- * A dropped frame catches up directly; it never accumulates delays or leaves a hidden panel. */
++/** Absolute time catches dropped frames without accumulating delays. */
+ export function transitionFrame(timing: TransitionTiming, elapsed: number, initialOpacity = 1): TransitionFrame {
+-  const t = Math.max(0, elapsed);
+-  const movementTime = clamp(t - timing.exit, 0, timing.movement);
++  const t = Math.max(0, elapsed), movementTime = clamp(t - timing.exit, 0, timing.movement);
+   const progress = timing.movement ? movementTime / timing.movement : t < timing.exit ? 0 : 1;
+   const phase = t < timing.exit ? 'exit' : t < timing.exit + timing.movement ? 'move'
+     : t < timing.arrival ? 'settle' : t < timing.total ? 'enter' : 'done';
+   const opacity = phase === 'exit' ? initialOpacity * (1 - smooth(t / timing.exit))
+-    : phase === 'enter' ? smooth((t - timing.arrival) / timing.enter) : phase === 'done' ? 1 : 0;
++    : phase === 'enter' ? smooth((t - timing.arrival) / timing.enter) : phase === 'done' ? 1 : timing.enter ? 0 : 1;
+   return { phase, opacity, progress, movementTime, complete: t >= timing.total };
+ }
++
++/** Visible content ages from movement start on an approach, and from arrival only
++ * when its panel was hidden. Completing a camera move must not replay gestures. */
++export function contentStart(timing: TransitionTiming, occludes: boolean): number {
++  return occludes ? timing.arrival : timing.exit;
++}
+--- avant/src/camera/rig.js
++++ apres/src/camera/rig.js
+@@ -38,8 +38,9 @@
+ }
+ 
+ // k in [0, 1]. `lift` (metres) raises the middle of a long move so it flies over the places instead of through them.
+-export function shotAt(camera, a, b, k, lift = 0) {
+-  const e = ease(k);
++export function shotAt(camera, a, b, k, lift = 0, profile = 'travel') {
++  const u = Math.max(0, Math.min(1, k));
++  const e = profile === 'soft' ? u * u * (3 - 2 * u) : ease(u);
+   P.fromArray(a.pos).lerp(T.fromArray(b.pos), e); P.y += Math.sin(Math.PI * e) * lift;
+   TARGET.fromArray(a.target).lerp(T.fromArray(b.target), e);
+   camera.position.copy(P); camera.fov = a.fov + (b.fov - a.fov) * e; camera.updateProjectionMatrix(); camera.lookAt(TARGET);
+--- avant/src/story/evidence.ts
++++ apres/src/story/evidence.ts
+@@ -1,4 +1,5 @@
+ import rows from '../../content/source/sequences.json';
++import { motion } from '../nav/prefs.js';
+ import type { StoryState } from './types.ts';
+ interface EvidenceFile { id: string; frames: string[]; }
+ const cache = new Map<string, EvidenceFile>();
+@@ -81,7 +82,7 @@
+ .notes { display: none !important; }
+ [data-no-advance] { pointer-events: none; }
+ .dk-frame { border-radius: 20px; }
+-:host-context(.timeline) .deck * { transition: none !important; animation: none !important; }
++@media (prefers-reduced-motion: reduce) { .deck * { animation: none !important; transition: none !important; } }
+ `;
+     this.content=document.createElement('div');this.content.className='deck';shadow.append(style,this.content);stage.append(this.element);
+   }
+@@ -105,6 +106,20 @@
+     for(const e of template.content.querySelectorAll('*'))for(const a of e.attributes) {
+       if((a.name==='style'&&/url\s*\(\s*["']?\s*(?:https?:|javascript:|\/\/)/i.test(a.value))||/^on/i.test(a.name)||(/^(src|href|xlink:href)$/i.test(a.name)&&/^(https?:|javascript:|\/\/)/i.test(a.value)))throw new Error('Unsafe evidence attribute');
+     }
++    const sameSequence = this.key.startsWith(`${ref.seq}-`);
++    // Diff snapshots before the atomic replacement: only a newly visible reveal node gets a
++    // local entrance. Existing headings/images never fade again with the whole slide.
++    const oldNodes = [...this.content.querySelectorAll<HTMLElement>('*')];
++    const newNodes = [...template.content.querySelectorAll<HTMLElement>('*')];
++    const fresh = sameSequence ? newNodes.filter((node, index) => {
++      const old = oldNodes[index];
++      return old && old.tagName === node.tagName && old.textContent === node.textContent && node.hasAttribute('data-step') && (old.hidden || old.classList.contains('off') || old.style.opacity === '0')
++        && !node.hidden && !node.classList.contains('off') && node.style.opacity !== '0';
++    }) : [];
+     this.key=key;this.content.replaceChildren(template.content);this.element.dataset['frame']=key;
++    const reduced = motion.reduced;
++    if (visible && !reduced && !document.body.classList.contains('instant')) for (const node of fresh) node.animate(
++      [{ opacity: 0 }, { opacity: 1 }],
++      { duration: 200, easing: 'ease-out' });
+   }
+ }
+--- avant/src/styles.css
++++ apres/src/styles.css
+@@ -34,10 +34,10 @@
+ /* Hidden legacy panels must not allocate glass compositor surfaces underneath the active view. */
+ #stage .pane:not(.on) { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+ .instant #stage .pane, .instant #stage .pane * { transition: none !important; }
+-/* The director's absolute timeline owns opacity. Never let a recycled pane keep a CSS fade
+-   alive during travel, or delay its children independently after the camera has arrived. */
+-.timeline #stage .pane, .timeline #stage .pane * { transition: none !important; animation: none !important; }
+-.timeline #stage { will-change: opacity; }
++/* A selected panel has one opacity owner during travel. Descendant/cover animations
++   remain independent; removing the attribute does not replay their current state. */
++#stage .pane[data-directed] { transition: none !important; }
++@media (prefers-reduced-motion: reduce) { #stage .pane { transition: none; } }
+ 
+ /* loading veil (before the first state is shown) */
+ #veil { position: fixed; inset: 0; background: #f4f7f2; z-index: 20; transition: opacity .6s; }
+--- avant/tests/timeline.test.ts
++++ apres/tests/timeline.test.ts
+@@ -1,68 +1,118 @@
+ import test from 'node:test';
+ import assert from 'node:assert/strict';
+-import { transitionFrame, transitionTiming } from '../src/nav/timeline.ts';
++import { transitionFrame, transitionTiming, contentStart, WORLD_RETURN_DURATION } from '../src/nav/timeline.ts';
++import { classifyTransition, visiblePanels } from '../src/nav/transition-plan.ts';
++import { FULL_STATES } from '../src/story/itinerary.ts';
+ import { arrivalWalk } from '../src/characters/arrival.ts';
+ import { ease, shotDistance } from '../src/camera/rig.js';
++const find = (id: string) => FULL_STATES.find(s => s.id === id)!;
+ 
+-test('content is fully gone before movement and stays hidden until stabilization ends', () => {
+-  const timing = transitionTiming(45, 40);
+-  assert.equal(transitionFrame(timing, 0).opacity, 1);
+-  for (let t = timing.exit; t < timing.arrival; t += .013) {
+-    const frame = transitionFrame(timing, t);
+-    assert.equal(frame.opacity, 0);
+-    if (frame.phase === 'settle') assert.equal(frame.progress, 1);
++test('all 95 fixed passages preserve active frames with no camera time or walking', () => {
++  let count = 0, internal = 0;
++  for (let i = 1; i < FULL_STATES.length; i++) {
++    const from = FULL_STATES[i - 1]!, to = FULL_STATES[i]!;
++    if (from.shot !== to.shot || from.actors.guide.at !== to.actors.guide.at) continue;
++    count++; if (from.source.seq === to.source.seq) internal++;
++    const plan = classifyTransition(from, to, 'next', 0, 0);
++    assert.equal(plan.kind, 'content'); assert.equal(plan.walk, false);
++    assert.deepEqual(plan.hiddenPanels, []);
++    const timing = transitionTiming(0, 0, false, false, plan.kind, false);
++    assert.equal(timing.total, 0);
++    for (const t of [0, .06, .12, .2, 1]) {
++      const frame = transitionFrame(timing, t);
++      assert.equal(frame.opacity, 1);
++      assert.deepEqual([...visiblePanels(from.panels, to.panels, plan, frame.phase, frame.opacity)], to.panels);
++    }
+   }
+-  assert.equal(transitionFrame(timing, timing.exit).progress, 0);
+-  assert.equal(transitionFrame(timing, timing.arrival).opacity, 0);
+-  assert.ok(transitionFrame(timing, timing.arrival + .15).opacity > 0);
+-  assert.equal(transitionFrame(timing, timing.total).complete, true);
++  assert.equal(count, 95); assert.equal(internal, 67);
+ });
+ 
+-test('camera travel is distance based, bounded, and the visible stride keeps a human pace', () => {
+-  const near = transitionTiming(14, 0), far = transitionTiming(28, 0);
+-  assert.equal(far.movement / near.movement, 2);
+-  assert.equal(transitionTiming(10000, 0).movement, 6.5);
+-  assert.equal(transitionTiming(.01, 0).movement, .65);
+-  for (const distance of [1, 14, 50, 130]) {
+-    const timing = transitionTiming(distance, 40);
+-    let previous = 0;
+-    for (let t = 0; t < timing.total; t += .005) {
+-      const frame = transitionFrame(timing, t);
+-      const walk = arrivalWalk(frame.movementTime, timing.movement, 40);
+-      assert.ok((walk.distance - previous) / .005 <= 1.801);
+-      if (frame.phase === 'enter' || frame.phase === 'settle') assert.equal(walk.walking, false);
+-      previous = walk.distance;
+-    }
++test('approaches keep evidence and cycle labels, without walking or an empty stage', () => {
++  for (const [a, b] of [['plateforme-2','sequence-0'],['ch2-0','outils-dev-0'],['devsecops-0','devsecops-1']]) {
++    const from = find(a!), to = find(b!);
++    const plan = classifyTransition(from, to, 'next', 10, 0);
++    assert.equal(plan.walk, false); assert.deepEqual(plan.hiddenPanels, []);
++    const timing = transitionTiming(10, 0, false, false, plan.kind, false);
++    assert.ok(timing.movement >= .65 && timing.movement <= 1);
++    const frame = transitionFrame(timing, timing.movement / 2);
++    assert.equal(frame.opacity, 1);
++    for (const id of from.panels.filter(id => to.panels.includes(id)))
++      assert.ok(visiblePanels(from.panels, to.panels, plan, frame.phase, frame.opacity).has(id));
+   }
+ });
+ 
+-test('interruptions start at the actual opacity and dropped frames reach the final content', () => {
+-  const timing = transitionTiming(45, 40);
+-  for (const opacity of [0, .3, 1]) {
+-    assert.equal(transitionFrame(timing, 0, opacity).opacity, opacity);
+-    assert.equal(transitionFrame(timing, timing.exit, opacity).opacity, 0);
+-    const complete = transitionFrame(timing, 100, opacity);
+-    assert.equal(complete.opacity, 1);
+-    assert.equal(complete.progress, 1);
+-    assert.equal(complete.complete, true);
++test('object staging removes only obstructing evidence, retaining shared world markers', () => {
++  const from = { ...find('devsecops-0'), panels: ['evidence', 'cycle-title', 'stage2'] };
++  const to = find('devsecops-1');
++  const plan = classifyTransition(from, to, 'next', 8, 0);
++  assert.deepEqual(plan.hiddenPanels, ['evidence']);
++  const vis = visiblePanels(from.panels, to.panels, plan, 'move', 0);
++  assert.equal(vis.has('evidence'), false); assert.ok(vis.has('cycle-title')); assert.ok(vis.has('stage2'));
++});
++
++test('world return has its explicit short budget, independent of distance and walking', () => {
++  const plan = classifyTransition(find('retour-0'), find('retour-1'), 'next', 120, 0);
++  assert.equal(plan.kind, 'world'); assert.equal(plan.walk, false);
++  const timing = transitionTiming(120, 0, false, false, plan.kind);
++  assert.equal(timing.movement, WORLD_RETURN_DURATION); assert.ok(timing.total < 2.2);
++});
++
++test('only forward travel imposes the natural arrival stride; reverse and jumps relocate quickly', () => {
++  const from = find('methodologie-1'), to = find('ch2-0');
++  for (const intent of ['prev','jump'] as const) {
++    const plan = classifyTransition(to, from, intent, 45, 40);
++    assert.equal(plan.kind, 'relocate'); assert.equal(plan.walk, false);
++    assert.equal(transitionTiming(45, 40, false, false, plan.kind).movement, .75);
++  }
++  const plan = classifyTransition(from, to, 'next', 45, 40);
++  assert.equal(plan.kind, 'travel'); assert.equal(plan.walk, true);
++  const timing = transitionTiming(45, 40, false, false, plan.kind);
++  assert.ok(timing.movement >= 4.5 && timing.movement <= 5.2);
++  let previous = 0;
++  for (let t = 0; t < timing.total; t += .005) {
++    const frame = transitionFrame(timing, t), walk = arrivalWalk(frame.movementTime, timing.movement, 40);
++    assert.ok((walk.distance - previous) / .005 <= 1.801);
++    if (frame.phase === 'enter') assert.equal(walk.walking, false);
++    previous = walk.distance;
+   }
+ });
+ 
+-test('text-only reveals stay short and reduced motion retains exit before arrival', () => {
+-  const text = transitionTiming(0, 0);
+-  assert.equal(text.movement, 0);
+-  assert.equal(text.total, .3);
+-  const reduced = transitionTiming(90, 40, true);
+-  assert.equal(transitionFrame(reduced, 0).progress, 0);
+-  assert.equal(transitionFrame(reduced, reduced.exit).progress, 1);
+-  assert.equal(transitionFrame(reduced, reduced.exit).opacity, 0);
+-  assert.equal(transitionFrame(reduced, reduced.total).opacity, 1);
++test('same nominal shot during interruption still requires real camera/actor reconciliation', () => {
++  const a = find('sequence-0'), b = find('sequence-1');
++  assert.equal(classifyTransition(a, b, 'next', 12, 0).kind, 'approach');
++  assert.equal(classifyTransition(a, b, 'prev', 12, 15).kind, 'relocate');
+ });
+ 
+-test('camera distance accounts for lifted paths and easing has a constant central pace', () => {
+-  const a = { pos: [0, 0, 0], target: [0, 0, -1], fov: 38 };
+-  const b = { pos: [28, 0, 0], target: [28, 0, -1], fov: 38 };
+-  assert.equal(shotDistance(a, b), 28);
+-  assert.ok(shotDistance(a, b, 16) > 28);
+-  assert.ok(Math.abs((ease(.4) - ease(.3)) - (ease(.7) - ease(.6))) < 1e-9);
++test('interruptions preserve selected opacity and do not repeat an exit from a hidden panel', () => {
++  for (const opacity of [0,.3,1]) {
++    const timing = transitionTiming(45, 0, false, false, 'relocate', true, opacity);
++    if (opacity === 0) assert.equal(timing.exit, 0);
++    assert.equal(transitionFrame(timing, 0, opacity).opacity, opacity);
++    const complete = transitionFrame(timing, 100, opacity);
++    assert.equal(complete.opacity, 1); assert.equal(complete.complete, true);
++  }
+ });
++
++test('reduced and fast retain eventual content without real walking or an empty fixed frame', () => {
++  const reduced = transitionTiming(90, 40, true, false, 'travel');
++  assert.equal(reduced.movement, 0); assert.ok(reduced.total <= .2);
++  assert.equal(transitionFrame(reduced, reduced.total).opacity, 1);
++  const fast = transitionTiming(90, 40, false, true, 'travel');
++  assert.equal(fast.movement, .03);
++  for (const reduced of [true, false]) assert.equal(transitionTiming(0,0,reduced,true,'content',false).total,0);
++});
++
++test('camera distance includes lift; long journeys retain their constant central pace', () => {
++  const a = { pos:[0,0,0], target:[0,0,-1], fov:38 }, b = { pos:[28,0,0], target:[28,0,-1], fov:38 };
++  assert.equal(shotDistance(a,b),28); assert.ok(shotDistance(a,b,16)>28);
++  assert.ok(Math.abs((ease(.4)-ease(.3))-(ease(.7)-ease(.6)))<1e-9);
++});
++
++ test('camera completion does not restart pointing or feedback when content stayed visible', () => {
++  const approach = transitionTiming(10,0,false,false,'approach',false);
++  assert.equal(contentStart(approach,false),0);
++  assert.ok(approach.total-contentStart(approach,false) >= .65);
++  const travel = transitionTiming(45,40,false,false,'travel',true);
++  assert.equal(contentStart(travel,true),travel.arrival);
++  assert.ok(Math.abs(travel.total-contentStart(travel,true)-travel.enter)<1e-9);
++ });
+--- avant/scripts/package-release.py
++++ apres/scripts/package-release.py
+@@ -7,7 +7,8 @@
+ ROOT = Path(__file__).resolve().parents[1]
+ OUT = ROOT / 'release'
+ OUT.mkdir(exist_ok=True)
+-ARCHIVE = OUT / 'zawedni-story-3d-classique-validee.zip'
++REVISION = 'animations-corrigees'
++ARCHIVE = OUT / f'zawedni-story-3d-{REVISION}.zip'
+ sha = lambda data: hashlib.sha256(data).hexdigest()
+ files = set()
+ for folder in ['src', 'scripts', 'tests', 'content', 'public', 'dist', 'docs']:
+@@ -16,13 +17,15 @@
+                  'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.js',
+                  'index.html', 'presenter.html', 'present.sh']:
+     files.add(ROOT / filename)
+-review = ROOT / 'review/classic'
+-files.update(path for path in review.rglob('*') if path.is_file() and path.suffix in ['.png', '.json', '.html', '.webm', '.mp4', '.md', '.txt'])
++review = ROOT / 'review/animation-correction-2026-10-12'
++files.update(path for path in review.iterdir() if path.is_file() and path.suffix in ['.png', '.json', '.mp4', '.md', '.vtt'])
++# Historical v7 provenance is required by check-provenance; local backup copies are not.
++files = {path for path in files if not ('content/history' in str(path.relative_to(ROOT)) and 'v7' not in path.parts)}
+ files = {path for path in files if '__pycache__' not in path.parts and path.suffix not in ['.pyc', '.log', '.zip']}
+ manifest = {str(path.relative_to(ROOT)): sha(path.read_bytes()) for path in sorted(files)}
+ manifest_path = OUT / 'DELIVERY-MANIFEST.json'
+ reference = json.loads((ROOT / 'content/reference/manifest.json').read_text())
+-manifest_path.write_text(json.dumps({'revision': 'classique-validee', 'reference': reference['files'], 'counts': reference['counts'], 'files': manifest}, indent=2) + '\n')
++manifest_path.write_text(json.dumps({'revision': REVISION, 'reference': reference['files'], 'counts': reference['counts'], 'files': manifest}, indent=2) + '\n')
+ with zipfile.ZipFile(ARCHIVE, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
+     for path in sorted(files):
+         archive.write(path, 'zawedni-story-3d/' + str(path.relative_to(ROOT)))
+--- avant/docs/TRANSITIONS.md
++++ apres/docs/TRANSITIONS.md
+@@ -1,60 +1,84 @@
+-# Chronologie des transitions
++# Mise en scène des transitions
+ 
+-Le lanceur du dossier historique délègue à `/home/ali/Desktop/zawedni-story-3d/present.sh`.
+-Les corrections sont dans ce projet indépendant. Les exports du contenu et les notes
+-acceptées ne sont pas modifiés.
++Un clic ne masque pas automatiquement la slide. Le contenu, les exports et les notes
++acceptés sont conservés. Les corrections sont limitées au projet autonome ; le lanceur
++historique continue à lui déléguer la présentation.
+ 
+-`src/nav/timeline.ts` décrit une chronologie absolue, échantillonnée par le directeur :
++`src/nav/transition-plan.ts` classe chaque commande depuis le cadrage **réel** et les
++positions affichées. `move: reveal` seul n'est pas un critère : il contient aussi des
++rapprochements et le recul final. La chronologie absolue reste dans `timeline.ts`.
+ 
+-- sortie du contenu : 240 ms, caméra et poses maintenues ;
+-- déplacement : distance du trajet caméra / 14 unités par seconde, entre 650 ms
+-  et 6,5 s, avec un minimum supplémentaire pour la marche visible ;
+-- stabilisation : 180 ms, contenu toujours entièrement caché ;
+-- entrée du contenu : 300 ms, caméra arrivée, marche terminée.
++| Cas | Panneaux | Budget de mouvement normal |
++|---|---|---|
++| Texte, capture, slide fixe | Cadre opaque et actif ; remplacement DOM atomique | 0 s ; nouveauté de texte locale 0,20 s |
++| Rapprochement | Contenu et repères partagés conservés | 0,65–1,00 s |
++| Présentation d'objet | Seulement les grands panneaux gênants retirés ; repères conservés | 0,65–1,00 s |
++| Recul final `retour-1` | Carte libérée ; aucun déplacement du guide | 1,75 s |
++| Voyage avant | Grande carte retirée ; caméra et marche terminale | 4,50–5,20 s |
++| Précédent / saut avec déplacement | Relocalisation douce sans clip de marche | 0,75 s |
+ 
+-Une révélation sans déplacement dure 300 ms (120 ms de sortie, 180 ms d'entrée).
+-Le mode léger conserve exactement la même chronologie. Le mouvement réduit
+-conserve la sortie puis l'entrée, avec le changement de pose pendant l'occultation.
+-Cette préférence est figée au départ de chaque transition.
++Lorsque des panneaux sont sélectionnés pour l'occultation, leur sortie dure 0,16 s et
++leur entrée 0,20 s. Aucune pause de stabilisation vide n'est ajoutée. Une sortie déjà
++complètement cachée n'est pas rejouée. Le cycle `devsecops-0 → devsecops-1` n'a aucun
++grand panneau gênant : ses titres, étiquettes et étapes restent visibles.
+ 
+-Le directeur masque la couche de contenu entière pendant le mouvement, y compris
+-le panneau générique `evidence`, les anciens titres, la couverture et le film.
+-Les animations CSS indépendantes des panneaux sont désactivées. Le film est mis
+-en pause lors d'une navigation et ne démarre qu'à son apparition à destination.
+-Les repères intégrés au décor 3D restent disponibles.
++Le budget de voyage respecte `minimumArrivalDuration()` : jusqu'à 2,6 mètres sur la
++fenêtre terminale de 38 % du mouvement, pointe de vitesse ≤ 1,8 m/s. Le déplacement
++intermédiaire du personnage est une relocalisation masquée, pas une course à travers
++le monde. Les petits mouvements utilisent une courbe douce ; les voyages conservent
++leurs épaules d'accélération et une vitesse centrale presque constante.
+ 
+-La caméra utilise de courtes accélérations/décélérations autour d'une vitesse
+-centrale constante. La longueur mesurée inclut les éventuelles courbes surélevées.
+-Comme auparavant, les grands changements de lieu masquent le personnage pendant
+-la relocalisation, puis montrent au maximum les 2,6 derniers mètres à pied. La durée
+-réserve suffisamment de temps pour limiter cette marche à 1,8 m/s. Le cycle est
+-évalué depuis la distance réelle et son poids est nul dès l'arrêt.
++## Opacité et contenu
+ 
+-Une commande pendant un déplacement capture la caméra, les poses et l'opacité
+-effectivement affichées. Elle remplace la chronologie courante sans terminer ni
+-révéler l'ancienne destination. Les clics rapides utilisent toujours l'index logique
+-de navigation ; les panneaux utilisent l'état effectivement affiché.
+-Les frames perdues sont rattrapées par l'horloge, sans accumulation de délais.
++`#stage` reste visible et opaque. Le directeur contrôle uniquement l'opacité des
++panneaux `evidence`, `cover`, `sommaire`, `film-title` sélectionnés par la classification.
++`data-directed` suspend la transition CSS du panneau concerné, puis est retiré à la
++fin. Les descendants et les autres panneaux gardent leurs animations. Aucun
++`body.timeline` permanent n'est ajouté.
+ 
+-Vérification reproductible :
++Les snapshots HTML d'EvidencePanel sont validés et remplacés atomiquement, sans vider
++le cadre. Les nouvelles révélations `data-step` sont repérées avant le remplacement
++et reçoivent une animation locale d'opacité de 200 ms. Les autres éléments ne sont pas
++réanimés. Captures et nouvelles slides peuvent être remplacées immédiatement.
++Les états d'administration et les proportions de la composition restent identiques.
++
++## Interruptions
++
++Chaque commande capture la caméra et les poses affichées. Précédent ou saut rejoint
++rapidement la nouvelle destination sans terminer le trajet abandonné. Si le trajet
++avant ou une relocalisation rapide est encore engagé vers les mêmes ancres, la nouvelle destination de contenu
++remplace la précédente **sans changer son heure de départ, sa durée ou la progression
++de marche**. La caméra reçoit un segment depuis sa pose actuelle jusqu'au nouveau
++cadrage, sur le temps restant. Les commandes de contenu à cadrage déjà arrivé conservent
++l'entrée en cours. Un nouveau cadrage après l'arrivée reçoit un rapprochement distinct.
++
++L'horloge du pointage et du retour visuel démarre avec le contenu visible : au départ
++d'un rapprochement qui conserve le panneau, ou à l'arrivée si celui-ci était masqué.
++La fin du mouvement ne rejoue donc pas les gestes.
++
++Les notes suivent l'index demandé et les pressions répétées involontaires du clavier
++sont ignorées. Le film est suspendu à chaque navigation, démarre à son état visible,
++et sa sortie rembobine la lecture. Le présentateur ne charge aucune piste média.
++
++Le mode léger conserve les mêmes budgets. Le mode réduit supprime caméra et marche,
++avec une occultation sélectionnée de 0,08 + 0,12 s si nécessaire ; les cadres fixes
++restent opaques. Le mode `test&fast` n'est utilisé que pour des contrôles séparés,
++jamais pour l'enregistrement de revue.
++
++## Vérification
+ 
+ ```sh
+ npm test
+ npm run build
+-ZS3D_NO_BROWSER=1 ./present.sh
+-node scripts/verify-transitions.mjs
+-node scripts/verify-transition-recovery.mjs
+-node scripts/render-transition-recording.mjs
+-npm run verify:classic
++ZS3D_NO_BROWSER=1 XDG_RUNTIME_DIR=/tmp ./present.sh
++node --import tsx scripts/verify-animation-correction.mjs
++python3 scripts/package-release.py
+ ```
+ 
+-`verify-transitions.mjs` ouvre automatiquement les vraies notes, utilise les touches
+-de celles-ci, vérifie chaque changement de cadrage dans les deux sens en modes
+-normal et léger, les six sauts de chapitre et les clics rapides. Les courtes phases
+-d'interruption sont aussi échantillonnées explicitement pour les pilotes logiciels
+-qui perdent des frames. Les autres trajets et les enregistrements sont en temps réel.
+-Le rapport distingue les phases effectivement observées. Il vérifie l'occultation
+-sur chaque frame, l'arrêt de la marche et le contenu final, ainsi que l'absence
+-d'exceptions et de requêtes externes. Aucun accès réseau externe ni capacité nouvelle
+-n'est introduit par l'implémentation ; les validations des commandes et du HTML local
+-restent actives.
++Le serveur du lanceur doit rester actif pendant la vérification. Le script exécute
++normal/léger à 1920×1080 et 1366×768, utilise les touches et boutons des deux fenêtres,
++contrôle les 95 passages fixes en navigateur et enregistre les exemples à vitesse
++normale. Les placements instantanés préparent seulement les cas ; les observations
++proviennent des commandes réelles, sans modification de l'horloge.
++Les anciennes revues dans `review/transitions` concernent le mécanisme global antérieur.
++Les résultats courants sont dans `review/animation-correction-2026-10-12`.
+--- /dev/null
++++ apres/src/nav/transition-plan.ts
+@@ -0,0 +1,35 @@
++import type { StoryState } from '../story/types.ts';
++export type TransitionKind = 'content' | 'approach' | 'object' | 'world' | 'travel' | 'relocate';
++export type NavigationIntent = 'next' | 'prev' | 'jump';
++export interface TransitionPlan {
++  readonly kind: TransitionKind;
++  readonly hiddenPanels: readonly string[];
++  readonly walk: boolean;
++}
++const OBSTRUCTING = new Set(['evidence', 'cover', 'sommaire', 'film-title']);
++/** Geometry comes from the rendered shot/poses, never just the two nominal shot names.
++ * Scene exceptions express staging intent without changing the accepted itinerary. */
++export function classifyTransition(from: StoryState, to: StoryState, intent: NavigationIntent,
++  cameraDistance: number, actorDistance: number): TransitionPlan {
++  let kind: TransitionKind;
++  if (cameraDistance < 1e-5 && actorDistance < 1e-5) kind = 'content';
++  else if (intent !== 'next') kind = 'relocate';
++  else if (actorDistance > 1e-5) kind = 'travel';
++  else if (to.id === 'retour-1') kind = 'world';
++  else if (to.source.seq === 'devsecops' || to.shot === 'architecture' || !!to.media) kind = 'object';
++  else kind = 'approach';
++  const clearView = ['travel', 'relocate', 'world', 'object'].includes(kind);
++  const hiddenPanels = clearView ? [...new Set([...from.panels, ...to.panels])].filter(id => OBSTRUCTING.has(id)) : [];
++  return { kind, hiddenPanels, walk: kind === 'travel' };
++}
++/** Only obstructing panels follow the director's opacity. Shared world labels stay active. */
++export function visiblePanels(from: readonly string[], to: readonly string[], plan: TransitionPlan,
++  phase: string, opacity: number): Set<string> {
++  const display = phase === 'exit' ? from : to;
++  const hidden = new Set(plan.hiddenPanels);
++  const visible = new Set(display.filter(id => !hidden.has(id) || opacity > 0));
++  if (phase === 'move' || phase === 'settle') {
++    for (const id of from) if (to.includes(id) && !hidden.has(id)) visible.add(id);
++  }
++  return visible;
++}
+--- /dev/null
++++ apres/scripts/verify-animation-correction.mjs
+@@ -0,0 +1,243 @@
++// Live behavioral checks through jury keys and the real presenter buttons.
++// Instant placement only prepares a case; no clock/phase manipulation enters observations.
++import { chromium } from 'playwright-core';
++import { FULL_STATES } from '../src/story/itinerary.ts';
++import assert from 'node:assert/strict';
++import { mkdirSync, writeFileSync, renameSync, readFileSync } from 'node:fs';
++const out = 'review/animation-correction-2026-10-12';
++mkdirSync(`${out}/raw`, { recursive: true });
++const base = process.argv[2] || 'http://127.0.0.1:4318';
++const recordingOnly=process.env.QA_RECORD_ONLY==='1';
++const report = (process.env.QA_EXTRA || process.env.QA_REPLACE_NORMAL || recordingOnly) ? JSON.parse(readFileSync(`${out}/report.json`)) : { normalSpeed:true, clockManipulated:false, audioRecorded:false, configurations:[], errors:[], external:[], failures:[] };
++const gl = process.env.QA_GL === '1';
++const browser = await chromium.launch({channel:'chrome',headless:!gl,args:[
++  ...(gl ? ['--use-angle=gl','--use-gl=angle','--ignore-gpu-blocklist'] : ['--use-angle=swiftshader','--enable-unsafe-swiftshader']),'--disable-background-timer-throttling',
++  '--disable-renderer-backgrounding','--disable-backgrounding-occluded-windows']});
++const fixedReference = process.env.QA_REUSE_FIXED ? JSON.parse(readFileSync(process.env.QA_FIXED_REFERENCE || `${out}/report.json`)).configurations.find(c=>c.width===1920&&c.quality==='normal') : null;
++if(process.env.QA_REPLACE_NORMAL)report.configurations=report.configurations.filter(c=>c.quality!=='normal');
++const configs = recordingOnly ? [[1366,768,'normal']] : process.env.QA_ONLY_NORMAL ? [[1920,1080,'normal'],[1366,768,'normal']] : process.env.QA_EXTRA ? [[1366,768,'normal'],[1920,1080,'light'],[1366,768,'light']] : process.env.QA_SINGLE ? [[1920,1080,'normal']] : [[1920,1080,'normal'],[1366,768,'normal'],[1920,1080,'light'],[1366,768,'light']];
++try {
++ for (const [width,height,quality] of configs) {
++  const recorded = recordingOnly || (width===1920 && quality==='normal');
++  const filePrefix=recordingOnly?'recording-':'';
++  const config = { width,height,quality,cases:[],fixedChecks:[],clips:[] };
++  if(recordingOnly)(report.recordings??=[]).push(config);else report.configurations.push(config);
++  const context = await browser.newContext({viewport:{width,height},reducedMotion:'no-preference',
++    ...(recorded ? {recordVideo:{dir:`${out}/raw`,size:{width:960,height:540}}} : {})});
++  context.on('page',p=>p.on('pageerror',e=>report.errors.push(e.message)));
++  context.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith(base))report.external.push(r.url());});
++  context.on('response',r=>{if(r.status()>=400)report.errors.push(`${r.status()} ${r.url()}`);});
++  const jury = await context.newPage(), video = jury.video();
++  try {
++   const popup = context.waitForEvent('page');
++   await jury.goto(`${base}/?pv=auto&q=${quality}#probleme-0`,{waitUntil:'domcontentloaded'});
++   const notes = await popup;
++   await jury.waitForFunction(()=>window.__story?.ready,null,{timeout:90000});
++   await notes.waitForFunction(()=>window.__presenter?.cur==='probleme-0',null,{timeout:20000});
++   await jury.bringToFront();
++   await jury.waitForTimeout(800);
++   config.build=(await (await jury.request.get(`${base}/build-info.json`)).json()).buildId;
++   config.environment=await jury.evaluate(()=>{
++    const gl=__story.renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');
++    return {renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),search:location.search,
++      actualViewport:[innerWidth,innerHeight],light:document.body.classList.contains('quality-light'),reduced:matchMedia('(prefers-reduced-motion: reduce)').matches};
++   });
++   await jury.evaluate(()=>{
++    const d=__story.director,go=d.go.bind(d),frame=d.frame.bind(d);
++    window.__audit={active:false,samples:[],commands:[],animations:[]};
++    const animate=Element.prototype.animate;
++    Element.prototype.animate=function(...args){if(__audit.active)__audit.animations.push({tag:this.tagName,step:this.getAttribute('data-step'),options:args[1]});return animate.apply(this,args);};
++    d.go=(i,options)=>{
++      const previous=d.tr, before={elapsed:previous?performance.now()/1000-previous.t0:null,id:d.state.id,display:d.renderedState.id,camera:d.camera.position.toArray(),guide:d.renderedPoses.guide?.pos.toArray(),opacity:d.contentOpacity};
++      go(i,options);
++      if(__audit.active)__audit.commands.push({time:performance.now()/1000,to:d.state.id,before,kind:d.tr?.plan.kind,t0:d.tr?.t0,timing:d.tr?.timing,
++        hidden:d.tr?.plan.hiddenPanels,retained:!!previous&&previous===d.tr,capturedCamera:d.tr?.shot.pos,capturedGuide:d.tr?.starts.guide?.pos.toArray(),initialOpacity:d.tr?.initialOpacity});
++    };
++    d.frame=now=>{
++      const tr=d.tr;frame(now);if(!__audit.active)return;
++      const stage=document.getElementById('stage'),ev=document.getElementById('p-evidence'),v=document.querySelector('video'),p=d.renderedPoses.guide;
++      const shared=tr?tr.from.panels.filter(id=>d.state.panels.includes(id)&&!tr.plan.hiddenPanels.includes(id)):[];
++      const props=[];d.actors.guide.root.parent.traverse(o=>{
++        if(o.position.x===1&&o.position.y===2.85&&o.position.z===-2.2)props.push({kind:'mobile',visible:o.visible});
++        if(Math.abs(o.position.x+6.6)<1e-6&&o.position.y===1.3&&o.position.z===20)props.push({kind:'phone',visible:o.visible});
++      });
++      __audit.samples.push({t:now,id:d.state.id,display:d.renderedState.id,phase:stage.dataset.phase,kind:tr?.plan.kind,
++        stageOpacity:+getComputedStyle(stage).opacity,stageVisibility:getComputedStyle(stage).visibility,
++        evidenceOn:ev.classList.contains('on'),evidenceOpacity:+getComputedStyle(ev).opacity,evidenceFrame:ev.dataset.frame,apkVisible:[...ev.shadowRoot.querySelectorAll('.apk')].some(e=>e.checkVisibility({opacityProperty:true,visibilityProperty:true})),
++        active:[...document.querySelectorAll('.pane.on')].map(e=>e.dataset.panel),directed:document.querySelectorAll('[data-directed]').length,
++        inactiveManagedHidden: [...document.querySelectorAll('[data-directed]:not(.on)')].every(e=>+getComputedStyle(e).opacity===0),
++        sharedVisible:shared.every(id=>document.getElementById(`p-${id}`)?.classList.contains('on')),
++        camera:d.camera.position.toArray(),guide:p.pos.toArray(),walk:p.walkW,guideOpacity:p.opacity,
++        videoHidden:document.getElementById('film').hidden,videoPaused:v.paused,videoTime:v.currentTime,props});
++    };
++   });
++   const index=id=>FULL_STATES.findIndex(s=>s.id===id);
++   async function at(id){
++    await jury.bringToFront();
++    await jury.waitForFunction(id=>__story.state===id&&__story.director.renderedState.id===id&&__story.settled&&(!__story.director.state.evidence||+getComputedStyle(document.getElementById('p-evidence')).opacity===1),id,{timeout:25000});
++    await notes.waitForFunction(id=>__presenter.cur===id,id,{timeout:15000});
++   }
++   async function prepare(id){
++    await jury.evaluate(i=>{__audit.active=false;__story.go(i,{instant:true});},index(id));
++    await at(id);await jury.waitForTimeout(200);
++   }
++   async function begin(){return jury.evaluate(()=>{__audit.samples=[];__audit.commands=[];__audit.animations=[];__audit.active=true;return performance.now()/1000;});}
++   async function finish(label,from,to,start,clip=false){
++    await at(to);await jury.waitForTimeout(clip?900:250);
++    // Native animations become ready on a rendered frame, which can be much later on
++    // a software GPU. Wait for their real completion; never finish() or retime them.
++    await jury.waitForFunction(()=>document.getElementById('p-evidence').shadowRoot.querySelector('.deck').getAnimations({subtree:true}).every(a=>a.playState==='finished'||a.playState==='idle'),null,{timeout:25000});
++    const data=await jury.evaluate(()=>{const ev=document.getElementById('p-evidence'),d=__story.director;return {...__audit,end:performance.now()/1000,final:{...__audit.samples.at(-1),id:d.state.id,contentOrigin:d.stateT0,phase:document.getElementById('stage').dataset.phase,directed:document.querySelectorAll('[data-directed]').length,evidenceOn:ev.classList.contains('on'),evidenceFrame:ev.dataset.frame,evidenceOpacity:+getComputedStyle(ev).opacity,apkVisible:[...ev.shadowRoot.querySelectorAll('.apk')].some(e=>e.checkVisibility({opacityProperty:true,visibilityProperty:true}))}};});
++    await jury.evaluate(()=>__audit.active=false);
++    assert.ok(data.commands.length);assert.ok(data.samples.length);
++    for(const s of data.samples){
++      assert.equal(s.stageOpacity,1,`${label}: stage opacity`);assert.equal(s.stageVisibility,'visible');assert.equal(s.sharedVisible,true);assert.equal(s.inactiveManagedHidden,true,'inactive selected panel remains hidden');
++      if(['content','approach','object','world','relocate'].includes(s.kind))assert.equal(s.walk,0,`${label}: unexpected walk`);
++      if(['travel','world','relocate'].includes(s.kind)&&s.phase==='move')assert.equal(s.evidenceOn,false,`${label}: obstructing evidence`);
++      if(s.phase==='move')assert.ok(s.videoHidden||s.videoPaused,`${label}: film during movement`);
++    }
++    const last=data.final;assert.equal(last.id,to);assert.equal(last.phase,'done');assert.equal(last.directed,0);
++    const lastCommand=data.commands.at(-1);
++    assert.ok(Math.abs(data.final.contentOrigin-lastCommand.t0-(lastCommand.hidden.length?lastCommand.timing.arrival:lastCommand.timing.exit))<1e-6,'continuous content/gesture clock');
++    const state=FULL_STATES[index(to)];if(state.evidence){assert.equal(last.evidenceOn,true);assert.equal(last.evidenceFrame,to);assert.equal(last.evidenceOpacity,1);}
++    for(const cmd of data.commands){
++      if(!cmd.retained&&cmd.capturedCamera)assert.deepEqual(cmd.capturedCamera,cmd.before.camera,'actual camera captured');
++      if(!cmd.retained&&cmd.capturedGuide)assert.deepEqual(cmd.capturedGuide,cmd.before.guide,'actual guide captured');
++    }
++    const result={label,from,to,start,end:data.end,commands:data.commands,frames:data.samples.length,phases:[...new Set(data.samples.map(s=>s.phase))],
++      minimumStageOpacity:Math.min(...data.samples.map(s=>s.stageOpacity)),minimumEvidenceOpacity:Math.min(...data.samples.map(s=>s.evidenceOpacity)),
++      contentOrigin:data.final.contentOrigin,
++      maxWalk:Math.max(...data.samples.map(s=>s.walk)),animations:data.animations,wallSeconds:data.end-start};
++    config.cases.push(result);
++    writeFileSync(`${out}/${filePrefix}${quality}-${width}-${String(config.cases.length).padStart(2,'0')}.json`,JSON.stringify(data,null,2));
++    if(clip&&recorded)config.clips.push({label,from,to,start:data.commands[0].time-.5,end:data.end});
++    console.log(`PASS ${quality} ${width}: ${label} (${data.samples.length} rendered frames)`);
++    return data;
++   }
++   if(recorded && !process.env.QA_SKIP_FIXED){
++    // One browser-side driver avoids hundreds of CDP round trips on software GPUs.
++    // Every advance still clicks the real presenter button and crosses its actual channel.
++    await notes.evaluate(()=>{
++      window.__qaDriver = new BroadcastChannel('zs3d-qa-driver');
++      __qaDriver.onmessage=()=>document.getElementById('advance').click();
++    });
++    jury.on('console',message=>{if(message.text().startsWith('QA fixed:'))console.log(message.text());});
++    await prepare(FULL_STATES[0].id);
++    config.fixedChecks=await jury.evaluate(async states=>{
++      const driver=new BroadcastChannel('zs3d-qa-driver'),result=[];
++      const check=(value,message)=>{if(!value)throw new Error(message);};
++      for(let i=1;i<states.length;i++){
++        const a=states[i-1],b=states[i];
++        __audit.samples=[];__audit.commands=[];__audit.active=true;
++        driver.postMessage('advance');
++        const deadline=performance.now()+25000;
++        await new Promise((resolve,reject)=>{
++          const poll=()=>{
++            if(__story.state===b.id&&__story.director.renderedState.id===b.id&&__story.settled)return resolve();
++            if(performance.now()>deadline)return reject(new Error(`Navigation timeout ${b.id}`));
++            setTimeout(poll,20);
++          };poll();
++        });
++        __audit.active=false;
++        if(a.shot!==b.shot||a.guide!==b.guide)continue;
++        const data=__audit;
++        check(data.commands.length===1,`one presenter command ${b.id}`);
++        check(data.commands[0].kind==='content'&&data.commands[0].timing.total===0,`fixed budget ${b.id}`);
++        check(data.samples.length>0,`rendered sample ${b.id}`);
++        for(const sample of data.samples){
++          check(sample.stageOpacity===1&&sample.walk===0,`fixed visibility/walk ${b.id}`);
++          check(sample.evidenceOn===b.evidence,`fixed evidence ${b.id}`);
++          check(Math.hypot(...sample.camera.map((v,j)=>v-data.commands[0].before.camera[j]))<1e-5,`fixed camera ${b.id}`);
++        }
++        result.push({from:a.id,to:b.id,frames:data.samples.length,kind:data.commands[0].kind,
++          observedSeconds:data.samples.at(-1).t-data.commands[0].time});
++        if(result.length%10===0)console.log(`QA fixed: ${result.length}/95`);
++      }
++      driver.close();return result;
++    },FULL_STATES.map(s=>({id:s.id,shot:s.shot,guide:s.actors.guide.at,evidence:!!s.evidence})));
++    assert.equal(config.fixedChecks.length,95);console.log('PASS 95 real presenter fixed transitions');
++   }
++   if(recorded && fixedReference){assert.equal(fixedReference.fixedChecks.length,95);config.fixedChecks=fixedReference.fixedChecks;config.fixedChecksBuild=fixedReference.fixedChecksBuild??fixedReference.build;config.fixedChecksReused='Subsequent changes concern non-settled relocation retargeting and gesture clocks after camera movement; fixed classification, timing, replacement, visibility and accepted itinerary are unchanged. Final unit coverage rechecks all 95.';}
++   const cases=[
++    ['Texte','probleme-0','probleme-1','ArrowRight'],
++    ['Capture administration','parcours-app-1','parcours-app-2','ArrowRight'],
++    ['Nouvelle slide fixe','startup-1','probleme-0','ArrowRight'],
++    ['Atelier preuves','plateforme-2','sequence-0','ArrowRight'],
++    ['Cycle 3D','devsecops-0','devsecops-1','ArrowRight'],
++    ['Voyage chapitre','methodologie-1','ch2-0','ArrowRight'],
++    ['Atelier sans marche','ch2-0','outils-dev-0','ArrowRight'],
++    ['Retour au monde','retour-0','retour-1','ArrowRight'],
++    ['Précédent rapide','ch2-0','methodologie-1','ArrowLeft']];
++   for(const [label,from,to,key] of cases){
++    await prepare(from);const start=await begin();await jury.keyboard.press(key);const data=await finish(label,from,to,start,true);
++    if(label==='Texte')assert.ok(data.animations.some(a=>a.step==='1'&&a.options.duration===200),'local new text entrance');
++    if(label==='Capture administration'){
++      const props=data.final.props;assert.equal(props.length,2);assert.ok(props.every(p=>!p.visible));
++      assert.equal(data.final.evidenceOn,true);assert.equal(data.final.apkVisible,false);
++    }
++    if(label==='Voyage chapitre')assert.ok(data.samples.some(s=>s.walk>.1),'arrival walk actually rendered');
++    if(label==='Cycle 3D')assert.deepEqual(data.commands[0].hidden,[]);
++   }
++   // Web/mobile local changes, including return to mobile, through actual next keys.
++   if(!recordingOnly){
++   await prepare('parcours-app-0');
++   const phoneStates=[];
++   for(const id of ['parcours-app-1','parcours-app-2','parcours-app-3','parcours-app-4']){
++    const start=await begin();await jury.keyboard.press('ArrowRight');const data=await finish('Téléphone local','parcours-app',id,start);
++    const props=data.final.props;assert.equal(props.length,2);
++    assert.ok(props.every(p=>p.visible===!['parcours-app-0','parcours-app-2'].includes(id)));assert.equal(data.final.apkVisible,!['parcours-app-0','parcours-app-2'].includes(id));phoneStates.push({id,props,apkVisible:data.final.apkVisible});
++   }
++   config.phoneStates=phoneStates;
++   }
++   await prepare('methodologie-1');let start=await begin();await jury.keyboard.press('ArrowRight');
++   await jury.waitForFunction(()=>document.getElementById('stage').dataset.phase==='move',null,{timeout:15000});
++   await notes.evaluate(()=>{for(const id of ['advance','advance','prev','advance','prev'])document.getElementById(id).click();});
++   let data=await finish('Rafale au même lieu','methodologie-1','outils-dev-0',start,true);
++   assert.equal(data.commands.length,6);assert.ok(data.commands.slice(1).every(c=>c.retained));
++   assert.equal(new Set(data.commands.map(c=>c.t0)).size,1,'travel deadline retained');
++   await prepare('methodologie-1');start=await begin();await jury.keyboard.press('ArrowRight');
++   await jury.waitForFunction(()=>document.getElementById('stage').dataset.phase==='move',null,{timeout:15000});
++   await jury.keyboard.press('ArrowLeft');data=await finish('Interruption par retour','methodologie-1','methodologie-1',start,true);
++   assert.equal(data.commands.at(-1).kind,'relocate');assert.ok(data.commands.at(-1).timing.movement<=.9);
++   if(recordingOnly)continue;
++   await prepare('methodologie-1');start=await begin();await jury.keyboard.press('ArrowRight');
++   const entryDelay=await jury.evaluate(()=>Math.max(0,(__story.director.tr.t0+__story.director.tr.timing.arrival-performance.now()/1000)*1000)+25);
++   await notes.evaluate(delay=>new Promise(resolve=>setTimeout(()=>{document.getElementById('advance').click();document.getElementById('prev').click();resolve();},delay)),entryDelay);
++   await finish('Rafale pendant entrée','methodologie-1','ch2-0',start,false);
++   await prepare('methodologie-1');start=await begin();
++   await notes.evaluate(i=>{document.querySelector(`[data-i="${i}"]`).click();document.getElementById('advance').click();},index('ch2-0'));
++   data=await finish('Rafale sur saut direct','methodologie-1','outils-dev-0',start,false);
++   assert.equal(data.commands.length,2);assert.equal(data.commands[0].kind,'relocate');
++   assert.equal(data.commands[1].retained,true);assert.ok(data.commands[1].timing.movement<=.9);
++   // Direct chapter command is a relocation rather than a compulsory terminal walk.
++   await prepare('startup-0');start=await begin();await jury.keyboard.press('6');
++   data=await finish('Saut chapitre','startup-0','ch6-0',start,false);assert.equal(data.commands[0].kind,'relocate');
++   // Local CSS cover transitions still run after the previous flights (no permanent timeline class).
++   await prepare('couverture-0');start=await begin();await jury.keyboard.press('ArrowRight');await at('couverture-1');
++   const cover=await jury.evaluate(()=>{const e=document.querySelector('#p-cover h1');return {duration:getComputedStyle(e).transitionDuration,
++    timeline:document.body.classList.contains('timeline'),animations:e.getAnimations().map(a=>a.playState)};});
++   assert.equal(cover.timeline,false);assert.notEqual(cover.duration,'0s');config.coverAfterTravel=cover;
++   await finish('Couverture CSS après voyages','couverture-0','couverture-1',start,false);
++   // Playback starts only on its visible reveal, never in flight; presenter has no media.
++   await prepare('startup-0');await jury.keyboard.press('ArrowLeft');await at('sommaire-1');await prepare('startup-0');start=await begin();await notes.evaluate(i=>document.querySelector(`[data-i="${i}"]`).click(),index('video-1'));
++   data=await finish('Film après relocalisation','startup-0','video-1',start,false);
++   assert.ok(data.samples.filter(s=>s.phase==='move').every(s=>s.videoHidden&&s.videoPaused));
++   assert.equal(await jury.evaluate(()=>document.querySelector('video').paused),true,'direct jump keeps the accepted paused film behavior');
++   await jury.keyboard.press('ArrowLeft');await at('video-0');
++   await jury.keyboard.press('ArrowRight');await at('video-1');
++   await jury.waitForFunction(()=>!document.querySelector('video').paused,null,{timeout:15000});
++   await jury.keyboard.press('ArrowRight');await at('retour-0');
++   assert.equal(await jury.evaluate(()=>{const v=document.querySelector('video');return v.paused&&v.currentTime===0;}),true);
++   assert.equal(await notes.evaluate(()=>!document.querySelector('video,audio,canvas')),true);
++   config.film={directJumpPaused:true,forwardRevealStarts:true,delayedStart:true,pausedAndRewoundOnExit:true,presenterHasNoMedia:true};
++   await jury.keyboard.press('m');await prepare('methodologie-1');start=await begin();await jury.keyboard.press('ArrowRight');
++   data=await finish('Mode réduit','methodologie-1','ch2-0',start,false);assert.equal(data.commands[0].timing.movement,0);
++   await jury.keyboard.press('m');
++   await jury.screenshot({path:`${out}/jury-${quality}-${width}.png`,timeout:60000});
++   await notes.screenshot({path:`${out}/notes-${quality}-${width}.png`,timeout:60000});
++  }catch(e){config.failure=e.stack;report.failures.push(e.stack);console.error(e);throw e;}
++  finally {await context.close();if(video)renameSync(await video.path(),`${out}/jury-normal.webm`);}
++ }
++ assert.deepEqual(report.errors,[]);assert.deepEqual(report.external,[]);
++}finally {await browser.close();writeFileSync(`${out}/report.json`,JSON.stringify(report,null,2)+'\n');}
++console.log('PASS live animation correction verification');
+--- /dev/null
++++ apres/scripts/render-animation-correction.py
+@@ -0,0 +1,39 @@
++"""Cut live examples at their original speed; no frame interpolation or clock changes."""
++from pathlib import Path
++import json
++import subprocess
++
++ROOT = Path(__file__).resolve().parents[1]
++OUT = ROOT / 'review/animation-correction-2026-10-12'
++report = json.loads((OUT / 'report.json').read_text())
++assert not report['errors'] and not report['external'] and not report['failures']
++config = report.get('recordings', [])[ -1 ] if report.get('recordings') else next(c for c in report['configurations'] if c['width'] == 1920 and c['quality'] == 'normal')
++file_prefix = 'recording-' if report.get('recordings') else ''
++selected = config['cases'][:9] + [c for c in config['cases'] if c['label'] in ['Rafale au même lieu', 'Interruption par retour']]
++clips = []
++filters = []
++position = 0.0
++for i, case in enumerate(selected):
++    source = OUT / f"{file_prefix}normal-{config['width']}-{config['cases'].index(case) + 1:02}.json"
++    data = json.loads(source.read_text())
++    first, last = case['commands'][0], case['commands'][-1]
++    landed = next(s for s in data['samples'] if s['t'] >= last['time'] and s['id'] == case['to'] and s['phase'] == 'done')
++    start = max(0, first['time'] - .5)
++    end = data['end']  # Include native local entrances and their final visible frame.
++    label = f"{case['label']} : {case['from']} → {case['to']}"
++    caption = Path(f'/tmp/zawedni-animation-caption-{i}.txt')
++    caption.write_text(label)
++    filters.append(f"[0:v]trim=start={start}:end={end},setpts=PTS-STARTPTS,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:textfile={caption}:fontsize=16:fontcolor=white:box=1:boxcolor=black@0.75:boxborderw=5:x=12:y=h-th-9[s{i}]")
++    clips.append(dict(label=label, sourceStart=start, sourceEnd=end, start=position, end=position+end-start))
++    position += end-start
++filters.append(''.join(f'[s{i}]' for i in range(len(clips)))+f'concat=n={len(clips)}:v=1:a=0[v]')
++subprocess.run(['ffmpeg','-y','-v','error','-i',str(OUT/'jury-normal.webm'),'-filter_complex',';'.join(filters),
++    '-map','[v]','-c:v','libx264','-preset','fast','-crf','20','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'animations-normal.mp4')],check=True)
++def stamp(seconds):
++    ms=round(seconds*1000)
++    return f'{ms//3600000:02}:{ms//60000%60:02}:{ms//1000%60:02}.{ms%1000:03}'
++(OUT/'animations-normal.vtt').write_text('WEBVTT\n\n'+'\n\n'.join(f'{stamp(c["start"])} --> {stamp(c["end"])}\n{c["label"]}' for c in clips)+'\n')
++(OUT/'recording.json').write_text(json.dumps(dict(normalSpeed=True,clockManipulated=False,audioRecorded=False,
++    viewport=[config['width'],config['height']],videoSize=[960,540],renderer=config['environment']['renderer'],
++    editing='Cuts and captions only; original speed; no frame interpolation',duration=position,clips=clips),ensure_ascii=False,indent=2)+'\n')
++print(f'PASS normal-speed excerpts: {position:.2f} seconds, {len(clips)} cases.')
+--- /dev/null
++++ apres/scripts/verify-animation-release.mjs
+@@ -0,0 +1,48 @@
++// Smoke-test the prepared archive with its own present.sh server, not the development build.
++import { chromium } from 'playwright-core';
++import { readFileSync, writeFileSync } from 'node:fs';
++import { createHash } from 'node:crypto';
++import path from 'node:path';
++import assert from 'node:assert/strict';
++const root=process.argv[2],base=process.argv[3]||'http://127.0.0.1:4320';
++if(!root)throw new Error('Supply the extracted project directory');
++const manifest=JSON.parse(readFileSync(path.join(root,'DELIVERY-MANIFEST.json')));
++for(const [file,expected] of Object.entries(manifest.files)){
++ const absolute=path.resolve(root,file);assert.ok(absolute.startsWith(path.resolve(root)+path.sep));
++ assert.equal(createHash('sha256').update(readFileSync(absolute)).digest('hex'),expected,`archive member ${file}`);
++}
++const result={manifestFiles:Object.keys(manifest.files).length,checks:[],errors:[],external:[],normalRecording:false,mode:'test&fast smoke only'};
++const browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
++try{
++ const context=await browser.newContext({viewport:{width:1366,height:768}});
++ context.on('page',page=>page.on('pageerror',error=>result.errors.push(error.message)));
++ context.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith(base))result.external.push(r.url());});
++ context.on('response',r=>{if(r.status()>=400)result.errors.push(`${r.status()} ${r.url()}`);});
++ const jury=await context.newPage(),popup=context.waitForEvent('page');
++ await jury.goto(`${base}/?test&fast&pv=auto&q=light#probleme-0`,{waitUntil:'domcontentloaded'});
++ const notes=await popup;await jury.waitForFunction(()=>window.__story?.ready,null,{timeout:90000});
++ await jury.bringToFront();
++ await notes.waitForFunction(()=>window.__presenter?.cur==='probleme-0',null,{timeout:15000});
++ assert.equal(await jury.evaluate(()=>__story.states.length),114);result.checks.push('114 bundled states, presenter connected');
++ await jury.keyboard.press('ArrowRight');
++ await jury.waitForFunction(()=>__story.state==='probleme-1'&&__story.settled&&__story.director.renderedState.id==='probleme-1');
++ assert.equal(await jury.evaluate(()=>getComputedStyle(document.getElementById('stage')).opacity==='1'&&document.getElementById('p-evidence').classList.contains('on')),true);
++ result.checks.push('actual fixed key keeps stage and evidence visible');
++ await jury.keyboard.press('2');await jury.waitForFunction(()=>__story.state==='ch2-0'&&__story.settled);
++ assert.equal(await jury.evaluate(()=>__story.director.renderedPoses.guide.walkW),0);result.checks.push('fast chapter jump finishes with no walk');
++ await notes.waitForFunction(()=>__presenter.cur==='ch2-0');
++ assert.equal(await notes.evaluate(()=>!document.querySelector('video,audio,canvas')),true);result.checks.push('presenter contains no renderer or second audio');
++ await notes.locator('#map summary').click();
++ const index=await jury.evaluate(()=>__story.states.findIndex(s=>s.id==='video-0'));
++ await notes.locator(`[data-i="${index}"]`).click();await jury.bringToFront();
++ await jury.waitForFunction(()=>__story.state==='video-0'&&__story.settled&&!document.getElementById('film').hidden);
++ await jury.waitForFunction(()=>document.querySelector('video').readyState>=1,null,{timeout:20000});
++ assert.equal(await jury.evaluate(()=>{const v=document.querySelector('video');return v.paused&&Math.abs(v.duration-90)<.1&&v.src.startsWith(location.origin);}),true);
++ result.checks.push('local 90-second film remains paused on poster');
++ await jury.keyboard.press('End');await jury.waitForFunction(()=>__story.state==='retour-1'&&__story.settled);
++ await notes.waitForFunction(()=>__presenter.cur==='retour-1');
++ assert.equal(await jury.evaluate(()=>{const v=document.querySelector('video');return v.paused&&v.currentTime===0;}),true);
++ result.checks.push('End reaches conclusion, film paused and rewound');
++ assert.deepEqual(result.errors,[]);assert.deepEqual(result.external,[]);
++}finally{await browser.close();writeFileSync('review/animation-correction-2026-10-12/archive-verification.json',JSON.stringify(result,null,2)+'\n');}
++console.log(`PASS extracted archive: ${result.checks.length} checks, ${result.manifestFiles} SHA-256 hashes.`);

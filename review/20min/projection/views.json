@@ -1,0 +1,62 @@
+[
+  {
+    "id": "modele-0",
+    "viewport": [
+      1366,
+      768
+    ],
+    "quality": "normal",
+    "restingView": true,
+    "file": "1366-modele-0.png"
+  },
+  {
+    "id": "modele-1",
+    "viewport": [
+      1366,
+      768
+    ],
+    "quality": "normal",
+    "restingView": true,
+    "file": "1366-modele-1.png"
+  },
+  {
+    "id": "methodologie-0",
+    "viewport": [
+      1366,
+      768
+    ],
+    "quality": "normal",
+    "restingView": true,
+    "file": "1366-methodologie-0.png"
+  },
+  {
+    "id": "validation-1",
+    "viewport": [
+      1366,
+      768
+    ],
+    "quality": "normal",
+    "restingView": true,
+    "file": "1366-validation-1.png"
+  },
+  {
+    "id": "secrets-2",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "quality": "normal",
+    "restingView": true,
+    "file": "1920-secrets-2.png"
+  },
+  {
+    "id": "supervision-3",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "quality": "normal",
+    "restingView": true,
+    "file": "1920-supervision-3.png"
+  }
+]

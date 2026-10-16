@@ -1,0 +1,10 @@
+{
+  "changedExistingRuntimeFiles": [
+    "src/story/evidence.ts"
+  ],
+  "newRuntimeFiles": [
+    "src/story/reveal-motion.ts"
+  ],
+  "canonicalContentAndSpeechUnchanged": true,
+  "cameraWorldItineraryAndLayoutsUnchanged": true
+}

@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { decorateMonitorScreen } from '../src/world/monitor.ts';
+test('the actual local monitor asset faces the viewer and preserves the original logo proportions', async () => {
+  const bytes=readFileSync(new URL('../public/models/props/computer-screen.glb',import.meta.url));
+  const model=await new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
+  const imageBytes=readFileSync(new URL('../public/assets/deck/logo-green.png',import.meta.url));
+  const image={naturalWidth:imageBytes.readUInt32BE(16),naturalHeight:imageBytes.readUInt32BE(20)} as HTMLImageElement;
+  const monitor=new THREE.Group();monitor.add(model.scene);
+  decorateMonitorScreen(monitor,image);monitor.updateMatrixWorld(true);
+  const logos:THREE.Mesh[]=[];monitor.traverse(object=>{if(object instanceof THREE.Mesh&&object.name==='zawedni-monitor-logo')logos.push(object);});
+  assert.equal(logos.length,1);
+  const logo=logos[0]!;
+  assert.ok(logo.getWorldDirection(new THREE.Vector3()).z>.98);
+  assert.ok(new THREE.Vector3(0,1,0).applyQuaternion(logo.getWorldQuaternion(new THREE.Quaternion())).y>.98);
+  const size=new THREE.Box3().setFromBufferAttribute(logo.geometry.getAttribute('position') as THREE.BufferAttribute).getSize(new THREE.Vector3());
+  assert.ok(Math.abs(size.x/size.y-image.naturalWidth/image.naturalHeight)<1e-6);
+  assert.ok(logo.parent?.userData['keep']);
+});

@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-12T16:11:06.148Z",
+  "referenceRoot": "/home/ali/Desktop/zawedni-video-pfe/soutenance",
+  "checks": [
+    {
+      "path": "deck.html",
+      "pass": true
+    },
+    {
+      "path": "deck.offline.html",
+      "pass": true
+    },
+    {
+      "path": "build/script_rows.py",
+      "pass": true
+    },
+    {
+      "path": "notes.py",
+      "pass": true
+    },
+    {
+      "path": "presenter.sh",
+      "pass": true
+    },
+    {
+      "path": "rebuild.sh",
+      "pass": true
+    },
+    {
+      "path": "SCRIPT.md",
+      "pass": true
+    },
+    {
+      "path": "DISCOURS.md",
+      "pass": true
+    },
+    {
+      "path": "assets/logo-green.png",
+      "pass": true
+    },
+    {
+      "path": "assets/logo-isima.png",
+      "pass": true
+    },
+    {
+      "path": "assets/p0310-acr-tags.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/p0310-ci-run.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/p0310-manifest-commit.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/p0610-admin-entreprises.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/p0610-argocd-apps.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/p0610-pod-image.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/p0610-pr19-actions.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-buy-marketplace.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-gmail-rows.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-grafana-journaux.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-mob-evaluation.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-mob-marketplace_companies.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-mob-status_approved.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v3-prom-firing-rule.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v6-bmc-revenus.png",
+      "pass": true
+    },
+    {
+      "path": "assets/v6-bmc-segments.png",
+      "pass": true
+    },
+    {
+      "path": "assets/v6-bmc-valeur.png",
+      "pass": true
+    },
+    {
+      "path": "assets/v6-bmc.png",
+      "pass": true
+    },
+    {
+      "path": "assets/v6-sup-piliers.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v6-sup-revue.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v7-adm-revue.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v7-grafana-cpu.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v7-grafana-mem.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v7-prom-targets.jpg",
+      "pass": true
+    },
+    {
+      "path": "assets/v9-adm-attribution.png",
+      "pass": true
+    },
+    {
+      "path": "assets/video-poster.jpg",
+      "pass": true
+    },
+    {
+      "path": "media/zawedni-devsecops.mp4",
+      "pass": true
+    }
+  ]
+}

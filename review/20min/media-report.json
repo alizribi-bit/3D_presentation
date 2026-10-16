@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-13T16:49:21.089Z",
+  "rendererMode": "swiftshader",
+  "results": [
+    {
+      "name": "presenter contains no renderer or media source",
+      "pass": true
+    },
+    {
+      "name": "accepted film has one audio track and lasts 90 seconds",
+      "pass": true,
+      "detail": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "90.000000"
+        }
+      }
+    },
+    {
+      "name": "forward reveal starts unmuted playback or exposes the fallback",
+      "pass": true,
+      "detail": {
+        "paused": false,
+        "time": 0,
+        "muted": false,
+        "hidden": false,
+        "button": false
+      }
+    },
+    {
+      "name": "native player advances with its single audio source",
+      "pass": true,
+      "detail": {
+        "paused": false,
+        "time": 0.145369,
+        "muted": false,
+        "hidden": false,
+        "button": false
+      }
+    },
+    {
+      "name": "only the jury has one media source while both windows are open",
+      "pass": true
+    },
+    {
+      "name": "native pause works",
+      "pass": true,
+      "detail": {
+        "paused": true,
+        "time": 0.224193,
+        "muted": false,
+        "hidden": false,
+        "button": true
+      }
+    },
+    {
+      "name": "native playback resumes after pause",
+      "pass": true
+    },
+    {
+      "name": "native volume and seeking are usable",
+      "pass": true
+    },
+    {
+      "name": "film ends without leaving its main-route state",
+      "pass": true
+    },
+    {
+      "name": "exit stops and rewinds the film",
+      "pass": true,
+      "detail": {
+        "paused": true,
+        "time": 0,
+        "muted": false,
+        "hidden": true,
+        "button": true
+      }
+    },
+    {
+      "name": "back to film restores the poster without ghost playback",
+      "pass": true,
+      "detail": {
+        "paused": true,
+        "time": 0,
+        "muted": false,
+        "hidden": false,
+        "button": true
+      }
+    },
+    {
+      "name": "reloading a film state keeps it paused on the poster",
+      "pass": true,
+      "detail": {
+        "paused": true,
+        "time": 0,
+        "muted": false,
+        "hidden": false,
+        "button": true
+      }
+    },
+    {
+      "name": "keyboard resumes the itinerary after a player mouse click",
+      "pass": true
+    },
+    {
+      "name": "native media run has no browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "physicalAudioChecked": false
+}

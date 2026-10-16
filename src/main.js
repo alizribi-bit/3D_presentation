@@ -19,6 +19,8 @@ import { FilmPlayer } from './media/player.ts';
 import { shouldAutoplayFilm } from './media/transition.ts';
 import { StoryWorld } from './world/story.ts';
 import { applyShot } from './camera/rig.js';
+import { SlideChrome } from './ui/slide-chrome.ts';
+import sequences from '../content/source/sequences.json';
 
 const Q = new URLSearchParams(location.search);
 const canvas = document.getElementById('world');
@@ -60,6 +62,7 @@ buildPanels();
 const stage = document.getElementById('stage');
 const evidence = PROTOTYPE ? null : new EvidencePanel(stage);
 const film = PROTOTYPE ? null : new FilmPlayer(stage);
+const slideChrome = new SlideChrome(stage, sequences);
 const actors = { guide: new Actor('guide', 1.76), rep: new Actor('rep', 1.8) };
 for (const a of Object.values(actors)) scene.add(a.root);
 applyQuality(renderer, sun); resize();
@@ -71,14 +74,23 @@ const ch = link(m => {
   if (m.t === 'cmd') command(m.cmd);
 });
 let previousMediaIndex = -1;
+let pendingAutoplay = false;
 function announce() {
-  const autoplay = !Q.has('test') && shouldAutoplayFilm(STATES[previousMediaIndex]?.media ?? null, director.state.media ?? null, director.i > previousMediaIndex);
-  film?.show(director.state, autoplay);
-  previousMediaIndex = director.i;
   ch.send({ t: 'state', id: director.state.id, i: director.i, total: STATES.length });
 }
+function stateChanged() {
+  pendingAutoplay = !Q.has('test') && shouldAutoplayFilm(STATES[previousMediaIndex]?.media ?? null, director.state.media ?? null, director.i > previousMediaIndex);
+  film?.suspend();
+  previousMediaIndex = director.i;
+  announce();
+}
 
-const director = new Director({ camera, actors, onState: announce, still: Q.has('still'), fast: Q.has('test') && Q.has('fast'), onFrame: (visible, state, k, from) => { evidence?.show(state, visible.has('evidence')); storyWorld?.frame(state, k, from); } });
+const director = new Director({ camera, actors, onState: stateChanged, still: Q.has('still'), fast: Q.has('test') && Q.has('fast'), onFrame: (visible, state, k, from) => {
+  slideChrome.show(state);
+  evidence?.show(state, visible.has('evidence'));
+  film?.show(state, state === director.state && pendingAutoplay, visible.has('film-title'));
+  storyWorld?.frame(state, k, from);
+} });
 const fromHash = indexOf(location.hash.slice(1));
 director.go(fromHash >= 0 ? fromHash : 0, { instant: true });
 addEventListener('hashchange', () => { const i = indexOf(location.hash.slice(1)); if (i >= 0 && i !== director.i) director.go(i, { instant: true }); });

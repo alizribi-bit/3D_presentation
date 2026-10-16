@@ -1,0 +1,79 @@
+{
+  "project": "ZAWEDNI_3D_20MIN",
+  "root": "/home/ali/Desktop/ZAWEDNI_3D_20MIN",
+  "launch": "/home/ali/Desktop/ZAWEDNI_3D_20MIN/present.sh",
+  "url": "http://127.0.0.1:4320",
+  "buildId": "c2d1d41a79863b07462a4ed20f7b0e3ea193abe96fdce11a7a2c7f7e4ef2d9e8",
+  "counts": {
+    "slides": 35,
+    "reveals": 51,
+    "states": 86,
+    "advances": 85,
+    "chapters": 5
+  },
+  "unitTests": 41,
+  "httpTests": 2,
+  "verification": {
+    "content-1920x1080.json": {
+      "passed": 192,
+      "failed": 0
+    },
+    "content-1366x768.json": {
+      "passed": 192,
+      "failed": 0
+    },
+    "normal-route.json": {
+      "passed": 149,
+      "failed": 0
+    },
+    "media-report.json": {
+      "passed": 14,
+      "failed": 0
+    }
+  },
+  "preservation": {
+    "originals": [
+      {
+        "root": "/home/ali/Desktop/zawedni-story-3d",
+        "files": 11019,
+        "unchanged": true,
+        "changes": []
+      },
+      {
+        "root": "/home/ali/Desktop/zawedni-video-pfe/zawedni-story-3d",
+        "files": 10173,
+        "unchanged": true,
+        "changes": []
+      },
+      {
+        "root": "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN",
+        "files": 1478,
+        "unchanged": true,
+        "changes": []
+      }
+    ],
+    "externalSymlinks": []
+  },
+  "duration": {
+    "words": 1486,
+    "speechSeconds": 810.5454545454545,
+    "filmSeconds": 90,
+    "observationAndAnimationBudgetSeconds": 224.45454545454544,
+    "nominal3DTransitionSeconds": 19.839999999999996,
+    "estimatedTotalSeconds": 1125.0,
+    "wordsPerMinute": 110,
+    "estimateAt105WordsPerMinute": 1163.5974025974026,
+    "rehearsalTimed": false
+  },
+  "finalBuildSmoke": {
+    "title": "ZAWEDNI_3D_20MIN \u2014 histoire en 3D",
+    "buildId": "c2d1d41a79863b07462a4ed20f7b0e3ea193abe96fdce11a7a2c7f7e4ef2d9e8",
+    "projectRoot": "/home/ali/Desktop/ZAWEDNI_3D_20MIN",
+    "states": 86,
+    "rangeStatus": 206,
+    "rangeBodyBytes": 16,
+    "errors": [],
+    "missing": [],
+    "pass": true
+  }
+}

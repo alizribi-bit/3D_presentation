@@ -1,0 +1,15 @@
+{
+  "manifestFiles": 638,
+  "checks": [
+    "114 bundled states, presenter connected",
+    "actual fixed key keeps stage and evidence visible",
+    "fast chapter jump finishes with no walk",
+    "presenter contains no renderer or second audio",
+    "local 90-second film remains paused on poster",
+    "End reaches conclusion, film paused and rewound"
+  ],
+  "errors": [],
+  "external": [],
+  "normalRecording": false,
+  "mode": "test&fast smoke only"
+}

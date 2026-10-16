@@ -1,63 +1,11 @@
-# Guide présentateur — révision 44
+# Présenter ZAWEDNI_3D_20MIN
 
-## Lancer
+Lancer `/home/ali/Desktop/ZAWEDNI_3D_20MIN/present.sh`. Le jury et les notes s’ouvrent sur les écrans détectés. Utiliser `--swap` pour inverser le placement. En miroir ou avec un seul écran, les deux fenêtres partagent l’écran ; N rouvre les notes.
 
-Le build livré fonctionne hors ligne. Python 3 et Google Chrome sont déjà nécessaires
-sur la machine préparée. Aucun npm install ni téléchargement n’est requis au lancement.
+Le discours, le titre et le repère d’entrée/clic suivent les 86 états du jury. La liste « Aller à une étape » donne les accès directs. 1–5 ouvre chaque chapitre ; Home et End rejoignent l’ouverture et la conclusion. Le minuteur se remet à zéro au clic. + et − règlent la taille des notes.
 
-```bash
-/home/ali/Desktop/zawedni-story-3d/present.sh
-/home/ali/Desktop/zawedni-story-3d/present.sh --swap
-```
+Le film se présente en slide 34 : une avance démarre les 90 secondes, ou affiche le bouton de lecture si Chrome refuse l’autoplay. Les commandes natives gèrent pause, reprise, son, volume et déplacement. À la fin, avancer vers la conclusion. Revenir restaure le film arrêté au début. La fenêtre des notes reste silencieuse.
 
-Le serveur écoute sur 127.0.0.1:4318. `ZS3D_PORT=4320` change ce port si nécessaire.
-Le jury ouvre automatiquement les notes. N les rouvre si la fenêtre a été fermée.
-Un profil Chrome distinct est utilisé. En mode miroir ou écran unique, les deux
-fenêtres restent sur ce même écran. Les essais automatisés de placement simulent
-les écrans ; ils ne constituent pas un essai sur deux écrans physiques.
+Le port par défaut est 4320. Pour le changer : `ZS3D_PORT=4321 ./present.sh`. Le lanceur refuse un serveur étranger, un build périmé ou des fichiers manquants. Construction : `cd /home/ali/Desktop/ZAWEDNI_3D_20MIN && npm run build`.
 
-## Commander
-
-| Touche | Effet |
-| --- | --- |
-| →, Espace, PageDown | Suivant |
-| ←, PageUp | Précédent |
-| 1–6 | Début du chapitre |
-| Home / End | Début / conclusion |
-| N | Rouvrir les notes |
-| F | Plein écran du jury |
-| M | Mouvement réduit |
-| L | Qualité légère et suppression du flou coûteux |
-| + / − dans les notes | Taille du discours |
-
-La souris sur le lecteur et la molette ne font pas avancer la présentation.
-Les lignes du parcours des notes permettent de sauter directement à un état.
-Les notes montrent le discours à dire, les phrases [lire], le prochain clic et le chapitre.
-Elles suivent les retours, les sauts et les rechargements, même ouvertes tardivement.
-
-## Repères
-
-44 séquences, 114 états et 113 pressions suivant. Les 70 révélations internes ne
-comptent pas les entrées de séquence. Aucun clic supplémentaire n’est consacré aux trajets.
-La dernière partie est « Bilan, perspectives et conclusion ».
-
-Les interfaces suivent cinq états : Envoi de la grille, Remplissage, Décision,
-Résultats, Marché local. Les deux étapes d’administration n’ont ni téléphone ni APK.
-Le diagramme technique conserve trois états, quatre participants et le contrôle API.
-
-Le film final de 90 secondes vient après les perspectives, avant la conclusion.
-Avancer de son affiche à sa lecture démarre le film avec le son ; si le navigateur
-refuse, utiliser « Lire la vidéo ». Ses commandes permettent pause et reprise.
-Quitter arrête et rembobine. Revenir ou recharger garde l’affiche sans lecture fantôme.
-Le présentateur reste muet, sans lecteur et sans second WebGL.
-
-## Rythme et secours
-
-Estimation explicite : 2 250 mots, film 90 s, transitions 100,75 s, pauses de lecture
-169,5 s. Environ 24 min à 125 mots/min ; 22 à 26,5 min selon le débit.
-Cette estimation ne remplace pas une répétition parlée chronométrée.
-Le discours intégral est dans docs/SCRIPT-44.md ; ne pas le couper pour compenser les trajets.
-
-Si le rendu est saccadé, L réduit la qualité et le flou. M supprime les mouvements.
-Si le serveur sert une autre version, le lanceur refuse sa réutilisation : choisir
-un port libre avec ZS3D_PORT. Conserver un exemplaire de l’archive extraite et prête.
+Voir `docs/DUREE-20MIN.md` et `docs/VERIFICATION-20MIN.md`. La durée est une estimation du discours et des mouvements, à confirmer en répétition avec le matériel de projection.

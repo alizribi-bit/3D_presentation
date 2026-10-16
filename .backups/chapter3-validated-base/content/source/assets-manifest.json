@@ -1,0 +1,53 @@
+{
+  "sourceDeckSha256": "1d8d0e86152870eade0d8ef367b745a67d817e88e5ae3d41b9ddd915eecccf5e",
+  "assets": [
+    {
+      "file": "assets/deck/logo-green.png",
+      "source": "assets/logo-green.png",
+      "sha256": "a9a893e6203024e97cf1abe8ac4b3f3382dbc224b49a25fe7408f27ca0907a80",
+      "bytes": 12431
+    },
+    {
+      "file": "assets/deck/logo-isima.png",
+      "source": "assets/logo-isima.png",
+      "sha256": "e42c78b668f0abb79a9049f29b32b54d6f2872361e7ffa7eae3f530ee4a91b1d",
+      "bytes": 40840
+    },
+    {
+      "file": "assets/deck/v3-gmail-rows.jpg",
+      "source": "assets/v3-gmail-rows.jpg",
+      "sha256": "92e8d5e7ed0e88340f7c5c58dade567faf98e0d5b82035c2734fb69529967846",
+      "bytes": 33592
+    },
+    {
+      "file": "assets/deck/v3-grafana-journaux.jpg",
+      "source": "assets/v3-grafana-journaux.jpg",
+      "sha256": "1ed65a24fd17dee7126f73bbc36b89d948ba064d8be83693544222d4b81d9833",
+      "bytes": 75897
+    },
+    {
+      "file": "assets/deck/v6-sup-piliers.jpg",
+      "source": "assets/v6-sup-piliers.jpg",
+      "sha256": "09f24b33a763fea234086ae6d1d9bcc525705fb690551c9a499ec69e2a4b0597",
+      "bytes": 48457
+    },
+    {
+      "file": "assets/deck/v7-grafana-cpu.jpg",
+      "source": "assets/v7-grafana-cpu.jpg",
+      "sha256": "2679239bc1f31a1ce350fdd2b965e59e004eb9d48ebbc4afa59f92cad6f1e00b",
+      "bytes": 49429
+    },
+    {
+      "file": "assets/deck/video-poster.jpg",
+      "source": "assets/video-poster.jpg",
+      "sha256": "853618d57fa06bce4443c37d618e04ae4b9a63c32ed8b43ca7ad774c7f939231",
+      "bytes": 163683
+    },
+    {
+      "file": "media/zawedni-devsecops.mp4",
+      "source": "media/zawedni-devsecops.mp4",
+      "sha256": "40662b8314da42a51513dc52bb3d634cf6db43d058b8613f2c524d636e2fba3d",
+      "bytes": 23478233
+    }
+  ]
+}

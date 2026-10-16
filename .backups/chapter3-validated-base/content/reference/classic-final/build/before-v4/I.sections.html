@@ -1,0 +1,264 @@
+  <!-- ══ 2 · Développement de la plateforme ═════════════════════════════ -->
+  <section class="slide" id="plateforme">
+    <style>
+      /* batch I: development chapter and DevSecOps tools */
+      :is(#plateforme,#parcours-app,#mobile,#fonctions,#outils-dev,#architecture,#outils-infra,#outils-livraison) .cap { position: absolute; margin: 0; font: 400 22px/1.3 var(--display); color: var(--muted); }
+      :is(#plateforme,#parcours-app,#mobile,#fonctions,#outils-dev,#architecture,#outils-infra,#outils-livraison) .cap b { color: var(--ink); font-weight: 600; }
+      :is(#plateforme,#architecture) .nd { position: absolute; box-sizing: border-box; background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 16px 22px; }
+      :is(#plateforme,#architecture) .nd h3 { margin: 0; font: 600 28px/1.2 var(--display); color: var(--ink); }
+      :is(#plateforme,#architecture) .nd p { margin: 6px 0 0; font: 400 22px/1.3 var(--display); color: var(--muted); }
+      :is(#plateforme,#architecture) .nd.c { border-color: var(--green); }
+      :is(#plateforme,#architecture) .nd.c h3 { color: var(--green); }
+      :is(#plateforme,#architecture) .nd.api { border-color: var(--green); background: var(--green-l); }
+      :is(#plateforme,#architecture) .nd.ia { border-color: #7b5cd6; }
+      :is(#plateforme,#architecture) .nd.ia h3 { color: #5a3fb3; }
+      :is(#plateforme,#architecture) .nd.db { border-color: var(--azure); }
+      :is(#plateforme,#architecture) .nd.db h3 { color: var(--azure); }
+      :is(#plateforme,#architecture) .nd.ext { border-style: dashed; background: transparent; }
+      :is(#plateforme,#architecture) svg.art text { font-family: var(--display); }
+      #plateforme .nd { width: 360px; }
+    </style>
+    <p class="kicker">Développement de la plateforme · Architecture applicative</p>
+    <h2 data-fit="2">Architecture de la plateforme</h2>
+    <svg class="art" viewBox="0 0 1920 1080">
+      <defs><marker id="pf-ar" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#536459"/></marker></defs>
+      <g fill="none" stroke-width="4">
+        <path d="M510,385 C600,385 600,560 690,560" stroke="#0d7b3c" marker-end="url(#pf-ar)" data-anim="draw" data-delay=".5"/>
+        <path d="M510,565 H690" stroke="#0d7b3c" marker-end="url(#pf-ar)" data-anim="draw" data-delay=".6"/>
+        <path d="M510,745 C600,745 600,570 690,570" stroke="#0d7b3c" marker-end="url(#pf-ar)" data-anim="draw" data-delay=".7"/>
+        <path d="M1050,540 C1140,540 1140,410 1230,410" stroke="#7b5cd6" marker-end="url(#pf-ar)" data-step="2" data-anim="draw"/>
+        <path d="M1050,600 C1140,600 1140,760 1230,760" stroke="#2f6fde" marker-end="url(#pf-ar)" data-step="1" data-anim="draw"/>
+        <path d="M1590,410 H1660" stroke="#7b5cd6" stroke-dasharray="8 8" data-step="2" data-anim="draw" data-delay=".3"/>
+      </g>
+      <g font-size="21" fill="#536459" text-anchor="middle">
+        <text x="600" y="618" data-anim="fade" data-delay=".8">REST + jeton JWT</text>
+        <text x="1240" y="515" text-anchor="start" data-step="2" data-anim="fade" data-delay=".3">REST interne + clé</text>
+        <text x="1240" y="672" text-anchor="start" data-step="1" data-anim="fade" data-delay=".3">SQL (JPA, Flyway)</text>
+      </g>
+    </svg>
+    <div class="nd c" style="left:150px; top:320px" data-anim="rise"><h3>Site client</h3><p>React · acheteurs, fournisseurs</p></div>
+    <div class="nd c" style="left:150px; top:500px" data-anim="rise" data-delay=".1"><h3>Administration</h3><p>React · équipe ZAWEDNI</p></div>
+    <div class="nd c" style="left:150px; top:680px" data-anim="rise" data-delay=".2"><h3>Application mobile</h3><p>Flutter · Android</p></div>
+    <div class="nd api" style="left:690px; top:470px; min-height:200px" data-anim="rise" data-delay=".3"><h3>API ZAWEDNI</h3><p>Spring Boot · rôles, règles métier, scores, e-mails, fichiers</p></div>
+    <div class="nd db" style="left:1230px; top:690px" data-step="1" data-anim="rise"><h3>PostgreSQL 16</h3><p>entreprises, grilles, certificats, transactions</p></div>
+    <div class="nd ia" style="left:1230px; top:320px" data-step="2" data-anim="rise"><h3>Service d'IA</h3><p>FastAPI · bilan carbone, guide RSE, texte du rapport ESG</p></div>
+    <p class="cap" style="left:1670px; top:390px; width:130px" data-step="2" data-anim="fade" data-delay=".4"><b>Groq</b><br>modèle de langage</p>
+    <p class="cap" style="left:150px; top:900px; width:1620px" data-step="2" data-anim="fade" data-delay=".5">Seule l'API appelle le service d'IA. Les chiffres du rapport ESG viennent de la base ; l'IA rédige seulement le texte.</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="parcours-app">
+    <style>
+      #parcours-app .rail { position: absolute; left: 150px; top: 300px; width: 440px; margin: 0; padding: 0; list-style: none; }
+      #parcours-app .rail li { position: relative; box-sizing: border-box; min-height: 128px; margin-bottom: 18px; padding: 18px 20px 18px 82px; border-radius: 18px; background: var(--card); border: 2px solid var(--line); }
+      #parcours-app .rail li i { position: absolute; left: 20px; top: 18px; width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--ink); font: 700 24px/44px var(--display); font-style: normal; text-align: center; }
+      #parcours-app .rail li b { display: block; font: 600 27px/1.2 var(--display); color: var(--ink); }
+      #parcours-app .rail li span { display: block; margin-top: 4px; font: 400 21px/1.3 var(--display); color: var(--muted); }
+      #parcours-app .rail .on { position: absolute; inset: -2px; border-radius: 18px; border: 3px solid var(--green); background: rgba(207,232,215,.35); }
+      #parcours-app .rail .on + i { background: var(--green); color: #fff; }
+      #parcours-app .frame { position: absolute; left: 640px; top: 300px; width: 1130px; height: 700px; }
+      #parcours-app .shot { position: absolute; left: 0; top: 0; width: 1060px; background: #fff; border: 2px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 18px 50px rgba(16,38,26,.12); }
+      #parcours-app .shot .bar { height: 38px; display: flex; align-items: center; gap: 10px; padding: 0 18px; background: #eef2ee; border-bottom: 2px solid var(--line); }
+      #parcours-app .shot .bar i { width: 13px; height: 13px; border-radius: 50%; background: #c5cfc7; display: inline-block; }
+      #parcours-app .shot .bar span { margin-left: 12px; font: 400 20px/1 var(--mono); color: var(--muted); }
+      #parcours-app .shot img { display: block; width: 100%; }
+    </style>
+    <p class="kicker">Développement de la plateforme · Parcours utilisateur</p>
+    <h2 data-fit="2">Du fournisseur évalué à l'acheteur</h2>
+    <ol class="rail">
+      <li><span class="on" data-out="1" data-anim="fade"></span><i>1</i><b>Évaluation</b><span>le fournisseur remplit sa grille RSE</span></li>
+      <li><span class="on" data-step="1" data-out="2" data-anim="fade"></span><i>2</i><b>Revue</b><span>l'administrateur examine et valide</span></li>
+      <li><span class="on" data-step="2" data-out="3" data-anim="fade"></span><i>3</i><b>Certificat</b><span>score, palier, QR code public</span></li>
+      <li><span class="on" data-step="3" data-anim="fade"></span><i>4</i><b>Marketplace</b><span>l'acheteur le trouve et le contacte</span></li>
+    </ol>
+    <div class="frame">
+      <div class="shot" data-anim="rise" data-lint-skip><div class="bar"><i></i><i></i><i></i><span>Site client · Évaluation RSE</span></div><img src="assets/v3-sup-evaluation.jpg" alt="Évaluation RSE validée : 80 sur 100, détail par pilier"></div>
+      <div class="shot" data-step="1" data-anim="fade" data-lint-skip><div class="bar"><i></i><i></i><i></i><span>Administration · Suivi des évaluations</span></div><img src="assets/v3-adm-submissions.jpg" alt="Administration : suivi des évaluations RSE des entreprises"></div>
+      <div class="shot" data-step="2" data-anim="fade" data-lint-skip><div class="bar"><i></i><i></i><i></i><span>Site client · Ma certification</span></div><img src="assets/v3-sup-certification.jpg" alt="Certificat RSE avec score, palier et QR code de vérification"></div>
+      <div class="shot" data-step="3" data-anim="fade" data-lint-skip><div class="bar"><i></i><i></i><i></i><span>Site client · Marketplace (acheteur)</span></div><img src="assets/v3-buy-marketplace.jpg" alt="Marketplace : fournisseurs filtrés par secteur, région, certification et distance"></div>
+    </div>
+    <p class="cap" style="left:150px; top:920px; width:440px">Version locale du 07/10, données de démonstration</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="mobile">
+    <style>
+      #mobile .ph { position: absolute; top: 300px; width: 300px; box-sizing: border-box; border: 10px solid #10261a; border-radius: 40px; overflow: hidden; background: #fff; box-shadow: 0 18px 40px rgba(16,38,26,.18); }
+      #mobile .ph img { display: block; width: 100%; height: 600px; object-fit: cover; object-position: top; }
+      #mobile .lb { position: absolute; top: 935px; width: 300px; margin: 0; text-align: center; font: 500 24px/1.25 var(--display); color: var(--ink); }
+      #mobile .role { position: absolute; left: 150px; top: 300px; width: 290px; margin: 0; font: 400 26px/1.4 var(--display); color: var(--ink); }
+      #mobile .role b { color: var(--green); font-weight: 600; }
+    </style>
+    <p class="kicker">Développement de la plateforme · Mobile</p>
+    <h2 data-fit="2">L'application mobile</h2>
+    <p class="role" data-anim="fade"><b>Même compte, même API.</b> Sur le terrain, le fournisseur suit son score, remplit sa grille et suit ses transactions. L'acheteur parcourt la marketplace.</p>
+    <div class="ph" style="left:480px" data-anim="rise" data-delay=".1"><img src="assets/v3-mob-home-supplier.jpg" alt="Mobile : accueil fournisseur avec score RSE 80"></div>
+    <p class="lb" style="left:480px" data-anim="fade" data-delay=".3">Accueil et score</p>
+    <div class="ph" style="left:800px" data-anim="rise" data-delay=".2"><img src="assets/v3-mob-evaluation.jpg" alt="Mobile : question de la grille RSE"></div>
+    <p class="lb" style="left:800px" data-anim="fade" data-delay=".4">Grille RSE</p>
+    <div class="ph" style="left:1120px" data-step="1" data-anim="rise"><img src="assets/v3-mob-status_approved.jpg" alt="Mobile : suivi de la revue, certification accordée"></div>
+    <p class="lb" style="left:1120px" data-step="1" data-anim="fade" data-delay=".2">Suivi de la revue</p>
+    <div class="ph" style="left:1440px" data-step="1" data-anim="rise" data-delay=".1"><img src="assets/v3-mob-marketplace_companies.jpg" alt="Mobile : marketplace des fournisseurs"></div>
+    <p class="lb" style="left:1440px" data-step="1" data-anim="fade" data-delay=".3">Marketplace</p>
+    <p class="cap" style="left:150px; top:880px; width:290px">Écrans Flutter du 06/10, données de démonstration</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="fonctions">
+    <style>
+      #fonctions .grid { position: absolute; left: 150px; top: 310px; width: 1620px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+      #fonctions .m { box-sizing: border-box; min-height: 250px; background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; }
+      #fonctions .m b { font: 600 27px/1.2 var(--display); color: var(--ink); }
+      #fonctions .m span { margin-top: 8px; font: 400 21px/1.3 var(--display); color: var(--muted); flex: 1; }
+      #fonctions .m em { margin-top: 12px; font: 600 20px/1 var(--mono); font-style: normal; color: var(--green); }
+      #fonctions .m.ai { border-color: #7b5cd6; }
+      #fonctions .m.ai em { color: #5a3fb3; }
+    </style>
+    <p class="kicker">Développement de la plateforme · Fonctions</p>
+    <h2 data-fit="2">Fonctions métier réalisées</h2>
+    <div class="grid" data-anim="rise" data-stagger=".06" data-delay=".1">
+      <div class="m"><b>Grille RSE</b><span>questions par pilier, brouillon, score calculé</span><em>web · mobile · admin</em></div>
+      <div class="m"><b>Certificat</b><span>palier selon le score, page publique et QR code</span><em>web · mobile · admin</em></div>
+      <div class="m"><b>Marketplace</b><span>entreprises et produits, filtres, favoris</span><em>web · mobile</em></div>
+      <div class="m"><b>Demandes de devis</b><span>envoi, réponses, choix d'une offre</span><em>web · mobile</em></div>
+      <div class="m"><b>Achats locaux</b><span>transaction déclarée puis confirmée, score d'achat local</span><em>web · mobile · admin</em></div>
+      <div class="m ai"><b>Bilan carbone</b><span>scopes 1, 2 et 3 calculés par le service d'IA</span><em>web · mobile</em></div>
+      <div class="m ai"><b>Rapport ESG, guide RSE</b><span>chiffres de la base, texte rédigé par l'IA</span><em>web · mobile</em></div>
+      <div class="m"><b>Échanges et gestion</b><span>messages, notifications, inscriptions, référentiels</span><em>web · mobile · admin</em></div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="outils-dev">
+    <style>
+      :is(#outils-dev,#outils-infra,#outils-livraison) .tb { position: absolute; left: 150px; top: 300px; width: 1620px; }
+      :is(#outils-dev,#outils-infra,#outils-livraison) .row { display: grid; grid-template-columns: 330px 560px 1fr; gap: 30px; align-items: center; padding: 15px 0; border-bottom: 2px solid var(--line); }
+      :is(#outils-dev,#outils-infra,#outils-livraison) .row.h { padding-top: 0; font: 600 22px/1 var(--display); color: var(--muted); }
+      :is(#outils-dev,#outils-infra,#outils-livraison) .row b { font: 600 28px/1.2 var(--display); color: var(--green); }
+      :is(#outils-dev,#outils-infra,#outils-livraison) .row span { font: 400 24px/1.3 var(--display); color: var(--ink); }
+      :is(#outils-dev,#outils-infra,#outils-livraison) .row span + span { color: var(--muted); }
+      :is(#outils-dev,#outils-infra,#outils-livraison) .row small { display: block; font: 400 20px/1.2 var(--display); color: var(--muted); margin-top: 4px; }
+    </style>
+    <p class="kicker">Développement de la plateforme · Outils</p>
+    <h2 data-fit="2">Outils de développement</h2>
+    <div class="tb">
+      <div class="row h"><span>Outil</span><span>Tâche dans ZAWEDNI</span><span>Raison du choix</span></div>
+      <div data-anim="rise" data-stagger=".08" data-delay=".15">
+        <div class="row"><b>React + Vite</b><span>site client et administration</span><span>composants réutilisables, même langage pour les deux sites, build rapide</span></div>
+        <div class="row"><b>Flutter</b><span>application mobile Android</span><span>un seul code pour l'interface, rendu fidèle à la maquette</span></div>
+        <div class="row"><b>Spring Boot<small>Java 17</small></b><span>API, sécurité, règles métier</span><span>sécurité, accès aux données, e-mails et métriques déjà intégrés</span></div>
+        <div class="row"><b>FastAPI<small>Python</small></b><span>service d'IA</span><span>Python pour les calculs et l'appel au modèle ; API légère et typée</span></div>
+        <div class="row"><b>Groq</b><span>rédiger le guide RSE et le texte ESG</span><span>modèle de langage appelé par API : aucun modèle à héberger</span></div>
+        <div class="row"><b>PostgreSQL 16</b><span>données de la plateforme</span><span>données liées entre elles, transactions fiables ; Flyway versionne le schéma</span></div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <!-- ══ 3 · Architecture et démarche DevSecOps ═════════════════════════════ -->
+  <section class="slide" id="architecture">
+    <style>
+      #architecture .zone { position: absolute; box-sizing: border-box; border-radius: 26px; border: 2px dashed; }
+      #architecture .zone > span { position: absolute; left: 22px; top: 12px; font: 600 22px/1 var(--display); }
+      #architecture .az { border-color: var(--azure); background: rgba(47,111,222,.04); }
+      #architecture .az > span { color: var(--azure); }
+      #architecture .ns { border-color: #b9c8bd; border-style: solid; background: #fff; }
+      #architecture .ns > span { color: var(--muted); font-weight: 500; font-size: 20px; }
+      #architecture .pod { position: absolute; box-sizing: border-box; border-radius: 14px; padding: 8px 14px; font: 600 22px/1.2 var(--display); color: var(--ink); background: var(--bg); border: 2px solid var(--line); }
+      #architecture .pod.g { border-color: var(--green); color: var(--green-d); }
+      #architecture .pod.v { border-color: #7b5cd6; color: #5a3fb3; }
+      #architecture .pod.b { border-color: var(--azure); color: #1d4fa8; }
+      #architecture .pod.o { border-color: var(--amber); color: var(--amber-text); }
+      #architecture .note { position: absolute; left: 150px; top: 960px; width: 1620px; margin: 0; font: 400 22px/1.3 var(--display); color: var(--muted); }
+      #architecture .note b { color: var(--ink); font-weight: 600; }
+    </style>
+    <p class="kicker">Architecture et démarche DevSecOps · Déploiement</p>
+    <h2 data-fit="2">Architecture de déploiement</h2>
+    <div class="nd ext" style="left:150px; top:440px; width:230px" data-anim="rise"><h3>Utilisateurs</h3><p>navigateur, mobile</p></div>
+    <div class="nd ext" style="left:150px; top:740px; width:230px" data-step="2" data-anim="rise"><h3>GitHub</h3><p>code, manifestes</p></div>
+    <div class="zone az" style="left:440px; top:300px; width:1330px; height:640px" data-anim="fade"><span>Azure</span></div>
+    <div class="zone ns" style="left:470px; top:340px; width:1070px; height:540px; border-style:dashed; background:transparent" data-anim="fade" data-delay=".1"><span style="color:var(--azure)">Cluster AKS · staging</span></div>
+    <div class="pod" style="left:500px; top:478px; width:190px" data-anim="rise" data-delay=".2">Ingress NGINX</div>
+    <div class="zone ns" style="left:740px; top:385px; width:440px; height:140px" data-anim="fade" data-delay=".3"><span>zawedni-frontend</span></div>
+    <div class="pod g" style="left:765px; top:432px" data-anim="rise" data-delay=".35">site client</div>
+    <div class="pod g" style="left:950px; top:432px" data-anim="rise" data-delay=".4">administration</div>
+    <div class="zone ns" style="left:740px; top:545px; width:440px; height:140px" data-anim="fade" data-delay=".45"><span>zawedni-backend</span></div>
+    <div class="pod g" style="left:765px; top:592px" data-anim="rise" data-delay=".5">API</div>
+    <div class="pod v" style="left:950px; top:592px" data-step="1" data-anim="rise">service d'IA</div>
+    <div class="zone ns" style="left:740px; top:705px; width:440px; height:140px" data-step="1" data-anim="fade"><span style="left:auto; right:22px">zawedni-data</span></div>
+    <div class="pod b" style="left:765px; top:770px" data-step="1" data-anim="rise" data-delay=".1">PostgreSQL + volume</div>
+    <div class="zone ns" style="left:1210px; top:385px; width:300px; height:140px" data-step="3" data-anim="fade"><span>zawedni-monitoring</span></div>
+    <div class="pod o" style="left:1232px; top:432px; width:258px" data-step="3" data-anim="rise" data-delay=".1">Prometheus, Grafana, Loki</div>
+    <div class="zone ns" style="left:1210px; top:705px; width:300px; height:140px" data-step="2" data-anim="fade"><span>argocd</span></div>
+    <div class="pod o" style="left:1232px; top:752px" data-step="2" data-anim="rise" data-delay=".1">ArgoCD</div>
+    <div class="nd" style="left:1570px; top:705px; width:170px; border-color:var(--azure)" data-step="2" data-anim="rise" data-delay=".2"><h3>ACR</h3><p>images</p></div>
+    <svg class="art" viewBox="0 0 1920 1080">
+      <defs><marker id="ar-ar" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#536459"/></marker></defs>
+      <g fill="none" stroke-width="3.5">
+        <path d="M380,500 H496" stroke="#0d7b3c" marker-end="url(#ar-ar)" data-anim="draw" data-delay=".5"/>
+        <path d="M690,490 C720,490 720,455 761,455" stroke="#0d7b3c" marker-end="url(#ar-ar)" data-anim="draw" data-delay=".6"/>
+        <path d="M690,510 C720,510 720,615 761,615" stroke="#0d7b3c" marker-end="url(#ar-ar)" data-anim="draw" data-delay=".7"/>
+        <path d="M827,615 H946" stroke="#7b5cd6" marker-end="url(#ar-ar)" data-step="1" data-anim="draw" data-delay=".2"/>
+        <path d="M795,638 V766" stroke="#2f6fde" marker-end="url(#ar-ar)" data-step="1" data-anim="draw" data-delay=".3"/>
+        <path d="M380,800 H455 V905 H1300 V800" stroke="#e39a0b" marker-end="url(#ar-ar)" data-step="2" data-anim="draw" data-delay=".4"/>
+        <path d="M1232,775 C1205,775 1205,640 1184,640" stroke="#e39a0b" marker-end="url(#ar-ar)" data-step="2" data-anim="draw" data-delay=".7"/>
+      </g>
+      <g font-size="20" fill="#536459" font-family="Poppins">
+        <text x="384" y="484" data-anim="fade" data-delay=".6">adresse</text>
+        <text x="708" y="452" data-anim="fade" data-delay=".7">/</text>
+        <text x="696" y="590" data-anim="fade" data-delay=".8" text-anchor="end">/api</text>
+        <text x="880" y="895" data-step="2" data-anim="fade" data-delay=".5">ArgoCD lit les manifestes</text>
+        <text x="1228" y="640" data-step="2" data-anim="fade" data-delay=".8">synchronise</text>
+        <text x="1655" y="830" data-step="2" data-anim="fade" data-delay=".5" text-anchor="middle">tirées par le cluster</text>
+      </g>
+    </svg>
+    <p class="note" data-step="3" data-anim="fade" data-delay=".3"><b>Staging déployé et testé.</b> La production est décrite dans Git, dans ses propres namespaces, mais n'est pas déployée.</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="outils-infra">
+    <p class="kicker">Architecture et démarche DevSecOps · Outils</p>
+    <h2 data-fit="2">Outils d'infrastructure</h2>
+    <div class="tb">
+      <div class="row h"><span>Outil</span><span>Rôle</span><span>Raison du choix</span></div>
+      <div data-anim="rise" data-stagger=".1" data-delay=".15">
+        <div class="row"><b>Docker</b><span>une image par service : API, IA, site client, administration</span><span>le service tourne de la même façon en local et dans le cluster</span></div>
+        <div class="row"><b>Terraform</b><span>prépare le cluster, le registre et le stockage</span><span>infrastructure écrite en code : on relit le plan, on peut la recréer</span></div>
+        <div class="row"><b>AKS</b><span>héberge et relance les conteneurs</span><span>Kubernetes géré par Azure, payé par le crédit étudiant</span></div>
+        <div class="row"><b>ACR</b><span>stocke les images versionnées</span><span>registre privé dans le même cloud, lu par le cluster sans mot de passe</span></div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="outils-livraison">
+    <p class="kicker">Architecture et démarche DevSecOps · Outils</p>
+    <h2 data-fit="2">Outils de livraison, de contrôle et de supervision</h2>
+    <div class="tb">
+      <div class="row h"><span>Outil</span><span>Rôle</span><span>Raison du choix</span></div>
+      <div data-anim="rise" data-stagger=".1" data-delay=".15">
+        <div class="row"><b>GitHub Actions</b><span>lance tests et analyses à chaque pull request ou push</span><span>intégré au dépôt, aucun serveur à entretenir</span></div>
+        <div class="row"><b>ArgoCD</b><span>synchronise le cluster avec Git</span><span>l'état déployé est visible et se corrige depuis Git</span></div>
+        <div class="row"><b>Contrôles</b><span>Gitleaks, SonarCloud, Semgrep, Dependency-Check, Trivy, Checkov</span><span>un outil par risque : secrets, code, bibliothèques, images, infrastructure</span></div>
+        <div class="row"><b>Secrets</b><span>secrets GitHub, Sealed Secrets</span><span>aucun mot de passe en clair dans Git</span></div>
+        <div class="row"><b>Supervision</b><span>Prometheus, Grafana, Alloy, Loki, Alertmanager</span><span>outils standards de Kubernetes, installés dans le cluster</span></div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

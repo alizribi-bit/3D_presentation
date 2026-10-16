@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "jury reload restores hash, final panel and notes",
+    "notes reload recovers the exact cue",
+    "notes opened late recover the exact cue",
+    "presenter hello never pauses the film or changes its reveal state",
+    "leaving the film pauses media and clears the large surface",
+    "returning to media restores content without autoplay"
+  ],
+  "errors": [],
+  "external": [],
+  "failures": [],
+  "build": {
+    "buildId": "f28b99edacde91573e7c308d4bbf9989cfaf4bf447444e96c719b344d64405f0",
+    "projectRoot": "/home/ali/Desktop/zawedni-story-3d"
+  }
+}

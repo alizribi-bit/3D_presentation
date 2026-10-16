@@ -1,0 +1,23 @@
+/* Layout-only polish. Crop scale is shared with the matching evidence markers. */
+.proof-crop{flex:none;isolation:isolate;box-sizing:content-box;background:#fff}
+.proof-mark{position:absolute;box-sizing:border-box;border:3px solid #0d7b3c;border-radius:5px;background:transparent;pointer-events:none}
+.proof-divider{height:18px;background:#171e25;border-top:1px solid #39434e;border-bottom:1px solid #39434e;box-sizing:border-box}
+#apercu .product-shot{top:280px;height:auto;min-height:0;background:#fff;box-shadow:0 12px 30px rgba(16,38,26,.08)}
+#argocd .shot{width:1010px!important;box-shadow:0 12px 30px rgba(16,38,26,.1)}
+#argocd .cap{line-height:1.45;font-size:26px;max-width:1010px}
+#tracabilite .stage .shot{width:1620px;box-sizing:content-box;box-shadow:0 12px 30px rgba(16,38,26,.12)}
+#tracabilite .stage .shot .bar{height:46px;box-sizing:border-box}
+#tracabilite .cap{margin-top:24px;font-size:28px}
+#tracabilite .stage .shot .proof-crop{background:#0d1117}
+#metriques .shot{box-shadow:0 10px 26px rgba(16,38,26,.08)}
+#metriques .bar span{font-family:var(--display);font-size:22px}
+#journaux .shot{box-shadow:0 12px 30px rgba(16,38,26,.08)}
+#journaux .box{padding:18px 24px}
+#journaux .box h3{font-size:28px;line-height:1.2;margin-bottom:8px}
+#journaux .box p{font-size:24px;line-height:1.3;margin:0}
+#alerte .closing{left:1240px;top:800px;width:530px;padding:22px 24px;box-sizing:border-box}
+#alerte .closing p{font-size:26px;line-height:1.4}
+#alerte .cap{font-size:22px;line-height:1.35}
+#alerte .shot{box-shadow:0 10px 26px rgba(16,38,26,.08)}
+/* An inset background retains all source pixels of very short terminal strips. */
+#tracabilite .proof-crop{border-radius:0}

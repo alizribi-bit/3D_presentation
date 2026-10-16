@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.470
+Texte : probleme-0 → probleme-1
+
+00:00:02.470 --> 00:00:07.123
+Capture administration : parcours-app-1 → parcours-app-2
+
+00:00:07.123 --> 00:00:11.056
+Nouvelle slide fixe : startup-1 → probleme-0
+
+00:00:11.056 --> 00:00:15.537
+Atelier preuves : plateforme-2 → sequence-0
+
+00:00:15.537 --> 00:00:19.285
+Cycle 3D : devsecops-0 → devsecops-1
+
+00:00:19.285 --> 00:00:28.231
+Voyage chapitre : methodologie-1 → ch2-0
+
+00:00:28.231 --> 00:00:32.902
+Atelier sans marche : ch2-0 → outils-dev-0
+
+00:00:32.902 --> 00:00:38.782
+Retour au monde : retour-0 → retour-1
+
+00:00:38.782 --> 00:00:43.562
+Précédent rapide : ch2-0 → methodologie-1
+
+00:00:43.562 --> 00:00:51.986
+Rafale au même lieu : methodologie-1 → outils-dev-0
+
+00:00:51.986 --> 00:00:59.631
+Interruption par retour : methodologie-1 → methodologie-1

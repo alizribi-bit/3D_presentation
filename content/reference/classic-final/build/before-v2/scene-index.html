@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le voyage d'un commit</title>
+<link rel="stylesheet" href="fonts.css">
+<script src="vendor/gsap.min.js"></script>
+<script src="icons.js"></script>
+<script>
+/* ============================================================
+   VOS PHRASES — modifiez seulement le texte entre guillemets.
+   (t = seconde où la phrase apparaît ; ne changez t que si vous
+   savez ce que vous faites : les animations n'en dépendent pas.)
+   ============================================================ */
+const STEPS = [
+  { t: 0,    text: "Voici le voyage d'un commit, du code jusqu'à la production." },
+  { t: 5.5,  text: "Le développeur crée un commit sur sa branche feature." },
+  { t: 9.0,  text: "Sur develop, Gitleaks et Semgrep vérifient déjà le code." },
+  { t: 12.5, text: "Une pull request vers staging lance GitHub Actions." },
+  { t: 16.5, text: "Première porte : Gitleaks cherche les secrets dans le code." },
+  { t: 19.2, text: "Un secret est trouvé : pipeline rouge, on ne fusionne pas." },
+  { t: 23.0, text: "On corrige : le secret devient un Secret Kubernetes chiffré." },
+  { t: 29.0, text: "Nouveau commit : tests, dépendances, qualité, image… tout passe." },
+  { t: 40.6, text: "Tout est vert : on peut fusionner dans staging." },
+  { t: 42.5, text: "L'image est poussée dans ACR, notre registre Azure." },
+  { t: 45.4, text: "Le bot CI met à jour le manifeste Kubernetes dans Git." },
+  { t: 48.0, text: "ArgoCD voit le changement et déploie sur AKS." },
+  { t: 54.5, text: "Staging validé : on ouvre la pull request vers main." },
+  { t: 59.0, text: "Même chaîne, mêmes portes, cette fois pour la production." },
+  { t: 67.5, text: "Puis ArgoCD déploie la production, sans commande manuelle." },
+  { t: 76.0, text: "Prometheus, Grafana et Loki surveillent l'application." },
+  { t: 82.5, text: "Chaque commit est vérifié avant d'arriver en production." },
+];
+</script>
+<style>
+:root{
+  --g:#0D7B3C; --g7:#0A6331; --g9:#083F1F; --g50:#E6F2EA; --g100:#DEEDE4; --g200:#B7D8C5;
+  --bg:#F4F7F2; --ink:#0F1B15; --ink2:#3A4B41; --ink3:#6B7A72; --line:#D4DED7;
+  --red:#B0281F; --red50:#FDECEA; --amber:#9A6B00; --amber50:#FFF4D6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#06130B;font-family:'Poppins',sans-serif;color:var(--ink)}
+#frame{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--bg);transform-origin:0 0}
+#pattern{position:absolute;inset:0;background:url(logo-green.png) 0 0/120px 120px repeat;opacity:.035}
+#world{position:absolute;left:0;top:0;width:3840px;height:2160px;transform-origin:0 0}
+#rails{position:absolute;left:0;top:0;width:3840px;height:2160px;overflow:visible}
+.abs{position:absolute}
+.mono{font-family:'JBMono',monospace}
+
+/* zone titles */
+.ztitle{position:absolute;display:flex;align-items:center;gap:16px;height:60px;padding:0 26px 0 8px;border-radius:30px;background:#fff;border:2px solid var(--g200);font-weight:700;font-size:28px;color:var(--g9);white-space:nowrap}
+.ztitle .n{width:44px;height:44px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:800}
+.ztitle span.s{font-weight:500;color:var(--ink3)}
+
+/* generic card */
+.card{position:absolute;background:#fff;border:2px solid var(--g200);border-radius:26px;box-shadow:0 10px 30px rgba(8,63,31,.07)}
+.head{display:flex;align-items:center;gap:16px}
+.ico{width:58px;height:58px;border-radius:18px;background:var(--g50);color:var(--g);display:grid;place-items:center;flex:none}
+.name{font-weight:700;font-size:30px;line-height:1.1;color:var(--ink);white-space:nowrap}
+.sub{font-size:17px;font-weight:500;color:var(--ink3);margin-top:2px}
+.role{font-size:22px;font-weight:500;color:var(--ink2);margin-top:14px;white-space:nowrap}
+.gate{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:16px;font-size:15px;font-weight:700;letter-spacing:.08em;margin-top:14px;white-space:nowrap}
+.gate.block{background:var(--g9);color:#fff}
+.gate.info{background:#EEF1EF;color:var(--ink3)}
+.prod{font-size:18px;color:var(--ink3);margin-top:10px;white-space:nowrap}
+.prod b{font-family:'JBMono',monospace;font-weight:600;color:var(--g7)}
+
+/* station state badge */
+.state{position:absolute;right:22px;bottom:22px;width:46px;height:46px}
+.state>div{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center}
+.s-pend{border:3px dashed var(--line)}
+.s-run{border:5px solid var(--g50);border-top-color:var(--g);opacity:0}
+.s-ok{background:var(--g);color:#fff;opacity:0}
+.s-ko{background:var(--red);color:#fff;opacity:0}
+.s-warn{background:var(--amber50);color:var(--amber);border:2px solid #E9C766;opacity:0}
+
+/* token (the commit) */
+#tok{position:absolute;left:-40px;top:-40px;width:80px;height:80px;z-index:20}
+#tok .c{position:absolute;inset:0;border-radius:50%;background:#fff;border:5px solid var(--g);display:grid;place-items:center;color:var(--g);box-shadow:0 8px 22px rgba(8,63,31,.25)}
+#tok .l{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);height:38px;width:112px;border-radius:20px;background:var(--g9);color:#fff;font-family:'JBMono',monospace;font-weight:700;font-size:21px}
+#tok .l span{position:absolute;inset:0;display:grid;place-items:center}
+
+/* git lanes */
+.lane{position:absolute;height:52px;border-radius:26px;padding:0 20px;display:flex;align-items:center;gap:10px;font-family:'JBMono',monospace;font-weight:700;font-size:22px;color:#fff;white-space:nowrap}
+.node{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:#fff;border:6px solid var(--g)}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:24px;background:#fff;border:2px solid var(--g);font-weight:700;font-size:21px;color:var(--g9);white-space:nowrap;box-shadow:0 6px 16px rgba(8,63,31,.12)}
+.chk{display:inline-flex;align-items:center;gap:6px}
+.chk i{font-style:normal;width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;background:var(--g50);color:var(--g)}
+
+/* pipeline status chip */
+.status{position:absolute;height:60px;border-radius:30px;background:#fff;border:2px solid var(--g200);display:flex;align-items:center;padding:0 10px 0 24px;gap:14px;font-size:22px;font-weight:700;white-space:nowrap}
+.status .st{position:relative;width:220px;height:42px}
+.status .st>div{position:absolute;inset:0;border-radius:21px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:19px;opacity:0}
+.status .run{background:var(--g50);color:var(--g7)}
+.status .ko{background:var(--red);color:#fff}
+.status .ok{background:var(--g);color:#fff}
+.swap{position:relative;display:inline-block}
+.swap>span{white-space:nowrap}
+.swap>span+span{position:absolute;left:0;top:0;opacity:0}
+
+/* AKS */
+.ns{position:absolute;border:2px dashed var(--g200);border-radius:22px;background:#FAFCFA}
+.ns .t{position:absolute;left:24px;top:16px;font-weight:700;font-size:22px;color:var(--g9)}
+.ns .t small{font-weight:500;color:var(--ink3);font-size:17px;margin-left:8px}
+.pod{position:absolute;width:150px;height:96px}
+.pod>div{position:absolute;inset:0;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;font-weight:600}
+.pod .old{background:#EEF1EF;color:var(--ink3);border:2px solid var(--line)}
+.pod .new{background:var(--g);color:#fff;opacity:0}
+.pod b{font-family:'JBMono',monospace;font-size:17px}
+.okchip{position:absolute;height:44px;padding:0 18px;border-radius:22px;background:var(--g);color:#fff;font-weight:700;font-size:20px;display:flex;align-items:center;gap:8px;opacity:0;white-space:nowrap}
+
+/* overlay */
+#brand{position:absolute;left:40px;top:28px;height:60px;display:flex;align-items:center;gap:14px;padding:0 26px 0 12px;background:rgba(255,255,255,.92);border:2px solid var(--g200);border-radius:30px;font-weight:800;font-size:22px;color:var(--g9);letter-spacing:.06em}
+#brand img{height:40px}
+#brand span{font-weight:500;letter-spacing:0;color:var(--ink3)}
+#scope{position:absolute;right:40px;top:28px;height:60px;display:flex;align-items:center;padding:0 26px;background:rgba(255,255,255,.92);border:2px solid var(--g200);border-radius:30px;font-weight:500;font-size:20px;color:var(--ink3)}
+#scope b{color:var(--g9);margin-left:6px}
+#cue{z-index:5;position:absolute;left:48px;bottom:40px;height:104px;width:1440px;background:#fff;border-radius:30px;border:2px solid var(--g200);box-shadow:0 18px 40px rgba(8,63,31,.18);display:flex;align-items:center}
+#cue:after{content:'';position:absolute;left:62px;top:-14px;width:26px;height:26px;background:#fff;border-left:2px solid var(--g200);border-top:2px solid var(--g200);transform:rotate(45deg)}
+#cue .av{width:68px;height:68px;margin:0 22px 0 18px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;flex:none}
+#cue .tx{position:relative;flex:1;height:100%}
+#cue .tx div{position:absolute;left:0;right:110px;top:0;bottom:0;display:flex;align-items:center;font-size:34px;font-weight:600;color:var(--ink);opacity:0;white-space:nowrap}
+#cue .num{position:absolute;right:26px;white-space:nowrap;top:50%;transform:translateY(-50%);font-size:20px;font-weight:600;color:var(--ink3)}
+#cue .num span{position:absolute;right:0;top:-14px;opacity:0}
+
+#fix{position:absolute;left:0;top:0;width:1920px;height:1080px;display:grid;place-items:center;opacity:0;visibility:hidden}
+#fix .dim{position:absolute;inset:0;background:rgba(8,40,22,.35)}
+#fix .box{position:relative;width:1120px;background:#fff;border-radius:30px;padding:36px 44px;box-shadow:0 30px 80px rgba(0,0,0,.3);margin-top:-110px}
+#fix .ttl{display:flex;align-items:center;gap:16px;font-size:30px;font-weight:700}
+#fix .file{margin-top:22px;border-radius:18px;overflow:hidden;border:2px solid var(--line)}
+#fix .fh{background:#EEF1EF;padding:10px 20px;font-family:'JBMono',monospace;font-size:19px;color:var(--ink3)}
+#fix .ln{font-family:'JBMono',monospace;font-size:27px;padding:12px 20px;white-space:nowrap;position:relative}
+#fix .ln.del{background:var(--red50);color:var(--red)}
+#fix .ln.add{background:var(--g50);color:var(--g7)}
+#fix .strike{position:absolute;left:58px;top:50%;height:3px;width:484px;background:var(--red);transform-origin:0 50%;transform:scaleX(0)}
+#fix .note{white-space:nowrap;display:flex;align-items:center;gap:14px;margin-top:22px;font-size:23px;font-weight:600;color:var(--g9)}
+#fix .note .pill{position:static;margin-left:auto;font-family:'JBMono',monospace}
+
+.panel{position:absolute;inset:0;background:var(--g);color:#fff;overflow:hidden}
+.panel .pat{position:absolute;inset:-60px;background:url(logo-white.png) 0 0/150px 150px repeat;opacity:.06}
+.panel .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.panel .logo{width:230px;height:230px;border-radius:52px;background:#fff;display:grid;place-items:center;box-shadow:0 30px 70px rgba(0,0,0,.25)}
+.panel .logo img{width:150px}
+.panel h1{font-size:92px;font-weight:800;margin-top:52px;letter-spacing:-.01em}
+.panel h2{font-size:34px;font-weight:500;margin-top:14px;opacity:.9}
+.panel .tags{display:flex;gap:18px;margin-top:44px}
+.panel .tags div{height:56px;padding:0 26px;border-radius:28px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.35);display:flex;align-items:center;gap:10px;font-size:23px;font-weight:600}
+
+#hint{z-index:6;position:absolute;right:48px;bottom:58px;height:68px;padding:0 26px;border-radius:34px;background:var(--g9);color:#fff;display:none;align-items:center;gap:10px;font-size:22px;font-weight:600}
+#start{z-index:7;position:absolute;inset:0;display:none;place-items:center;background:rgba(6,19,11,.55);color:#fff;font-size:34px;font-weight:600;cursor:pointer}
+#start div{background:var(--g9);padding:28px 44px;border-radius:24px;text-align:center}
+#start small{display:block;font-size:20px;font-weight:500;opacity:.8;margin-top:10px}
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="pattern"></div>
+  <div id="world"><svg id="rails" viewBox="0 0 3840 2160"></svg></div>
+
+  <div id="brand"><img src="logo-green.png" alt="">ZAWEDNI <span>Chaîne DevSecOps</span></div>
+  <div id="scope">Exemple :<b>backend Spring Boot</b></div>
+
+  <div id="cue"><div class="av"></div><div class="tx"></div><div class="num"></div></div>
+
+  <div id="fix"><div class="dim"></div>
+    <div class="box">
+      <div class="ttl"><div class="ico"></div>Correction sur la branche feature</div>
+      <div class="file">
+        <div class="fh">src/main/resources/application.yml</div>
+        <div class="ln del" id="fdel">-  jwt.secret: "x9fA2qL7mP4tR8wZ"<div class="strike" id="fstrike"></div></div>
+        <div class="ln add" id="fadd">+  jwt.secret: ${JWT_SECRET}</div>
+      </div>
+      <div class="note" id="fnote"><span class="ico" style="width:46px;height:46px;border-radius:14px"></span>Le secret sort du code : Secret Kubernetes chiffré (Sealed Secrets)<div class="pill" id="fcommit">commit b71e2d</div></div>
+    </div>
+  </div>
+
+  <div class="panel" id="intro"><div class="pat"></div><div class="center">
+    <div class="logo" id="i-logo"><img src="logo-green.png" alt=""></div>
+    <h1 id="i-h1">Le voyage d'un commit</h1>
+    <h2 id="i-h2">Chaîne DevSecOps ZAWEDNI · de la branche feature à la production</h2>
+  </div></div>
+
+  <div class="panel" id="outro"><div class="pat"></div><div class="center">
+    <div class="logo" id="o-logo"><img src="logo-green.png" alt=""></div>
+    <h1 id="o-h1" style="font-size:72px">Vérifié à chaque commit.</h1>
+    <h2 id="o-h2">Rien n'arrive en production sans passer toutes les portes.</h2>
+    <div class="tags" id="o-tags"><div>Sécurité dès le commit</div><div>Déploiement GitOps</div><div>Surveillance continue</div></div>
+  </div></div>
+
+  <div id="hint">Continuer <span id="hint-i"></span></div>
+  <div id="start"><div>▶ Cliquez ou appuyez sur → pour commencer<small>→ / Espace : continuer · ← : revenir · A : lecture continue · F : plein écran · R : recommencer</small></div></div>
+</div>
+
+<script>
+const MODE = new URLSearchParams(location.search).get('mode') || 'player';
+const $ = s => document.querySelector(s);
+const world = $('#world'), rails = $('#rails');
+const svgNS = 'http://www.w3.org/2000/svg';
+const icon = (n, s = 30, sw = 2) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]}</svg>`;
+function el(html, css = {}, parent = world) {
+  const t = document.createElement('template'); t.innerHTML = html.trim();
+  const e = t.content.firstElementChild; Object.assign(e.style, css); parent.appendChild(e); return e;
+}
+const P = (x, y, w, h) => ({ left: x + 'px', top: y + 'px', ...(w ? { width: w + 'px' } : {}), ...(h ? { height: h + 'px' } : {}) });
+function path(d, stroke, width = 8, extra = {}) {
+  const p = document.createElementNS(svgNS, 'path');
+  p.setAttribute('d', d); p.setAttribute('fill', 'none'); p.setAttribute('stroke', stroke);
+  p.setAttribute('stroke-width', width); p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
+  for (const k in extra) p.setAttribute(k, extra[k]);
+  rails.appendChild(p); return p;
+}
+// a rail = grey base + green "lit" copy that draws on
+function rail(d, w = 8) {
+  path(d, '#D4DED7', w);
+  const lit = path(d, '#0D7B3C', w); const L = lit.getTotalLength();
+  lit.style.strokeDasharray = L; lit.style.strokeDashoffset = L; return lit;
+}
+$('#cue .av').innerHTML = icon('mic', 34);
+$('#hint-i').innerHTML = icon('chevron-right', 28, 2.6);
+$('#fix .ttl .ico').innerHTML = icon('user-round', 30);
+$('#fnote .ico').innerHTML = icon('lock', 26);
+
+/* ---------- zone titles ---------- */
+const zt = (x, y, n, a, b) => el(`<div class="ztitle"><div class="n">${n}</div>${a} <span class="s">${b}</span></div>`, P(x, y));
+zt(60, 130, 1, 'Git', '· les branches');
+zt(1980, 130, 2, 'Intégration continue', '· GitHub Actions');
+zt(1980, 1210, 3, 'Déploiement continu', '· GitOps');
+zt(60, 1210, 4, 'Observabilité', '· Monitoring');
+
+/* ---------- zone A : Git ---------- */
+const dev = el(`<div class="card" style="padding:30px;text-align:center">
+  <div class="ico" style="width:110px;height:110px;border-radius:34px;margin:6px auto 0">${icon('laptop', 60, 1.8)}</div>
+  <div class="name" style="margin-top:22px">Développeur</div>
+  <div class="role" style="margin-top:8px;font-size:20px;white-space:normal">écrit une nouvelle<br>fonctionnalité</div></div>`, P(110, 340, 300, 330));
+const LANES = [['feature/notation-rse', 330, '#6B7A72'], ['develop', 470, '#2B8B54'], ['staging', 610, '#0D7B3C'], ['main', 750, '#083F1F']];
+for (const [n, y, c] of LANES) {
+  path(`M780 ${y} L1600 ${y}`, c, 6, { opacity: .35 });
+  el(`<div class="lane">${icon('git-branch', 24)}${n}</div>`, { ...P(n.length > 10 ? 470 : 560, y - 26), background: c });
+}
+const railFeat = rail('M860 330 C950 330 950 470 1040 470');
+const railPR = rail('M1040 470 C1150 470 1150 610 1260 610', 7);
+const railCI1 = rail('M1260 610 L1600 610 C1720 610 1720 405 1840 405 L2020 405');
+const nC1 = el('<div class="node" style="border-color:#6B7A72"></div>', P(860, 330));
+const nD1 = el('<div class="node" style="border-color:#2B8B54"></div>', P(1040, 470));
+const nS1 = el('<div class="node" style="border-style:dashed"></div>', P(1260, 610));
+const devBadge = el(`<div class="pill" style="border-color:#2B8B54">push develop :
+  <span class="chk" id="dk1"><i>${icon('check', 18, 3)}</i>Gitleaks</span>
+  <span class="chk" id="dk2"><i>${icon('check', 18, 3)}</i>Semgrep</span>
+  <span style="color:var(--ink3);font-weight:500">· pas de build</span></div>`, P(1112, 372));
+const prPill = el(`<div class="pill">${icon('git-pull-request', 24)}Pull request → staging</div>`, P(800, 516));
+// later: staging → main
+const nS2 = el('<div class="node"></div>', P(1400, 610));
+const railMain = rail('M1400 610 C1480 610 1480 750 1560 750 L1640 750 C1760 750 1760 405 1880 405 L2020 405', 7);
+const prMain = el(`<div class="pill" style="border-color:#083F1F">${icon('git-pull-request', 24)}Pull request → main</div>`, P(1120, 668));
+const mergedChip = el(`<div class="okchip" style="opacity:0">${icon('git-merge', 22)}fusionné dans staging</div>`, P(1150, 520));
+
+/* ---------- zone B : CI ---------- */
+const STATIONS = [
+  // name, icon, role, gate, produit, x, y (world)
+  ['Gitleaks', 'key-round', 'Cherche les secrets', 'BLOQUANT', 'gitleaks-report.json', 2080, 290],
+  ['Maven + JUnit', 'flask-conical', 'Compile et teste', 'BLOQUANT', 'jar testé', 2640, 290],
+  ['Dependency-Check', 'package', 'Dépendances (CVE)', 'BLOQUANT · CVSS ≥ 9', 'rapport HTML', 3200, 290],
+  ['SonarCloud', 'search-code', 'Qualité du code', 'BLOQUANT · QUALITY GATE', 'tableau de bord', 3200, 600],
+  ['Docker build', 'container', "Construit l'image", 'ÉTAPE DE BUILD', 'image backend', 2640, 600],
+  ['Trivy', 'scan-search', "Scanne l'image", 'BLOQUANT · HIGH / CRITICAL', 'rapport CVE', 2080, 600],
+];
+function stateBadge() {
+  return `<div class="state"><div class="s-pend"></div><div class="s-run"></div>
+    <div class="s-ok">${icon('check', 26, 3.2)}</div><div class="s-ko">${icon('x', 26, 3.2)}</div><div class="s-warn">${icon('triangle-alert', 22, 2.6)}</div></div>`;
+}
+function station(name, ic, role, gate, prod, x, y, w = 440, h = 230) {
+  const c = el(`<div class="card" style="padding:24px 26px">
+    <div class="head"><div class="ico">${icon(ic, 30)}</div><div class="name">${name}</div></div>
+    ${stateBadge()}
+    <div class="role">${role}</div>
+    <div class="gate ${gate.startsWith('BLOQUANT') ? 'block' : 'info'}">${gate}</div>
+    <div class="prod">Produit : <b>${prod}</b></div></div>`, P(x, y, w, h));
+  const q = s => c.querySelector(s);
+  return { card: c, pend: q('.s-pend'), run: q('.s-run'), ok: q('.s-ok'), ko: q('.s-ko'), warn: q('.s-warn'), prod: q('.prod') };
+}
+const railCI2 = rail('M2020 405 L3680 405 Q3740 405 3740 465 L3740 655 Q3740 715 3680 715 L2020 715');
+const ST = STATIONS.map(s => station(...s));
+// parallel, report-only scanners
+const par = el(`<div class="abs" style="display:flex;align-items:center;gap:16px;font-size:20px;font-weight:500;color:var(--ink3);white-space:nowrap">
+  En parallèle, consultatifs :
+  <span class="pill" style="position:static;height:42px;border-color:var(--line);color:var(--ink2)"><span class="chk" id="pk1"><i style="background:#EEF1EF;color:var(--ink3)">${icon('search-code', 16, 2.4)}</i></span>Semgrep · SAST → rapport</span>
+  <span class="pill" style="position:static;height:42px;border-color:var(--line);color:var(--ink2)"><span class="chk" id="pk2"><i style="background:#EEF1EF;color:var(--ink3)">${icon('file-code-2', 16, 2.4)}</i></span>Checkov · Terraform + K8s → rapport</span></div>`, P(2090, 537));
+const status = el(`<div class="status"><span class="swap"><span>PR → staging</span><span>PR → main</span></span>
+  <div class="st"><div class="run">${icon('refresh-cw', 18, 2.6)}En cours</div><div class="ko">${icon('x', 18, 3)}Échec</div><div class="ok">${icon('check', 18, 3)}Tout est vert</div></div></div>`, P(2660, 130));
+const stRun = status.querySelector('.run'), stKo = status.querySelector('.ko'), stOkC = status.querySelector('.ok');
+const [stSwapA, stSwapB] = status.querySelectorAll('.swap>span');
+const leak = el(`<div class="pill" style="border-color:var(--red);color:var(--red);opacity:0;font-size:22px;height:56px">
+  ${icon('triangle-alert', 26)}Secret détecté · application.yml, ligne 12</div>`, P(2160, 222));
+
+/* ---------- zone C : CD ---------- */
+const railCD = rail('M2020 715 L2020 1360 Q2020 1420 2080 1420 L3580 1420 L3580 1700');
+function cdCard(name, ic, sub, role, prodA, prodB, x) {
+  const c = el(`<div class="card" style="padding:24px 26px">
+    <div class="head"><div class="ico">${icon(ic, 30)}</div><div><div class="name">${name}</div><div class="sub">${sub}</div></div></div>
+    ${stateBadge()}
+    <div class="role" style="margin-top:18px">${role}</div>
+    <div class="prod" style="font-size:17px"><span class="swap"><span><b>${prodA}</b></span><span><b>${prodB}</b></span></span></div></div>`, P(x, 1300, 440, 240));
+  const q = s => c.querySelector(s); const sw = c.querySelectorAll('.swap>span');
+  return { card: c, pend: q('.s-pend'), run: q('.s-run'), ok: q('.s-ok'), ko: q('.s-ko'), warn: q('.s-warn'), a: sw[0], b: sw[1] };
+}
+const ACR = cdCard('ACR', 'cloud-upload', 'Azure Container Registry', 'Stocke les images', 'zawedni-backend:b71e2d-staging', 'zawedni-backend:b71e2d-latest', 2080);
+const MAN = cdCard('Manifeste K8s', 'file-code-2', 'commit du ZAWEDNI CI Bot', 'Met à jour le tag', 'k8s/staging/backend/…yaml', 'k8s/prod/backend/…yaml', 2620);
+const ARGO = cdCard('ArgoCD', 'refresh-cw', 'GitOps', 'Compare Git ↔ cluster', 'OutOfSync → Synced', 'OutOfSync → Synced', 3160);
+const aks = el(`<div class="card" style="border-color:var(--g)">
+  <div class="head" style="position:absolute;left:28px;top:22px"><div class="ico">${icon('server', 30)}</div><div><div class="name">AKS</div><div class="sub">Azure Kubernetes Service</div></div></div><div style="position:absolute;left:28px;top:118px;width:380px;font-size:21px;font-weight:500;color:var(--ink2);line-height:1.45"><b style="color:var(--g9)">Rolling update</b><br>les pods sont remplacés un par un, sans coupure.</div></div>`, P(2080, 1610, 1620, 330));
+function ns(x, label, sub) {
+  const n = el(`<div class="ns"><div class="t">${label}<small>namespace</small></div></div>`, P(x, 1650, 560, 270));
+  const pods = [0, 1, 2].map(i => {
+    const p = el(`<div class="pod"><div class="old">pod<b>4c8e0d</b></div><div class="new">pod<b>b71e2d</b></div></div>`, P(26 + i * 172, 120), n);
+    return p.querySelector('.new');
+  });
+  return { n, pods };
+}
+const NS_S = ns(2520, 'staging', 'zawedni-staging');
+const NS_P = ns(3110, 'prod', 'zawedni-prod');
+const okS = el(`<div class="okchip">${icon('check', 20, 3)}staging à jour</div>`, P(2840, 1664));
+const okP = el(`<div class="okchip">${icon('check', 20, 3)}production à jour</div>`, P(3400, 1664));
+
+/* ---------- zone D : observability ---------- */
+const railObs = path('M2080 1780 L1800 1780 L1800 1720 L250 1720', '#0D7B3C', 5, { 'stroke-dasharray': '4 18', opacity: 0 });
+const drops = [250, 690, 1130, 1570].map(x => path(`M${x} 1720 L${x} 1660`, '#0D7B3C', 5, { 'stroke-dasharray': '4 14', opacity: 0 }));
+function obsCard(name, ic, role, prod, x, inner) {
+  return el(`<div class="card" style="padding:24px 26px;opacity:0">
+    <div class="head"><div class="ico">${icon(ic, 30)}</div><div class="name">${name}</div></div>
+    <div class="role" style="font-size:20px;margin-top:12px">${role}</div>
+    <div style="position:relative;height:96px;margin-top:12px;border-radius:14px;background:var(--bg);overflow:hidden">${inner}</div>
+    <div class="prod" style="font-size:17px">Produit : <b>${prod}</b></div></div>`, P(x, 1330, 400, 330));
+}
+const chartD = 'M14 80 L60 64 L100 70 L140 40 L180 52 L220 30 L260 38 L300 18 L336 24';
+const O1 = obsCard('Prometheus', 'activity', 'Collecte les métriques', '13 cibles surveillées', 50,
+  `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:14px;font-size:22px;font-weight:700;color:var(--g9)"><span id="pdot" style="width:20px;height:20px;border-radius:50%;background:var(--g)"></span>UP · 13 / 13</div>`);
+const O2 = obsCard('Grafana', 'layout-dashboard', 'Tableaux de bord', 'dashboards cluster', 490,
+  `<svg width="348" height="96" viewBox="0 0 348 96"><path id="gchart" d="${chartD}" fill="none" stroke="#0D7B3C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`);
+const O3 = obsCard('Loki', 'scroll-text', 'Centralise les journaux', 'logs de tous les pods', 930,
+  `<div id="logs" class="mono" style="position:absolute;left:14px;top:8px;font-size:15px;line-height:24px;color:var(--ink2);white-space:nowrap">
+   <div>INFO  backend  GET /api/companies 200</div><div>INFO  backend  POST /api/grids 201</div>
+   <div>INFO  ia       score computed 80</div><div>INFO  backend  GET /v/ZW-0042 200</div>
+   <div>INFO  client   page /marketplace</div><div>INFO  backend  GET /api/health 200</div>
+   <div>INFO  backend  POST /api/tx 201</div><div>INFO  ia       embeddings ready</div></div>`);
+const O4 = obsCard('Alertes', 'bell', 'Préviennent en cas de problème', 'zawedni-alerts.yaml', 1370,
+  `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;font-size:20px;font-weight:600;color:var(--ink2)"><span id="bell" style="color:var(--g);display:inline-grid">${icon('bell', 40, 2)}</span>PrometheusRule</div>`);
+
+/* ---------- token ---------- */
+const tok = el(`<div id="tok"><div class="c">${icon('git-commit-horizontal', 40, 2.6)}</div>
+  <div class="l"><span id="h1">a3f9c1</span><span id="h2" style="opacity:0">b71e2d</span></div></div>`);
+const tokC = tok.querySelector('.c');
+
+/* ---------- cue bubble ---------- */
+const cueEls = STEPS.map(s => el(`<div>${s.text}</div>`, {}, $('#cue .tx')));
+const numEls = STEPS.map((s, i) => el(`<span>${i + 1} / ${STEPS.length}</span>`, {}, $('#cue .num')));
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+const cam = { x: 0, y: 0, s: 1 };
+const applyCam = () => { world.style.transform = `translate(${-cam.x * cam.s}px,${-cam.y * cam.s}px) scale(${cam.s})`; };
+const tl = gsap.timeline({ paused: true, onUpdate: applyCam, defaults: { ease: 'power2.inOut' } });
+const EVENTS = []; const ev = (type, t) => EVENTS.push({ t: +t.toFixed(3), type });
+const camTo = (x, y, s, t, d = 1.6) => { tl.to(cam, { x, y, s, duration: d }, t); ev('whoosh', t); };
+const show = (e, t, d = .45, from = { scale: .6 }) => { tl.fromTo(e, { opacity: 0, ...from }, { opacity: 1, scale: 1, y: 0, duration: d, ease: 'back.out(2.2)', immediateRender: false }, t); };
+const draw = (p, t, d = .8) => tl.to(p, { strokeDashoffset: 0, duration: d, ease: 'power1.inOut' }, t);
+const move = (pts, t, seg = .5) => pts.forEach(([x, y], i) => tl.to(tok, { x, y, duration: seg, ease: i === pts.length - 1 ? 'power2.out' : 'none' }, t + i * seg));
+
+// initial states
+gsap.set([nC1, nD1, nS1, nS2, devBadge, prPill, prMain, leak], { opacity: 0 });
+gsap.set(tok, { x: 260, y: 470, opacity: 0, scale: .4 });
+gsap.set(cueEls, { opacity: 0 }); gsap.set(numEls, { opacity: 0 });
+
+// cue bubble swaps
+STEPS.forEach((s, i) => {
+  const t = Math.max(s.t, 0.01);
+  if (i) tl.to([cueEls[i - 1], numEls[i - 1]], { opacity: 0, y: -12, duration: .25 }, t);
+  tl.fromTo([cueEls[i], numEls[i]], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .4, ease: 'power2.out', immediateRender: false }, t + .12);
+});
+
+function runSt(s, t, d) {
+  tl.set(s.pend, { opacity: 0 }, t).set(s.run, { opacity: 1 }, t)
+    .fromTo(s.run, { rotation: 0 }, { rotation: 360 * d / .8, duration: d, ease: 'none', immediateRender: false }, t)
+    .to(s.card, { borderColor: '#0D7B3C', boxShadow: '0 0 0 8px rgba(13,123,60,.14)', duration: .25 }, t);
+}
+function okSt(s, t) {
+  tl.set(s.run, { opacity: 0 }, t)
+    .fromTo(s.ok, { opacity: 0, scale: .2 }, { opacity: 1, scale: 1, duration: .4, ease: 'back.out(3)', immediateRender: false }, t)
+    .to(s.card, { borderColor: '#B7D8C5', backgroundColor: '#F3FAF5', boxShadow: '0 10px 30px rgba(8,63,31,.07)', duration: .3 }, t);
+  ev('tick', t);
+}
+function resetSt(s, t) {
+  tl.set([s.ok, s.ko, s.run, s.warn], { opacity: 0 }, t).set(s.pend, { opacity: 1 }, t)
+    .set(s.card, { borderColor: '#B7D8C5', backgroundColor: '#ffffff', boxShadow: '0 10px 30px rgba(8,63,31,.07)' }, t);
+}
+function statusTo(which, t) {
+  tl.to([stRun, stKo, stOkC].filter(e => e !== which), { opacity: 0, duration: .2 }, t)
+    .fromTo(which, { opacity: 0, scale: .7 }, { opacity: 1, scale: 1, duration: .35, ease: 'back.out(2.5)', immediateRender: false }, t);
+}
+
+/* --- 0 · intro --- */
+tl.fromTo('#i-logo', { scale: .3, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: .8, ease: 'back.out(1.8)' }, .3);
+tl.fromTo('#i-h1', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .7, ease: 'power3.out' }, .9);
+tl.fromTo('#i-h2', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .7, ease: 'power3.out' }, 1.3);
+tl.fromTo('#cue', { y: 180 }, { y: 0, duration: .7, ease: 'power3.out' }, .1);
+ev('intro', .3);
+tl.to('#intro', { yPercent: -100, duration: .9, ease: 'power3.inOut' }, 5.55);
+ev('whoosh', 5.55);
+
+/* --- 1 · feature commit --- */
+tl.to(dev, { borderColor: '#0D7B3C', boxShadow: '0 0 0 8px rgba(13,123,60,.14)', duration: .3 }, 6.2);
+tl.to(tok, { opacity: 1, scale: 1, duration: .4, ease: 'back.out(2)' }, 6.4); ev('pop', 6.4);
+move([[600, 400], [860, 330]], 6.9, .45);
+show(nC1, 7.7); ev('pop', 7.7);
+tl.to(dev, { borderColor: '#B7D8C5', boxShadow: '0 10px 30px rgba(8,63,31,.07)', duration: .4 }, 8.0);
+
+/* --- 2 · develop --- */
+draw(railFeat, 9.1, .8); move([[950, 380], [1040, 470]], 9.1, .4);
+show(nD1, 9.9); ev('pop', 9.9);
+show(devBadge, 10.3, .45, { scale: .8, y: 10 });
+tl.fromTo('#dk1 i', { backgroundColor: '#E6F2EA', color: '#0D7B3C' }, { backgroundColor: '#0D7B3C', color: '#fff', duration: .25, immediateRender: false }, 11.0); ev('tick', 11.0);
+tl.fromTo('#dk2 i', { backgroundColor: '#E6F2EA', color: '#0D7B3C' }, { backgroundColor: '#0D7B3C', color: '#fff', duration: .25, immediateRender: false }, 11.5); ev('tick', 11.5);
+
+/* --- 3 · PR to staging, go to CI --- */
+draw(railPR, 12.6, .8); move([[1150, 540], [1260, 610]], 12.6, .4);
+show(nS1, 13.4); show(prPill, 13.5); ev('pop', 13.5);
+draw(railCI1, 14.6, 1.8);
+move([[1600, 610], [1720, 508], [1840, 405], [2020, 405]], 14.6, .45);
+camTo(1920, 0, 1, 14.6, 1.7);
+statusTo(stRun, 16.0);
+
+/* --- 4 · Gitleaks catches a secret --- */
+const G = ST[0];
+runSt(G, 16.7, 2.5);
+tl.set(G.run, { opacity: 0 }, 19.2)
+  .fromTo(G.ko, { opacity: 0, scale: .2 }, { opacity: 1, scale: 1, duration: .4, ease: 'back.out(3)', immediateRender: false }, 19.2)
+  .to(G.card, { borderColor: '#B0281F', backgroundColor: '#FDECEA', boxShadow: '0 0 0 10px rgba(176,40,31,.16)', duration: .25 }, 19.2)
+  .to(tokC, { borderColor: '#B0281F', color: '#B0281F', duration: .2 }, 19.2)
+  .to(tok, { keyframes: { x: [2020, 2008, 2032, 2010, 2030, 2020] }, duration: .5, ease: 'none' }, 19.25);
+statusTo(stKo, 19.3); ev('fail', 19.2);
+show(leak, 19.7, .45, { scale: .7, y: 10 });
+camTo(1920, -40, 1.25, 19.6, 1.2);
+
+/* --- 5 · the fix --- */
+tl.set('#fix', { visibility: 'visible' }, 23.0).to('#fix', { opacity: 1, duration: .4 }, 23.0);
+tl.fromTo('#fix .box', { y: 60, scale: .92 }, { y: 0, scale: 1, duration: .5, ease: 'back.out(1.6)', immediateRender: false }, 23.0); ev('pop', 23.0);
+gsap.set('#fadd', { clipPath: 'inset(0 100% 0 0)' }); gsap.set(['#fnote', '#fcommit'], { opacity: 0 });
+tl.to('#fstrike', { scaleX: 1, duration: .6, ease: 'power1.inOut' }, 23.8);
+tl.to('#fdel', { opacity: .45, duration: .3 }, 24.4);
+tl.to('#fadd', { clipPath: 'inset(0 0% 0 0)', duration: 1.3, ease: 'steps(22)' }, 24.8); ev('type', 24.8);
+show('#fnote', 26.3, .4, { scale: .9 });
+show('#fcommit', 27.0, .4, { scale: .6 }); ev('pop', 27.0);
+tl.to('#fix', { opacity: 0, duration: .4 }, 28.2).set('#fix', { visibility: 'hidden' }, 28.6);
+camTo(1920, 0, 1, 28.2, .7);
+tl.to('#h1', { opacity: 0, y: -10, duration: .25 }, 28.5).fromTo('#h2', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .3, immediateRender: false }, 28.6);
+tl.to(tokC, { borderColor: '#0D7B3C', color: '#0D7B3C', duration: .3 }, 28.6);
+tl.to(leak, { opacity: 0, duration: .3 }, 28.5);
+resetSt(G, 28.7); statusTo(stRun, 28.8);
+
+/* --- 6 · clean run --- */
+const stops = [[2020, 405], [2580, 405], [3140, 405], [3740, 715], [3140, 715], [2580, 715], [2020, 715]];
+function pipeline(t0, run, gap) {
+  let t = t0;
+  for (let i = 0; i < 6; i++) {
+    runSt(ST[i], t, run); okSt(ST[i], t + run); t += run;
+    if (i === 2) move([[3700, 405], [3740, 465], [3740, 715]], t, gap / 2.2);
+    else move([stops[i + 1]], t, gap);
+    t += i === 2 ? gap * 1.4 : gap;
+  }
+  return t;
+}
+let tEnd = pipeline(29.2, 1.25, .55);
+draw(railCI2, 29.2, tEnd - 29.2);
+tl.to('#pk1 i', { backgroundColor: '#0D7B3C', color: '#fff', duration: .3 }, 31.0);
+tl.to('#pk2 i', { backgroundColor: '#0D7B3C', color: '#fff', duration: .3 }, 33.4);
+statusTo(stOkC, 40.6); ev('success', 40.6);
+
+/* --- 7 · CD staging --- */
+draw(railCD, 42.55, 9.2);
+move([[2020, 1060], [2020, 1420]], 42.55, .75);
+camTo(1920, 1080, 1, 42.55, 1.45);
+function cdRun(c, t, d) { runSt(c, t, d); okSt(c, t + d); }
+cdRun(ACR, 44.0, 1.2);
+move([[2560, 1420]], 45.4, .5);
+cdRun(MAN, 46.0, 1.4);
+move([[3100, 1420]], 48.0, .5);
+runSt(ARGO, 48.6, 1.8);
+tl.set(ARGO.run, { opacity: 0 }, 48.6).set(ARGO.warn, { opacity: 1 }, 48.6).set(ARGO.warn, { opacity: 0 }, 49.3).set(ARGO.run, { opacity: 1 }, 49.3);
+okSt(ARGO, 50.4);
+move([[3580, 1420], [3580, 1610], [2800, 1760]], 50.6, .4);
+tl.to(tok, { scale: .3, opacity: 0, duration: .4 }, 51.8);
+NS_S.pods.forEach((p, i) => { tl.fromTo(p, { opacity: 0, scale: .5 }, { opacity: 1, scale: 1, duration: .45, ease: 'back.out(2)', immediateRender: false }, 52.0 + i * .6); ev('pod', 52.0 + i * .6); });
+show(okS, 54.0, .4); ev('success', 54.0);
+
+/* --- 8 · staging → main --- */
+camTo(0, 0, 1, 54.6, 1.8);
+STATIONS.forEach((_, i) => resetSt(ST[i], 55.0)); resetSt(ACR, 55.0); resetSt(MAN, 55.0); resetSt(ARGO, 55.0);
+tl.set([stRun, stOkC], { opacity: 0 }, 55.0).set(stSwapA, { opacity: 0 }, 55.0).set(stSwapB, { opacity: 1 }, 55.0);
+tl.set([ACR.a, MAN.a], { opacity: 0 }, 55.0).set([ACR.b, MAN.b], { opacity: 1 }, 55.0);
+tl.to(nS1, { borderStyle: 'solid', duration: .01 }, 56.0);
+tl.to(prPill, { opacity: 0, duration: .3 }, 56.0);
+show(mergedChip, 56.2, .4); ev('pop', 56.2);
+tl.set(tok, { x: 1400, y: 610 }, 56.4).to(tok, { opacity: 1, scale: 1, duration: .4, ease: 'back.out(2)' }, 56.6);
+show(nS2, 56.6);
+draw(railMain, 57.2, 3.4);
+move([[1480, 680], [1560, 750]], 57.2, .45);
+show(prMain, 58.0); ev('pop', 58.0);
+move([[1640, 750], [1760, 578], [1880, 405], [2020, 405]], 59.1, .4);
+camTo(1920, 0, 1, 59.1, 1.6);
+statusTo(stRun, 60.4);
+
+/* --- 9 · same gates, for main (fast) --- */
+tEnd = pipeline(60.9, .62, .32);
+statusTo(stOkC, tEnd); ev('success', tEnd);
+
+/* --- 10 · CD prod --- */
+move([[2020, 1060], [2020, 1420]], 67.5, .6);
+camTo(1920, 1080, 1, 67.5, 1.4);
+cdRun(ACR, 69.0, .7);
+move([[2560, 1420]], 69.8, .4);
+cdRun(MAN, 70.3, .8);
+move([[3100, 1420]], 71.2, .4);
+cdRun(ARGO, 71.7, .9);
+move([[3580, 1420], [3580, 1610], [3390, 1760]], 72.7, .35);
+tl.to(tok, { scale: .3, opacity: 0, duration: .4 }, 73.8);
+NS_P.pods.forEach((p, i) => { tl.fromTo(p, { opacity: 0, scale: .5 }, { opacity: 1, scale: 1, duration: .45, ease: 'back.out(2)', immediateRender: false }, 74.0 + i * .5); ev('pod', 74.0 + i * .5); });
+show(okP, 75.6, .4); ev('success', 75.6);
+
+/* --- 11 · observability --- */
+camTo(0, 1080, 1, 76.2, 1.6);
+tl.to([railObs, ...drops], { opacity: 1, duration: .5 }, 77.0);
+tl.fromTo([railObs, ...drops], { strokeDashoffset: 0 }, { strokeDashoffset: -220, duration: 9, ease: 'none', immediateRender: false }, 77.0);
+[O1, O2, O3, O4].forEach((o, i) => { show(o, 77.6 + i * .35, .5, { scale: .85, y: 20 }); ev('pop', 77.6 + i * .35); });
+const gch = document.getElementById('gchart'); const gL = gch.getTotalLength(); gsap.set(gch, { strokeDasharray: gL, strokeDashoffset: gL });
+tl.to(gch, { strokeDashoffset: 0, duration: 1.8, ease: 'power1.inOut' }, 78.6);
+tl.fromTo('#pdot', { scale: 1 }, { scale: 1.5, opacity: .4, duration: .5, repeat: 7, yoyo: true, ease: 'sine.inOut', immediateRender: false }, 78.2);
+tl.to('#logs', { y: -96, duration: 4, ease: 'steps(4)' }, 78.6);
+tl.fromTo('#bell', { rotation: 0 }, { keyframes: { rotation: [-18, 16, -12, 8, 0] }, duration: .8, ease: 'none', immediateRender: false }, 80.4);
+
+/* --- 12 · overview + outro --- */
+tl.to([railFeat, railPR, railCI1, railCI2, railCD, railMain], { strokeDashoffset: 0, duration: .5 }, 82.6);
+camTo(-80, 40, .5, 82.6, 2.0);
+tl.to('#scope', { opacity: 0, duration: .4 }, 82.6);
+gsap.set('#outro', { yPercent: 100 }); gsap.set(['#o-logo', '#o-h1', '#o-h2', '#o-tags'], { opacity: 0 });
+tl.to('#outro', { yPercent: 0, duration: .9, ease: 'power3.inOut' }, 86.0); ev('whoosh', 86.0);
+tl.to('#cue', { y: 200, duration: .6, ease: 'power3.in' }, 86.0);
+tl.fromTo('#o-logo', { scale: .3, opacity: 0 }, { scale: 1, opacity: 1, duration: .7, ease: 'back.out(1.8)', immediateRender: false }, 86.7); ev('outro', 86.7);
+tl.fromTo('#o-h1', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'power3.out', immediateRender: false }, 87.1);
+tl.fromTo('#o-h2', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'power3.out', immediateRender: false }, 87.4);
+tl.fromTo('#o-tags', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'power3.out', immediateRender: false }, 87.7);
+tl.to({}, { duration: .01 }, 90.0); // total length = 90 s
+
+applyCam();
+
+/* ============================================================
+   MODES : render (frame-by-frame capture) / player (presenter)
+   ============================================================ */
+const qs = new URLSearchParams(location.search);
+if (MODE === 'render') {
+  window.__duration = tl.duration();
+  window.__events = EVENTS;
+  window.__seek = t => { tl.seek(t, false); applyCam(); };
+  window.__ready = document.fonts.ready.then(() => Promise.all([...document.images].map(i => i.decode().catch(() => 0)))).then(() => true);
+  if (qs.get('t')) window.__seek(+qs.get('t'));
+} else {
+  const frame = $('#frame'), hint = $('#hint'), start = $('#start');
+  const fit = () => {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    frame.style.transform = `translate(${(innerWidth - 1920 * s) / 2}px,${(innerHeight - 1080 * s) / 2}px) scale(${s})`;
+  };
+  addEventListener('resize', fit); fit();
+  let started = false, auto = false, stopAt = 0;
+  const stepAt = t => { let k = 0; STEPS.forEach((s, i) => { if (s.t <= t + 1e-3) k = i; }); return k; };
+  const endOf = k => k + 1 < STEPS.length ? STEPS[k + 1].t - 0.05 : tl.duration();
+  tl.eventCallback('onUpdate', () => {
+    applyCam();
+    if (!auto && tl.isActive() && tl.time() >= stopAt) { tl.pause(stopAt); hint.style.display = 'flex'; }
+  });
+  const playFrom = k => { hint.style.display = 'none'; stopAt = endOf(k); tl.play(); };
+  function next() {
+    if (!started) { started = true; start.style.display = 'none'; tl.seek(0); playFrom(0); return; }
+    if (tl.isActive()) { tl.seek(stopAt); tl.pause(); hint.style.display = 'flex'; return; } // skip to end of this step
+    if (tl.time() >= tl.duration() - .01) return;
+    playFrom(stepAt(tl.time() + 0.1));
+  }
+  function prev() {
+    const k = Math.max(0, stepAt(tl.time() - 0.2) - (tl.isActive() ? 0 : 1));
+    tl.pause(); tl.seek(STEPS[k].t, false); playFrom(k);
+  }
+  addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'arrowright' || k === ' ' || k === 'enter' || k === 'pagedown') { e.preventDefault(); next(); }
+    else if (k === 'arrowleft' || k === 'pageup') { e.preventDefault(); prev(); }
+    else if (k === 'r') { started = true; start.style.display = 'none'; tl.pause(); tl.seek(0); playFrom(0); }
+    else if (k === 'a') { auto = !auto; if (auto) { hint.style.display = 'none'; tl.play(); } else stopAt = endOf(stepAt(tl.time())); }
+    else if (k === 'f') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  });
+  addEventListener('click', next);
+  if (qs.get('t')) { started = true; tl.seek(+qs.get('t'), false); applyCam(); }
+  else { start.style.display = 'grid'; tl.seek(0); }
+}
+</script>
+</body>
+</html>

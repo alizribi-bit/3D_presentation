@@ -1,0 +1,186 @@
+  <!-- ══ VI · Réserve (questions) ═════════════════════════════════ -->
+  <section class="slide" id="r-ingress" data-pos="0 6" data-transition="dip" data-color="#03140d">
+    <style>
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .rv { position: absolute; left: 150px; right: 150px; top: 340px; }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .bx { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 18px 24px; font: 400 24px/1.3 var(--display); }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .bx b { font-weight: 600; }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .lab { font: 500 20px/1.3 var(--display); color: var(--muted); margin: 0 0 6px; }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .mono { font-family: var(--mono); font-size: 22px; }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .ok { border-color: var(--green); background: var(--green-l); }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .todo { border-color: var(--amber); background: #fdf1d8; color: var(--amber-text); }
+      :is(#r-ingress,#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-etat) .arr { font: 600 34px/1 var(--display); color: var(--green); align-self: center; text-align: center; }
+      #r-ingress .grid { display: grid; grid-template-columns: 300px 50px 1fr; gap: 0 10px; }
+      #r-ingress .envs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      #r-ingress .routes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
+      #r-postgres .chain, #r-rollback .chain { display: grid; gap: 10px; align-items: stretch; }
+      #r-postgres .chain { grid-template-columns: 1fr 50px 1fr 50px 1fr; }
+      #r-rollback .chain { grid-template-columns: 1fr 50px 1fr 50px 1fr 50px 1fr; }
+      :is(#r-postgres,#r-rollback,#r-etat) .row { display: grid; gap: 24px; margin-top: 30px; }
+      #r-postgres .row { grid-template-columns: 1fr 1fr; }
+      #r-rollback .row { grid-template-columns: repeat(3, 1fr); }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice) .note { font: 400 22px/1.3 var(--display); color: var(--muted); margin: 26px 0 0; }
+      #r-choix .wrap { display: grid; grid-template-columns: 1fr 440px; gap: 34px; }
+      :is(#r-choix,#r-matrice) table { border-collapse: collapse; width: 100%; font: 400 22px/1.25 var(--display); }
+      :is(#r-choix,#r-matrice) th { font: 600 20px/1.2 var(--display); color: var(--muted); text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--line); }
+      :is(#r-choix,#r-matrice) td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      #r-choix td:first-child { font-weight: 600; color: var(--green); white-space: nowrap; }
+      #r-choix td:nth-child(2) { color: var(--muted); }
+      #r-choix ul, #r-etat ul { margin: 6px 0 0; padding-left: 26px; }
+      #r-choix li, #r-etat li { margin: 6px 0; }
+      #r-matrice .rv { top: 330px; }
+      #r-matrice table { table-layout: fixed; font-size: 20px; }
+      #r-matrice th { text-align: center; padding: 4px 0; letter-spacing: -.01em; }
+      #r-matrice th:first-child, #r-matrice td:first-child { text-align: left; width: 200px; font-weight: 600; }
+      #r-matrice td { padding: 3px 3px; text-align: center; vertical-align: middle; height: 40px; }
+      #r-matrice td i { display: inline-block; font-style: normal; border-radius: 9px; padding: 3px 8px; min-width: 26px; white-space: nowrap; }
+      #r-matrice .g { background: var(--green-l); color: var(--green-d); }
+      #r-matrice .a { background: #fdf1d8; color: var(--amber-text); }
+      #r-matrice .legend2 { display: flex; gap: 34px; margin-top: 14px; font: 400 20px/1.3 var(--display); color: var(--muted); }
+      #r-etat .row { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
+      #r-etat .todo { margin-top: 24px; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">L'Ingress envoie chaque adresse vers le bon Service, puis vers les Pods</h2>
+    <div class="rv">
+      <div class="grid" data-anim="rise" data-stagger=".08">
+        <div class="bx"><p class="lab">Entrée unique</p><b>IP publique</b><br>↓<br><b>Ingress NGINX</b><br><span class="mono">ingressClassName: nginx</span></div>
+        <div class="arr">→</div>
+        <div class="envs">
+          <div class="bx"><p class="lab">Staging · namespaces zawedni-*</p><span class="mono">stage.&lt;ip&gt;.nip.io<br>stage.admin.&lt;ip&gt;.nip.io</span></div>
+          <div class="bx"><p class="lab">Production · namespaces zawedni-prod-*</p><span class="mono">&lt;ip&gt;.nip.io<br>admin.&lt;ip&gt;.nip.io</span></div>
+        </div>
+      </div>
+      <div class="routes" data-anim="rise" data-delay=".3" data-stagger=".08">
+        <div class="bx"><p class="lab">Chemin</p><span class="mono">/api · /uploads</span><br>→ Service backend <span class="mono">:8080</span></div>
+        <div class="bx"><p class="lab">Chemin</p><span class="mono">/ai · /health</span><br>→ Service IA <span class="mono">:8081</span></div>
+        <div class="bx"><p class="lab">Chemin</p><span class="mono">/</span><br>→ Service du site (client ou admin)</div>
+      </div>
+      <div class="routes" data-anim="rise" data-delay=".55">
+        <div class="bx" style="grid-column: span 2">Chaque Service est interne (<b>ClusterIP</b>), avec <b>1 Pod</b> derrière. Séparation logique par namespaces, dans un seul cluster.</div>
+        <div class="bx todo">NetworkPolicies écrites, non appliquées dans le rapport</div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-postgres" data-pos="1.1 6">
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">PostgreSQL garde ses données sur un disque persistant, mais aucune sauvegarde n'est automatisée</h2>
+    <div class="rv">
+      <div class="chain" data-anim="rise" data-stagger=".1">
+        <div class="bx"><p class="lab">Pod (1 réplique)</p><span class="mono">postgres:16-alpine</span></div>
+        <div class="arr">→</div>
+        <div class="bx"><p class="lab">Volume persistant (PVC)</p><b>5 Go</b> · <span class="mono">ReadWriteOnce</span></div>
+        <div class="arr">→</div>
+        <div class="bx"><p class="lab">Stockage</p><b>Disque Azure</b><br>les données restent si le pod redémarre</div>
+      </div>
+      <div class="row" data-anim="rise" data-delay=".4" data-stagger=".1">
+        <div class="bx ok"><p class="lab">Mot de passe</p>Dans un <b>Sealed Secret</b> : chiffré dans Git, ouvert seulement par le cluster</div>
+        <div class="bx todo"><p class="lab" style="color:var(--amber-text)">Sauvegarde</p><b>Non réalisée</b> : pas de pg_dump, pas de CronJob, pas de Velero</div>
+      </div>
+      <p class="note" data-anim="fade" data-delay=".8">Rapport : StatefulSet · fichiers : Deployment · schéma : Flyway désactivé, <span class="mono">ddl-auto=update</span></p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-rollback" data-pos="2.2 6">
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Avec GitOps, revenir en arrière veut dire revenir en arrière dans Git</h2>
+    <div class="rv">
+      <div class="chain" data-anim="rise" data-stagger=".1">
+        <div class="bx"><p class="lab">Problème</p>Commit fautif</div>
+        <div class="arr">→</div>
+        <div class="bx"><p class="lab">Geste</p><span class="mono">git revert</span></div>
+        <div class="arr">→</div>
+        <div class="bx"><p class="lab">ArgoCD</p>voit la différence dans Git</div>
+        <div class="arr">→</div>
+        <div class="bx"><p class="lab">Cluster</p>ancienne image</div>
+      </div>
+      <div class="row" data-anim="rise" data-delay=".4" data-stagger=".1">
+        <div class="bx ok"><p class="lab">Staging</p>SHA de l'image dans Git : <b>possible</b></div>
+        <div class="bx todo"><p class="lab" style="color:var(--amber-text)">Production</p>tag <span class="mono">:latest</span> : <b>pas encore possible</b></div>
+        <div class="bx todo"><p class="lab" style="color:var(--amber-text)">Test réel</p><b>Non réalisé</b></div>
+      </div>
+      <p class="note" data-anim="fade" data-delay=".8">Leçon : <span class="mono">kubectl rollout undo</span> + selfHeal = pods créés puis détruits en boucle</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-choix" data-pos="3.3 6">
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Chaque outil a été choisi face à des alternatives, avec le budget comme contrainte</h2>
+    <div class="rv wrap">
+      <table data-anim="rise" data-stagger=".05">
+        <tr><th>Retenu</th><th>Alternatives</th><th>Critère décisif</th></tr>
+        <tr><td>Azure</td><td>AWS, GCP</td><td>crédit étudiant sans carte bancaire</td></tr>
+        <tr><td>AKS</td><td>Swarm, Nomad</td><td>standard, plan de contrôle géré</td></tr>
+        <tr><td>GitHub Actions</td><td>Jenkins, GitLab CI, Azure DevOps</td><td>aucun serveur à gérer, gratuit</td></tr>
+        <tr><td>Terraform</td><td>Ansible, Pulumi</td><td>le plan avant d'appliquer</td></tr>
+        <tr><td>ArgoCD</td><td>Flux</td><td>interface graphique, revert Git</td></tr>
+        <tr><td>Trivy</td><td>Clair, Anchore</td><td>scan de l'image dans le pipeline</td></tr>
+        <tr><td>Loki</td><td>ELK, Splunk</td><td>peu de mémoire sur 2 nœuds</td></tr>
+      </table>
+      <div class="bx" data-anim="rise" data-delay=".5"><p class="lab">Budget (estimations)</p>
+        <ul>
+          <li>crédit Azure for Students : <b>100&nbsp;$</b></li>
+          <li>cluster : <b>35–40 $ / mois</b></li>
+          <li>ACR Basic : <b>≈ 5 $ / mois</b></li>
+          <li>GitHub Actions : gratuit</li>
+        </ul>
+        <p class="lab" style="color:var(--amber-text);margin-top:12px">Consommation réelle non mesurée, pas d'alerte de budget</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-matrice" data-pos="4.4 6">
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Chaque workflow a ses propres contrôles, et trois contrôles ont été testés avec une vraie erreur</h2>
+    <div class="rv">
+      <table data-anim="fade" data-dur=".6">
+        <tr><th>Workflow</th><th>Gitleaks</th><th>Tests</th><th>Dependency-<br>Check</th><th>SonarCloud</th><th>Docker</th><th>Trivy</th><th>Publication</th><th>Checkov</th><th>Semgrep</th><th>Autre</th></tr>
+        <tr><td>backend</td><td><i class="g">●</i></td><td><i class="g">JUnit</i></td><td><i class="g">●</i></td><td><i class="g">PR et main</i></td><td><i class="g">●</i></td><td><i class="g">●</i></td><td><i class="g">ACR</i></td><td></td><td></td><td></td></tr>
+        <tr><td>client</td><td><i class="g">●</i></td><td><i class="g">Vitest</i></td><td></td><td></td><td><i class="g">●</i></td><td><i class="g">●</i></td><td><i class="g">ACR</i></td><td></td><td></td><td></td></tr>
+        <tr><td>admin</td><td><i class="g">●</i></td><td><i class="g">Vitest</i></td><td></td><td></td><td><i class="g">●</i></td><td><i class="g">●</i></td><td><i class="g">ACR</i></td><td></td><td></td><td></td></tr>
+        <tr><td>ia</td><td><i class="g">●</i></td><td><i class="g">pytest</i></td><td></td><td></td><td><i class="g">●</i></td><td><i class="g">●</i></td><td><i class="g">ACR</i></td><td></td><td></td><td></td></tr>
+        <tr><td>mobile</td><td><i class="g">●</i></td><td><i class="g">flutter test</i></td><td></td><td></td><td></td><td></td><td><i class="g">APK</i></td><td></td><td></td><td></td></tr>
+        <tr><td>infra</td><td><i class="g">●</i></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="a">rapport</i></td><td></td><td></td></tr>
+        <tr><td>semgrep</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="a">rapport</i></td><td></td></tr>
+        <tr><td>secrets</td><td><i class="g">dépôt</i></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>public-host</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="g">hôte</i></td></tr>
+        <tr><td>workflow-guards</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><i class="g">workflows</i></td></tr>
+      </table>
+      <div class="legend2" data-anim="fade" data-delay=".4"><span><i class="g" style="padding:0 10px;border-radius:6px">●</i> bloque</span><span><i class="a" style="padding:0 10px;border-radius:6px">●</i> rapport seulement</span><span>vide : absent</span><span>Sur une PR : rien n'est publié</span></div>
+      <p class="note" data-anim="rise" data-delay=".6" style="margin-top:10px"><b style="color:var(--ink)">Testés avec une vraie erreur :</b> log4j 2.14.1 → Dependency-Check · faux JWT_SECRET → Gitleaks · ancienne IP → hôte public</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-etat" data-pos="5.5 6">
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Après le rapport, des corrections ont été faites, mais plusieurs points restent ouverts</h2>
+    <div class="rv">
+      <div class="row" data-anim="rise" data-stagger=".1">
+        <div class="bx"><p class="lab">Dans le rapport · 699b99f, 7 sept. 2026</p>
+          <ul><li>SonarCloud noté non bloquant</li><li>secrets Kubernetes</li><li>pas de métriques ZAWEDNI</li><li>NetworkPolicies non appliquées</li></ul></div>
+        <div class="bx ok"><p class="lab">Déjà dans le code, non décrit</p>
+          <ul><li>SonarCloud bloque sur PR et main, pas sur staging</li><li>Sealed Secrets depuis le 26 août</li></ul></div>
+        <div class="bx"><p class="lab">Ensuite</p>
+          <ul><li>1ers commits du bot sur staging : 3&nbsp;oct.</li><li>cluster reconstruit le 3&nbsp;oct. : 1 nœud, staging + supervision</li><li>métriques ZAWEDNI collectées</li><li>Calico : 10 tests réseau sur 11</li><li>Loki non réinstallé</li></ul></div>
+      </div>
+      <div class="bx todo" data-anim="rise" data-delay=".5"><b>Reste ouvert :</b> production GitOps non démontrée (<span class="mono">:latest</span>) · ZAP · protection des branches · Falco / OPA · sauvegardes · Semgrep et Checkov bloquants</div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

@@ -1,0 +1,2554 @@
+{
+  "checks": [
+    {
+      "name": "1920 exact canonical SVG after chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1920 continuous visible board chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1920 compaction animates smoothly",
+      "pass": true
+    },
+    {
+      "name": "1920 exact canonical SVG after chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 continuous visible board chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 line draws intermediate lengths chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 marker follows horizontal then vertical route chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 exact canonical SVG after chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 continuous visible board chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 line draws intermediate lengths chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 marker follows horizontal then vertical route chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 exact canonical SVG after log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1920 continuous visible board log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1920 line grows continuously log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1920 line stops at Dependency-Check",
+      "pass": true
+    },
+    {
+      "name": "1920 exact canonical SVG after log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1920 continuous visible board log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1920 line grows continuously log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1920 corrected version visibly follows the line",
+      "pass": true
+    },
+    {
+      "name": "1920 reverse line returns to blocker",
+      "pass": true
+    },
+    {
+      "name": "1920 interrupted line reverses from visible progress",
+      "pass": false,
+      "detail": {
+        "before": 0.0707601,
+        "after": 0.274111
+      }
+    },
+    {
+      "name": "1920 rapid advances end at full line",
+      "pass": true
+    },
+    {
+      "name": "1920 M restores canonical line immediately",
+      "pass": true
+    },
+    {
+      "name": "1920 reduced motion skips drawing",
+      "pass": true
+    },
+    {
+      "name": "1366 exact canonical SVG after chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1366 continuous visible board chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1366 compaction animates smoothly",
+      "pass": true
+    },
+    {
+      "name": "1366 exact canonical SVG after chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 continuous visible board chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 line draws intermediate lengths chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 marker follows horizontal then vertical route chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 exact canonical SVG after chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 continuous visible board chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 line draws intermediate lengths chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 marker follows horizontal then vertical route chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 exact canonical SVG after log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1366 continuous visible board log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1366 line grows continuously log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1366 line stops at Dependency-Check",
+      "pass": true
+    },
+    {
+      "name": "1366 exact canonical SVG after log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1366 continuous visible board log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1366 line grows continuously log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1366 corrected version visibly follows the line",
+      "pass": true
+    },
+    {
+      "name": "1366 reverse line returns to blocker",
+      "pass": true
+    },
+    {
+      "name": "1366 interrupted line reverses from visible progress",
+      "pass": true,
+      "detail": {
+        "before": 0.102714,
+        "after": 0.140038
+      }
+    },
+    {
+      "name": "1366 rapid advances end at full line",
+      "pass": true
+    },
+    {
+      "name": "1366 M restores canonical line immediately",
+      "pass": true
+    },
+    {
+      "name": "1366 reduced motion skips drawing",
+      "pass": true
+    },
+    {
+      "name": "no errors, missing assets or external requests",
+      "pass": true
+    }
+  ],
+  "samples": [
+    {
+      "width": 1920,
+      "id": "chaine-1",
+      "frames": [
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -5.62685)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "id": "chaine-2",
+      "frames": [
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.0614504,
+          "x2": null,
+          "marker": [
+            407.48299999999995,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.227059,
+          "x2": null,
+          "marker": [
+            656.7239999999999,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.274015,
+          "x2": null,
+          "marker": [
+            727.392,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.351466,
+          "x2": null,
+          "marker": [
+            843.956,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.394608,
+          "x2": null,
+          "marker": [
+            908.885,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.456691,
+          "x2": null,
+          "marker": [
+            1002.321,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.486695,
+          "x2": null,
+          "marker": [
+            1047.4752,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.5174,
+          "x2": null,
+          "marker": [
+            1093.6871,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.537345,
+          "x2": null,
+          "marker": [
+            1123.7041,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.545517,
+          "x2": null,
+          "marker": [
+            1136.00357,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "id": "chaine-3",
+      "frames": [
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.548173,
+          "x2": null,
+          "marker": [
+            1140,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.548173,
+          "x2": null,
+          "marker": [
+            1140,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.579036,
+          "x2": null,
+          "marker": [
+            1186.449,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.674743,
+          "x2": null,
+          "marker": [
+            1330.489,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.710303,
+          "x2": null,
+          "marker": [
+            1384.006,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.761141,
+          "x2": null,
+          "marker": [
+            1460.517,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.812767,
+          "x2": null,
+          "marker": [
+            1538.215,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.850024,
+          "x2": null,
+          "marker": [
+            1594.2865,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.89528,
+          "x2": null,
+          "marker": [
+            1640,
+            687.396
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.933363,
+          "x2": null,
+          "marker": [
+            1640,
+            744.712
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.956476,
+          "x2": null,
+          "marker": [
+            1640,
+            779.4959
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.979564,
+          "x2": null,
+          "marker": [
+            1640,
+            814.2444
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.993854,
+          "x2": null,
+          "marker": [
+            1640,
+            835.74953
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.999759,
+          "x2": null,
+          "marker": [
+            1640,
+            844.637631
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "id": "log4j-1",
+      "frames": [
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 150,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 150,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 157.766321,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -13.2403)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 451.85219800000004,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 500.352938,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 546.451531,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 614.012872,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 647.261581,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 681.992606,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 700.710136,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 713.22292,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 720.6939426,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "id": "log4j-2",
+      "frames": [
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 720.9997299999999,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 720.9997299999999,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 726.06395,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 726.06,
+          "dotOpacity": 0.0603328,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 856.58401,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 856.584,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 940.1874,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 940.188,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1041.51526,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1041.5140000000001,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1126.1926600000002,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1126.192,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1245.47159,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1245.471,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1335.32975,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1335.329,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1449.43273,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1449.433,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1526.89298,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1526.894,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1615.3061,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1615.307,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1668.96385,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1668.964,
+          "dotOpacity": 0.963168,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1711.15508,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1711.1555,
+          "dotOpacity": 0.560958,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1749.30451,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1749.3044,
+          "dotOpacity": 0.197289,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1767.753033,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1767.75331,
+          "dotOpacity": 0.0214174,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "id": "chaine-1",
+      "frames": [
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -2.46728)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -122.362)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -150.927)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -197.954)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -219.872)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-1",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "id": "chaine-2",
+      "frames": [
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0,
+          "x2": null,
+          "marker": [
+            315,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.0307608,
+          "x2": null,
+          "marker": [
+            361.29499999999996,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.114584,
+          "x2": null,
+          "marker": [
+            487.44899999999996,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.140085,
+          "x2": null,
+          "marker": [
+            525.828,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.196679,
+          "x2": null,
+          "marker": [
+            611.001,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.258261,
+          "x2": null,
+          "marker": [
+            703.683,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.336367,
+          "x2": null,
+          "marker": [
+            821.233,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.394625,
+          "x2": null,
+          "marker": [
+            908.91,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.445409,
+          "x2": null,
+          "marker": [
+            985.34,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.486705,
+          "x2": null,
+          "marker": [
+            1047.4915,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.517408,
+          "x2": null,
+          "marker": [
+            1093.6985,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.537349,
+          "x2": null,
+          "marker": [
+            1123.7107,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-2",
+          "running": true,
+          "dash": 0.547883,
+          "x2": null,
+          "marker": [
+            1139.564622,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "id": "chaine-3",
+      "frames": [
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.548173,
+          "x2": null,
+          "marker": [
+            1140,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.548173,
+          "x2": null,
+          "marker": [
+            1140,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.568598,
+          "x2": null,
+          "marker": [
+            1170.74,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.642647,
+          "x2": null,
+          "marker": [
+            1282.183,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.663603,
+          "x2": null,
+          "marker": [
+            1313.723,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.722704,
+          "x2": null,
+          "marker": [
+            1402.67,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.77408,
+          "x2": null,
+          "marker": [
+            1479.991,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.837842,
+          "x2": null,
+          "marker": [
+            1575.9522,
+            665
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.88456,
+          "x2": null,
+          "marker": [
+            1640,
+            671.262
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.92458,
+          "x2": null,
+          "marker": [
+            1640,
+            731.492
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.956485,
+          "x2": null,
+          "marker": [
+            1640,
+            779.5096
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.983937,
+          "x2": null,
+          "marker": [
+            1640,
+            820.8255
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "chaine-3",
+          "running": true,
+          "dash": 0.999033,
+          "x2": null,
+          "marker": [
+            1640,
+            843.54432
+          ],
+          "badge": null,
+          "dotX": null,
+          "dotOpacity": null,
+          "art": "matrix(1, 0, 0, 1, 0, -230)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "id": "log4j-1",
+      "frames": [
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 150,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 150,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, 0)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 151.21694128000001,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -2.03521)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 188.9899709,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -65.3214)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 204.9560055,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -88.9181)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 223.77464200000003,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -113.084)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 256.957557,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -145.926)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 282.34710099999995,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -163.563)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 309.927122,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -176.747)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 354.956403,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -187.974)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 386.624684,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 435.438853,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 468.2280569999999,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 500.36850499999997,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 531.437657,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 561.052722,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 601.554794,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 636.831174,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 656.969202,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 674.342448,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 695.1627810000001,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 705.573213,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 713.226446,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 718.235191,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-1",
+          "running": true,
+          "dash": null,
+          "x2": 721,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "id": "log4j-2",
+      "frames": [
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 720.9997299999999,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 720.9997299999999,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721,
+          "dotOpacity": 0,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 721.56025,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 721.56,
+          "dotOpacity": 0.006682,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 779.87387,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 779.873,
+          "dotOpacity": 0.701543,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 806.62154,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 806.622,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 838.5226799999999,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 838.523,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 875.6223500000001,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 875.622,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 940.28784,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 940.288,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1014.83543,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1014.835,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1069.2398400000002,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1069.24,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1155.56483,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1155.5639999999999,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1215.41892,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1215.4189999999999,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1275.4220500000001,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1275.423,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1364.7035899999998,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1364.703,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1421.77933,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1421.78,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1501.9288800000002,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1501.929,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1573.36273,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1573.363,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1615.39201,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1615.392,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1652.38643,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1652.386,
+          "dotOpacity": 1,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1684.30041,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1684.3,
+          "dotOpacity": 0.816968,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1722.5453,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1722.5458,
+          "dotOpacity": 0.452375,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1741.6192500000002,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1741.6189,
+          "dotOpacity": 0.270554,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1755.6905900000002,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1755.69,
+          "dotOpacity": 0.136415,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1767.762753,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1767.76306,
+          "dotOpacity": 0.0213245,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        },
+        {
+          "id": "log4j-2",
+          "running": true,
+          "dash": null,
+          "x2": 1770,
+          "marker": null,
+          "badge": "translate(721,0)",
+          "dotX": 1769.99999616231,
+          "dotOpacity": 3.65842e-8,
+          "art": "matrix(1, 0, 0, 1, 0, -190)",
+          "boardOpacity": 1,
+          "stageOpacity": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "missing": [],
+  "clockModified": false,
+  "continuousGPUDrawing": false,
+  "worldUpdatesSuspendedDuringNativeEffects": true
+}

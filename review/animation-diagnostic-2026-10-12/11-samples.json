@@ -1,0 +1,576 @@
+[
+  {
+    "t": 99.11119999998807,
+    "elapsed": null,
+    "id": "sequence-0",
+    "display": "sequence-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 99.50290000000597,
+    "elapsed": 0.0034000000059677404,
+    "id": "sequence-1",
+    "display": "sequence-0",
+    "phase": "exit",
+    "stageOpacity": 0.997637,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 99.95480000001191,
+    "elapsed": 0.45530000001191695,
+    "id": "sequence-1",
+    "display": "sequence-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 100.357,
+    "elapsed": 0.0011999999880742962,
+    "id": "sequence-2",
+    "display": "sequence-1",
+    "phase": "exit",
+    "stageOpacity": 0.999702,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 100.75590000000597,
+    "elapsed": 0.40009999999404045,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 101.16830000001193,
+    "elapsed": 0.0010000000000047748,
+    "id": "parcours-app-0",
+    "display": "sequence-2",
+    "phase": "exit",
+    "stageOpacity": 0.999793,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 101.59480000001192,
+    "elapsed": 0.4274999999999949,
+    "id": "parcours-app-0",
+    "display": "parcours-app-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "parcours-app-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 102.03859999999403,
+    "elapsed": 0.0010999999940395355,
+    "id": "sequence-2",
+    "display": "parcours-app-0",
+    "phase": "exit",
+    "stageOpacity": 0.999749,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "parcours-app-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 102.49880000001193,
+    "elapsed": 0.4613000000119314,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 103.0305,
+    "elapsed": null,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 103.54140000000596,
+    "elapsed": null,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 104.07759999999404,
+    "elapsed": null,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 104.58330000001192,
+    "elapsed": null,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 105.07769999998808,
+    "elapsed": null,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 105.56659999999404,
+    "elapsed": null,
+    "id": "sequence-2",
+    "display": "sequence-2",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "sequence-2",
+    "evidenceOpacity": 1,
+    "camera": [
+      -12,
+      8.5,
+      33
+    ],
+    "target": [
+      -9,
+      2,
+      18
+    ],
+    "fov": 38,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  }
+]

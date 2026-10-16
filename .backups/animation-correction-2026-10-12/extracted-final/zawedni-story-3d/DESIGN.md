@@ -1,0 +1,65 @@
+# DESIGN — ZAWEDNI Story 3D (révision, 44 séquences)
+
+Un petit monde low-poly, clair et chaleureux : une route verte relie six lieux, un par chapitre du Sommaire.
+Le monde porte le récit ; les informations académiques restent des panneaux nets, au texte exact des slides.
+
+## Palette claire
+
+| Rôle | Couleur |
+| --- | --- |
+| Fond, ciel, brume | `#f4f7f2` |
+| Texte | `#151a17` · secondaire `#536459` |
+| Vert ZAWEDNI | `#0d7b3c` · clair `#cfe8d7` |
+| Couverture, titres et conclusion | blanc translucide, texte `#151a17` |
+| Achat local (lieu 01) | ocre `#c98a3c` · toits terre cuite |
+| Zones techniques (03, 04, 05) | bleu `#2f6db3` |
+| Attention | orange `#e8742c` (réservé, peu utilisé) |
+
+Pas de nouvelle variante du logo : `logo-green.png`, `logo-white.png` et `logo-isima.png` sont ceux du deck.
+
+## Typographie
+
+Poppins 400–700 pour tout le texte, JetBrains Mono pour les numéros, Amiri pour la basmala.
+Fontes locales (`public/fonts`), `font-display: block` : aucun texte n'apparaît dans une fonte de secours.
+Les panneaux vivent sur une scène DOM de 1920×1080 mise à l'échelle de l'écran : même mise en page sur
+1366×768 et sur 1920×1080.
+
+## Matières et lumière
+
+- Modèles CC0 (Kenney, Quaternius), recolorés vers la palette : végétation vert sauge, toits terre cuite,
+  plateau crème, route claire à tirets verts. Matières mates (rugosité ≈ 0,8, pas de métal).
+- Le décor statique est fusionné par matière (1 078 → 167 appels de dessin).
+- Tone mapping Neutral, exposition 1,0 ; ciel hémisphérique blanc / vert ; un soleil chaud `#fff1dc` ;
+  RoomEnvironment faible (0,25) pour le volume. Brume légère au loin.
+- Ombres : carte d'ombre mise en cache pour le décor, recalculée quand le tableau d’architecture remplace la boucle, tache d'ombre douce sous chaque personnage.
+- Captures réelles (piliers de la grille, mobile) affichées telles quelles, jamais recréées.
+
+## Personnages
+
+- **Guide** (Casual Character, Quaternius) : chemise verte ZAWEDNI. Il conduit le parcours et désigne les étapes.
+- **Représentant d'entreprise** (Business Man, Quaternius) : costume bleu nuit, cravate verte. Il présente la grille.
+- Taille réelle (1,78 m) mesurée sur le squelette ; marche au rythme de la distance parcourue (pas de glisse) ;
+  pointage bref vers le contenu visible, puis retour au repos. La pose du mixer est restaurée avant les ajustements procéduraux ; les rotations tête/cou sont bornées et lissées.
+- Ils accompagnent l'explication, ne parlent pas et ne masquent jamais un texte ou une capture.
+
+## Caméra
+
+- Trois niveaux : **monde** (vue de la roadmap, sert de Sommaire) → **lieu** (trajet ≈ 5,2 s le long de la route)
+  → **détail** (rapprochement ≈ 1–1,6 s vers un tableau, une boucle, un croisement).
+- On revient à la vue du monde entre deux chapitres. Les trajets longs montent légèrement pour garder le repère.
+- Un clic = un état. Chaque image est fonction de l'état de départ, de l'état d'arrivée et du temps :
+  avant, arrière et rechargement donnent la même image. Une touche pendant un mouvement le termine d'abord.
+- Les panneaux apparaissent à l'arrivée, jamais pendant le trajet. Aucun mouvement à la molette ou au défilement.
+- Une boucle là où le contenu est un cycle (DevSecOps : Développement à gauche, Exploitation à droite,
+  Sécurité au croisement, retour des observations en vert clair).
+
+## Qualité
+
+`normal` (pixel ratio ≤ 2, ombres 4096) et `léger` (ratio 1, ombres 2048), flou du verre supprimé en mode léger ; touche **L**,
+mémorisé dans le navigateur. Mouvement réduit respecté (`prefers-reduced-motion` ou touche **M**).
+
+## Panneaux et compositions
+
+Verre blanc translucide, fine bordure claire, reflet discret et ombre douce. Le flou concerne le décor ; textes, logos et captures restent opaques. Les cadres internes héritent de surfaces claires et ne remplissent pas tout le panneau avec un fond opaque.
+
+La découverte des six lieux, les relations en volumes (cycle, architecture et livraison), et la lecture stable des preuves ont des compositions distinctes. Le diagramme de séquence et l’isolation réseau utilisent deux tableaux SVG propres. La caméra de livraison conserve son cadrage accepté. Les deux états d’administration retirent entièrement les téléphones.

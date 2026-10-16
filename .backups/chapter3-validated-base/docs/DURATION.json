@@ -1,0 +1,11 @@
+{
+  "words": 1486,
+  "speechSeconds": 810.5454545454545,
+  "filmSeconds": 90,
+  "observationAndAnimationBudgetSeconds": 224.45454545454544,
+  "nominal3DTransitionSeconds": 19.839999999999996,
+  "estimatedTotalSeconds": 1125.0,
+  "wordsPerMinute": 110,
+  "estimateAt105WordsPerMinute": 1163.5974025974026,
+  "rehearsalTimed": false
+}

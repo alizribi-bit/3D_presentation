@@ -1,0 +1,146 @@
+  <!-- ══ IV · Preuve (suite) ══════════════════════════════════════ -->
+  <section class="slide" id="compteur" data-pos="4.4 3.6">
+    <style>
+      #compteur .fig { position: absolute; top: 390px; width: 720px; }
+      #compteur .fig.l { left: 150px; } #compteur .fig.r { left: 1000px; }
+      #compteur .lab { font: 600 28px/1.3 var(--display); color: var(--ink); margin: 0; }
+      #compteur .num { font: 700 190px/1 var(--display); color: var(--green); letter-spacing: -.03em; margin: 10px 0 0; font-variant-numeric: tabular-nums; }
+      #compteur .sub { font: 400 24px/1.35 var(--display); color: var(--muted); margin: 8px 0 0; max-width: 680px; }
+      #compteur .chips { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 0; max-width: 700px; }
+      #compteur .chip { font: 600 24px/1 var(--display); padding: 14px 22px; border-radius: 30px; border: 2.5px solid; }
+      #compteur .ok { background: var(--green); border-color: var(--green); color: #fff; }
+      #compteur .nt { background: var(--green-l); border-color: var(--green); color: var(--green-d); }
+      #compteur .rp { background: #fff; border-color: var(--amber); color: var(--amber-text); }
+      #compteur .rule { position: absolute; left: 930px; top: 400px; width: 3px; height: 500px; background: var(--line); }
+      #compteur .warn { font: 500 24px/1.35 var(--display); color: var(--red-text); margin: 34px 0 0; }
+    </style>
+    <p class="kicker">Sprint 6 · Le compteur</p>
+    <h2 data-fit="2">Six contrôles sont installés, mais sur staging seulement trois bloquent vraiment</h2>
+    <div class="fig l">
+      <p class="lab">Push sur staging : contrôles qui arrêtent le pipeline</p>
+      <p class="num"><b class="n6">3</b><span class="of" style="font-size:64px;color:var(--muted);font-weight:600;margin-left:18px">sur 6</span></p>
+      <div class="chips">
+        <span class="chip ok">Gitleaks</span><span class="chip ok">Dependency-Check</span><span class="chip nt">Trivy</span>
+        <span class="chip rp" data-step="0" data-anim="fade" data-delay="1.4">SonarCloud</span><span class="chip rp" data-step="0" data-anim="fade" data-delay="1.5">Semgrep</span><span class="chip rp" data-step="0" data-anim="fade" data-delay="1.6">Checkov</span>
+      </div>
+    </div>
+    <div class="rule" data-step="1" data-anim="fade"></div>
+    <div class="fig r" data-step="1" data-anim="rise">
+      <p class="lab">Pull request et main</p>
+      <p class="num">4<span style="font-size:64px;color:var(--muted);font-weight:600;margin-left:18px">sur 6</span></p>
+      <p class="sub">SonarCloud s'ajoute : sa quality gate arrête le job.</p>
+      <div class="chips"><span class="chip ok">SonarCloud</span></div>
+      <p class="warn" data-step="1" data-anim="fade" data-delay=".6">Mais un job rouge n'empêche pas la fusion.</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="manques-ouverts" data-pos="5.5 3.6" data-transition="dip" data-color="#03140d">
+    <style>
+      #manques-ouverts .cpt { position: absolute; right: 150px; top: 110px; font: 600 24px/1 var(--display); color: var(--on-night-muted); margin: 0; }
+      #manques-ouverts .cpt b { color: var(--mint); }
+      #manques-ouverts .nb { position: absolute; left: 150px; bottom: 64px; font: 400 24px/1.3 var(--display); color: var(--on-night); margin: 0; max-width: 1100px; }
+    </style>
+    <p class="kicker">Sprint 6 · Ce qui manque</p>
+    <p class="cpt">Contrôles bloquants : <b>3 · 4</b></p>
+    <h2 data-fit="2">Quatre exigences restent ouvertes, et chacune a une cause connue</h2>
+    <svg class="art world" viewBox="0 0 1920 1080"></svg>
+    <svg class="art holes" viewBox="0 0 1920 1080"></svg>
+    <p class="nb" data-step="2" data-anim="rise">Cluster arrêté pour le budget : les preuves sont les captures des sprints.</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <!-- ══ V · Suite ════════════════════════════════════════════════ -->
+  <section class="slide night" id="retour" data-pos="0 4.8" data-transition="dip" data-color="#03140d">
+    <style>
+      #retour .cpt { position: absolute; left: 150px; bottom: 64px; font: 400 24px/1.3 var(--display); color: var(--on-night-muted); margin: 0; }
+      #retour .cpt b { color: var(--mint); font-weight: 600; }
+    </style>
+    <img class="logo" src="assets/logo-white.png" alt="ZAWEDNI">
+    <p class="kicker">Conclusion</p>
+    <h2 data-fit="2">Le commit fait maintenant tout le chemin jusqu'à staging, sans déploiement manuel</h2>
+    <svg class="art world" viewBox="0 0 1920 1080"></svg>
+    <p class="cpt" data-step="1" data-anim="fade" data-delay="4.4">Contrôles bloquants : <b>3</b> sur staging · <b>4</b> sur pull request et main</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="bilan" data-pos="1.1 4.8">
+    <style>
+      #bilan .tbl { position: absolute; left: 150px; top: 330px; width: 1620px; }
+      #bilan .row { display: grid; grid-template-columns: 250px 260px 420px 400px 290px; align-items: center; border-bottom: 2px solid var(--line); min-height: 92px; padding: 8px 0; }
+      #bilan .row > * { padding-right: 18px; }
+      #bilan .hd { min-height: 0; padding: 0 0 12px; font: 600 22px/1.2 var(--display); color: var(--muted); }
+      #bilan .th { font: 600 26px/1.25 var(--display); color: var(--ink); }
+      #bilan .av { font: 400 24px/1.3 var(--display); color: var(--muted); }
+      #bilan .ap { font: 500 24px/1.3 var(--display); color: var(--ink); }
+      #bilan .pv { font: 400 22px/1.3 var(--display); color: var(--muted); }
+      #bilan .st { display: flex; flex-wrap: wrap; gap: 8px; }
+      #bilan .pill { font: 600 20px/1.2 var(--display); padding: 7px 14px; border-radius: 22px; border: 2px solid; }
+      #bilan .ok { background: var(--green); border-color: var(--green); color: #fff; }
+      #bilan .nt { background: var(--green-l); border-color: var(--green); color: var(--green-d); }
+      #bilan .td { background: #fff; border-color: var(--amber); color: var(--amber-text); }
+      #bilan .key { position: absolute; left: 150px; bottom: 64px; display: flex; gap: 36px; font: 400 22px/1 var(--display); color: var(--muted); }
+      #bilan .key i { display: inline-block; width: 24px; height: 24px; border-radius: 7px; vertical-align: -5px; margin-right: 10px; border: 2px solid; }
+    </style>
+    <p class="kicker">Bilan</p>
+    <h2 data-fit="2">En bilan, la plateforme est passée d'un ordinateur à une chaîne cloud contrôlée</h2>
+    <div class="tbl">
+      <div class="row hd"><span></span><span>Avant</span><span>Après</span><span>Statut</span><span>Preuve</span></div>
+      <div data-step="1" data-stagger=".1" data-anim="rise">
+        <div class="row"><span class="th">Déploiement</span><span class="av">Sur un ordinateur</span><span class="ap">AKS avec ArgoCD</span>
+          <span class="st"><span class="pill ok">Vérifié en staging</span><span class="pill td">Production : prévu</span></span><span class="pv">Captures ArgoCD</span></div>
+        <div class="row"><span class="th">Infrastructure</span><span class="av">Rien</span><span class="ap">Terraform : AKS, ACR, stockage</span>
+          <span class="st"><span class="pill ok">Réalisé</span></span><span class="pv">Capture du portail Azure</span></div>
+        <div class="row"><span class="th">Automatisation</span><span class="av">Tout à la main</span><span class="ap">10 pipelines GitHub Actions</span>
+          <span class="st"><span class="pill ok">Réalisé</span></span><span class="pv">Liste des pipelines</span></div>
+      </div>
+      <div data-step="2" data-stagger=".1" data-anim="rise">
+        <div class="row"><span class="th">Sécurité</span><span class="av">0 contrôle</span><span class="ap">6 contrôles : 3 bloquent sur staging, 4 sur PR et main</span>
+          <span class="st"><span class="pill ok">2 testés</span><span class="pill nt">Trivy, SonarCloud</span><span class="pill td">Semgrep, Checkov</span></span><span class="pv">Tests du sprint 6</span></div>
+        <div class="row"><span class="th">Supervision</span><span class="av">Rien</span><span class="ap">Prometheus, Grafana, Loki</span>
+          <span class="st"><span class="pill nt">En place</span><span class="pill td">Métriques appli et alertes à finir</span></span><span class="pv">Captures Prometheus, Grafana</span></div>
+      </div>
+    </div>
+    <div class="key" data-step="2" data-anim="fade" data-delay=".5">
+      <span><i style="background:var(--green);border-color:var(--green)"></i>Réalisé, avec preuve</span>
+      <span><i style="background:var(--green-l);border-color:var(--green)"></i>Configuré, pas testé</span>
+      <span><i style="background:#fff;border-color:var(--amber)"></i>Reste à faire, ou rapport seulement</span>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="suite" data-pos="2.2 4.8">
+    <style>
+      #suite .card { position: absolute; top: 640px; width: 460px; }
+      #suite .when { font: 600 28px/1.2 var(--display); color: var(--amber-text); margin: 0 0 14px; }
+      #suite ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+      #suite li { font: 400 24px/1.3 var(--display); color: var(--ink); padding-left: 26px; position: relative; }
+      #suite li::before { content: ''; position: absolute; left: 0; top: 11px; width: 12px; height: 12px; border-radius: 50%; background: var(--amber); }
+    </style>
+    <p class="kicker">Perspectives</p>
+    <h2 data-fit="2">La suite rend tous les contrôles bloquants, puis fait tester la chaîne par elle-même</h2>
+    <svg class="art road" viewBox="0 0 1920 1080"></svg>
+    <div class="card" style="left:190px" data-step="1" data-anim="rise" data-delay=".3">
+      <p class="when">Court terme</p>
+      <ul><li>Semgrep et Checkov bloquants</li><li>Protection des branches</li></ul>
+    </div>
+    <div class="card" style="left:730px" data-step="2" data-anim="rise" data-delay=".3">
+      <p class="when">Moyen terme</p>
+      <ul><li>OWASP ZAP</li><li>Falco</li><li>Métriques applicatives</li><li>Sauvegardes de la base</li></ul>
+    </div>
+    <div class="card" style="left:1270px" data-step="3" data-anim="rise" data-delay=".3">
+      <p class="when">Long terme</p>
+      <ul><li>La chaîne teste elle-même ses contrôles, régulièrement</li></ul>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

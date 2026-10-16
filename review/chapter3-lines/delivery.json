@@ -1,0 +1,19 @@
+{
+  "buildId": "321678b0c5ec6b6c43cb89c8121268aebb57a54704be8d150dd966c0b499bcf0",
+  "states": 86,
+  "forwardPresses": 85,
+  "typescriptTests": 55,
+  "httpTests": 2,
+  "lineChecks": 49,
+  "fullContentChecks": 192,
+  "fullContentRendererBuildBeforeFinalInterpolationFix": true,
+  "canonicalContentAndSpeechUnchanged": true,
+  "cameraWorldAndLayoutsUnchanged": true,
+  "lineDurationMs": 1000,
+  "backup": ".backups/chapter3-line-base/",
+  "video": "review/chapter3-lines/line-preview.mp4",
+  "oldRuntimeFilesChanged": [
+    "src/story/reveal-motion.ts",
+    "src/story/evidence.ts"
+  ]
+}

@@ -1,0 +1,229 @@
+PASS 1920 notes ch4-0
+PASS 1920 exact visible content ch4-0
+PASS 1920 readable board ch4-0
+PASS 1920 notes chaine-0
+PASS 1920 exact visible content chaine-0
+PASS 1920 readable board chaine-0
+PASS 1920 notes chaine-1
+PASS 1920 exact visible content chaine-1
+PASS 1920 readable board chaine-1
+PASS 1920 3D below board chaine-1
+PASS 1920 separated labels chaine-1
+PASS 1920 notes chaine-2
+PASS 1920 exact visible content chaine-2
+PASS 1920 readable board chaine-2
+PASS 1920 3D below board chaine-2
+PASS 1920 separated labels chaine-2
+PASS 1920 notes chaine-3
+PASS 1920 exact visible content chaine-3
+PASS 1920 readable board chaine-3
+PASS 1920 3D below board chaine-3
+PASS 1920 separated labels chaine-3
+PASS 1920 notes dix-pipelines-0
+PASS 1920 exact visible content dix-pipelines-0
+PASS 1920 readable board dix-pipelines-0
+PASS 1920 notes dix-pipelines-1
+PASS 1920 exact visible content dix-pipelines-1
+PASS 1920 readable board dix-pipelines-1
+PASS 1920 notes dix-pipelines-2
+PASS 1920 exact visible content dix-pipelines-2
+PASS 1920 readable board dix-pipelines-2
+PASS 1920 notes tests-0
+PASS 1920 exact visible content tests-0
+PASS 1920 readable board tests-0
+PASS 1920 notes tests-1
+PASS 1920 exact visible content tests-1
+PASS 1920 readable board tests-1
+PASS 1920 notes analyses-0
+PASS 1920 exact visible content analyses-0
+PASS 1920 readable board analyses-0
+PASS 1920 notes analyses-1
+PASS 1920 exact visible content analyses-1
+PASS 1920 readable board analyses-1
+PASS 1920 notes analyses-2
+PASS 1920 exact visible content analyses-2
+PASS 1920 readable board analyses-2
+PASS 1920 notes analyses-3
+PASS 1920 exact visible content analyses-3
+PASS 1920 readable board analyses-3
+PASS 1920 notes analyses-4
+PASS 1920 exact visible content analyses-4
+PASS 1920 readable board analyses-4
+PASS 1920 notes analyses-5
+PASS 1920 exact visible content analyses-5
+PASS 1920 readable board analyses-5
+PASS 1920 notes analyses-6
+PASS 1920 exact visible content analyses-6
+PASS 1920 readable board analyses-6
+PASS 1920 notes blocage-0
+PASS 1920 exact visible content blocage-0
+PASS 1920 readable board blocage-0
+PASS 1920 notes blocage-1
+PASS 1920 exact visible content blocage-1
+PASS 1920 readable board blocage-1
+PASS 1920 notes blocage-2
+PASS 1920 exact visible content blocage-2
+PASS 1920 readable board blocage-2
+PASS 1920 notes log4j-0
+PASS 1920 exact visible content log4j-0
+PASS 1920 readable board log4j-0
+PASS 1920 notes log4j-1
+PASS 1920 exact visible content log4j-1
+PASS 1920 readable board log4j-1
+PASS 1920 3D below board log4j-1
+PASS 1920 separated labels log4j-1
+PASS 1920 failed version stops red
+PASS 1920 notes log4j-2
+PASS 1920 exact visible content log4j-2
+PASS 1920 readable board log4j-2
+PASS 1920 3D below board log4j-2
+PASS 1920 separated labels log4j-2
+PASS 1920 corrected version resumes green
+PASS 1920 notes argocd-0
+PASS 1920 exact visible content argocd-0
+PASS 1920 readable board argocd-0
+PASS 1920 notes argocd-1
+PASS 1920 exact visible content argocd-1
+PASS 1920 readable board argocd-1
+PASS 1920 notes argocd-2
+PASS 1920 exact visible content argocd-2
+PASS 1920 readable board argocd-2
+PASS 1920 notes tracabilite-0
+PASS 1920 exact visible content tracabilite-0
+PASS 1920 readable board tracabilite-0
+PASS 1920 notes tracabilite-1
+PASS 1920 exact visible content tracabilite-1
+PASS 1920 readable board tracabilite-1
+PASS 1920 notes tracabilite-2
+PASS 1920 exact visible content tracabilite-2
+PASS 1920 readable board tracabilite-2
+PASS 1920 notes tracabilite-3
+PASS 1920 exact visible content tracabilite-3
+PASS 1920 readable board tracabilite-3
+PASS 1920 notes tracabilite-4
+PASS 1920 exact visible content tracabilite-4
+PASS 1920 readable board tracabilite-4
+PASS 1920 all chapter backward steps
+PASS 1920 backward zoom restores full board
+PASS 1920 rapid clicks reach latest row state
+PASS 1920 zoom keeps board and world visible
+PASS 1920 parcel progresses chaine-1
+PASS 1920 parcel progresses chaine-2
+PASS 1920 parcel progresses chaine-3
+PASS 1920 parcel progresses log4j-1
+PASS 1920 parcel progresses log4j-2
+PASS 1366 notes ch4-0
+PASS 1366 exact visible content ch4-0
+PASS 1366 readable board ch4-0
+PASS 1366 notes chaine-0
+PASS 1366 exact visible content chaine-0
+PASS 1366 readable board chaine-0
+PASS 1366 notes chaine-1
+PASS 1366 exact visible content chaine-1
+PASS 1366 readable board chaine-1
+PASS 1366 3D below board chaine-1
+PASS 1366 separated labels chaine-1
+PASS 1366 notes chaine-2
+PASS 1366 exact visible content chaine-2
+PASS 1366 readable board chaine-2
+PASS 1366 3D below board chaine-2
+PASS 1366 separated labels chaine-2
+PASS 1366 notes chaine-3
+PASS 1366 exact visible content chaine-3
+PASS 1366 readable board chaine-3
+PASS 1366 3D below board chaine-3
+PASS 1366 separated labels chaine-3
+PASS 1366 notes dix-pipelines-0
+PASS 1366 exact visible content dix-pipelines-0
+PASS 1366 readable board dix-pipelines-0
+PASS 1366 notes dix-pipelines-1
+PASS 1366 exact visible content dix-pipelines-1
+PASS 1366 readable board dix-pipelines-1
+PASS 1366 notes dix-pipelines-2
+PASS 1366 exact visible content dix-pipelines-2
+PASS 1366 readable board dix-pipelines-2
+PASS 1366 notes tests-0
+PASS 1366 exact visible content tests-0
+PASS 1366 readable board tests-0
+PASS 1366 notes tests-1
+PASS 1366 exact visible content tests-1
+PASS 1366 readable board tests-1
+PASS 1366 notes analyses-0
+PASS 1366 exact visible content analyses-0
+PASS 1366 readable board analyses-0
+PASS 1366 notes analyses-1
+PASS 1366 exact visible content analyses-1
+PASS 1366 readable board analyses-1
+PASS 1366 notes analyses-2
+PASS 1366 exact visible content analyses-2
+PASS 1366 readable board analyses-2
+PASS 1366 notes analyses-3
+PASS 1366 exact visible content analyses-3
+PASS 1366 readable board analyses-3
+PASS 1366 notes analyses-4
+PASS 1366 exact visible content analyses-4
+PASS 1366 readable board analyses-4
+PASS 1366 notes analyses-5
+PASS 1366 exact visible content analyses-5
+PASS 1366 readable board analyses-5
+PASS 1366 notes analyses-6
+PASS 1366 exact visible content analyses-6
+PASS 1366 readable board analyses-6
+PASS 1366 notes blocage-0
+PASS 1366 exact visible content blocage-0
+PASS 1366 readable board blocage-0
+PASS 1366 notes blocage-1
+PASS 1366 exact visible content blocage-1
+PASS 1366 readable board blocage-1
+PASS 1366 notes blocage-2
+PASS 1366 exact visible content blocage-2
+PASS 1366 readable board blocage-2
+PASS 1366 notes log4j-0
+PASS 1366 exact visible content log4j-0
+PASS 1366 readable board log4j-0
+PASS 1366 notes log4j-1
+PASS 1366 exact visible content log4j-1
+PASS 1366 readable board log4j-1
+PASS 1366 3D below board log4j-1
+PASS 1366 separated labels log4j-1
+PASS 1366 failed version stops red
+PASS 1366 notes log4j-2
+PASS 1366 exact visible content log4j-2
+PASS 1366 readable board log4j-2
+PASS 1366 3D below board log4j-2
+PASS 1366 separated labels log4j-2
+PASS 1366 corrected version resumes green
+PASS 1366 notes argocd-0
+PASS 1366 exact visible content argocd-0
+PASS 1366 readable board argocd-0
+PASS 1366 notes argocd-1
+PASS 1366 exact visible content argocd-1
+PASS 1366 readable board argocd-1
+PASS 1366 notes argocd-2
+PASS 1366 exact visible content argocd-2
+PASS 1366 readable board argocd-2
+PASS 1366 notes tracabilite-0
+PASS 1366 exact visible content tracabilite-0
+PASS 1366 readable board tracabilite-0
+PASS 1366 notes tracabilite-1
+PASS 1366 exact visible content tracabilite-1
+PASS 1366 readable board tracabilite-1
+PASS 1366 notes tracabilite-2
+PASS 1366 exact visible content tracabilite-2
+PASS 1366 readable board tracabilite-2
+PASS 1366 notes tracabilite-3
+PASS 1366 exact visible content tracabilite-3
+PASS 1366 readable board tracabilite-3
+PASS 1366 notes tracabilite-4
+PASS 1366 exact visible content tracabilite-4
+PASS 1366 readable board tracabilite-4
+PASS 1366 all chapter backward steps
+PASS 1366 backward zoom restores full board
+PASS 1366 rapid clicks reach latest row state
+PASS 1366 zoom keeps board and world visible
+PASS 1366 parcel progresses chaine-1
+PASS 1366 parcel progresses chaine-2
+PASS 1366 parcel progresses chaine-3
+PASS 1366 parcel progresses log4j-1
+PASS 1366 parcel progresses log4j-2
+PASS no browser errors, missing files or external requests

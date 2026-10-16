@@ -1,0 +1,574 @@
+{
+  "active": true,
+  "samples": [
+    {
+      "t": 131.25910000002384,
+      "id": "ch2-0",
+      "display": "methodologie-1",
+      "phase": "exit",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 0.912238,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 1,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 132.09870000001789,
+      "id": "ch2-0",
+      "display": "ch2-0",
+      "phase": "move",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": false,
+      "evidenceOpacity": 0,
+      "evidenceFrame": "ch2-0",
+      "apkVisible": false,
+      "active": [],
+      "directed": 1,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -24.694031500528276,
+        7.047259832100686,
+        16.94908715858231
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 133.0695,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "move",
+      "kind": "relocate",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": false,
+      "evidenceOpacity": 0,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [],
+      "directed": 1,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -24.77842423072276,
+        6.850343461646895,
+        16.608502211726005
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 133.84880000001192,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "enter",
+      "kind": "relocate",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 0.994236,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 1,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 134.7092000000179,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "done",
+      "kind": "relocate",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 1,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 0,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 135.6105,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "done",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 1,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 0,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 136.448,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "done",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 1,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 0,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 137.26790000000597,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "done",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 1,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 0,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 138.1202000000179,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "done",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 1,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 0,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "t": 138.96080000001191,
+      "id": "methodologie-1",
+      "display": "methodologie-1",
+      "phase": "done",
+      "stageOpacity": 1,
+      "stageVisibility": "visible",
+      "evidenceOn": true,
+      "evidenceOpacity": 1,
+      "evidenceFrame": "methodologie-1",
+      "apkVisible": false,
+      "active": [
+        "evidence"
+      ],
+      "directed": 0,
+      "inactiveManagedHidden": true,
+      "sharedVisible": true,
+      "camera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1,
+      "videoHidden": true,
+      "videoPaused": true,
+      "videoTime": 0,
+      "props": [
+        {
+          "kind": "phone",
+          "visible": true
+        },
+        {
+          "kind": "mobile",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "time": 131.23290000000597,
+      "to": "ch2-0",
+      "before": {
+        "elapsed": null,
+        "id": "methodologie-1",
+        "display": "methodologie-1",
+        "camera": [
+          -25.4,
+          5.4,
+          14.1
+        ],
+        "guide": [
+          -31.690761712766953,
+          0.34,
+          3.5328466505503924
+        ],
+        "opacity": 1
+      },
+      "kind": "travel",
+      "t0": 131.22990000000596,
+      "timing": {
+        "exit": 0.16,
+        "movement": 4.5,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 4.66,
+        "total": 4.86
+      },
+      "hidden": [
+        "evidence"
+      ],
+      "retained": false,
+      "capturedCamera": [
+        -25.4,
+        5.4,
+        14.1
+      ],
+      "capturedGuide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "initialOpacity": 1
+    },
+    {
+      "time": 132.90940000000597,
+      "to": "methodologie-1",
+      "before": {
+        "elapsed": 1.6778000000119278,
+        "id": "ch2-0",
+        "display": "ch2-0",
+        "camera": [
+          -24.694031500528276,
+          7.047259832100686,
+          16.94908715858231
+        ],
+        "guide": [
+          -31.690761712766953,
+          0.34,
+          3.5328466505503924
+        ],
+        "opacity": 0
+      },
+      "kind": "relocate",
+      "t0": 132.90770000001788,
+      "timing": {
+        "exit": 0,
+        "movement": 0.75,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 0.75,
+        "total": 0.95
+      },
+      "hidden": [
+        "evidence"
+      ],
+      "retained": false,
+      "capturedCamera": [
+        -24.694031500528276,
+        7.047259832100686,
+        16.94908715858231
+      ],
+      "capturedGuide": [
+        -31.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "initialOpacity": 0
+    }
+  ],
+  "animations": [],
+  "end": 139.8102000000179,
+  "final": {
+    "t": 138.96080000001191,
+    "id": "methodologie-1",
+    "display": "methodologie-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceOpacity": 1,
+    "evidenceFrame": "methodologie-1",
+    "apkVisible": false,
+    "active": [
+      "evidence"
+    ],
+    "directed": 0,
+    "inactiveManagedHidden": true,
+    "sharedVisible": true,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "walk": 0,
+    "guideOpacity": 1,
+    "videoHidden": true,
+    "videoPaused": true,
+    "videoTime": 0,
+    "props": [
+      {
+        "kind": "phone",
+        "visible": true
+      },
+      {
+        "kind": "mobile",
+        "visible": true
+      }
+    ],
+    "contentOrigin": 133.65770000001788
+  }
+}

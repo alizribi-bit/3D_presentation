@@ -1,0 +1,53 @@
+TAP version 13
+# (node:13) [THREE_CJS_DEPRECATED] DeprecationWarning: `require("three")` is deprecated and will be removed.
+# Replace `const THREE = require("three")` with `import * as THREE from "three"`.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: current fixed-camera text/capture changes fade the entire stage to zero
+ok 1 - current fixed-camera text/capture changes fade the entire stage to zero
+  ---
+  duration_ms: 5.085704
+  ...
+# Subtest: 95 settled adjacent transitions have neither a camera change nor a guide translation
+ok 2 - 95 settled adjacent transitions have neither a camera change nor a guide translation
+  ---
+  duration_ms: 1.480444
+  ...
+# Subtest: the previous director explicitly retained shared panel visibility
+ok 3 - the previous director explicitly retained shared panel visibility
+  ---
+  duration_ms: 1.01467
+  ...
+# Subtest: short approaches are paced differently from a world return
+ok 4 - short approaches are paced differently from a world return
+  ---
+  duration_ms: 2.12556
+  ...
+# Subtest: walking makes reverse and jump movements last at least 4.32 seconds on a long route
+ok 5 - walking makes reverse and jump movements last at least 4.32 seconds on a long route
+  ---
+  duration_ms: 0.831716
+  ...
+# Subtest: interruptions can extend total invisibility, while preserving initial opacity
+ok 6 - interruptions can extend total invisibility, while preserving initial opacity
+  ---
+  duration_ms: 0.787692
+  ...
+# Subtest: quality is absent from timing arguments; reduced motion still fades, fast mode shortens it
+ok 7 - quality is absent from timing arguments; reduced motion still fades, fast mode shortens it
+  ---
+  duration_ms: 1.073901
+  ...
+# Subtest: new camera easing has a lower central peak than the old cubic easing
+ok 8 - new camera easing has a lower central peak than the old cubic easing
+  ---
+  duration_ms: 0.979379
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3607.229707

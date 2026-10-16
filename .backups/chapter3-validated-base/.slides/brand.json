@@ -1,0 +1,22 @@
+{
+  "fidelity": "brand",
+  "fonts": {
+    "primary": "Poppins",
+    "technical": "JetBrains Mono",
+    "arabic": "Amiri"
+  },
+  "colours": {
+    "background": "#f4f7f2",
+    "text": "#10261a",
+    "secondary": "#536459",
+    "primary": "#0d7b3c",
+    "deep": "#083f1f",
+    "mint": "#5be38f",
+    "technical": "#2f6db3",
+    "local": "#c98a3c",
+    "attention": "#e8742c"
+  },
+  "voice": "French B1, on; exact accepted speech",
+  "audience": "ISIMa thesis jury",
+  "source": "DESIGN.md, constitution and accepted HTML deck; existing project identity preserved"
+}

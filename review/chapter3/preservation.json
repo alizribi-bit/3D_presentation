@@ -1,0 +1,31 @@
+{
+  "checked": 22670,
+  "roots": {
+    "/home/ali/Desktop/zawedni-story-3d": 11019,
+    "/home/ali/Desktop/zawedni-video-pfe/zawedni-story-3d": 10173,
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN": 1478
+  },
+  "changed": [
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/lancer.sh",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/PLAN_PRESENTATION.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/CONTEXTE_COMPLET_IA.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/SCRIPT_ORAL_18MIN.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/LIRE_MOI.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/DISCOURS.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/LIRE_EN_PREMIER_IA.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/NOTE_MODIFICATIONS.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/discours.html",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/HANDOFF.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/deck.offline.html",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/deck.html",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/README.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/SCRIPT.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/DUREE.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/VERIFICATION_20MIN.md",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/build/test_20min.py",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/build/build_20min.py",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/build/content_20min.py",
+    "/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/build/test_discours_demandes.py"
+  ],
+  "pass": false
+}

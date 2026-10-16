@@ -1,0 +1,358 @@
+[
+  {
+    "t": 127.49840000000596,
+    "elapsed": null,
+    "id": "methodologie-1",
+    "display": "methodologie-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "methodologie-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 127.83959999999404,
+    "elapsed": 0.0014999999999929514,
+    "id": "ch2-0",
+    "display": "methodologie-1",
+    "phase": "exit",
+    "stageOpacity": 0.999535,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "methodologie-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 128.16219999998808,
+    "elapsed": 0.32409999999403283,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 128.519,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 128.86319999998807,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 129.22469999998808,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 129.5955,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 129.9195,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 130.2746999999881,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 130.60159999999405,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  }
+]

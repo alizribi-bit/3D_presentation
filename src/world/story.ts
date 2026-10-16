@@ -4,10 +4,13 @@ import { sceneProps } from './scene-props.ts';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import type { PlaceId, StoryState } from '../story/types.ts';
 import { image } from './assets.js';
+import { isDeliveryReveal } from '../story/delivery-layout.ts';
+import { DeliveryMotion } from './delivery-motion.ts';
+import { motion } from '../nav/prefs.js';
 import { deliveryFrame } from '../story/delivery.ts';
 
 const COLORS = { green: '#0d7b3c', blue: '#2f6db3', dark: '#223b4f', mint: '#5be38f', white: '#f4f7f2', orange: '#e8742c', red: '#b42020' };
-const CENTERS: Record<PlaceId, [number, number]> = { '01': [-31,-1.5], '02': [-12,19], '03': [5,-9.5], '04': [24,12], '05': [37,-17], '06': [52,2] };
+const CENTERS: Record<PlaceId, [number, number]> = { '01': [-19,-1.5], '03': [5,-9.5], '04': [24,12], '05': [37,-17], '06': [52,2] };
 const materials = new Map<string, THREE.MeshStandardMaterial>();
 const geometries = new Map<string, THREE.BufferGeometry>();
 function material(color: string): THREE.MeshStandardMaterial {
@@ -47,28 +50,16 @@ export class StoryWorld {
   private readonly packet: THREE.Mesh;
   private readonly packetStart = new THREE.Vector3(5.2, 1.2, -2.6);
   private readonly packetEnd = new THREE.Vector3(-1.2, 1.2, -1.8);
+  private readonly deliveryMotion = new DeliveryMotion();
   private readonly parcel: THREE.Mesh;
   private readonly gates: THREE.Mesh[] = [];
   private readonly alert: THREE.Mesh;
   private readonly alertPath: THREE.CatmullRomCurve3;
-  private readonly workshopMobile: THREE.Group;
   constructor(scene: THREE.Scene, private readonly anchors: Record<string, THREE.Vector3>, private readonly invalidateShadows: () => void = () => {}) {
     const root = new THREE.Group(); scene.add(root);
-    for (const id of ['02','04','05','06'] as PlaceId[]) {
+    for (const id of ['04','05','06'] as PlaceId[]) {
       const [x,z] = CENTERS[id]; anchors[`guideSpot${id}`] = new THREE.Vector3(x-6.5,.34,z+3.2);
     }
-    // The workshop: two actual interfaces, a workbench, API and storage connected by cables.
-    const workshop = new THREE.Group(); workshop.position.set(-12,.34,19); root.add(workshop);
-    box(workshop,[7,.25,3.2],[-1,1.35,-2.4],COLORS.white);
-    for (const x of [-3.8,1.8]) box(workshop,[.18,1.3,.18],[x,.65,-2.4],COLORS.dark);
-    screen(workshop,'assets/deck/v6-sup-piliers.jpg',3.1,[-2,2.9,-2.5],0);
-    this.workshopMobile = screen(workshop,'assets/deck/v3-mob-evaluation.jpg',.95,[1,2.85,-2.2],-.2);
-    const api = box(workshop,[1.4,1.6,1.4],[-4.8,.8,1.3],COLORS.green);
-    box(workshop,[1.4,1.6,1.4],[.5,.8,3.4],COLORS.blue);
-    cable(workshop,[[-4.8,.25,1.3],[-4.8,.25,-2],[-2,.25,-2]]);
-    cable(workshop,[[-4.8,.25,1.3],[-2,.25,3.4],[.5,.25,3.4]]);
-    api.userData['role']='API';
-
     // Architecture in volume: inclined presentation board facing spectator with depth
     this.architecture.name = 'architecture-board';
     this.architecture.position.set(5, 3.1, -9.5); root.add(this.architecture);
@@ -101,11 +92,13 @@ export class StoryWorld {
     // Delivery: one version travels through visible gates; the same parcel stops on failed control states.
     const line = new THREE.Group(); line.position.set(24, .34, 12); root.add(line);
     this.parcel = box(line, [.82, .7, .82], [-5.8, 1.45, 0], COLORS.green);
+    this.parcel.name = 'delivery-version';
     box(this.parcel, [.6, .08, .6], [0, .36, 0], COLORS.mint);
 
     for (let i = 0; i < 3; i++) {
       const gate = box(line, [.28, 2.5, 2.8], [-4 + i * 4, 1.6, 0], COLORS.mint);
       box(gate, [.36, .28, .6], [0, 1.15, 0], COLORS.white);
+      gate.name = `delivery-gate-${i}`;
       this.gates.push(gate);
       anchors[`gateTag${i}`] = new THREE.Vector3(20 + i * 4, 4.4, 12);
     }
@@ -145,13 +138,11 @@ export class StoryWorld {
       this.packet.position.copy(this.packetStart).lerp(this.packetEnd, progress);
       this.packet.visible = false;
     }
-    const hidePhone = seq === 'parcours-app' && (step === 0 || step === 2);
-    if (this.workshopMobile) this.workshopMobile.visible = !hidePhone;
-    const atelierPhone = sceneProps.get('atelier-phone');
-    if (atelierPhone) atelierPhone.visible = !hidePhone;
     const { blocked, visible, x } = deliveryFrame(state, from, progress);
     this.parcel.visible = visible;
-    this.parcel.position.x = x;
+    const sharedExplanation = isDeliveryReveal(state.source);
+    const animated = sharedExplanation && !motion.reduced && !document.body.classList.contains('instant');
+    this.parcel.position.x = this.deliveryMotion.sample(state.id, sharedExplanation ? deliveryFrame(state, state, 1).x : x, performance.now() / 1000, animated);
     this.parcel.material = material(blocked ? COLORS.red : COLORS.green);
     this.gates.forEach((g, i) => {
       g.material = material(blocked && i === 1 ? COLORS.red : COLORS.mint);

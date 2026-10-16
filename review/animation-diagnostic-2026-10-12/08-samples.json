@@ -1,0 +1,532 @@
+[
+  {
+    "t": 71.37309999999404,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 71.67069999998807,
+    "elapsed": 0.0026999999880672476,
+    "id": "outils-dev-0",
+    "display": "ch2-0",
+    "phase": "exit",
+    "stageOpacity": 0.999623,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 72.0175,
+    "elapsed": 0.34949999999999193,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -16.88826658108688,
+      24.63686638853236,
+      47.7206664527172
+    ],
+    "target": [
+      -11.91619993581516,
+      0.027933354728280006,
+      18.97206664527172
+    ],
+    "fov": 41.94413329054344,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 72.30159999999404,
+    "elapsed": 0.6335999999940327,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -15.846790606851602,
+      21.252069472267706,
+      45.116976517129004
+    ],
+    "target": [
+      -11.1350929551387,
+      0.28830234828709955,
+      18.7116976517129
+    ],
+    "fov": 41.4233953034258,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 72.592,
+    "elapsed": 0.9239999999999924,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -14.672032754428777,
+      17.434106451893527,
+      42.180081886071946
+    ],
+    "target": [
+      -10.254024565821583,
+      0.5819918113928055,
+      18.418008188607196
+    ],
+    "fov": 40.83601637721439,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 72.87930000001192,
+    "elapsed": 1.2113000000119172,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -13.509815361149991,
+      13.656899923737473,
+      39.27453840287498
+    ],
+    "target": [
+      -9.382361520862494,
+      0.872546159712502,
+      18.127453840287497
+    ],
+    "fov": 40.254907680574995,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 73.18330000001193,
+    "elapsed": 1.5153000000119192,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "settle",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 73.53230000001192,
+    "elapsed": 1.8643000000119088,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "enter",
+    "stageOpacity": 0.890982,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 73.8715,
+    "elapsed": 2.203499999999991,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 1.2058530725810095,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.6258530725810094,
+      "total": 1.9258530725810095
+    }
+  },
+  {
+    "t": 74.22,
+    "elapsed": null,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 74.56309999999404,
+    "elapsed": null,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 74.89440000000596,
+    "elapsed": null,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 75.2065,
+    "elapsed": null,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 75.548,
+    "elapsed": null,
+    "id": "outils-dev-0",
+    "display": "outils-dev-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "outils-dev-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -13,
+      12,
+      38
+    ],
+    "target": [
+      -9,
+      1,
+      18
+    ],
+    "fov": 40,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  }
+]

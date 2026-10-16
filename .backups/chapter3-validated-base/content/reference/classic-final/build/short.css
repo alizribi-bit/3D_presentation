@@ -1,0 +1,29 @@
+.short-body{position:absolute;left:150px;top:330px;width:1620px;font:400 32px/1.45 var(--display);color:var(--ink)}
+.short-body h3{margin:0 0 24px;font:600 40px/1.2 var(--display);color:var(--green-d)}
+.short-body p{margin:22px 0}.short-body .muted{color:var(--muted);font-size:28px}
+.short-body.split{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.short-body .panel{background:var(--green-l);border:2px solid var(--line);border-radius:24px;padding:36px 42px;box-sizing:border-box}
+.short-body ul,.short-body ol{padding-left:36px;margin:0}.short-body li{margin:22px 0}
+/* Explicit fusions inherit the white/green theme; no styles target original limits. */
+#problematique.short .panel { position:static; width:auto; }
+#modele .bmc.complete { left:150px;top:280px;width:1040px;height:auto; }
+#modele .bmc.complete img { width:100%;height:auto; }
+#modele .bmc-source { position:absolute;left:1240px;top:930px;width:530px;margin:0;font:400 22px/1.3 var(--display);color:var(--muted); }
+#modele .bmc-details { position:absolute;left:1240px;top:300px;width:530px;display:grid;grid-template-columns:1fr 1fr;gap:24px; }
+#modele .bmc-details h3 { margin:0 0 22px;font:600 27px/1.3 var(--display);color:var(--green); }
+#modele .bmc-details img { display:block;width:100%;height:auto;border:3px solid var(--green);border-radius:12px;box-sizing:border-box; }
+#modele .bmc-intro { position:absolute;left:1250px;top:400px;width:510px;font:400 31px/1.5 var(--display);color:var(--muted); }
+#modele .bmc-intro strong { display:block;margin-top:35px;font-weight:600;color:var(--green); }
+#methodologie .scrum-diagram { position:absolute;left:150px;top:280px;width:1620px;height:710px;margin:0; }
+#methodologie .scrum-diagram img { display:block;width:100%;height:100%;object-fit:contain; }
+/* Only the need/solution slide: a single solution group, revealed as one unit. */
+#probleme .need-solution{position:absolute;left:150px;top:315px;width:1620px;display:grid;grid-template-columns:560px 980px;gap:80px;align-items:start;color:var(--ink);font-family:var(--display)}
+#probleme .need-solution h3{margin:0 0 26px;font:600 38px/1.25 var(--display);color:var(--green-d)}
+#probleme .need{padding-top:32px}
+#probleme .need-point{margin:38px 0;padding-left:28px;border-left:4px solid var(--green-l);font:400 34px/1.5 var(--display)}
+#probleme .solution{box-sizing:border-box;padding:32px 40px;background:var(--surface,#f4f7f2);border:2px solid var(--line);border-radius:24px}
+#probleme .solution-intro{margin:0 0 22px;font:400 31px/1.4 var(--display)}
+#probleme .benefits p{margin:0;padding:20px 0;border-top:2px solid var(--line)}
+#probleme .benefits p:last-child{padding-bottom:0}
+#probleme .benefits strong{display:block;font:600 31px/1.3 var(--display);color:var(--green-d)}
+#probleme .benefits span{display:block;margin-top:8px;font:400 28px/1.4 var(--display)}

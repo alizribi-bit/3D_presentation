@@ -1,0 +1,29 @@
+{
+  "name": "zawedni-story-3d",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check && npm run typecheck && vite build",
+    "preview": "vite preview --port 4318 --host 127.0.0.1",
+    "check": "scripts/check-source.sh && node --import tsx scripts/check-content-current.mjs",
+    "verify": "node --import tsx scripts/verify-classic.mjs",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "import:content": "node scripts/sync-classic.mjs",
+    "sync:classic": "node scripts/sync-classic.mjs && node --import tsx scripts/export-correspondence.mjs",
+    "verify:classic": "node --import tsx scripts/verify-classic.mjs",
+    "verify:prototype": "node scripts/verify-prototype.mjs"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@types/three": "0.186.0",
+    "playwright-core": "1.63.0",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.1"
+  }
+}

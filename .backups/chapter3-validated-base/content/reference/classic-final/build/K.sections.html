@@ -1,0 +1,103 @@
+  <!-- Context added in v8. Declarative builds keep forward, backward and export states identical. -->
+  <section class="slide" id="problematique">
+    <style>
+      :is(#problematique,#besoins,#methodologie) .panel { position:absolute; left:150px; top:320px; width:1620px; }
+      :is(#problematique,#besoins,#methodologie) .label { margin:0 0 30px; font:600 30px/1.3 var(--display); color:var(--green); }
+      :is(#problematique,#besoins,#methodologie) .box { box-sizing:border-box; background:var(--card); border:2px solid var(--line); border-radius:22px; padding:30px 34px; }
+      :is(#problematique,#besoins,#methodologie) h3 { margin:0 0 22px; font:600 34px/1.3 var(--display); color:var(--ink); }
+      #besoins ul { margin:0; padding-left:30px; } #besoins li { padding:0 0 24px 8px; font:400 28px/1.4 var(--display); } #besoins li:last-child { padding-bottom:0; } #besoins li::marker { color:var(--green); }
+      #besoins .families, #besoins .qualities { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+      #besoins .qualities { gap:30px; }
+      #besoins .qualities h3 { font-size:29px; margin-bottom:14px; color:var(--green); } #besoins .qualities p { margin:0; font:400 29px/1.4 var(--display); }
+      #problematique .facts { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+      #problematique .facts p { margin:0; font:400 32px/1.45 var(--display); }
+      #problematique .facts h3 { color:var(--green); margin-bottom:12px; }
+      #problematique .question { padding:60px; border-left:8px solid var(--green); background:var(--green-l); margin-top:90px; }
+      #problematique .question p { margin:0; font:600 46px/1.5 var(--display); }
+      #methodologie .cycle { display:grid; grid-template-columns:repeat(4,1fr); gap:36px; margin-top:85px; }
+      #methodologie .phase { position:relative; padding:32px 24px; border-top:5px solid var(--green); }
+      #methodologie .phase:not(:last-child)::after { content:'→'; position:absolute; right:-33px; top:70px; font:400 32px/1 var(--display); color:var(--green); }
+      #methodologie .phase b { display:block; font:600 29px/1.4 var(--display); }
+      #methodologie .phase span { display:block; margin-bottom:20px; font:500 22px/1 var(--mono); color:var(--green); }
+      #methodologie .return { position:absolute; left:286px; top:720px; width:1348px; height:110px; }
+      #methodologie .releases { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; margin-top:38px; }
+      #methodologie .release { border-top:6px solid var(--green); }
+      #methodologie .release h3 { min-height:100px; font-size:32px; }
+      #methodologie .release .num { margin:0 0 18px; font:600 23px/1.2 var(--display); color:var(--green); }
+      #methodologie .release .sprints { min-height:150px; margin:0; font:500 27px/1.5 var(--display); }
+      #methodologie .release .result { border-top:2px solid var(--line); padding-top:24px; margin:22px 0 0; font:500 27px/1.4 var(--display); color:var(--green-d); }
+      #methodologie .verification { margin:28px 0 0; padding:18px 24px; border-left:5px solid var(--green); background:var(--green-l); font:400 25px/1.4 var(--display); }
+    </style>
+    <p class="kicker">01 · Contexte et objectifs</p><h2 data-fit="2">Les enjeux du projet</h2>
+    <div class="panel" data-out="1" data-anim="fade" data-dur=".2"><div class="facts">
+      <div class="box"><h3>Développement</h3><p>Proposer une plateforme web et mobile claire et fluide.</p></div>
+      <div class="box"><h3>Livraison</h3><p>Automatiser des mises en ligne fiables.</p></div>
+      <div class="box"><h3>Sécurité</h3><p>Protéger les accès, les données et les versions.</p></div>
+      <div class="box"><h3>Supervision</h3><p>Suivre les services et repérer les incidents.</p></div>
+    </div></div>
+    <div class="panel" data-step="1" data-anim="rise" data-delay=".22"><div class="box question"><p>Comment concevoir une plateforme web et mobile fluide et fiable, de son développement à son exploitation ?</p></div></div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="besoins">
+    <p class="kicker">01 · Contexte et objectifs</p>
+    <h2 data-fit="2">Besoins du projet</h2>
+    <div class="panel" data-out="1" data-anim="fade">
+      <p class="label">Besoins fonctionnels</p>
+      <div class="families">
+        <div class="box"><h3>Plateforme</h3><ul>
+          <li>Gérer les comptes, les rôles et les dossiers.</li>
+          <li>Évaluer les entreprises et permettre les échanges sur le marché local.</li>
+          <li>Produire les résultats, recommandations et rapports.</li>
+        </ul></div>
+        <div class="box"><h3>Chaîne DevSecOps</h3><ul>
+          <li>Construire, contrôler et déployer les versions.</li>
+          <li>Protéger les secrets et limiter les communications.</li>
+          <li>Collecter les métriques et journaux, envoyer les alertes et sauvegarder les données.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="panel" data-step="1" data-anim="rise">
+      <p class="label">Besoins non fonctionnels</p>
+      <div class="qualities">
+        <div class="box"><h3>Confidentialité</h3><p>Chaque entreprise accède aux données autorisées.</p></div>
+        <div class="box"><h3>Disponibilité</h3><p>Redémarrer les services défaillants et servir les instances prêtes.</p></div>
+        <div class="box"><h3>Maintenabilité et traçabilité</h3><p>Retrouver les configurations et l'origine des versions.</p></div>
+        <div class="box"><h3>Portabilité et coût</h3><p>Portabilité des images et maîtrise du coût cloud.</p></div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="methodologie">
+    <p class="kicker">01 · Contexte et objectifs</p>
+    <h2 data-fit="2">Organisation du travail</h2>
+    <div class="panel" data-out="1" data-anim="fade" data-dur=".2">
+      <p class="label">Scrum : un backlog et des sprints</p>
+      <div class="cycle">
+        <div class="box phase"><span>01</span><b>Prioriser les tâches</b></div>
+        <div class="box phase"><span>02</span><b>Fixer l'objectif du sprint</b></div>
+        <div class="box phase"><span>03</span><b>Réaliser et tester</b></div>
+        <div class="box phase"><span>04</span><b>Présenter le résultat et préparer la suite</b></div>
+      </div>
+    </div>
+    <svg class="return" viewBox="0 0 1348 110" data-out="1" data-anim="draw" data-dur=".2" data-delay=".3" aria-hidden="true">
+      <path d="M1335,5 V65 Q1335,85 1315,85 H35 Q15,85 15,65 V5 M3,22 L15,5 L27,22" fill="none" stroke="#0d7b3c" stroke-width="3"/>
+    </svg>
+    <div class="panel" data-step="1" data-anim="rise" data-delay=".22">
+      <p class="label">Trois releases · Cinq sprints</p>
+      <div class="releases">
+        <div class="box release"><p class="num">RELEASE 1</p><h3>Fondations</h3><p class="sprints">S1 : Conteneurisation<br>S2 : Infrastructure Azure</p><p class="result">Release 1 : préparer l'environnement.</p></div>
+        <div class="box release"><p class="num">RELEASE 2</p><h3>Chaîne de livraison sécurisée</h3><p class="sprints">S3 : Pipelines CI sécurisés<br>S4 : Déploiement GitOps</p><p class="result">Release 2 : automatiser la livraison.</p></div>
+        <div class="box release"><p class="num">RELEASE 3</p><h3>Exploitation et vérification</h3><p class="sprints">S5 : Observabilité, cloisonnement et sauvegarde</p><p class="result">Release 3 : suivre et protéger les services.</p></div>
+      </div>
+      <p class="verification">Vérification des contrôles tout au long du travail</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

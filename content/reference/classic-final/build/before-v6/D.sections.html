@@ -1,0 +1,85 @@
+  <section class="slide" id="tracabilite">
+    <style>
+      #tracabilite .shot { position: absolute; background: #1b1f24; border: 2px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 18px 50px rgba(16,38,26,.16); }
+      #tracabilite .shot .bar { height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 18px; background: #2a2f36; }
+      #tracabilite .shot .bar i { width: 14px; height: 14px; border-radius: 50%; background: #5d646d; display: inline-block; }
+      #tracabilite .shot .bar span { margin-left: 14px; font: 400 22px/1 var(--mono); color: #c9d1d9; }
+      #tracabilite .ask { position: absolute; left: 150px; top: 440px; font: 500 44px/1.2 var(--display); color: var(--ink); margin: 0; }
+      #tracabilite .sha { position: absolute; left: 140px; top: 520px; font: 600 220px/1 var(--mono); color: var(--green); letter-spacing: -.02em; margin: 0; }
+      #tracabilite .sub { position: absolute; left: 150px; top: 780px; font: 400 28px/1.3 var(--display); color: var(--muted); margin: 0; }
+      #tracabilite .pills { position: absolute; left: 150px; top: 336px; width: 1620px; display: grid; grid-template-columns: repeat(4, 375px); column-gap: 40px; }
+      #tracabilite .pill { display: flex; align-items: center; gap: 14px; height: 64px; box-sizing: border-box; padding: 0 22px; border-radius: 999px; font: 600 26px/1 var(--display); background: var(--green); color: #ffffff; white-space: nowrap; }
+      #tracabilite .pill i { font: 700 22px/34px var(--display); font-style: normal; width: 34px; height: 34px; border-radius: 50%; text-align: center; background: rgba(8,63,31,.3); flex: none; }
+      #tracabilite .pill code { font: 600 26px/1 var(--mono); }
+      #tracabilite .stage { position: absolute; left: 150px; top: 450px; width: 1620px; }
+      #tracabilite .stage .shot { position: relative; }
+      #tracabilite .crop { position: relative; overflow: hidden; width: calc(var(--w) * var(--s) * 1px); height: calc(var(--h) * var(--s) * 1px); }
+      #tracabilite .crop img { position: absolute; display: block; max-width: none; left: calc(var(--x) * var(--s) * -1px); top: calc(var(--y) * var(--s) * -1px); width: calc(var(--iw) * var(--s) * 1px); }
+      #tracabilite .mk { position: absolute; box-sizing: border-box; border: 4px solid var(--mint); border-radius: 8px; box-shadow: 0 0 0 4px rgba(91,227,143,.25);
+        left: calc((var(--mx) - var(--x)) * var(--s) * 1px - 6px); top: calc((var(--my) - var(--y)) * var(--s) * 1px - 6px);
+        width: calc(var(--mw) * var(--s) * 1px + 12px); height: calc(var(--mh) * var(--s) * 1px + 12px); }
+      #tracabilite .cap { display: flex; align-items: center; gap: 18px; margin: 26px 0 0; font: 400 28px/1.3 var(--display); color: var(--ink); }
+      #tracabilite .cap code { font: 600 28px/1 var(--mono); color: var(--green-d); background: var(--green-l); border-radius: 10px; padding: 8px 14px; }
+    </style>
+    <p class="kicker">Chaîne CI/CD · Traçabilité</p>
+    <h2 data-fit="2">Le même identifiant relie le commit testé à l'image qui tourne en staging</h2>
+    <p class="ask" data-anim="rise" data-delay=".2" data-out="1">L'image qui tourne est-elle celle qui a été testée ?</p>
+    <p class="sha" data-anim="scale" data-delay=".5" data-out="1">62c42e1</p>
+    <p class="sub" data-anim="fade" data-delay=".9" data-out="1">L'identifiant de la version : le SHA du commit</p>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <div class="pills">
+      <span class="pill" data-step="1" data-anim="pop"><i>1</i>run · <code>62c42e1</code></span>
+      <span class="pill" data-step="2" data-anim="pop"><i>2</i>ACR · <code>62c42e1</code></span>
+      <span class="pill" data-step="3" data-anim="pop"><i>3</i>manifeste · <code>62c42e1</code></span>
+      <span class="pill" data-step="4" data-anim="pop"><i>4</i>pod · <code>62c42e1</code></span>
+    </div>
+    <div class="stage" data-step="1" data-anim="rise" data-delay=".3" data-out="2">
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>GitHub Actions · run #134</span></div>
+        <div class="crop" data-bleed style="--iw:1600; --s:1.616; --x:0; --y:0; --w:1000; --h:158">
+          <img src="assets/p0310-ci-run.jpg" alt="Run GitHub Actions réussi pour le commit 62c42e1">
+          <div class="mk" style="--mx:455; --my:118; --mw:45; --mh:16"></div>
+        </div></div>
+      <p class="cap"><code>62c42e1</code>Run du 03/10 · succès</p>
+    </div>
+    <div class="stage" data-step="2" data-anim="rise" data-delay=".3" data-out="3">
+      <div class="shot" style="width:1400px"><div class="bar"><i></i><i></i><i></i><span>Azure Container Registry · zawedni-backend</span></div>
+        <div class="crop" data-bleed style="--iw:700; --s:2; --x:0; --y:0; --w:700; --h:132">
+          <img src="assets/p0310-acr-tags.jpg" alt="Tags ACR : 62c42e1…-staging">
+          <div class="mk" style="--mx:1; --my:66; --mw:70; --mh:21"></div>
+        </div></div>
+      <p class="cap"><code>62c42e1</code>Tag ACR · 03/10</p>
+    </div>
+    <div class="stage" data-step="3" data-anim="rise" data-delay=".3" data-out="4">
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>GitHub · k8s/staging/backend/spring-boot.yaml</span></div>
+        <div class="crop" data-bleed style="--iw:1600; --s:1.616; --x:0; --y:0; --w:1000; --h:196">
+          <img src="assets/p0310-manifest-commit.jpg" alt="Commit du ZAWEDNI CI Bot : update backend image to 62c42e1">
+          <div class="mk" style="--mx:219; --my:90; --mw:47; --mh:15"></div>
+        </div></div>
+      <p class="cap"><code>62c42e1</code>Manifeste · commit du bot · 03/10</p>
+    </div>
+    <div class="stage" data-step="4" data-anim="rise" data-delay=".3">
+      <div class="shot"><div class="bar"><i></i><i></i><i></i><span>Cluster AKS · staging · zawedni-backend</span></div>
+        <div class="crop" data-bleed style="--iw:1300; --s:1.68; --x:340; --y:0; --w:960; --h:45">
+          <img src="assets/p0610-pod-image.jpg" alt="Pod staging Ready avec l'image 62c42e1…-staging">
+          <div class="mk" style="--mx:734; --my:23; --mw:68; --mh:20"></div>
+        </div></div>
+      <p class="cap"><code>62c42e1</code>Pod staging · Ready · 06/10</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="log4j">
+    <style>
+      #log4j .note { position: absolute; left: 150px; top: 900px; font: 400 24px/1.3 var(--display); color: var(--muted); margin: 0; }
+    </style>
+    <p class="kicker">Chaîne CI/CD · Essai réel</p>
+    <h2 data-fit="2">Dependency-Check a arrêté une bibliothèque log4j vulnérable</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <p class="note" data-step="2" data-anim="fade" data-delay="2">Essais volontaires : log4j · faux secret · ancienne adresse</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+

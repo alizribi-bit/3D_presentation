@@ -1,0 +1,23 @@
+# Durée estimée — ZAWEDNI_3D_20MIN
+
+**19:06 à 110 mots/min**, film et déplacements inclus. Le discours reste exactement celui de la classique : **1532 mots**, dont les passages cités à lire. Repères de clic et indications silencieuses exclus du comptage.
+
+Parole : 13:56 ; film local vérifié : 1:30 ; budget validé pour transitions, animations, observation des preuves et respirations : 3:40. À 105 mots/min : **19:46**.
+
+Avant l’ajustement du chapitre 3, la traversée normale des 85 passages mesurait **19,84 s de chronologie nominale 3D** cumulée. Les deux ouvertures sur le convoyeur et leurs deux retours au grand tableau ajoutent 4 × 0,325 s, soit **21,14 s estimées** pour la nouvelle chronologie nominale. Ce dernier total est calculé à partir des durées du moteur ; il ne constitue pas une nouvelle mesure de traversée complète.
+
+Les 48 révélations internes restantes gardent leur cadrage fixe ; la dernière révélation de conclusion revient au monde. Au chapitre 3, la caméra reste également fixe entre les étapes de chaque schéma ouvert. Les révélations SVG polies durent 0,32 s, celles des textes et captures 0,30 à 0,38 s avec un décalage plafonné à 0,096 s ; les déplacements du colis durent 0,65 s. Ces mouvements accompagnent la parole sans attente ni clic supplémentaire.
+
+Sur les deux slides du chapitre 3 partagées avec la 3D, le tracé des lignes et le déplacement des repères dans le SVG durent désormais une seconde. Ce temps accompagne également la parole et reste dans le budget existant ; le discours et les 85 avances sont conservés.
+
+Ces mouvements sont contenus dans le budget déjà réservé de la classique, et peuvent se dérouler pendant le discours. Ils ne sont donc pas ajoutés une deuxième fois aux 19:06. Même en réservant chaque mouvement hors parole, leur somme reste inférieure aux 70 secondes prévues pour les passages de slides seuls. Aucune nouvelle avance ni attente imposée ne compense un trajet.
+
+Le total est une **estimation du script**, pas une répétition orale chronométrée. La QA automatique observe le fonctionnement et les phases de navigation ; ses temps muraux incluent le pilotage des tests et un rendu logiciel, et ne mesurent pas le débit oral ni la fluidité sur le GPU de projection. Le minuteur du présentateur permet une répétition réelle.
+
+| Chapitre | Créneau validé, déplacements compris |
+|---|---|
+| 1 · Contexte et objectifs, ouverture incluse | 4:03 |
+| 2 · Architecture et démarche DevSecOps | 4:13 |
+| 3 · Chaîne CI/CD et déploiement | 5:03 |
+| 4 · Supervision et validation | 2:11 |
+| 5 · Bilan, perspectives et conclusion | 3:36 |

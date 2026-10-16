@@ -1,0 +1,98 @@
+  <!-- ══ 6 · Suite et conclusion ══════════════════════════════════ -->
+  <section class="slide night" id="limites">
+    <style>
+      #limites .cpt { position: absolute; right: 150px; top: 110px; font: 600 24px/1 var(--display); color: var(--on-night-muted); margin: 0; }
+      #limites .cpt b { color: var(--mint); }
+      #limites .grp { position: absolute; display: flex; align-items: center; gap: 14px; margin: 0; white-space: nowrap; }
+      #limites .grp.sec { left: 150px; top: 352px; } #limites .grp.ops { left: 150px; top: 922px; } #limites .grp.sup { left: 1000px; top: 922px; }
+      #limites .grp h3 { font: 600 28px/1 var(--display); color: var(--amber); margin: 0 6px 0 0; }
+      #limites .grp span { display: flex; align-items: center; gap: 12px; font: 500 28px/1.2 var(--display); color: var(--on-night); }
+      #limites .grp i { font: 700 22px/1 var(--display); font-style: normal; color: #f0b44a; width: 40px; height: 40px; border-radius: 50%; border: 2.5px dashed var(--amber); display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
+      #limites .nb { position: absolute; left: 150px; bottom: 52px; font: 400 24px/1.3 var(--display); color: var(--on-night-muted); margin: 0; }
+    </style>
+    <p class="kicker">Bilan et perspectives · Suite</p>
+    <h2 data-fit="2">Trois priorités complètent la chaîne</h2>
+    <svg class="art world" viewBox="0 0 1920 1080"></svg>
+    <svg class="art marks" viewBox="0 0 1920 1080"></svg>
+    <div class="grp sec" data-step="1" data-anim="rise"><span><i>1</i></span><h3>Sécurité</h3><span>HTTPS, protection des branches, Semgrep et Checkov bloquants</span></div>
+    <div class="grp ops" data-step="2" data-anim="rise"><span><i>2</i></span><h3>Exploitation</h3><span>production et sauvegardes</span></div>
+    <div class="grp sup" data-step="3" data-anim="rise"><span><i>3</i></span><h3>Supervision</h3><span>alertes en production, base surveillée</span></div>
+    <p class="nb">Déjà réalisé et retiré de la liste : journaux centralisés, alertes par e-mail en staging.</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="bilan">
+    <style>
+      #bilan .tbl { position: absolute; left: 150px; top: 350px; width: 1620px; }
+      #bilan .row { display: grid; grid-template-columns: 260px 330px 640px 390px; align-items: center; border-bottom: 2px solid var(--line); min-height: 104px; }
+      #bilan .row > * { padding-right: 24px; }
+      #bilan .hd { min-height: 0; padding: 0 0 14px; font: 600 24px/1.2 var(--display); color: var(--muted); }
+      #bilan .th { font: 600 30px/1.25 var(--display); color: var(--ink); }
+      #bilan .av { font: 400 28px/1.3 var(--display); color: var(--muted); }
+      #bilan .ap { font: 500 28px/1.3 var(--display); color: var(--ink); }
+      #bilan .st { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 0; }
+      #bilan .pill { font: 600 24px/1.2 var(--display); padding: 8px 18px; border-radius: 24px; background: var(--green); color: #fff; }
+      #bilan .cf { font: 500 22px/1.2 var(--display); padding: 6px 14px; border-radius: 20px; background: var(--green-l); color: var(--green-d); }
+    </style>
+    <p class="kicker">Bilan et perspectives · Bilan</p>
+    <h2 data-fit="2">En bilan, la plateforme est passée d'un ordinateur à une chaîne cloud contrôlée</h2>
+    <div class="tbl">
+      <div class="row hd"><span>Volet</span><span>Moyens</span><span>Résultat</span><span>État</span></div>
+      <div data-step="1" data-stagger=".1" data-anim="rise">
+        <div class="row"><span class="th">Plateforme</span><span class="av">web, mobile, API, IA</span><span class="ap">évaluation RSE, certificat, marketplace, devis, carbone, ESG</span>
+          <span class="st"><span class="pill">Réalisé</span></span></div>
+        <div class="row"><span class="th">Infrastructure</span><span class="av">Terraform, AKS, ACR</span><span class="ap">cluster recréé depuis le code</span>
+          <span class="st"><span class="pill">Réalisé</span></span></div>
+      </div>
+      <div data-step="2" data-stagger=".1" data-anim="rise">
+        <div class="row"><span class="th">Livraison</span><span class="av">10 pipelines, GitOps</span><span class="ap">changement publié en staging, suivi jusqu'au pod</span>
+          <span class="st"><span class="pill">Staging : réalisé</span><span class="cf">Production : configurée</span></span></div>
+        <div class="row"><span class="th">Sécurité</span><span class="av">5 familles d'analyses</span><span class="ap">secrets, bibliothèques, images bloquent ; secrets chiffrés</span>
+          <span class="st"><span class="pill">Réalisé</span><span class="cf">Fusion non protégée</span></span></div>
+        <div class="row"><span class="th">Supervision</span><span class="av">métriques, journaux, alertes</span><span class="ap">une alerte déclenchée, reçue par e-mail, résolue</span>
+          <span class="st"><span class="pill">Réalisé en staging</span></span></div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="video">
+    <style>
+      #video { padding-top: 84px; }
+      #video .kicker { margin-bottom: 12px; }
+      #video h2 { font-size: 40px; }
+      #video .vid { position: absolute; left: 240px; top: 196px; width: 1440px; height: 810px; border-radius: 16px; overflow: hidden; background: #03140d; box-shadow: 0 0 0 2px rgba(91,227,143,.18), 0 24px 60px rgba(0,0,0,.45); }
+      #video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+      #video .band { position: absolute; left: 0; right: 0; bottom: 44px; display: flex; justify-content: center; pointer-events: none; }
+      #video .band p { display: flex; align-items: center; gap: 18px; margin: 0; padding: 16px 30px 16px 22px; border-radius: 40px; background: rgba(6,37,26,.88); border: 2px solid var(--mint); font: 600 28px/1 var(--display); color: var(--on-night); }
+      #video .band svg { width: 34px; height: 34px; }
+    </style>
+    <p class="kicker">Bilan et perspectives · Récapitulatif</p>
+    <h2 data-fit="2">Le voyage d'un commit, en une minute trente</h2>
+    <div class="vid">
+      <video src="../output/zawedni-devsecops.mp4" preload="auto" playsinline data-no-advance poster="assets/video-poster.jpg"></video>
+      <div class="band"><p data-step="0" data-anim="fade" data-out="1"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#5be38f"/><path d="M13,10 L25,17 L13,24 Z" fill="#06251a"/></svg>Récapitulatif · 1 min 30</p></div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="retour">
+    <style>
+      #retour .merci { position: absolute; left: 150px; bottom: 70px; font: 600 54px/1.1 var(--display); color: var(--mint); margin: 0; }
+      #retour .cpt b { color: var(--mint); font-weight: 600; }
+    </style>
+    <img class="logo" src="assets/logo-white.png" alt="ZAWEDNI">
+    <p class="kicker">Bilan et perspectives · Conclusion</p>
+    <h2 data-fit="2">Le commit va maintenant jusqu'à staging, contrôlé, publié et déployé sans geste manuel</h2>
+    <svg class="art world" viewBox="0 0 1920 1080"></svg>
+    <p class="merci" data-step="1" data-anim="rise" data-delay="4.4">Merci pour votre attention</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

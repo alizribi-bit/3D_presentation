@@ -1,0 +1,328 @@
+  <!-- ══ R · Réserve (questions), slides 38 à 44 ══════════════════════ -->
+  <section class="slide" id="r-postgres">
+    <style>
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .rv { position: absolute; left: 150px; right: 150px; top: 340px; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .bx { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 18px 24px; font: 400 26px/1.3 var(--display); color: var(--ink); box-sizing: border-box; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .bx b { font-weight: 600; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .lab { font: 500 22px/1.3 var(--display); color: var(--muted); margin: 0 0 6px; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .big { font: 600 30px/1.25 var(--display); margin: 0 0 4px; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .mono { font-family: var(--mono); font-variant-ligatures: none; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .ok { border-color: var(--green); background: var(--green-l); }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .todo { border-color: var(--amber); background: #fdf1d8; color: var(--amber-text); }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .todo .lab { color: var(--amber-text); }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .az { border-color: var(--azure); }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .az .lab { color: var(--azure); }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .arr { font: 600 34px/1 var(--display); color: var(--green); align-self: center; text-align: center; }
+      :is(#r-postgres,#r-rollback,#r-choix,#r-matrice,#r-mobile,#r-exigences,#r-etat) .note { font: 400 24px/1.3 var(--display); color: var(--muted); margin: 26px 0 0; }
+      #r-postgres .chain { display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr; gap: 10px; align-items: stretch; }
+      #r-postgres .row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+      #r-postgres .lock { display: flex; gap: 22px; align-items: center; }
+      #r-postgres .lock svg { flex: none; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">PostgreSQL garde ses données sur un disque persistant, mais aucune sauvegarde n'est automatisée</h2>
+    <div class="rv">
+      <div class="chain" data-anim="rise" data-stagger=".1">
+        <div class="bx"><p class="lab">Pod · Deployment, 1 réplique</p><p class="big mono">postgres:16-alpine</p>les données ne vivent pas dans le pod</div>
+        <div class="arr">→</div>
+        <div class="bx"><p class="lab">Volume persistant (PVC)</p><p class="big">5 Go · <span class="mono">ReadWriteOnce</span></p>un seul nœud à la fois</div>
+        <div class="arr">→</div>
+        <div class="bx az"><p class="lab">Stockage Azure</p><p class="big">Disque Azure</p>les données restent si le pod redémarre</div>
+      </div>
+      <div class="row" data-anim="rise" data-delay=".4" data-stagger=".1">
+        <div class="bx ok lock">
+          <svg width="56" height="64" viewBox="0 0 56 64" aria-hidden="true"><path d="M14,28 V18 a14,14 0 0 1 28,0 V28" fill="none" stroke="#0d7b3c" stroke-width="5"/><rect x="5" y="28" width="46" height="32" rx="7" fill="#0d7b3c"/><circle cx="28" cy="42" r="5" fill="#cfe8d7"/><rect x="25.5" y="44" width="5" height="9" rx="2" fill="#cfe8d7"/></svg>
+          <div><p class="lab">Mot de passe</p>Dans un <b>SealedSecret</b> : chiffré dans Git, ouvert seulement par le cluster</div>
+        </div>
+        <div class="bx todo"><p class="lab">Sauvegarde automatique</p><p class="big">Non réalisée</p>disque perdu = données perdues</div>
+      </div>
+      <p class="note" data-anim="fade" data-delay=".8">Le rapport parle de StatefulSet ; dans les fichiers, c'est un Deployment avec ce volume.</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-rollback">
+    <style>
+      #r-rollback .cols { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; }
+      #r-rollback .cols > .bx { padding: 24px 30px; }
+      #r-rollback h3 { font: 600 34px/1.2 var(--display); margin: 0 0 18px; color: var(--ink); }
+      #r-rollback .flow { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin: 0 0 18px; }
+      #r-rollback .chip { border: 2px solid var(--green); background: var(--green-l); color: var(--green-d); border-radius: 12px; padding: 5px 11px; font: 500 22px/1.2 var(--display); }
+      #r-rollback .chip.pre { border-style: dashed; background: transparent; color: var(--muted); border-color: var(--muted); }
+      #r-rollback .flow .to { font: 600 28px/1 var(--display); color: var(--green); }
+      #r-rollback .line { margin: 12px 0 0; }
+      #r-rollback .tag { display: inline-block; border-radius: 10px; padding: 2px 12px; font: 500 22px/1.4 var(--display); margin-left: 6px; }
+      #r-rollback .tag.p { background: var(--green-l); color: var(--green-d); }
+      #r-rollback .tag.n { background: #fdf1d8; color: var(--amber-text); border: 2px solid var(--amber); }
+      #r-rollback .ex { margin-top: 16px; border-left: 6px solid var(--green); padding: 8px 0 8px 18px; }
+      #r-rollback .lesson { margin-top: 34px; border-color: var(--red); border-left-width: 10px; }
+      #r-rollback .lesson .lab { color: var(--red-text); }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">GitOps couvre les mises à jour de l'application ; l'amorçage reste manuel et documenté</h2>
+    <div class="rv">
+      <div class="cols" data-anim="rise" data-stagger=".12">
+        <div class="bx">
+          <h3>Mises à jour de l'application</h3>
+          <div class="flow"><span class="chip">pipeline</span><span class="to">→</span><span class="chip">manifeste</span><span class="to">→</span><span class="chip">ArgoCD</span></div>
+          <p class="line">Retour arrière = <span class="mono"><b>git revert</b></span></p>
+          <p class="line">En staging, chaque image a son identifiant dans Git : <span class="tag p">possible</span></p>
+          <p class="line">Essai réel : <span class="tag n">non testé</span></p>
+        </div>
+        <div class="bx">
+          <h3>Amorçage</h3>
+          <p class="lab"><span class="mono">k8s/bootstrap</span>, appliqué à la main, dans l'ordre</p>
+          <div class="flow"><span class="chip">10-platform</span><span class="to">→</span><span class="chip">20-monitoring</span><span class="to">→</span><span class="chip">30-staging</span><span class="to">→</span><span class="chip pre">40-prod</span></div>
+          <div class="ex"><p class="lab">Exemple · 06/10</p>Correctif Grafana, PR #19 et #20 : fusionné, puis appliqué. <b>10 min sans redémarrage.</b></div>
+        </div>
+      </div>
+      <div class="bx lesson" data-anim="rise" data-delay=".45"><p class="lab">Leçon des sprints</p><span class="mono">kubectl rollout undo</span> + selfHeal = pods recréés en boucle</div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-choix">
+    <style>
+      #r-choix .wrap { display: grid; grid-template-columns: 1fr 520px; gap: 50px; align-items: start; }
+      #r-choix table { border-collapse: collapse; width: 100%; font: 400 26px/1.3 var(--display); color: var(--ink); }
+      #r-choix th { font: 500 22px/1.2 var(--display); color: var(--muted); text-align: left; padding: 8px 14px; border-bottom: 2px solid var(--line); }
+      #r-choix td { padding: 15px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      #r-choix td:first-child { font-weight: 600; color: var(--green); white-space: nowrap; }
+      #r-choix .money { font: 600 64px/1.1 var(--display); color: var(--ink); margin: 0 0 18px; }
+      #r-choix ul { margin: 6px 0 0; padding-left: 28px; }
+      #r-choix li { margin: 8px 0; }
+      #r-choix .alt { font: 400 24px/1.35 var(--display); color: var(--muted); margin: 22px 0 0; }
+      #r-choix .bx.todo { margin-top: 22px; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Chaque outil a été choisi selon des critères simples, avec le budget comme contrainte</h2>
+    <div class="rv wrap">
+      <table data-anim="rise" data-stagger=".05">
+        <tr><th>Outil retenu</th><th>Critère</th></tr>
+        <tr><td>GitHub Actions</td><td>intégré au dépôt, aucun serveur à entretenir</td></tr>
+        <tr><td>AKS</td><td>plan de contrôle géré par Azure</td></tr>
+        <tr><td>Terraform</td><td>plan relu avant application</td></tr>
+        <tr><td>ArgoCD</td><td>interface, retour par Git</td></tr>
+        <tr><td>Trivy</td><td>scan de l'image dans le pipeline</td></tr>
+        <tr><td>Prometheus + Grafana</td><td>métriques et tableaux de bord</td></tr>
+      </table>
+      <div data-anim="rise" data-delay=".4">
+        <div class="bx az"><p class="lab">Crédit Azure</p><p class="money">100 $</p>
+          <p class="lab">Estimations du rapport</p>
+          <ul>
+            <li>cluster : <b>35–40 $ / mois</b></li>
+            <li>ACR Basic : <b>≈ 5 $ / mois</b></li>
+          </ul>
+        </div>
+        <div class="bx todo"><b>Aucune mesure de consommation réelle</b><br>le cluster est arrêté entre les tests</div>
+        <p class="alt">Autres solutions possibles :<br>Jenkins, un serveur CI à entretenir ;<br>GitLab CI et Azure Pipelines, compatibles avec GitHub, un service de plus à configurer.</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-matrice">
+    <style>
+      #r-matrice .rv { top: 320px; }
+      #r-matrice table { border-collapse: collapse; width: 100%; font: 400 24px/1.25 var(--display); color: var(--ink); }
+      #r-matrice th { font: 500 22px/1.2 var(--display); color: var(--muted); text-align: left; padding: 6px 12px; border-bottom: 2px solid var(--line); }
+      #r-matrice td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      #r-matrice td:first-child { font-weight: 600; white-space: nowrap; width: 290px; }
+      #r-matrice td:last-child { width: 420px; }
+      #r-matrice tr.pub td:last-child { color: var(--green-d); font-weight: 600; }
+      #r-matrice tr.plan td { color: var(--amber-text); }
+      #r-matrice tr.plan td:first-child { color: var(--amber-text); }
+      #r-matrice .bot { display: grid; grid-template-columns: 1fr 560px; gap: 30px; margin-top: 26px; }
+      #r-matrice .bx { padding: 14px 22px; font-size: 22px; line-height: 1.35; }
+      #r-matrice .ctl { display: grid; grid-template-columns: 215px 1fr; gap: 2px 14px; }
+      #r-matrice .ctl b { color: var(--ink); }
+      #r-matrice .ctl .a { color: var(--amber-text); }
+      #r-matrice .ess { margin: 0; padding-left: 26px; }
+      #r-matrice .ess li { margin: 4px 0; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Ce qui tourne dépend de l'événement : push, pull request, branche et fichiers modifiés</h2>
+    <div class="rv">
+      <table data-anim="rise" data-stagger=".05">
+        <tr><th>Événement</th><th>Ce qui tourne</th><th>Publication</th></tr>
+        <tr><td>push feature, develop</td><td>workflows démarrés, jobs sautés ; seuls les guards, si workflows ou <span class="mono">k8s/</span> changent</td><td>non</td></tr>
+        <tr><td>PR → develop</td><td>Semgrep ; mobile si <span class="mono">zawedni/</span> change ; guards</td><td>non</td></tr>
+        <tr><td>PR → staging, main</td><td>composants touchés + transversaux ; image construite et scannée</td><td>non : rien publié</td></tr>
+        <tr class="pub"><td>push staging</td><td>mêmes contrôles, sans attendre la gate SonarCloud</td><td>image <span class="mono">:&lt;sha&gt;-staging</span> + manifeste staging</td></tr>
+        <tr class="plan"><td>push main</td><td>mêmes contrôles + gate SonarCloud attendue</td><td>prévu : <span class="mono">:&lt;sha&gt;-latest</span> + manifeste prod, non démontré</td></tr>
+      </table>
+      <div class="bot" data-anim="rise" data-delay=".4" data-stagger=".1">
+        <div class="bx"><p class="lab">Contrôles par workflow</p>
+          <div class="ctl">
+            <b>backend</b><span>Gitleaks · JUnit · Dependency-Check · SonarCloud · Trivy</span>
+            <b>client, admin, ia</b><span>Gitleaks · tests · Trivy</span>
+            <b>mobile</b><span>Gitleaks · flutter test · APK</span>
+            <b>transversaux</b><span>secrets · public-host · guards · <span class="a">Semgrep, Checkov : rapport</span></span>
+          </div>
+        </div>
+        <div class="bx ok"><p class="lab" style="color:var(--green-d)">Trois essais réels, avec une vraie erreur</p>
+          <ul class="ess">
+            <li>log4j 2.14.1 → Dependency-Check</li>
+            <li>faux secret → Gitleaks</li>
+            <li>ancienne adresse → public-host</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-mobile">
+    <style>
+      #r-mobile .wrap { display: grid; grid-template-columns: 1fr 560px; gap: 50px; }
+      #r-mobile .flow { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1.35fr 40px 1fr; gap: 6px; align-items: stretch; }
+      #r-mobile .flow .bx, #r-mobile .push .bx { padding: 14px 16px; font-size: 24px; }
+      #r-mobile .arr { font-size: 30px; }
+      #r-mobile .flow .bx, #r-mobile .push .bx { display: flex; flex-direction: column; justify-content: center; }
+      #r-mobile .sub { font: 400 22px/1.3 var(--display); color: var(--muted); }
+      #r-mobile .hd { font: 600 26px/1.2 var(--display); color: var(--ink); margin: 0 0 14px; }
+      #r-mobile .push { display: grid; grid-template-columns: 1.4fr 40px 1fr; gap: 6px; align-items: stretch; margin-top: 0; }
+      #r-mobile .sec { margin-top: 36px; }
+      #r-mobile .drive { margin-top: 18px; border-style: dashed; border-width: 3px; }
+      #r-mobile .sh { border-radius: 18px; box-shadow: 0 18px 50px rgba(16,38,26,.14); }
+      #r-mobile .shot { position: relative; background: #0d1117; border: 2px solid var(--line); border-radius: 18px; clip-path: inset(0 round 18px); }
+      #r-mobile .shot .bar { height: 40px; display: flex; align-items: center; gap: 10px; padding: 0 18px; background: #2a2f36; }
+      #r-mobile .shot .bar i { width: 13px; height: 13px; border-radius: 50%; background: #5d646d; display: inline-block; }
+      #r-mobile .shot .crop { position: relative; height: 566px; clip-path: inset(0); }
+      #r-mobile .shot img { position: absolute; display: block; width: 1758px; left: -6px; top: -414px; }
+      #r-mobile .shot .hl { position: absolute; left: 6px; right: 6px; top: 440px; height: 42px; border: 3px solid var(--amber); border-radius: 8px; }
+      #r-mobile .cap { font: 400 22px/1.3 var(--display); color: var(--muted); margin: 10px 0 0; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Le mobile est testé et construit en APK par la CI ; l'upload Drive n'est pas prouvé</h2>
+    <div class="rv wrap">
+      <div>
+        <p class="hd" data-anim="fade">ci-mobile, à chaque run</p>
+        <div class="flow" data-anim="rise" data-stagger=".08">
+          <div class="bx ok"><b>Gitleaks</b></div>
+          <div class="arr">→</div>
+          <div class="bx ok"><b>flutter test</b></div>
+          <div class="arr">→</div>
+          <div class="bx ok"><b>build APK</b><span class="sub">adresse injectée depuis <span class="mono">PUBLIC_HOST</span></span></div>
+          <div class="arr">→</div>
+          <div class="bx ok"><b>artefact GitHub</b></div>
+        </div>
+        <div class="sec" data-anim="rise" data-delay=".35" data-stagger=".08">
+          <p class="hd">Sur un push, en plus</p>
+          <div class="push">
+            <div class="bx az"><p class="lab">Azure Blob</p><b class="mono">apk-releases</b><span class="sub">nom = date + SHA</span></div>
+            <div class="arr">→</div>
+            <div class="bx ok"><b>e-mail</b></div>
+          </div>
+          <div class="bx todo drive"><b>Google Drive</b> : non bloquant · étape verte en 0 s · upload non prouvé</div>
+        </div>
+        <p class="note" data-anim="fade" data-delay=".7">Démonstration sur téléphone : après la fin des changements d'interface.</p>
+      </div>
+      <figure style="margin:0" data-anim="rise" data-delay=".2">
+        <div class="sh"><div class="shot"><div class="bar"><i></i><i></i><i></i></div>
+          <div class="crop"><img src="assets/p0310-apk-run.jpg" alt="Run ci-mobile : étapes du job build-apk"><div class="hl"></div></div>
+        </div></div>
+        <p class="cap">Run du 03/10 · build-apk réussi en 15 min 25 s · encadré : Drive</p>
+      </figure>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-exigences">
+    <style>
+      #r-exigences .rv { top: 330px; }
+      #r-exigences .hd { font: 600 26px/1.2 var(--display); color: var(--ink); margin: 0 0 12px; }
+      #r-exigences .g { display: grid; gap: 12px; }
+      #r-exigences .bf { grid-template-columns: repeat(5, 1fr); }
+      #r-exigences .bnf { grid-template-columns: repeat(7, 1fr); }
+      #r-exigences .p { border-radius: 14px; padding: 10px 16px 12px; font: 400 22px/1.25 var(--display); border: 2px solid transparent; }
+      #r-exigences .p b { display: block; font: 600 22px/1.3 var(--mono); }
+      #r-exigences .D { background: var(--green); color: #fff; }
+      #r-exigences .P { background: var(--green-l); color: var(--green-d); border-color: #9fcdae; }
+      #r-exigences .N { background: #fdf1d8; color: var(--amber-text); border-color: var(--amber); }
+      #r-exigences .sep { height: 26px; }
+      #r-exigences .leg { display: flex; align-items: center; gap: 34px; margin-top: 26px; font: 400 24px/1.3 var(--display); color: var(--ink); }
+      #r-exigences .leg i { display: inline-block; width: 28px; height: 28px; border-radius: 8px; vertical-align: -6px; margin-right: 10px; border: 2px solid transparent; }
+      #r-exigences .leg .tot { margin-left: auto; font-weight: 600; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Sur 22 exigences, l'état démontré est connu pour chacune</h2>
+    <div class="rv">
+      <p class="hd">Fonctionnelles</p>
+      <div class="g bf" data-anim="rise" data-stagger=".03">
+        <div class="p D"><b>BF01</b>Conteneurisation</div>
+        <div class="p D"><b>BF02</b>Environnement local Compose</div>
+        <div class="p D"><b>BF03</b>Provisionnement Terraform</div>
+        <div class="p D"><b>BF04</b>Déclenchement par composant</div>
+        <div class="p P"><b>BF05</b>Contrôles bloquants</div>
+        <div class="p D"><b>BF06</b>GitOps en staging</div>
+        <div class="p P"><b>BF07</b>Isolation des environnements</div>
+        <div class="p N"><b>BF08</b>OWASP ZAP</div>
+        <div class="p P"><b>BF09</b>Supervision des métriques</div>
+        <div class="p N"><b>BF10</b>Journaux Loki</div>
+        <div class="p P"><b>BF11</b>Alertes</div>
+        <div class="p N"><b>BF12</b>Falco</div>
+        <div class="p D"><b>BF13</b>Secrets</div>
+        <div class="p D"><b>BF14</b>APK dans Azure Blob</div>
+        <div class="p P"><b>BF15</b>Communications et images</div>
+      </div>
+      <div class="sep"></div>
+      <p class="hd">Non fonctionnelles</p>
+      <div class="g bnf" data-anim="rise" data-delay=".3" data-stagger=".03">
+        <div class="p P"><b>BNF01</b>Performance</div>
+        <div class="p N"><b>BNF02</b>Disponibilité 99,9 %</div>
+        <div class="p N"><b>BNF03</b>Scalabilité (HPA)</div>
+        <div class="p P"><b>BNF04</b>Maintenabilité</div>
+        <div class="p P"><b>BNF05</b>Portabilité</div>
+        <div class="p D"><b>BNF06</b>Traçabilité</div>
+        <div class="p P"><b>BNF07</b>Coût</div>
+      </div>
+      <div class="leg" data-anim="fade" data-delay=".5">
+        <span><i class="D"></i>démontré</span>
+        <span><i class="P"></i>configuré ou partiel</span>
+        <span><i class="N"></i>non réalisé</span>
+        <span class="tot">Total : 8 · 9 · 5</span>
+      </div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-etat">
+    <style>
+      #r-etat .row { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 26px; align-items: start; }
+      #r-etat .bx { font-size: 24px; padding: 18px 22px; }
+      #r-etat h3 { font: 600 28px/1.2 var(--display); margin: 0 0 4px; color: var(--ink); }
+      #r-etat ul { margin: 8px 0 0; padding-left: 26px; }
+      #r-etat li { margin: 6px 0; }
+      #r-etat li.a { color: var(--amber-text); }
+      #r-etat .bx.todo { margin-top: 24px; font-size: 24px; }
+    </style>
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Le rapport, le code au même commit et le travail d'après sont trois états différents</h2>
+    <div class="rv">
+      <div class="row" data-anim="rise" data-stagger=".1">
+        <div class="bx"><h3>1 · Rapport</h3><p class="lab"><span class="mono">699b99f</span>, 7 septembre</p>
+          <ul><li>SonarCloud non bloquant</li><li>secrets Kubernetes</li><li>aucune métrique ZAWEDNI</li><li>NetworkPolicies non appliquées</li></ul></div>
+        <div class="bx ok"><h3>2 · Déjà dans le code</h3><p class="lab" style="color:var(--green-d)">au même commit, non décrit</p>
+          <ul><li>quality gate SonarCloud attendue sur PR et main</li><li>Sealed Secrets</li></ul></div>
+        <div class="bx"><h3>3 · Ensuite</h3><p class="lab">après le rapport</p>
+          <ul><li>premier commit du bot sur staging : 3 oct.</li><li>cluster 1 nœud : staging + supervision</li><li>métriques backend et IA collectées</li><li>Calico : 10 tests réseau sur 11</li><li>uploads : 404 vérifié, 06/10</li><li>Grafana stabilisé, PR #19 et #20, 06/10</li><li class="a">Loki non réinstallé</li></ul></div>
+      </div>
+      <div class="bx todo" data-anim="rise" data-delay=".5"><b>Reste ouvert :</b> production GitOps non démontrée · alertes non validées · sauvegardes · ZAP · Falco / OPA</div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

@@ -1,4 +1,4 @@
-// The ZAWEDNI world: a light plateau, a road (the roadmap) and six places. Built once; states only move the camera.
+// The ZAWEDNI world: a light plateau, a road (the roadmap) and five places. Built once; states only move the camera.
 import * as THREE from 'three';
 import { sceneProps } from './scene-props.ts';
 import { decorateMonitorScreen } from './monitor.ts';
@@ -22,7 +22,6 @@ export function buildWorld(scene) {
   ground(world);
   road(world);
   market(world);
-  atelier(world);
   cloud(world);
   delivery(world);
   supervision(world);
@@ -191,20 +190,6 @@ function decorMonitor(world, pos, size, rotY = 0) {
   const monitor = put(world, 'props/computer-screen', pos, size, rotY);
   decorateMonitorScreen(monitor, image('assets/deck/logo-green.png'));
   return monitor;
-}
-
-// ── 02 · platform workshop (silhouette) ─────────────────────────────────────────────────────────
-function atelier(world) {
-  const pl = place('02'), [x, z] = pl.center; plaza(world, pl, 7.5, '#e4ece2', '#c5d6c6');
-  put(world, 'commercial/building-b', V(x - 1.5, .34, z - 4.8), 6, Math.PI);
-  // two big devices: a web screen and a phone, the platform's two faces
-  decorMonitor(world, V(x + 3.6, .34, z - 1.2), 2.4, -.45);
-  const phone = mesh(new RoundedBoxGeometry(1, 1.9, .18, 4, .14), mat('#1d3a2b')); phone.position.set(x + 5.4, 1.3, z + 1); phone.rotation.y = -.7; world.add(phone);
-  const glass = mesh(new RoundedBoxGeometry(.84, 1.66, .02, 3, .1), mat('#5be38f', { emissive: '#2f9d63', emissiveIntensity: .35 })); glass.position.set(0, 0, .1); phone.add(glass);
-  phone.userData.keep = true;
-  glass.userData.keep = true;
-  sceneProps.set('atelier-phone', phone);
-  anchors.atelier = V(x, 0, z);
 }
 
 // ── 03 · cloud zone: the DevSecOps loop, racks and screens ──────────────────────────────────────

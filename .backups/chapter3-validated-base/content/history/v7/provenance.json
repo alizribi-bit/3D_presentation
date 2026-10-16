@@ -1,0 +1,13 @@
+{
+  "revision": "historical-v7-41-sequences",
+  "archive": "/home/ali/Desktop/zawedni-video-pfe/backups/soutenance-v7-accepted.zip",
+  "archiveSha256": "f0fc87a0257fbc1bea3e281357de6582f4c33e444dbd32263f508a8e1ebcdcb4",
+  "files": {
+    "deck.html": "9fc64270f1f62b894b70042f9dab727c118d01cebc85c4cb004f3fdd3b4e8109",
+    "build/script_rows.py": "618f796c06c68f865168856e2bc035f96882f2c8ff247dab97c8a38ebdec17f0",
+    "SCRIPT.md": "4b267cc5d2ef86ea6991f8b988adedbfdf30f33fd07175ce476db447545f9e5c",
+    "PLAN_PRESENTATION.md": "34b84cf552d506e9bd4021760fc2349bbd481a48b1396877300175d3d0716131",
+    "sequences.json": "5a537383e1561cf36c45d41a448898cd4b66057fa4c1d6ee2741a02308f9218a"
+  },
+  "immutable": true
+}

@@ -16,8 +16,9 @@ for (const asset of assets.assets) checkFile(`public/${asset.file}`, asset.sha25
 const revisionAssets = JSON.parse(readFileSync(`${ROOT}/content/revision-assets.json`));
 for (const asset of revisionAssets.assets) checkFile(`public/${asset.file}`, asset.sha256);
 if (process.argv.includes('--classic-readonly')) {
-  const snapshot = JSON.parse(readFileSync(`${ROOT}/content/history/classic-readonly-snapshot.json`));
+  const snapshot = JSON.parse(readFileSync(`${ROOT}/content/reference/manifest.json`));
   for (const [file, hash] of Object.entries(snapshot.files)) checkFile(path.join(snapshot.root, file), hash);
+  for (const asset of assets.assets) checkFile(path.join(snapshot.root, asset.source), asset.sha256);
 }
 console.log(failed ? `${failed} provenance failure(s)` : `PASS historical provenance, ${assets.assets.length} original assets and ${revisionAssets.assets.length} real new capture.`);
 process.exitCode = failed ? 1 : 0;

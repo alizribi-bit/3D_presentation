@@ -1,0 +1,473 @@
+[
+  {
+    "id": "couverture",
+    "seq": 1,
+    "chapter": 0,
+    "title": "Conception et déploiement d'une plateforme web et mobile pour l'achat local intégrant une approche DevSecOps",
+    "steps": 1,
+    "speech": [
+      "Bonjour à toutes et à tous. ",
+      " Madame la Présidente, Mesdames les membres du jury, merci pour votre présence. Je vous présente mon mémoire sur la plateforme ZAWEDNI et son déploiement avec une approche DevSecOps."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 22
+  },
+  {
+    "id": "sommaire",
+    "seq": 2,
+    "chapter": 0,
+    "title": "Sommaire",
+    "steps": 1,
+    "speech": [
+      "Voici le plan. ",
+      " Je présente le contexte et l'organisation du travail, puis l'architecture DevSecOps, la livraison et la supervision. Je termine par le bilan et les perspectives."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 18
+  },
+  {
+    "id": "ch1",
+    "seq": 3,
+    "chapter": 1,
+    "title": "Contexte et objectifs",
+    "steps": 0,
+    "speech": [
+      "Je commence par ZAWEDNI, le besoin et l'organisation du projet."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 8
+  },
+  {
+    "id": "startup",
+    "seq": 4,
+    "chapter": 1,
+    "title": "La startup ZAWEDNI",
+    "steps": 1,
+    "speech": [
+      "ZAWEDNI est une startup tunisienne créée en décembre 2025 par Ali Zribi et Hadil Ben Masseoud. C'est une SARL installée à la pépinière d'entreprises de Mahdia. ",
+      " Son service relie l'achat local à la responsabilité sociétale des entreprises, ou RSE. Le projet comprend la plateforme et son environnement DevSecOps."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 30
+  },
+  {
+    "id": "probleme",
+    "seq": 5,
+    "chapter": 1,
+    "title": "Du besoin à la solution ZAWEDNI",
+    "steps": 1,
+    "speech": [
+      "Les actions RSE des entreprises restent parfois ponctuelles, sans stratégie claire ni suivi des résultats. Il est aussi difficile de comparer les fournisseurs locaux sur leurs pratiques responsables. ",
+      " ZAWEDNI accompagne l’entreprise dans sa démarche RSE. Une grille permet d’évaluer ses pratiques. Le marché local permet de trouver des fournisseurs évalués, rendus visibles après validation de leur dossier. Enfin, les recommandations, le guide RSE et le rapport ESG l’aident à construire sa stratégie et à suivre ses résultats."
+    ],
+    "visual": "besoin visible ; solution et trois apports ensemble au premier clic",
+    "seconds": 46
+  },
+  {
+    "id": "modele",
+    "seq": 6,
+    "chapter": 1,
+    "title": "Business Model Canvas",
+    "steps": 1,
+    "speech": [
+      "Voici le Business Model Canvas complet de ZAWEDNI. Il situe le service et ses partenaires. Je retiens deux blocs pour expliquer à qui la plateforme s'adresse et ce qu'elle apporte. ",
+      " Les clients sont les hôtels et maisons d'hôte ; les vendeurs sont les producteurs et fournisseurs locaux. La proposition de valeur réunit le marché B2B, l'évaluation des pratiques, l'empreinte carbone et le reporting ESG, avec la protection des données."
+    ],
+    "visual": "BMC complet ; un seul clic souligne et agrandit clientèle ET valeur",
+    "seconds": 49
+  },
+  {
+    "id": "problematique",
+    "seq": 7,
+    "chapter": 1,
+    "title": "Enjeux et besoins du projet",
+    "steps": 1,
+    "speech": [
+      "La plateforme doit gérer les comptes et les dossiers, permettre l'évaluation et les échanges, puis restituer les résultats. ",
+      " Pour l'exploiter, il faut automatiser la livraison, protéger les accès et les données, et suivre les services. La traçabilité, la maintenance et le coût orientent mes choix DevSecOps."
+    ],
+    "visual": "fusion : besoins de la plateforme, puis exigences DevSecOps",
+    "seconds": 29
+  },
+  {
+    "id": "methodologie",
+    "seq": 8,
+    "chapter": 1,
+    "title": "Organisation du travail",
+    "steps": 1,
+    "speech": [
+      "J’ai organisé le travail selon la méthode Scrum, avec un backlog et des sprints pour réaliser, tester et améliorer progressivement la solution. ",
+      " Dans mon projet, le travail est réparti en trois releases et cinq sprints : conteneurisation et Azure ; pipelines sécurisés et GitOps ; puis observabilité, cloisonnement et sauvegarde. Les contrôles sont vérifiés au fil de ces étapes."
+    ],
+    "visual": "cycle Scrum avec boucle quotidienne ; trois releases et cinq sprints originaux",
+    "seconds": 36
+  },
+  {
+    "id": "ch3",
+    "seq": 9,
+    "chapter": 2,
+    "title": "Architecture et démarche DevSecOps",
+    "steps": 0,
+    "speech": [
+      "Je passe à l'environnement qui accueille et protège les services."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 8
+  },
+  {
+    "id": "outils-infra",
+    "seq": 10,
+    "chapter": 2,
+    "title": "Outils d'infrastructure",
+    "steps": 0,
+    "speech": [
+      "Docker prépare les services dans des images. ACR les conserve, puis AKS les exécute dans le cluster. Terraform décrit les ressources Azure dans des fichiers versionnés. J'ai choisi cette chaîne pour retrouver la configuration et reproduire l'environnement, plutôt que refaire les réglages à la main."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 30
+  },
+  {
+    "id": "outils-livraison",
+    "seq": 11,
+    "chapter": 2,
+    "title": "Les outils de la chaîne DevSecOps",
+    "steps": 0,
+    "speech": [
+      "Cet environnement accueille l'application. Pour livrer ses nouvelles versions, on organise les outils en cinq familles. GitHub Actions automatise les étapes. ArgoCD déploie la configuration enregistrée dans Git. Les analyses de sécurité contrôlent chaque composant ; on les détaille plus loin. Sealed Secrets protège les secrets, et la supervision suit les services."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 31
+  },
+  {
+    "id": "devsecops",
+    "seq": 12,
+    "chapter": 2,
+    "title": "Le cycle DevSecOps",
+    "steps": 1,
+    "speech": [
+      "Ces outils forment un cycle continu. À gauche, on prépare une modification, on écrit le code et on le teste. À droite, on déploie et on observe le service. ",
+      " Un problème détecté conduit à une correction du code. La sécurité accompagne le cycle : contrôle du code, protection des accès et surveillance. Ce lien entre développement, sécurité et exploitation forme l'approche DevSecOps."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 38
+  },
+  {
+    "id": "architecture",
+    "seq": 13,
+    "chapter": 2,
+    "title": "Architecture de déploiement",
+    "steps": 3,
+    "speech": [
+      "L'Ingress reçoit les demandes et les dirige vers les interfaces ou l'API, dans AKS. ",
+      " Le backend accède à PostgreSQL et au service d'IA ; ces services restent internes. ",
+      " ArgoCD lit les manifestes Git et le cluster récupère les images dans ACR. ",
+      " Staging et production partagent un cluster à deux nœuds, avec des namespaces, secrets et données distincts. Cette séparation reste logique : elle n'isole pas physiquement les environnements."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 47
+  },
+  {
+    "id": "routage",
+    "seq": 14,
+    "chapter": 2,
+    "title": "Le chemin d'une requête",
+    "steps": 2,
+    "speech": [
+      "Plusieurs sites partagent la même adresse IP publique. ",
+      " L'Ingress utilise le nom du site pour choisir l'interface client ou l'administration. ",
+      " Il regarde ensuite le chemin : une page va vers l'interface ; /api et /uploads vont vers le backend. Le service d'IA reste interne."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 30
+  },
+  {
+    "id": "isolation",
+    "seq": 15,
+    "chapter": 2,
+    "title": "Isolation réseau",
+    "steps": 1,
+    "speech": [
+      "Le routage dirige une demande vers le bon service. L'isolation réseau limite ensuite les échanges. Le backend peut joindre la base, mais une interface ne peut pas y accéder directement. ",
+      " À lire : « NetworkPolicies : elles définissent les échanges autorisés entre les services concernés. » À lire : « Calico : il applique ces règles et bloque les échanges non autorisés. »"
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 32
+  },
+  {
+    "id": "secrets",
+    "seq": 16,
+    "chapter": 2,
+    "title": "Secrets",
+    "steps": 2,
+    "speech": [
+      "On protège aussi les identifiants et les données. ",
+      " Les secrets GitHub fournissent les identifiants aux pipelines, sans les écrire dans le code. ",
+      " Sealed Secrets conserve les secrets applicatifs chiffrés dans Git. Le contrôleur les déchiffre dans le cluster."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 27
+  },
+  {
+    "id": "ch4",
+    "seq": 17,
+    "chapter": 3,
+    "title": "Chaîne CI/CD et déploiement",
+    "steps": 0,
+    "speech": [
+      "On suit maintenant une modification du code, depuis GitHub jusqu'à la version déployée dans le cluster."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 11
+  },
+  {
+    "id": "chaine",
+    "seq": 18,
+    "chapter": 3,
+    "title": "Notre chaîne de livraison",
+    "steps": 3,
+    "speech": [
+      "Cette chaîne organise une nouvelle version. ",
+      " On enregistre la modification dans GitHub. ",
+      " GitHub Actions lance les tests et les analyses. Si la publication est autorisée et les contrôles passent, l'image est envoyée dans ACR. ",
+      " Le pipeline change le manifeste : le fichier qui indique quelle image utiliser. ArgoCD applique cette version dans le cluster."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 36
+  },
+  {
+    "id": "dix-pipelines",
+    "seq": 19,
+    "chapter": 3,
+    "title": "Organisation des dix pipelines",
+    "steps": 2,
+    "speech": [
+      "La chaîne comporte dix pipelines. ",
+      " Cinq suivent les composants : backend, client web, administration, IA et mobile. Les chemins modifiés indiquent quel composant reconstruire. ",
+      " Les autres portent sur des contrôles communs, comme les secrets ou l'infrastructure. Cela évite les reconstructions inutiles et facilite la recherche d'une étape en échec."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 32
+  },
+  {
+    "id": "tests",
+    "seq": 20,
+    "chapter": 3,
+    "title": "Que vérifient les tests ?",
+    "steps": 1,
+    "speech": [
+      "Une entreprise ne doit pas modifier un employé d'une autre entreprise. EmployeeServiceOwnershipTest prépare ce cas, vérifie le refus et la conservation des données. ",
+      " Si le résultat respecte la règle, la chaîne continue. Si le test échoue, elle s'arrête avant publication."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 28
+  },
+  {
+    "id": "analyses",
+    "seq": 21,
+    "chapter": 3,
+    "title": "Que recherchent les analyses de sécurité ?",
+    "steps": 6,
+    "speech": [
+      "Les tests vérifient le fonctionnement. Les analyses recherchent des risques. ",
+      " Gitleaks repère les secrets présents dans le code. ",
+      " Semgrep recherche des pratiques à risque. ",
+      " SonarCloud vérifie les critères configurés de qualité, de couverture et de sécurité. ",
+      " Dependency-Check examine les bibliothèques Java. ",
+      " Trivy recherche les vulnérabilités des images. ",
+      " Checkov analyse l'infrastructure. Chaque analyse intervient sur le composant concerné."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 43
+  },
+  {
+    "id": "blocage",
+    "seq": 22,
+    "chapter": 3,
+    "title": "Quels contrôles arrêtent la livraison ?",
+    "steps": 2,
+    "speech": [
+      "Ces outils ne produisent pas tous le même effet. Gitleaks, Dependency-Check, Trivy et SonarCloud peuvent arrêter le pipeline selon les critères configurés. ",
+      " Dans cette configuration, Semgrep et Checkov signalent les problèmes sans arrêter la livraison. ",
+      " La fusion dans GitHub dépend d'une autre règle : la protection des branches."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 32
+  },
+  {
+    "id": "log4j",
+    "seq": 23,
+    "chapter": 3,
+    "title": "Un blocage vérifié en pratique",
+    "steps": 2,
+    "speech": [
+      "Voici un essai volontaire : une version vulnérable de Log4j a été ajoutée au backend. ",
+      " Dependency-Check a détecté la vulnérabilité et arrêté le pipeline. ",
+      " Après le retrait de cette dépendance, le pipeline est revenu au vert. Le contrôle bloque donc réellement la livraison pour ce risque."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 36
+  },
+  {
+    "id": "argocd",
+    "seq": 24,
+    "chapter": 3,
+    "title": "Déploiement GitOps avec ArgoCD",
+    "steps": 2,
+    "speech": [
+      "Après la publication, il reste à déployer la version. Avec GitOps, la configuration est enregistrée dans Git. ",
+      " ArgoCD compare cet état au cluster et applique les changements. ",
+      " Synced indique que la configuration est synchronisée. Healthy indique que les ressources sont dans l'état de santé attendu."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 39
+  },
+  {
+    "id": "tracabilite",
+    "seq": 25,
+    "chapter": 3,
+    "title": "Traçabilité d'une version",
+    "steps": 4,
+    "speech": [
+      "Pour retrouver la version déployée, on suit le même identifiant. ",
+      " Il apparaît dans le pipeline, ",
+      " dans l'image ACR, ",
+      " dans le manifeste Git, ",
+      " puis dans l'image utilisée par le pod. On relie ainsi le code au service qui fonctionne, ce qui facilite le diagnostic."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 40
+  },
+  {
+    "id": "ch5",
+    "seq": 26,
+    "chapter": 4,
+    "title": "Supervision et validation",
+    "steps": 0,
+    "speech": [
+      "La version est en ligne. On passe à la supervision : suivre les services, repérer les problèmes et vérifier les résultats."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 14
+  },
+  {
+    "id": "supervision",
+    "seq": 27,
+    "chapter": 4,
+    "title": "Métriques, journaux et alertes",
+    "steps": 3,
+    "speech": [
+      "La supervision réunit trois chaînes. ",
+      " Prometheus collecte les métriques, affichées dans Grafana. ",
+      " Alloy collecte les journaux, conservés dans Loki et consultés dans Grafana. ",
+      " Prometheus évalue les règles d'alerte ; Alertmanager notifie. Ces outils aident au diagnostic, sans corriger eux-mêmes l'application."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 30
+  },
+  {
+    "id": "metriques",
+    "seq": 28,
+    "chapter": 4,
+    "title": "Métriques des services",
+    "steps": 1,
+    "speech": [
+      "Les cibles backend et IA sont UP dans Prometheus : la collecte répond au moment de la capture. ",
+      " Grafana affiche le processeur et la mémoire des pods. Cela vérifie la collecte et l'affichage, sans constituer une mesure de performance sous charge."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 26
+  },
+  {
+    "id": "journaux",
+    "seq": 29,
+    "chapter": 4,
+    "title": "Journaux centralisés",
+    "steps": 1,
+    "speech": [
+      "Pour comprendre un événement, on consulte les journaux. Ici, une connexion refusée a produit un journal du backend. Alloy l'a collecté et Loki l'a conservé. ",
+      " Dans Grafana, on retrouve l'événement, son service et son heure, sans ouvrir chaque conteneur."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 25
+  },
+  {
+    "id": "validation",
+    "seq": 30,
+    "chapter": 4,
+    "title": "Résultats de validation",
+    "steps": 1,
+    "speech": [
+      "On commence par les vérifications sur staging et les données. À lire : « Parcours et droits vérifiés. » À lire : « Restauration vérifiée. » ",
+      " On passe ensuite à la production et au mobile. À lire : « Parcours métier et guide pour une stratégie RSE testés. » À lire : « APK Android distribué par Azure Blob. »"
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 36
+  },
+  {
+    "id": "ch6",
+    "seq": 31,
+    "chapter": 5,
+    "title": "Bilan, perspectives et conclusion",
+    "steps": 0,
+    "speech": [
+      "On termine avec le bilan, les perspectives et la conclusion."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 8
+  },
+  {
+    "id": "bilan",
+    "seq": 32,
+    "chapter": 5,
+    "title": "Bilan du mémoire",
+    "steps": 2,
+    "speech": [
+      "Ce mémoire réunit deux volets. ",
+      " La plateforme web et mobile relie l'évaluation, le marché local et le suivi RSE. ",
+      " L'environnement DevSecOps contrôle les versions, les déploie et suit les services. À lire : « Les essais en staging et en production montrent comment ces deux volets fonctionnent ensemble. »"
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 31
+  },
+  {
+    "id": "limites",
+    "seq": 33,
+    "chapter": 5,
+    "title": "Perspectives",
+    "steps": 3,
+    "speech": [
+      "Les horizons donnent des priorités, pas un calendrier promis. ",
+      " À court terme : automatiser la copie externe, versionner les migrations et rendre Semgrep et Checkov bloquants après traitement des constats. ",
+      " À moyen terme : HTTPS, protection des branches et analyses après déploiement avec OWASP ZAP. ",
+      " À plus long terme : plusieurs réplicas, des ressources adaptées à la charge, puis Falco et OPA Gatekeeper. Ce sont des perspectives, pas des réalisations annoncées."
+    ],
+    "visual": "slide originale exacte : trois horizons, neuf perspectives, trois clics",
+    "seconds": 45
+  },
+  {
+    "id": "video",
+    "seq": 34,
+    "chapter": 5,
+    "title": "Le parcours d'une version, du code au suivi",
+    "steps": 1,
+    "speech": [
+      "Le film résume le parcours d'une version dans la chaîne DevSecOps. ",
+      " (Laisser jouer les 90 secondes sans parler. Le lecteur permet pause, reprise, volume et déplacement. À la fin, passer à la conclusion.)"
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 100
+  },
+  {
+    "id": "retour",
+    "seq": 35,
+    "chapter": 5,
+    "title": "Conclusion",
+    "steps": 1,
+    "speech": [
+      "ZAWEDNI relie l'achat local à l'évaluation et au suivi des pratiques RSE. Le projet associe cette plateforme web et mobile à une chaîne DevSecOps. ",
+      " On automatise la livraison, on intègre les contrôles de sécurité et on suit les services. Cela répond à la problématique présentée au début. Merci pour votre attention."
+    ],
+    "visual": "mise en page et animations originales",
+    "seconds": 32
+  }
+]

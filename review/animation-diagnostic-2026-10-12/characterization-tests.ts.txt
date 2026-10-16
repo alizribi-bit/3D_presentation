@@ -1,0 +1,61 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { transitionTiming, transitionFrame } from '/home/ali/Desktop/zawedni-story-3d/src/nav/timeline.ts';
+import { minimumArrivalDuration } from '/home/ali/Desktop/zawedni-story-3d/src/characters/arrival.ts';
+import { FULL_STATES } from '/home/ali/Desktop/zawedni-story-3d/src/story/itinerary.ts';
+import { ease, shotDistance } from '/home/ali/Desktop/zawedni-story-3d/src/camera/rig.js';
+
+// Characterization probes for the diagnostic, not a proposed animation policy.
+test('current fixed-camera text/capture changes fade the entire stage to zero', () => {
+  const timing = transitionTiming(0, 0);
+  assert.equal(timing.movement, 0);
+  assert.equal(timing.settle, 0);
+  assert.equal(timing.total, .3);
+  assert.equal(transitionFrame(timing, .06).opacity, .5);
+  assert.equal(transitionFrame(timing, .12).opacity, 0);
+  assert.equal(transitionFrame(timing, .21).opacity, .5);
+  assert.equal(transitionFrame(timing, .3).opacity, 1);
+});
+test('95 settled adjacent transitions have neither a camera change nor a guide translation', () => {
+  const fixed = FULL_STATES.slice(1).filter((s, i) => s.shot === FULL_STATES[i]!.shot && s.actors.guide.at === FULL_STATES[i]!.actors.guide.at);
+  assert.equal(fixed.length, 95);
+  const internal = FULL_STATES.slice(1).filter((s,i)=>s.shot===FULL_STATES[i]!.shot&&s.actors.guide.at===FULL_STATES[i]!.actors.guide.at&&s.source.seq===FULL_STATES[i]!.source.seq);
+  assert.equal(internal.length, 67);
+});
+test('the previous director explicitly retained shared panel visibility', () => {
+  const before = readFileSync('/home/ali/Desktop/zawedni-story-3d/review/animation-diagnostic-2026-10-12/before-director.js.txt','utf8');
+  assert.ok(before.includes('if (from.panels.includes(p) || t >= appear + lab) vis.add(p);'));
+  assert.ok(!before.includes('stage.style.opacity'));
+});
+test('short approaches are paced differently from a world return', () => {
+  const workshop = {pos:[-13,12,38],target:[-9,1,18],fov:40};
+  const proof = {pos:[-12,8.5,33],target:[-9,2,18],fov:38};
+  const returnFrom = {pos:[50,12,22],target:[55,2,2],fov:40};
+  const overview = {pos:[6,96,94],target:[6,0,1],fov:36};
+  assert.equal(transitionTiming(shotDistance(workshop,proof),0).total,1.37);
+  assert.equal(transitionTiming(shotDistance(returnFrom,overview),0).total,7.22);
+});
+test('walking makes reverse and jump movements last at least 4.32 seconds on a long route', () => {
+  const minimum = minimumArrivalDuration(40);
+  assert.ok(Math.abs(minimum-4.319510898458266)<1e-10);
+  assert.equal(transitionTiming(15,40).movement,minimum);
+});
+test('interruptions can extend total invisibility, while preserving initial opacity', () => {
+  const first = transitionTiming(45,40), second = transitionTiming(0,0);
+  const hidden = transitionFrame(first,first.exit+.5);
+  assert.equal(hidden.opacity,0);
+  assert.equal(transitionFrame(second,0,hidden.opacity).opacity,0);
+  assert.equal(transitionFrame(second,.1,hidden.opacity).opacity,0);
+  assert.equal(transitionFrame(second,second.total,hidden.opacity).opacity,1);
+});
+test('quality is absent from timing arguments; reduced motion still fades, fast mode shortens it', () => {
+  assert.equal(transitionTiming(90,40,true).total,.3);
+  assert.equal(transitionTiming(90,40,false,true).total,.23);
+});
+test('new camera easing has a lower central peak than the old cubic easing', () => {
+  const delta=.0001;
+  const central=(ease(.5+delta)-ease(.5-delta))/(2*delta);
+  assert.ok(Math.abs(central-1/.82)<1e-8);
+  assert.ok(central<3);
+});

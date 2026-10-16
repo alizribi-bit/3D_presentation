@@ -1,0 +1,6012 @@
+{
+  "normalSpeed": true,
+  "clockModified": false,
+  "checks": [
+    {
+      "name": "arrival couverture-0",
+      "pass": true
+    },
+    {
+      "name": "arrival couverture-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal couverture-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival sommaire-0",
+      "pass": true
+    },
+    {
+      "name": "arrival sommaire-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal sommaire-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival ch1-0",
+      "pass": true
+    },
+    {
+      "name": "arrival startup-0",
+      "pass": true
+    },
+    {
+      "name": "arrival startup-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal startup-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 1.7763568394002505e-15,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival probleme-0",
+      "pass": true
+    },
+    {
+      "name": "arrival probleme-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal probleme-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival modele-0",
+      "pass": true
+    },
+    {
+      "name": "arrival modele-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal modele-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival problematique-0",
+      "pass": true
+    },
+    {
+      "name": "arrival problematique-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal problematique-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival methodologie-0",
+      "pass": true
+    },
+    {
+      "name": "arrival methodologie-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal methodologie-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival ch3-0",
+      "pass": true
+    },
+    {
+      "name": "arrival outils-infra-0",
+      "pass": true
+    },
+    {
+      "name": "arrival outils-livraison-0",
+      "pass": true
+    },
+    {
+      "name": "arrival devsecops-0",
+      "pass": true
+    },
+    {
+      "name": "arrival devsecops-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal devsecops-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival architecture-0",
+      "pass": true
+    },
+    {
+      "name": "arrival architecture-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal architecture-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival architecture-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal architecture-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival architecture-3",
+      "pass": true
+    },
+    {
+      "name": "stable reveal architecture-3",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival routage-0",
+      "pass": true
+    },
+    {
+      "name": "arrival routage-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal routage-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival routage-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal routage-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival isolation-0",
+      "pass": true
+    },
+    {
+      "name": "arrival isolation-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal isolation-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival secrets-0",
+      "pass": true
+    },
+    {
+      "name": "arrival secrets-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal secrets-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival secrets-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal secrets-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival ch4-0",
+      "pass": true
+    },
+    {
+      "name": "arrival chaine-0",
+      "pass": true
+    },
+    {
+      "name": "arrival chaine-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal chaine-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival chaine-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal chaine-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival chaine-3",
+      "pass": true
+    },
+    {
+      "name": "stable reveal chaine-3",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival dix-pipelines-0",
+      "pass": true
+    },
+    {
+      "name": "arrival dix-pipelines-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal dix-pipelines-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival dix-pipelines-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal dix-pipelines-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival tests-0",
+      "pass": true
+    },
+    {
+      "name": "arrival tests-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal tests-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival analyses-0",
+      "pass": true
+    },
+    {
+      "name": "arrival analyses-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal analyses-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival analyses-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal analyses-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival analyses-3",
+      "pass": true
+    },
+    {
+      "name": "stable reveal analyses-3",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival analyses-4",
+      "pass": true
+    },
+    {
+      "name": "stable reveal analyses-4",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival analyses-5",
+      "pass": true
+    },
+    {
+      "name": "stable reveal analyses-5",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival analyses-6",
+      "pass": true
+    },
+    {
+      "name": "stable reveal analyses-6",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival blocage-0",
+      "pass": true
+    },
+    {
+      "name": "arrival blocage-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal blocage-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival blocage-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal blocage-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival log4j-0",
+      "pass": true
+    },
+    {
+      "name": "arrival log4j-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal log4j-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival log4j-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal log4j-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival argocd-0",
+      "pass": true
+    },
+    {
+      "name": "arrival argocd-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal argocd-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival argocd-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal argocd-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival tracabilite-0",
+      "pass": true
+    },
+    {
+      "name": "arrival tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal tracabilite-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival tracabilite-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal tracabilite-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival tracabilite-3",
+      "pass": true
+    },
+    {
+      "name": "stable reveal tracabilite-3",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "stable reveal tracabilite-4",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival ch5-0",
+      "pass": true
+    },
+    {
+      "name": "arrival supervision-0",
+      "pass": true
+    },
+    {
+      "name": "arrival supervision-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal supervision-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival supervision-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal supervision-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival supervision-3",
+      "pass": true
+    },
+    {
+      "name": "stable reveal supervision-3",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival metriques-0",
+      "pass": true
+    },
+    {
+      "name": "arrival metriques-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal metriques-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival journaux-0",
+      "pass": true
+    },
+    {
+      "name": "arrival journaux-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal journaux-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival validation-0",
+      "pass": true
+    },
+    {
+      "name": "arrival validation-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal validation-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival ch6-0",
+      "pass": true
+    },
+    {
+      "name": "arrival bilan-0",
+      "pass": true
+    },
+    {
+      "name": "arrival bilan-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal bilan-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival bilan-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal bilan-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival limites-0",
+      "pass": true
+    },
+    {
+      "name": "arrival limites-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal limites-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival limites-2",
+      "pass": true
+    },
+    {
+      "name": "stable reveal limites-2",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival limites-3",
+      "pass": true
+    },
+    {
+      "name": "stable reveal limites-3",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival video-0",
+      "pass": true
+    },
+    {
+      "name": "arrival video-1",
+      "pass": true
+    },
+    {
+      "name": "stable reveal video-1",
+      "pass": true,
+      "detail": {
+        "maximumCoordinateDrift": 0,
+        "toleranceMetres": 0.000001,
+        "walkingWeight": 0
+      }
+    },
+    {
+      "name": "arrival retour-0",
+      "pass": true
+    },
+    {
+      "name": "arrival retour-1",
+      "pass": true
+    },
+    {
+      "name": "entire stage stays visible during the complete normal-speed route",
+      "pass": true
+    },
+    {
+      "name": "local changes have zero travel budget and no walking",
+      "pass": true
+    },
+    {
+      "name": "five travel arrivals include only retained places",
+      "pass": true
+    },
+    {
+      "name": "BMC highlights value and customers on the same click",
+      "pass": true
+    },
+    {
+      "name": "progressive SVG diagram elements retain local animation",
+      "pass": true
+    },
+    {
+      "name": "normal chapter access 1",
+      "pass": true
+    },
+    {
+      "name": "normal chapter access 2",
+      "pass": true
+    },
+    {
+      "name": "normal chapter access 3",
+      "pass": true
+    },
+    {
+      "name": "normal chapter access 4",
+      "pass": true
+    },
+    {
+      "name": "normal chapter access 5",
+      "pass": true
+    },
+    {
+      "name": "obsolete sixth chapter shortcut is absent",
+      "pass": true
+    },
+    {
+      "name": "interrupted travel recovers the requested state",
+      "pass": true
+    },
+    {
+      "name": "normal route has no errors, missing files or external requests",
+      "pass": true
+    }
+  ],
+  "states": [
+    {
+      "id": "couverture-0",
+      "shot": "overview",
+      "place": null,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "evidence": false
+    },
+    {
+      "id": "couverture-1",
+      "shot": "overview",
+      "place": null,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "evidence": false
+    },
+    {
+      "id": "sommaire-0",
+      "shot": "overview",
+      "place": null,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "evidence": false
+    },
+    {
+      "id": "sommaire-1",
+      "shot": "overview",
+      "place": null,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "evidence": false
+    },
+    {
+      "id": "ch1-0",
+      "shot": "chapter01",
+      "place": "01",
+      "camera": [
+        -23,
+        25,
+        28.5
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "ch1-0",
+      "evidence": true
+    },
+    {
+      "id": "startup-0",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.399999999999999,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "startup-0",
+      "evidence": true
+    },
+    {
+      "id": "startup-1",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "startup-1",
+      "evidence": true
+    },
+    {
+      "id": "probleme-0",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "probleme-0",
+      "evidence": true
+    },
+    {
+      "id": "probleme-1",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "probleme-1",
+      "evidence": true
+    },
+    {
+      "id": "modele-0",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "modele-0",
+      "evidence": true
+    },
+    {
+      "id": "modele-1",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "modele-1",
+      "evidence": true
+    },
+    {
+      "id": "problematique-0",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "problematique-0",
+      "evidence": true
+    },
+    {
+      "id": "problematique-1",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "problematique-1",
+      "evidence": true
+    },
+    {
+      "id": "methodologie-0",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "methodologie-0",
+      "evidence": true
+    },
+    {
+      "id": "methodologie-1",
+      "shot": "market",
+      "place": "01",
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "frame": "methodologie-1",
+      "evidence": true
+    },
+    {
+      "id": "ch3-0",
+      "shot": "chapter03",
+      "place": "03",
+      "camera": [
+        1,
+        27,
+        22
+      ],
+      "guide": [
+        -3.8000000000000007,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "ch3-0",
+      "evidence": true
+    },
+    {
+      "id": "outils-infra-0",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "outils-infra-0",
+      "evidence": true
+    },
+    {
+      "id": "outils-livraison-0",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "outils-livraison-0",
+      "evidence": true
+    },
+    {
+      "id": "devsecops-0",
+      "shot": "crossing",
+      "place": "03",
+      "camera": [
+        5,
+        14.5,
+        9.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "outils-livraison-0",
+      "evidence": false
+    },
+    {
+      "id": "devsecops-1",
+      "shot": "crossing",
+      "place": "03",
+      "camera": [
+        5,
+        14.5,
+        9.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "outils-livraison-0",
+      "evidence": false
+    },
+    {
+      "id": "architecture-0",
+      "shot": "architecture",
+      "place": "03",
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "architecture-0",
+      "evidence": true
+    },
+    {
+      "id": "architecture-1",
+      "shot": "architecture",
+      "place": "03",
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "architecture-1",
+      "evidence": true
+    },
+    {
+      "id": "architecture-2",
+      "shot": "architecture",
+      "place": "03",
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "architecture-2",
+      "evidence": true
+    },
+    {
+      "id": "architecture-3",
+      "shot": "architecture",
+      "place": "03",
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "architecture-3",
+      "evidence": true
+    },
+    {
+      "id": "routage-0",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "routage-0",
+      "evidence": true
+    },
+    {
+      "id": "routage-1",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "routage-1",
+      "evidence": true
+    },
+    {
+      "id": "routage-2",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "routage-2",
+      "evidence": true
+    },
+    {
+      "id": "isolation-0",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "isolation-0",
+      "evidence": true
+    },
+    {
+      "id": "isolation-1",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "isolation-1",
+      "evidence": true
+    },
+    {
+      "id": "secrets-0",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "secrets-0",
+      "evidence": true
+    },
+    {
+      "id": "secrets-1",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "secrets-1",
+      "evidence": true
+    },
+    {
+      "id": "secrets-2",
+      "shot": "cloud",
+      "place": "03",
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "frame": "secrets-2",
+      "evidence": true
+    },
+    {
+      "id": "ch4-0",
+      "shot": "chapter04",
+      "place": "04",
+      "camera": [
+        20,
+        25,
+        41
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "ch4-0",
+      "evidence": true
+    },
+    {
+      "id": "chaine-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "chaine-0",
+      "evidence": true
+    },
+    {
+      "id": "chaine-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "chaine-1",
+      "evidence": true
+    },
+    {
+      "id": "chaine-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "chaine-2",
+      "evidence": true
+    },
+    {
+      "id": "chaine-3",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "chaine-3",
+      "evidence": true
+    },
+    {
+      "id": "dix-pipelines-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "dix-pipelines-0",
+      "evidence": true
+    },
+    {
+      "id": "dix-pipelines-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "dix-pipelines-1",
+      "evidence": true
+    },
+    {
+      "id": "dix-pipelines-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "dix-pipelines-2",
+      "evidence": true
+    },
+    {
+      "id": "tests-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tests-0",
+      "evidence": true
+    },
+    {
+      "id": "tests-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tests-1",
+      "evidence": true
+    },
+    {
+      "id": "analyses-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-0",
+      "evidence": true
+    },
+    {
+      "id": "analyses-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-1",
+      "evidence": true
+    },
+    {
+      "id": "analyses-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-2",
+      "evidence": true
+    },
+    {
+      "id": "analyses-3",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-3",
+      "evidence": true
+    },
+    {
+      "id": "analyses-4",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-4",
+      "evidence": true
+    },
+    {
+      "id": "analyses-5",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-5",
+      "evidence": true
+    },
+    {
+      "id": "analyses-6",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "analyses-6",
+      "evidence": true
+    },
+    {
+      "id": "blocage-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "blocage-0",
+      "evidence": true
+    },
+    {
+      "id": "blocage-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "blocage-1",
+      "evidence": true
+    },
+    {
+      "id": "blocage-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "blocage-2",
+      "evidence": true
+    },
+    {
+      "id": "log4j-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "log4j-0",
+      "evidence": true
+    },
+    {
+      "id": "log4j-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "log4j-1",
+      "evidence": true
+    },
+    {
+      "id": "log4j-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "log4j-2",
+      "evidence": true
+    },
+    {
+      "id": "argocd-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "argocd-0",
+      "evidence": true
+    },
+    {
+      "id": "argocd-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "argocd-1",
+      "evidence": true
+    },
+    {
+      "id": "argocd-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "argocd-2",
+      "evidence": true
+    },
+    {
+      "id": "tracabilite-0",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tracabilite-0",
+      "evidence": true
+    },
+    {
+      "id": "tracabilite-1",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tracabilite-1",
+      "evidence": true
+    },
+    {
+      "id": "tracabilite-2",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tracabilite-2",
+      "evidence": true
+    },
+    {
+      "id": "tracabilite-3",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tracabilite-3",
+      "evidence": true
+    },
+    {
+      "id": "tracabilite-4",
+      "shot": "delivery",
+      "place": "04",
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "frame": "tracabilite-4",
+      "evidence": true
+    },
+    {
+      "id": "ch5-0",
+      "shot": "chapter05",
+      "place": "05",
+      "camera": [
+        31,
+        25,
+        13
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "ch5-0",
+      "evidence": true
+    },
+    {
+      "id": "supervision-0",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "supervision-0",
+      "evidence": true
+    },
+    {
+      "id": "supervision-1",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "supervision-1",
+      "evidence": true
+    },
+    {
+      "id": "supervision-2",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "supervision-2",
+      "evidence": true
+    },
+    {
+      "id": "supervision-3",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "supervision-3",
+      "evidence": true
+    },
+    {
+      "id": "metriques-0",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "metriques-0",
+      "evidence": true
+    },
+    {
+      "id": "metriques-1",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "metriques-1",
+      "evidence": true
+    },
+    {
+      "id": "journaux-0",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "journaux-0",
+      "evidence": true
+    },
+    {
+      "id": "journaux-1",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "journaux-1",
+      "evidence": true
+    },
+    {
+      "id": "validation-0",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "validation-0",
+      "evidence": true
+    },
+    {
+      "id": "validation-1",
+      "shot": "monitoring",
+      "place": "05",
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "frame": "validation-1",
+      "evidence": true
+    },
+    {
+      "id": "ch6-0",
+      "shot": "chapter06",
+      "place": "06",
+      "camera": [
+        43,
+        23,
+        30
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.199999999999999
+      ],
+      "walk": 0,
+      "frame": "ch6-0",
+      "evidence": true
+    },
+    {
+      "id": "bilan-0",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "bilan-0",
+      "evidence": true
+    },
+    {
+      "id": "bilan-1",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "bilan-1",
+      "evidence": true
+    },
+    {
+      "id": "bilan-2",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "bilan-2",
+      "evidence": true
+    },
+    {
+      "id": "limites-0",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "limites-0",
+      "evidence": true
+    },
+    {
+      "id": "limites-1",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "limites-1",
+      "evidence": true
+    },
+    {
+      "id": "limites-2",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "limites-2",
+      "evidence": true
+    },
+    {
+      "id": "limites-3",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "limites-3",
+      "evidence": true
+    },
+    {
+      "id": "video-0",
+      "shot": "theater",
+      "place": "06",
+      "camera": [
+        51,
+        8,
+        18
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "limites-3",
+      "evidence": false
+    },
+    {
+      "id": "video-1",
+      "shot": "theater",
+      "place": "06",
+      "camera": [
+        51,
+        8,
+        18
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "limites-3",
+      "evidence": false
+    },
+    {
+      "id": "retour-0",
+      "shot": "belvedere",
+      "place": "06",
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "retour-0",
+      "evidence": true
+    },
+    {
+      "id": "retour-1",
+      "shot": "overview",
+      "place": "06",
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "frame": "retour-1",
+      "evidence": true
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "missing": [],
+  "samples": [
+    {
+      "id": "couverture-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "couverture-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "couverture-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "sommaire-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "sommaire-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        -16.67075525670015,
+        0.34,
+        7.400259486431281
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "ch1-0",
+      "phase": "done",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -23,
+        25,
+        28.5
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "startup-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.399999999999999,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "startup-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "probleme-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "probleme-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "modele-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "modele-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "problematique-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "problematique-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "methodologie-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "methodologie-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        -13.4,
+        5.4,
+        14.1
+      ],
+      "guide": [
+        -19.690761712766953,
+        0.34,
+        3.5328466505503924
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "ch3-0",
+      "phase": "done",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        1,
+        27,
+        22
+      ],
+      "guide": [
+        -3.8000000000000007,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "outils-infra-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "outils-livraison-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "devsecops-0",
+      "phase": "done",
+      "kind": "object",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        5,
+        14.5,
+        9.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "devsecops-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        5,
+        14.5,
+        9.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "architecture-0",
+      "phase": "done",
+      "kind": "object",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "architecture-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "architecture-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "architecture-3",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        17,
+        7
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "routage-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "routage-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "routage-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "isolation-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "isolation-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "secrets-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "secrets-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "secrets-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        5,
+        15,
+        10.5
+      ],
+      "guide": [
+        -3.8000000000000003,
+        0.36,
+        -6.1
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "ch4-0",
+      "phase": "done",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        20,
+        25,
+        41
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "chaine-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "chaine-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "chaine-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "chaine-3",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "dix-pipelines-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "dix-pipelines-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "dix-pipelines-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tests-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tests-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-3",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-4",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-5",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "analyses-6",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "blocage-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "blocage-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "blocage-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "log4j-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "log4j-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "log4j-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "argocd-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "argocd-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "argocd-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tracabilite-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tracabilite-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tracabilite-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tracabilite-3",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "tracabilite-4",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        23,
+        11,
+        30
+      ],
+      "guide": [
+        17.5,
+        0.34,
+        15.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "ch5-0",
+      "phase": "done",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        31,
+        25,
+        13
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "supervision-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "supervision-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "supervision-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "supervision-3",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "metriques-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "metriques-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "journaux-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "journaux-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "validation-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "validation-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        36,
+        12,
+        1
+      ],
+      "guide": [
+        30.5,
+        0.34,
+        -13.8
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "ch6-0",
+      "phase": "done",
+      "kind": "travel",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        43,
+        23,
+        30
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.199999999999999
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "bilan-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "bilan-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "bilan-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "limites-0",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "limites-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "limites-2",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "limites-3",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "video-0",
+      "phase": "done",
+      "kind": "object",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        51,
+        8,
+        18
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "video-1",
+      "phase": "done",
+      "kind": "content",
+      "stageOpacity": 1,
+      "evidenceOn": false,
+      "camera": [
+        51,
+        8,
+        18
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "retour-0",
+      "phase": "done",
+      "kind": "approach",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        50,
+        12,
+        22
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    },
+    {
+      "id": "retour-1",
+      "phase": "done",
+      "kind": "world",
+      "stageOpacity": 1,
+      "evidenceOn": true,
+      "camera": [
+        6,
+        96,
+        94
+      ],
+      "guide": [
+        45.5,
+        0.34,
+        5.2
+      ],
+      "walk": 0,
+      "guideOpacity": 1
+    }
+  ],
+  "animations": [
+    {
+      "id": "startup-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "startup-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "probleme-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "modele-1",
+      "tag": "DIV",
+      "focus": "value",
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "modele-1",
+      "tag": "DIV",
+      "focus": "clients",
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "modele-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "problematique-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "methodologie-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "architecture-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "architecture-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "architecture-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "architecture-1",
+      "tag": "path",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "architecture-1",
+      "tag": "path",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "path",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "path",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "text",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "text",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-2",
+      "tag": "text",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "architecture-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "architecture-3",
+      "tag": "P",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "routage-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "routage-1",
+      "tag": "SMALL",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "routage-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "routage-2",
+      "tag": "SMALL",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "isolation-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "isolation-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "secrets-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "secrets-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "secrets-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "secrets-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "secrets-2",
+      "tag": "FIGURE",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "secrets-2",
+      "tag": "P",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "chaine-1",
+      "tag": "circle",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "chaine-1",
+      "tag": "circle",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "dix-pipelines-1",
+      "tag": "circle",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "dix-pipelines-1",
+      "tag": "circle",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "dix-pipelines-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "dix-pipelines-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "tests-1",
+      "tag": "P",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "tests-1",
+      "tag": "P",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "tests-1",
+      "tag": "P",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "analyses-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "analyses-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "analyses-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "analyses-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "analyses-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "analyses-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "analyses-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "analyses-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "analyses-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "analyses-4",
+      "tag": "DIV",
+      "focus": null,
+      "step": "4",
+      "duration": 200
+    },
+    {
+      "id": "analyses-4",
+      "tag": "DIV",
+      "focus": null,
+      "step": "4",
+      "duration": 200
+    },
+    {
+      "id": "analyses-4",
+      "tag": "DIV",
+      "focus": null,
+      "step": "4",
+      "duration": 200
+    },
+    {
+      "id": "analyses-5",
+      "tag": "DIV",
+      "focus": null,
+      "step": "5",
+      "duration": 200
+    },
+    {
+      "id": "analyses-5",
+      "tag": "DIV",
+      "focus": null,
+      "step": "5",
+      "duration": 200
+    },
+    {
+      "id": "analyses-5",
+      "tag": "DIV",
+      "focus": null,
+      "step": "5",
+      "duration": 200
+    },
+    {
+      "id": "analyses-6",
+      "tag": "DIV",
+      "focus": null,
+      "step": "6",
+      "duration": 200
+    },
+    {
+      "id": "analyses-6",
+      "tag": "DIV",
+      "focus": null,
+      "step": "6",
+      "duration": 200
+    },
+    {
+      "id": "analyses-6",
+      "tag": "DIV",
+      "focus": null,
+      "step": "6",
+      "duration": 200
+    },
+    {
+      "id": "analyses-6",
+      "tag": "P",
+      "focus": null,
+      "step": "6",
+      "duration": 200
+    },
+    {
+      "id": "blocage-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "blocage-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "log4j-1",
+      "tag": "path",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "log4j-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "log4j-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "argocd-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "argocd-2",
+      "tag": "FIGURE",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "argocd-2",
+      "tag": "P",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "argocd-2",
+      "tag": "P",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-1",
+      "tag": "SPAN",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-2",
+      "tag": "path",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-2",
+      "tag": "SPAN",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-3",
+      "tag": "path",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-3",
+      "tag": "SPAN",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-4",
+      "tag": "path",
+      "focus": null,
+      "step": "4",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-4",
+      "tag": "SPAN",
+      "focus": null,
+      "step": "4",
+      "duration": 200
+    },
+    {
+      "id": "tracabilite-4",
+      "tag": "DIV",
+      "focus": null,
+      "step": "4",
+      "duration": 200
+    },
+    {
+      "id": "supervision-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "supervision-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "supervision-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "supervision-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "supervision-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "supervision-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "supervision-3",
+      "tag": "g",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "supervision-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "supervision-3",
+      "tag": "P",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "metriques-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "journaux-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "journaux-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "journaux-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "validation-1",
+      "tag": "LI",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "validation-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "validation-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "bilan-1",
+      "tag": "LI",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "bilan-1",
+      "tag": "LI",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "bilan-1",
+      "tag": "LI",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "bilan-2",
+      "tag": "LI",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "bilan-2",
+      "tag": "LI",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "bilan-2",
+      "tag": "LI",
+      "focus": null,
+      "step": null,
+      "duration": 200
+    },
+    {
+      "id": "bilan-2",
+      "tag": "P",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "limites-1",
+      "tag": "path",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "limites-1",
+      "tag": "g",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "limites-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "limites-2",
+      "tag": "path",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "limites-2",
+      "tag": "g",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "limites-2",
+      "tag": "DIV",
+      "focus": null,
+      "step": "2",
+      "duration": 200
+    },
+    {
+      "id": "limites-3",
+      "tag": "path",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "limites-3",
+      "tag": "g",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "limites-3",
+      "tag": "DIV",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "limites-3",
+      "tag": "P",
+      "focus": null,
+      "step": "3",
+      "duration": 200
+    },
+    {
+      "id": "retour-1",
+      "tag": "DIV",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "retour-1",
+      "tag": "path",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    },
+    {
+      "id": "retour-1",
+      "tag": "P",
+      "focus": null,
+      "step": "1",
+      "duration": 200
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "transitions": [
+    {
+      "id": "couverture-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "sommaire-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "sommaire-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "ch1-0",
+      "kind": "travel",
+      "timing": {
+        "exit": 0.16,
+        "movement": 2.6,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 2.7600000000000002,
+        "total": 2.9600000000000004
+      },
+      "walk": true
+    },
+    {
+      "id": "startup-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.5,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.5,
+        "total": 0.5
+      },
+      "walk": false
+    },
+    {
+      "id": "startup-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "probleme-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "probleme-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "modele-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "modele-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "problematique-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "problematique-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "methodologie-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "methodologie-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "ch3-0",
+      "kind": "travel",
+      "timing": {
+        "exit": 0.16,
+        "movement": 2.25,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 2.41,
+        "total": 2.6100000000000003
+      },
+      "walk": true
+    },
+    {
+      "id": "outils-infra-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.5,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.5,
+        "total": 0.5
+      },
+      "walk": false
+    },
+    {
+      "id": "outils-livraison-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "devsecops-0",
+      "kind": "object",
+      "timing": {
+        "exit": 0.16,
+        "movement": 0.325,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 0.485,
+        "total": 0.685
+      },
+      "walk": false
+    },
+    {
+      "id": "devsecops-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "architecture-0",
+      "kind": "object",
+      "timing": {
+        "exit": 0.16,
+        "movement": 0.325,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 0.485,
+        "total": 0.685
+      },
+      "walk": false
+    },
+    {
+      "id": "architecture-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "architecture-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "architecture-3",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "routage-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.325,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.325,
+        "total": 0.325
+      },
+      "walk": false
+    },
+    {
+      "id": "routage-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "routage-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "isolation-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "isolation-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "secrets-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "secrets-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "secrets-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "ch4-0",
+      "kind": "travel",
+      "timing": {
+        "exit": 0.16,
+        "movement": 2.25,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 2.41,
+        "total": 2.6100000000000003
+      },
+      "walk": true
+    },
+    {
+      "id": "chaine-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.5,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.5,
+        "total": 0.5
+      },
+      "walk": false
+    },
+    {
+      "id": "chaine-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "chaine-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "chaine-3",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "dix-pipelines-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "dix-pipelines-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "dix-pipelines-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tests-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tests-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-3",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-4",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-5",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "analyses-6",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "blocage-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "blocage-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "blocage-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "log4j-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "log4j-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "log4j-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "argocd-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "argocd-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "argocd-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tracabilite-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tracabilite-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tracabilite-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tracabilite-3",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "tracabilite-4",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "ch5-0",
+      "kind": "travel",
+      "timing": {
+        "exit": 0.16,
+        "movement": 2.25,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 2.41,
+        "total": 2.6100000000000003
+      },
+      "walk": true
+    },
+    {
+      "id": "supervision-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.5,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.5,
+        "total": 0.5
+      },
+      "walk": false
+    },
+    {
+      "id": "supervision-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "supervision-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "supervision-3",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "metriques-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "metriques-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "journaux-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "journaux-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "validation-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "validation-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "ch6-0",
+      "kind": "travel",
+      "timing": {
+        "exit": 0.16,
+        "movement": 2.25,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 2.41,
+        "total": 2.6100000000000003
+      },
+      "walk": true
+    },
+    {
+      "id": "bilan-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.5,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.5,
+        "total": 0.5
+      },
+      "walk": false
+    },
+    {
+      "id": "bilan-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "bilan-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "limites-0",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "limites-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "limites-2",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "limites-3",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "video-0",
+      "kind": "object",
+      "timing": {
+        "exit": 0.16,
+        "movement": 0.325,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 0.485,
+        "total": 0.685
+      },
+      "walk": false
+    },
+    {
+      "id": "video-1",
+      "kind": "content",
+      "timing": {
+        "exit": 0,
+        "movement": 0,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0,
+        "total": 0
+      },
+      "walk": false
+    },
+    {
+      "id": "retour-0",
+      "kind": "approach",
+      "timing": {
+        "exit": 0,
+        "movement": 0.325,
+        "settle": 0,
+        "enter": 0,
+        "arrival": 0.325,
+        "total": 0.325
+      },
+      "walk": false
+    },
+    {
+      "id": "retour-1",
+      "kind": "world",
+      "timing": {
+        "exit": 0.16,
+        "movement": 0.875,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 1.035,
+        "total": 1.2349999999999999
+      },
+      "walk": false
+    }
+  ],
+  "nominalTransitionSeconds": 19.839999999999996,
+  "geometryValidation": {
+    "maximumDrift": 1.7763568394002505e-15,
+    "toleranceMetres": 0.000001,
+    "rawObservations": "normal-route.raw.json"
+  }
+}

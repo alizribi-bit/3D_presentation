@@ -1,0 +1,67 @@
+  <section class="slide" id="scrum">
+    <p class="kicker">Contexte · Méthode</p>
+    <h2 data-fit="2">Le travail a suivi Scrum : six sprints en trois releases</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="docker">
+    <p class="kicker">Architecture · Docker</p>
+    <h2 data-fit="2">Docker met chaque service serveur dans une image qui tourne partout</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="terraform" data-layout="code-side">
+    <p class="kicker">Architecture · Terraform</p>
+    <h2 data-fit="2">Terraform décrit l'infrastructure Azure dans du code</h2>
+    <div data-code="hcl" data-file="main.tf" data-numbers data-lines="*|1|*">
+      <pre data-code-step>resource "azurerm_kubernetes_cluster" "zawedni" {
+  name                = var.cluster_name
+  resource_group_name = azurerm_resource_group.zawedni.name
+  dns_prefix          = "zawedni"
+  default_node_pool {
+    name       = "default"
+    node_count = 2
+    vm_size    = "Standard_B2s"
+  }
+  identity { type = "SystemAssigned" }
+}</pre>
+    </div>
+    <div class="dk-companion"><svg class="infra" width="520" height="560" viewBox="0 0 520 560"></svg></div>
+    <p class="src">État du rapport (ligne location retirée de l'extrait) · aujourd'hui : 1 nœud Standard_B2as_v2 (variables.tf)</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="environnements">
+    <p class="kicker">Architecture · Environnements</p>
+    <h2 data-fit="2">Le cluster prévoit deux environnements : staging est déployé, la production est seulement configurée</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="dix-pipelines">
+    <p class="kicker">Parcours d'un changement · Les pipelines</p>
+    <h2 data-fit="2">Cinq pipelines suivent un composant chacun, cinq autres vérifient tout le dépôt</h2>
+    <svg class="art world" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="r-ip">
+    <p class="kicker">Réserve · Questions</p>
+    <h2 data-fit="2">Après un changement d'adresse IP, l'adresse publique est devenue une source unique</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

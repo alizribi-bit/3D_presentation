@@ -1,0 +1,91 @@
+
+> verify
+> node --import tsx scripts/verify-classic.mjs
+
+PASS server serves the current project build
+PASS active classic order and click counts equal the mapped reference
+PASS full mode uses every current state
+PASS notes couverture-0
+PASS 3D adaptation couverture-0
+Traversal 1/86
+PASS notes couverture-1
+PASS 3D adaptation couverture-1
+PASS notes sommaire-0
+PASS 3D adaptation sommaire-0
+PASS notes sommaire-1
+PASS 3D adaptation sommaire-1
+PASS notes ch1-0
+PASS frame ch1-0
+PASS notes startup-0
+PASS frame startup-0
+PASS notes startup-1
+PASS frame startup-1
+PASS notes probleme-0
+PASS frame probleme-0
+PASS notes probleme-1
+PASS frame probleme-1
+PASS notes modele-0
+PASS frame modele-0
+PASS notes modele-1
+PASS frame modele-1
+PASS notes problematique-0
+PASS frame problematique-0
+PASS notes problematique-1
+PASS frame problematique-1
+PASS notes methodologie-0
+PASS frame methodologie-0
+PASS notes methodologie-1
+PASS frame methodologie-1
+PASS notes ch3-0
+PASS frame ch3-0
+PASS notes outils-infra-0
+PASS frame outils-infra-0
+PASS notes outils-livraison-0
+PASS frame outils-livraison-0
+PASS notes devsecops-0
+PASS 3D adaptation devsecops-0
+PASS notes devsecops-1
+PASS 3D adaptation devsecops-1
+PASS notes architecture-0
+PASS frame architecture-0
+Traversal 21/86
+PASS notes architecture-1
+PASS frame architecture-1
+PASS notes architecture-2
+PASS frame architecture-2
+PASS notes architecture-3
+PASS frame architecture-3
+PASS notes routage-0
+PASS frame routage-0
+PASS notes routage-1
+PASS frame routage-1
+PASS notes routage-2
+PASS frame routage-2
+PASS notes isolation-0
+PASS frame isolation-0
+PASS notes isolation-1
+PASS frame isolation-1
+PASS notes secrets-0
+PASS frame secrets-0
+PASS notes secrets-1
+PASS frame secrets-1
+PASS notes secrets-2
+PASS frame secrets-2
+PASS notes ch4-0
+PASS frame ch4-0
+PASS notes chaine-0
+PASS frame chaine-0
+PASS notes chaine-1
+PASS frame chaine-1
+PASS notes chaine-2
+PASS frame chaine-2
+PASS notes chaine-3
+PASS frame chaine-3
+PASS notes dix-pipelines-0
+PASS frame dix-pipelines-0
+PASS notes dix-pipelines-1
+PASS frame dix-pipelines-1
+PASS notes dix-pipelines-2
+PASS frame dix-pipelines-2
+PASS notes tests-0
+FAIL comparison completes "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."

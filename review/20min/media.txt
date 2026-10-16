@@ -1,0 +1,14 @@
+PASS presenter contains no renderer or media source
+PASS accepted film has one audio track and lasts 90 seconds
+PASS forward reveal starts unmuted playback or exposes the fallback
+PASS native player advances with its single audio source
+PASS only the jury has one media source while both windows are open
+PASS native pause works
+PASS native playback resumes after pause
+PASS native volume and seeking are usable
+PASS film ends without leaving its main-route state
+PASS exit stops and rewinds the film
+PASS back to film restores the poster without ghost playback
+PASS reloading a film state keeps it paused on the poster
+PASS keyboard resumes the itinerary after a player mouse click
+PASS native media run has no browser errors

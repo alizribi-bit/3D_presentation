@@ -9,19 +9,20 @@
 </head>
 <body>
   <header>
-    <button id="timer" title="Cliquer pour remettre à zéro">00:00</button>
-    <div id="where"><b id="pos">—</b><span id="src"></span></div>
+    <div id="where"><span id="src"></span><h1 id="title">Connexion au jury…</h1><b id="step">—</b></div>
     <div id="status" class="off">Fenêtre jury absente</div>
-    <span id="clock"></span>
   </header>
   <main>
-    <section id="now"><h2>Maintenant</h2><div id="script"></div><div id="next"></div></section>
+    <section id="now" aria-label="Discours du clic actuel"><div id="script"></div></section>
     <aside>
-      <section id="after"><h2>Ensuite</h2><div id="afterBody"></div></section>
-      <section id="map"><h2>Parcours</h2><ol id="list"></ol></section>
-      <p class="keys">→ Espace PageDown : suivant · ← PageUp : précédent · 1–6 : chapitre · Home / End : début / fin · + / − : taille du texte</p>
+      <p id="next"></p>
+      <div class="navigation"><button id="prev" aria-label="Clic précédent">← Précédent</button><button id="advance">Suivant →</button></div>
+      <details id="after"><summary>Aperçu du prochain clic</summary><div id="afterBody"></div></details>
+      <details id="map"><summary>Aller à une étape</summary><ol id="list"></ol></details>
+      <div class="type-controls"><button id="smaller" aria-label="Réduire le texte">A−</button><button id="larger" aria-label="Agrandir le texte">A+</button></div>
     </aside>
   </main>
-  <script type="module" src="/src/presenter/presenter.js"></script>
+  <footer><button id="timer" title="Cliquer pour remettre à zéro">00:00</button><span id="pos"></span><progress id="progress" max="1" value="0" aria-label="Progression"></progress><p id="keys" class="keys"></p></footer>
+  <script type="module" src="/src/presenter/presenter.ts"></script>
 </body>
 </html>

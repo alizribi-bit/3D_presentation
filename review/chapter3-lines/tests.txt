@@ -1,0 +1,301 @@
+
+> test
+> node --import tsx --test tests/*.test.ts && python3 -B tests/test_server.py
+
+TAP version 13
+# Subtest: long camera journeys keep the visible human walk below two metres per second
+ok 1 - long camera journeys keep the visible human walk below two metres per second
+  ---
+  duration_ms: 14.277174
+  ...
+# Subtest: relocation between places occurs while the guide is fully out of frame
+ok 2 - relocation between places occurs while the guide is fully out of frame
+  ---
+  duration_ms: 4.563776
+  ...
+# Subtest: faster chapter travel retains a long visible stride and finishes before panel entry
+ok 3 - faster chapter travel retains a long visible stride and finishes before panel entry
+  ---
+  duration_ms: 0.984944
+  ...
+# Subtest: head and neck direction clamps to natural anatomical limits, never flips backwards
+ok 4 - head and neck direction clamps to natural anatomical limits, never flips backwards
+  ---
+  duration_ms: 17.057201
+  ...
+# Subtest: targets behind trigger soft body orientation instead of twisting neck
+ok 5 - targets behind trigger soft body orientation instead of twisting neck
+  ---
+  duration_ms: 4.220382
+  ...
+# Subtest: evidence cards have distinct specific focal targets within screen bounds
+ok 6 - evidence cards have distinct specific focal targets within screen bounds
+  ---
+  duration_ms: 3.378372
+  ...
+# Subtest: pointing is brief on appearance then returns to calm rest pose
+ok 7 - pointing is brief on appearance then returns to calm rest pose
+  ---
+  duration_ms: 0.764547
+  ...
+# Subtest: repeated application produces zero drift and zero accumulation
+ok 8 - repeated application produces zero drift and zero accumulation
+  ---
+  duration_ms: 22.527841
+  ...
+# Subtest: current reference determines counts, order and every exact speech chunk
+ok 9 - current reference determines counts, order and every exact speech chunk
+  ---
+  duration_ms: 12.613209
+  ...
+# Subtest: exported rendered diagrams and images cannot drift from current classic frames
+ok 10 - exported rendered diagrams and images cannot drift from current classic frames
+  ---
+  duration_ms: 758.312042
+  ...
+# Subtest: presenter grouping preserves alternating read passages and speech without reordering
+ok 11 - presenter grouping preserves alternating read passages and speech without reordering
+  ---
+  duration_ms: 1.220246
+  ...
+# Subtest: corrected bilan keeps the accepted read instruction, and architecture/delivery keep all source frames
+ok 12 - corrected bilan keeps the accepted read instruction, and architecture/delivery keep all source frames
+  ---
+  duration_ms: 1.531287
+  ...
+# Subtest: the final short classic alone determines the 35 slides and 86 states
+ok 13 - the final short classic alone determines the 35 slides and 86 states
+  ---
+  duration_ms: 16.319428
+  ...
+# Subtest: removed scenes cannot reappear in navigation or served content
+ok 14 - removed scenes cannot reappear in navigation or served content
+  ---
+  duration_ms: 9.805172
+  ...
+# Subtest: BMC retains exactly full view then one simultaneous customer/value focus
+ok 15 - BMC retains exactly full view then one simultaneous customer/value focus
+  ---
+  duration_ms: 60.856518
+  ...
+# Subtest: every exported sequence has exactly one frame per validated speech state
+ok 16 - every exported sequence has exactly one frame per validated speech state
+  ---
+  duration_ms: 217.848043
+  ...
+# Subtest: video remains slide 34, followed only by the accepted conclusion
+ok 17 - video remains slide 34, followed only by the accepted conclusion
+  ---
+  duration_ms: 0.748989
+  ...
+# Subtest: the accepted flow, speech and all other states remain byte-for-byte equivalent
+ok 18 - the accepted flow, speech and all other states remain byte-for-byte equivalent
+  ---
+  duration_ms: 25.477012
+  ...
+# Subtest: only the five useful convoyeur explanations share the top/bottom composition
+ok 19 - only the five useful convoyeur explanations share the top/bottom composition
+  ---
+  duration_ms: 12.501278
+  ...
+# Subtest: framing the same scene preserves the board forward, backward and on direct access
+ok 20 - framing the same scene preserves the board forward, backward and on direct access
+  ---
+  duration_ms: 1.492348
+  ...
+# Subtest: the parcel advances continuously, reaches the failed control, then resumes
+ok 21 - the parcel advances continuously, reaches the failed control, then resumes
+  ---
+  duration_ms: 1.790917
+  ...
+# Subtest: rapid reversal starts at the visible coordinate rather than the old logical endpoint
+ok 22 - rapid reversal starts at the visible coordinate rather than the old logical endpoint
+  ---
+  duration_ms: 1.02678
+  ...
+# Subtest: reduced motion and instant placement finish without waiting or additional states
+ok 23 - reduced motion and instant placement finish without waiting or additional states
+  ---
+  duration_ms: 0.700568
+  ...
+# Subtest: nonanimated staging keeps its own live camera-clock position
+ok 24 - nonanimated staging keeps its own live camera-clock position
+  ---
+  duration_ms: 0.617298
+  ...
+# Subtest: only the forward film reveal can start playback automatically
+ok 25 - only the forward film reveal can start playback automatically
+  ---
+  duration_ms: 6.270024
+  ...
+# Subtest: leaving and rewinding restores the native poster, while presenter synchronization preserves playback
+ok 26 - leaving and rewinding restores the native poster, while presenter synchronization preserves playback
+  ---
+  duration_ms: 1.594562
+  ...
+# Subtest: the actual local monitor asset faces the viewer and preserves the original logo proportions
+ok 27 - the actual local monitor asset faces the viewer and preserves the original logo proportions
+  ---
+  duration_ms: 113.866219
+  ...
+# Subtest: diagram reveals preserve SVG coordinates and muted final opacity
+ok 28 - diagram reveals preserve SVG coordinates and muted final opacity
+  ---
+  duration_ms: 7.42963
+  ...
+# Subtest: proof entrances use individual translation without replacing existing crop transforms
+ok 29 - proof entrances use individual translation without replacing existing crop transforms
+  ---
+  duration_ms: 2.154103
+  ...
+# Subtest: large batches finish under half a second with bounded stagger
+ok 30 - large batches finish under half a second with bounded stagger
+  ---
+  duration_ms: 7.074627
+  ...
+# Subtest: interruptions cancel only owned animations and release completed references
+ok 31 - interruptions cancel only owned animations and release completed references
+  ---
+  duration_ms: 3.354503
+  ...
+# Subtest: all accepted source steps and speech are present once, in order
+ok 32 - all accepted source steps and speech are present once, in order
+  ---
+  duration_ms: 8.802976
+  ...
+# Subtest: read instructions preserve the full accepted quote and surrounding speech
+ok 33 - read instructions preserve the full accepted quote and surrounding speech
+  ---
+  duration_ms: 1.164631
+  ...
+# Subtest: invalid or duplicate source content is rejected
+ok 34 - invalid or duplicate source content is rejected
+  ---
+  duration_ms: 1.300536
+  ...
+# Subtest: five editorial chapters follow retained semantic places and skip the removed workshop
+ok 35 - five editorial chapters follow retained semantic places and skip the removed workshop
+  ---
+  duration_ms: 0.820124
+  ...
+# Subtest: untrusted channel commands cannot crash navigation or address nonexistent states
+ok 36 - untrusted channel commands cannot crash navigation or address nonexistent states
+  ---
+  duration_ms: 1.2481
+  ...
+# Subtest: travel uses arc distance, clamps progress and follows the road between places
+ok 37 - travel uses arc distance, clamps progress and follows the road between places
+  ---
+  duration_ms: 8.075136
+  ...
+# Subtest: leaving or rewinding the film stops audio and resets playback; rejections are handled
+ok 38 - leaving or rewinding the film stops audio and resets playback; rejections are handled
+  ---
+  duration_ms: 1.813338
+  ...
+# Subtest: late video play resolution cannot restart audio after leaving the scene
+ok 39 - late video play resolution cannot restart audio after leaving the scene
+  ---
+  duration_ms: 0.737698
+  ...
+# Subtest: the same version moves through gates, stops on failure and resumes after correction
+ok 40 - the same version moves through gates, stops on failure and resumes after correction
+  ---
+  duration_ms: 31.635608
+  ...
+# Subtest: manual native playback also rejects a late start after scene exit
+ok 41 - manual native playback also rejects a late start after scene exit
+  ---
+  duration_ms: 1.020087
+  ...
+# Subtest: route markers include the exact horizontal/vertical bend in both directions
+ok 42 - route markers include the exact horizontal/vertical bend in both directions
+  ---
+  duration_ms: 4.485783
+  ...
+# Subtest: version badges accept only finite SVG translations, preserving their axis
+ok 43 - version badges accept only finite SVG translations, preserving their axis
+  ---
+  duration_ms: 1.293933
+  ...
+# Subtest: an interrupted native transform recovers the visible endpoint instead of its final attribute
+ok 44 - an interrupted native transform recovers the visible endpoint instead of its final attribute
+  ---
+  duration_ms: 1.215609
+  ...
+# Subtest: normal camera moves take exactly half their previous time without changing panel fades
+ok 45 - normal camera moves take exactly half their previous time without changing panel fades
+  ---
+  duration_ms: 4.373663
+  ...
+# Subtest: fixed passages preserve active frames with no camera time or walking
+ok 46 - fixed passages preserve active frames with no camera time or walking
+  ---
+  duration_ms: 8.26238
+  ...
+# Subtest: approaches keep evidence and cycle labels, without walking or an empty stage
+ok 47 - approaches keep evidence and cycle labels, without walking or an empty stage
+  ---
+  duration_ms: 0.769051
+  ...
+# Subtest: object staging removes only obstructing evidence, retaining shared world markers
+ok 48 - object staging removes only obstructing evidence, retaining shared world markers
+  ---
+  duration_ms: 0.583981
+  ...
+# Subtest: world return has its explicit short budget, independent of distance and walking
+ok 49 - world return has its explicit short budget, independent of distance and walking
+  ---
+  duration_ms: 0.541686
+  ...
+# Subtest: only forward travel imposes the natural arrival stride; reverse and jumps relocate quickly
+ok 50 - only forward travel imposes the natural arrival stride; reverse and jumps relocate quickly
+  ---
+  duration_ms: 3.591561
+  ...
+# Subtest: same nominal shot during interruption still requires real camera/actor reconciliation
+ok 51 - same nominal shot during interruption still requires real camera/actor reconciliation
+  ---
+  duration_ms: 0.43113
+  ...
+# Subtest: interruptions preserve selected opacity and do not repeat an exit from a hidden panel
+ok 52 - interruptions preserve selected opacity and do not repeat an exit from a hidden panel
+  ---
+  duration_ms: 0.84623
+  ...
+# Subtest: reduced and fast retain eventual content without real walking or an empty fixed frame
+ok 53 - reduced and fast retain eventual content without real walking or an empty fixed frame
+  ---
+  duration_ms: 0.815253
+  ...
+# Subtest: camera distance includes lift; long journeys retain their constant central pace
+ok 54 - camera distance includes lift; long journeys retain their constant central pace
+  ---
+  duration_ms: 1.787915
+  ...
+# Subtest: camera completion does not restart pointing or feedback when content stayed visible
+ok 55 - camera completion does not restart pointing or feedback when content stayed visible
+  ---
+  duration_ms: 0.920652
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3150.392851
+127.0.0.1 - - [13/Oct/2026 21:25:54] "GET /film.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [13/Oct/2026 21:25:54] "HEAD /film.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [13/Oct/2026 21:25:54] code 403, message Forbidden
+127.0.0.1 - - [13/Oct/2026 21:25:54] "GET /external.txt HTTP/1.1" 403 -
+127.0.0.1 - - [13/Oct/2026 21:25:54] code 404, message File not found
+127.0.0.1 - - [13/Oct/2026 21:25:54] "GET /source.txt HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 21:25:54] "GET /film.mp4 HTTP/1.1" 416 -
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.577s
+
+OK

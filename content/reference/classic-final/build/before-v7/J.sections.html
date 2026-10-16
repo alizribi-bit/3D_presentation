@@ -1,0 +1,293 @@
+  <!-- ══ 5 · Supervision et validation ═════════════════════════════ -->
+  <section class="slide" id="supervision">
+    <style>
+      /* batch J: shared look (capture frames, boxes, flow nodes) */
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .shot { position: absolute; background: #fff; border: 2px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 18px 50px rgba(16,38,26,.12); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .shot .bar { height: 42px; display: flex; align-items: center; gap: 10px; padding: 0 18px; background: #eef2ee; border-bottom: 2px solid var(--line); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .shot .bar i { width: 13px; height: 13px; border-radius: 50%; background: #c5cfc7; display: inline-block; }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .shot .bar span { margin-left: 12px; font: 400 20px/1 var(--mono); color: var(--muted); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .shot img { display: block; width: 100%; }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .cap { position: absolute; margin: 0; font: 400 22px/1.3 var(--display); color: var(--muted); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .cap b { color: var(--ink); font-weight: 600; }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .box { position: absolute; box-sizing: border-box; background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 20px 26px; }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .box h3 { margin: 0; font: 600 30px/1.2 var(--display); color: var(--ink); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .box p { margin: 8px 0 0; font: 400 24px/1.3 var(--display); color: var(--muted); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .box.g { border-color: var(--green); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .box.a { border-color: var(--amber); background: #fff8ea; }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .box.a h3 { color: var(--amber-text); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .tag { display: inline-block; font: 600 20px/1 var(--display); padding: 8px 14px; border-radius: 999px; background: var(--green-l); color: var(--green-d); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .tag.a { background: #fdecc8; color: var(--amber-text); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) .tag.r { background: #f8d7d7; color: var(--red-text); }
+      :is(#supervision,#metriques,#journaux,#alerte,#validation,#tests,#analyses,#blocage) svg.art text { font-family: var(--display); }
+      #supervision .nd { position: absolute; box-sizing: border-box; width: 300px; min-height: 120px; background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 18px 22px; }
+      #supervision .nd h3 { margin: 0; font: 600 30px/1.2 var(--display); }
+      #supervision .nd p { margin: 6px 0 0; font: 400 22px/1.3 var(--display); color: var(--muted); }
+      #supervision .nd.app { border-color: var(--green); background: var(--green-l); }
+      #supervision .nd.m h3 { color: var(--green); }
+      #supervision .nd.l h3 { color: var(--azure); }
+      #supervision .nd.al h3 { color: var(--amber-text); }
+    </style>
+    <p class="kicker">Supervision et validation · Rôles</p>
+    <h2 data-fit="2">Quatre outils de supervision</h2>
+    <svg class="art" viewBox="0 0 1920 1080">
+      <defs><marker id="sv-ar" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#536459"/></marker></defs>
+      <g data-step="1" data-anim="fade">
+        <path d="M450,420 H640" stroke="#0d7b3c" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="1" data-anim="draw"/>
+        <text x="545" y="400" font-size="22" fill="#536459" text-anchor="middle">métriques</text>
+        <path d="M940,420 H1130" stroke="#0d7b3c" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="1" data-anim="draw" data-delay=".2"/>
+        <text x="1035" y="400" font-size="22" fill="#536459" text-anchor="middle">graphiques</text>
+      </g>
+      <g data-step="2" data-anim="fade">
+        <path d="M300,500 V700 H640" stroke="#2f6fde" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="2" data-anim="draw"/>
+        <text x="470" y="685" font-size="22" fill="#536459" text-anchor="middle">journaux</text>
+        <path d="M940,700 H1130" stroke="#2f6fde" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="2" data-anim="draw" data-delay=".2"/>
+        <path d="M1430,700 H1500 V490 H1440" stroke="#2f6fde" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="2" data-anim="draw" data-delay=".4"/>
+        <text x="1610" y="600" font-size="22" fill="#536459" text-anchor="middle">source Loki</text>
+      </g>
+      <g data-step="3" data-anim="fade">
+        <path d="M790,480 V900 H1130" stroke="#e39a0b" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="3" data-anim="draw"/>
+        <text x="960" y="885" font-size="22" fill="#536459" text-anchor="middle">alerte déclenchée</text>
+        <path d="M1430,900 H1640" stroke="#e39a0b" stroke-width="4" fill="none" marker-end="url(#sv-ar)" data-step="3" data-anim="draw" data-delay=".2"/>
+      </g>
+    </svg>
+    <div class="nd app" style="left:150px; top:360px"><h3>Services ZAWEDNI</h3><p>backend, IA, sites, base</p></div>
+    <div class="nd m" style="left:640px; top:360px" data-step="1" data-anim="rise"><h3>Prometheus</h3><p>collecte les métriques</p></div>
+    <div class="nd m" style="left:1130px; top:360px" data-step="1" data-anim="rise" data-delay=".2"><h3>Grafana</h3><p>affiche les tableaux de bord</p></div>
+    <div class="nd l" style="left:640px; top:640px" data-step="2" data-anim="rise"><h3>Alloy</h3><p>lit les journaux des pods</p></div>
+    <div class="nd l" style="left:1130px; top:640px" data-step="2" data-anim="rise" data-delay=".2"><h3>Loki</h3><p>stocke les journaux</p></div>
+    <div class="nd al" style="left:1130px; top:840px" data-step="3" data-anim="rise"><h3>Alertmanager</h3><p>envoie l'e-mail</p></div>
+    <p class="cap" style="left:1650px; top:880px; width:140px" data-step="3" data-anim="fade" data-delay=".4"><b>E-mail</b></p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="metriques">
+    <style>
+      #metriques .crop { position: relative; overflow: hidden; }
+    </style>
+    <p class="kicker">Supervision et validation · Métriques</p>
+    <h2 data-fit="2">Métriques des services</h2>
+    <div class="shot" style="left:150px; top:330px; width:780px" data-anim="rise">
+      <div class="bar"><i></i><i></i><i></i><span>Prometheus · cibles</span></div>
+      <div class="crop" role="img" aria-label="Prometheus : cibles zawedni-backend et zawedni-ai UP" style="height:420px; background:url(assets/p0610-prometheus-targets.jpg) -820px -150px / 1620px auto no-repeat"></div>
+    </div>
+    <p class="cap" style="left:150px; top:815px; width:780px" data-anim="fade" data-delay=".4"><b>06/10</b> · le backend et le service IA exposent leurs métriques : cibles UP</p>
+    <div class="shot" style="left:990px; top:330px; width:780px" data-step="1" data-anim="rise">
+      <div class="bar"><i></i><i></i><i></i><span>Grafana · ressources des pods</span></div>
+      <div class="crop" role="img" aria-label="Grafana : CPU et mémoire des pods backend et IA" style="height:420px; background:url(assets/p0610-grafana.jpg) 0 0 / 1180px auto no-repeat"></div>
+    </div>
+    <p class="cap" style="left:990px; top:815px; width:780px" data-step="1" data-anim="fade" data-delay=".4"><b>06/10</b> · CPU et mémoire des pods backend et IA, dernière heure</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="journaux">
+    <style>
+      #journaux .chain { position: absolute; left: 150px; top: 320px; width: 1620px; display: flex; gap: 14px; }
+      #journaux .chain div { flex: 1; box-sizing: border-box; background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 16px 18px; min-height: 112px; }
+      #journaux .chain b { display: block; font: 600 26px/1.2 var(--display); color: var(--azure); }
+      #journaux .chain span { display: block; margin-top: 6px; font: 400 21px/1.3 var(--display); color: var(--muted); }
+      #journaux .chain .first { border-color: var(--green); }
+      #journaux .chain .first b { color: var(--green); }
+    </style>
+    <p class="kicker">Supervision et validation · Journaux centralisés</p>
+    <h2 data-fit="2">Journaux centralisés</h2>
+    <div class="chain" data-anim="rise" data-stagger=".12">
+      <div class="first"><b>1 · Action réelle</b><span>connexion échouée sur staging (401)</span></div>
+      <div><b>2 · Backend</b><span>écrit deux lignes de journal</span></div>
+      <div><b>3 · Alloy</b><span>les collecte dans le pod</span></div>
+      <div><b>4 · Loki</b><span>les stocke, avec leurs étiquettes</span></div>
+      <div><b>5 · Grafana</b><span>les affiche et les filtre</span></div>
+    </div>
+    <div class="shot" style="left:150px; top:480px; width:1000px" data-step="1" data-anim="rise">
+      <div class="bar"><i></i><i></i><i></i><span>Grafana · ZAWEDNI — Journaux</span></div>
+      <img src="assets/v3-grafana-journaux.jpg" alt="Grafana : les deux lignes de la connexion échouée, filtrées sur zawedni-backend">
+    </div>
+    <div class="box" style="left:1200px; top:500px; width:570px" data-step="1" data-anim="rise" data-delay=".3"><h3>07/10, 12:27 UTC</h3><p>Les deux lignes arrivent dans Loki une seconde après la requête.</p></div>
+    <div class="box g" style="left:1200px; top:700px; width:570px" data-step="1" data-anim="rise" data-delay=".45"><h3>Diagnostic</h3><p>L’événement, son service et son heure, sans ouvrir chaque conteneur.</p></div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="alerte">
+    <style>
+      #alerte .tl { position: absolute; left: 150px; top: 330px; width: 1620px; height: 150px; }
+      #alerte .ev { position: absolute; top: 60px; width: 230px; margin-left: -115px; text-align: center; }
+      #alerte .ev b { display: block; font: 600 24px/1.2 var(--display); color: var(--ink); }
+      #alerte .ev span { display: block; margin-top: 4px; font: 400 20px/1.2 var(--mono); color: var(--muted); }
+      #alerte .ev i { position: absolute; left: 50%; top: -38px; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--green); }
+      #alerte .ev.f i { background: var(--red); }
+      #alerte .ev.a i { background: var(--amber); }
+    </style>
+    <p class="kicker">Supervision et validation · Alertes</p>
+    <h2 data-fit="2">Une alerte, de bout en bout</h2>
+    <div class="tl">
+      <svg class="art" viewBox="0 0 1620 150" style="width:1620px; height:150px"><path d="M40,33 H1580" stroke="#d3ddd5" stroke-width="6" stroke-linecap="round"/><path d="M40,33 H1580" stroke="#0d7b3c" stroke-width="6" stroke-linecap="round" data-anim="draw" data-dur="2.4" data-delay=".2"/></svg>
+      <div data-anim="fade" data-stagger=".35" data-delay=".3">
+        <div class="ev a" style="left:110px"><i></i><b>Erreurs 500</b><span>12:29 · 136 requêtes</span></div>
+        <div class="ev a" style="left:420px"><i></i><b>En attente</b><span>12:31 · seuil dépassé</span></div>
+        <div class="ev f" style="left:730px"><i></i><b>Alerte active</b><span>12:33 · FIRING</span></div>
+        <div class="ev f" style="left:1040px"><i></i><b>E-mail FIRING</b><span>12:33 · reçu</span></div>
+        <div class="ev" style="left:1170px; top:118px"><b style="font-size:20px; color:var(--muted)">12:34 · charge arrêtée</b></div>
+        <div class="ev" style="left:1300px"><i></i><b>Alerte résolue</b><span>12:39 · RESOLVED</span></div>
+        <div class="ev" style="left:1520px"><i></i><b>E-mail RESOLVED</b><span>12:38 · reçu</span></div>
+      </div>
+    </div>
+    <div class="shot" style="left:150px; top:520px; width:1620px" data-anim="rise" data-delay="1.4">
+      <div class="bar"><i></i><i></i><i></i><span>Prometheus · règle ZawedniHighErrorRate déclenchée</span></div>
+      <img src="assets/v3-prom-firing-rule.jpg" alt="Prometheus : ZawedniHighErrorRate en état FIRING, expression rate(5xx)[5m] > 0.1">
+    </div>
+    <div class="shot" style="left:150px; top:760px; width:760px" data-step="1" data-anim="rise">
+      <div class="bar"><i></i><i></i><i></i><span>Gmail · heure locale (UTC+1)</span></div>
+      <img src="assets/v3-gmail-rows.jpg" alt="Gmail : e-mails FIRING à 13:33 et RESOLVED à 13:38, heure locale">
+    </div>
+    <div class="box" style="left:960px; top:760px; width:810px" data-step="2" data-anim="rise"><h3>Parcours vérifié</h3><p>Erreur → détection → notification → résolution.</p></div>
+    <p class="cap" style="left:150px; top:935px; width:1620px" data-anim="fade" data-delay="1.6"><b>Staging, 07/10 (UTC)</b> · erreurs provoquées par une requête en lecture seule, arrêtées après cinq minutes</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="validation">
+    <style>
+      #validation .pm { position: absolute; width: 790px; min-height: 262px; box-sizing: border-box; background: var(--card); border: 2px solid var(--line); border-radius: 22px; padding: 22px 28px; }
+      #validation .pm h3 { margin: 0 0 12px; font: 600 32px/1.2 var(--display); color: var(--ink); display: flex; align-items: center; gap: 14px; }
+      #validation .pm ul { margin: 0; padding: 0; list-style: none; }
+      #validation .pm li { position: relative; padding: 6px 0 6px 38px; font: 400 25px/1.3 var(--display); color: var(--ink); }
+      #validation .pm li::before { content: ''; position: absolute; left: 6px; top: 13px; width: 18px; height: 9px; border-left: 4px solid var(--green); border-bottom: 4px solid var(--green); transform: rotate(-45deg); }
+      #validation .pm li.lim { color: var(--amber-text); }
+      #validation .pm li.lim::before { width: 14px; height: 14px; top: 14px; left: 6px; border: 3px solid var(--amber); border-radius: 50%; transform: none; box-sizing: border-box; }
+      #validation .pm.part { border-color: var(--amber); }
+    </style>
+    <p class="kicker">Supervision et validation · Résultats</p>
+    <h2 data-fit="2">Résultats de validation</h2>
+    <div class="pm" style="left:150px; top:300px" data-anim="rise"><h3>Staging <span class="tag">périmètre validé</span></h3><ul><li>Corrections métier et droits d’accès vérifiés</li><li>Parcours rejoués après les corrections</li><li>Contrôles bloquants et alerte complète testés</li></ul></div>
+    <div class="pm" style="left:980px; top:300px" data-anim="rise" data-delay=".15"><h3>Données</h3><ul><li>Sauvegarde quotidienne en staging</li><li>Restauration vérifiée dans une base isolée</li><li data-step="1" data-anim="fade" data-delay=".3">Sauvegarde de production exécutée</li></ul></div>
+    <div class="pm" style="left:150px; top:600px" data-step="1" data-anim="rise"><h3>Production <span class="tag">déployée par GitOps</span></h3><ul><li>Parcours fournisseur/acheteur, droits, uploads, insights</li><li>Guide pour une stratégie RSE via l’API</li><li>Métriques, journaux ; notifications anglaises reçues</li></ul></div>
+    <div class="pm" style="left:980px; top:600px" data-step="1" data-anim="rise" data-delay=".15"><h3>Mobile</h3><ul><li>Application Flutter réalisée</li><li>Même API et mêmes règles que le web</li><li>APK Android distribué par Azure Blob</li></ul></div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <!-- ══ 4 · Notre chaîne CI/CD et déploiement ═════════════════════════════ -->
+  <section class="slide" id="tests">
+    <style>
+      /* a real test of the API (EmployeeServiceOwnershipTest): what it expects, what it compares, what it changes for the delivery */
+      #tests .b { position: absolute; top: 310px; width: 500px; min-height: 420px; box-sizing: border-box; padding: 26px 30px; border-radius: 22px; background: var(--card); border: 2px solid var(--line); }
+      #tests .b .k { margin: 0 0 14px; font: 600 21px/1 var(--display); letter-spacing: .08em; color: var(--green); }
+      #tests .b h3 { margin: 0 0 14px; font: 600 33px/1.2 var(--display); color: var(--ink); }
+      #tests .b p { margin: 0 0 12px; font: 400 27px/1.35 var(--display); color: var(--ink); }
+      #tests .b p.m { color: var(--muted); font-size: 24px; }
+      #tests .out { margin: 0 0 14px; padding: 16px 18px; border-radius: 16px; font: 600 26px/1.3 var(--display); }
+      #tests .out.g { background: var(--green-l); color: var(--green-d); }
+      #tests .out.r { background: #fbe3e3; color: var(--red-text); }
+      #tests .fw { position: absolute; left: 150px; top: 790px; width: 1620px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+      #tests .fw li { padding: 14px 20px; border-radius: 14px; border: 2px solid var(--line); font: 400 22px/1.3 var(--display); color: var(--muted); }
+      #tests .fw li b { display: block; font: 600 22px/1.2 var(--mono); color: var(--ink); }
+      #tests .note { position: absolute; left: 150px; top: 920px; width: 1620px; margin: 0; font: 400 21px/1.3 var(--display); color: var(--muted); }
+    </style>
+    <p class="kicker">Chaîne CI/CD · Tests automatiques</p>
+    <h2 data-fit="2">Que vérifient les tests ?</h2>
+    <div class="b" style="left:150px" data-anim="rise"><p class="k">COMPORTEMENT ATTENDU</p><h3>Une règle métier</h3><p>L’entreprise A tente de modifier un employé de l’entreprise B.</p><p><b>Attendu :</b> modification refusée, données inchangées.</p></div>
+    <div class="b" style="left:710px" data-anim="rise" data-delay=".2"><p class="k">RÉSULTAT DU TEST</p><h3>Une comparaison</h3><p>Le test prépare ce cas, puis compare le résultat obtenu au résultat attendu.</p><p class="m">Exemple réel : EmployeeServiceOwnershipTest, API Java.</p></div>
+    <div class="b" style="left:1270px" data-anim="rise" data-delay=".4"><p class="k">EFFET SUR LA LIVRAISON</p><h3>Continuer ou arrêter</h3>
+      <p class="out g" data-step="1" data-anim="rise">Résultat conforme : le pipeline continue.</p>
+      <p class="out r" data-step="1" data-anim="rise" data-delay=".35">Test en échec : la publication s’arrête.</p></div>
+    <svg class="art" viewBox="0 0 1920 1080">
+      <defs><marker id="ts-ar" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#0d7b3c"/></marker></defs>
+      <g fill="none" stroke="#0d7b3c" stroke-width="4">
+        <path d="M652,520 H704" marker-end="url(#ts-ar)" data-anim="draw" data-delay=".3" data-dur=".3"/>
+        <path d="M1212,520 H1264" marker-end="url(#ts-ar)" data-anim="draw" data-delay=".5" data-dur=".3"/>
+      </g>
+    </svg>
+    <ul class="fw" data-anim="fade" data-delay=".7">
+      <li><b>JUnit</b>API Spring Boot</li><li><b>Vitest</b>site client</li><li><b>pytest</b>service d’IA</li><li><b>flutter test</b>application mobile</li>
+    </ul>
+    <p class="note" data-step="1" data-anim="fade" data-delay=".7">Les deux issues montrent le rôle du test dans la chaîne ; ce n’est pas une nouvelle exécution.</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="analyses">
+    <style>
+      /* one tool per click: its row is outlined and one readable card says its role (the card is the sentence Ali reads) */
+      #analyses .tb { position: absolute; left: 150px; top: 300px; width: 860px; }
+      #analyses .row { position: relative; display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: center; height: 86px; padding: 0 22px; box-sizing: border-box; border-bottom: 2px solid var(--line); }
+      #analyses .row.h { height: 46px; font: 600 21px/1 var(--display); color: var(--muted); letter-spacing: .06em; }
+      #analyses .row .o { font: 600 30px/1.2 var(--mono); color: var(--green-d); }
+      #analyses .row span { position: relative; font: 400 25px/1.3 var(--display); color: var(--ink); }
+      #analyses .ring { position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; border: 5px solid var(--green); border-radius: 16px; background: rgba(207,232,215,.4); }
+      #analyses .card { position: absolute; left: 1060px; top: 300px; width: 710px; min-height: 280px; box-sizing: border-box; padding: 34px 40px; border-radius: 24px; background: var(--green); color: #fff; }
+      #analyses .card b { display: block; margin-bottom: 18px; font: 600 34px/1.2 var(--mono); }
+      #analyses .card p { margin: 0; font: 600 37px/1.32 var(--display); }
+      #analyses .lnk { position: absolute; left: 1012px; width: 48px; height: 5px; background: var(--green); }
+      #analyses .end { position: absolute; left: 150px; top: 884px; width: 1620px; box-sizing: border-box; margin: 0; padding: 20px 30px; border-radius: 20px; background: var(--green-l); font: 500 29px/1.35 var(--display); color: var(--green-d); }
+    </style>
+    <p class="kicker">Chaîne CI/CD · Analyses de sécurité</p>
+    <h2 data-fit="2">Que recherchent les analyses de sécurité ?</h2>
+    <div class="tb">
+      <div class="row h"><span style="color:inherit; font:inherit">OUTIL</span><span style="color:inherit; font:inherit">CE QU’IL ANALYSE</span></div>
+      <div data-anim="rise" data-stagger=".08" data-delay=".15">
+        <div class="row"><div class="ring" data-step="1" data-out="2" data-anim="ring"></div><span class="o">Gitleaks</span><span>secrets</span></div>
+        <div class="row"><div class="ring" data-step="2" data-out="3" data-anim="ring"></div><span class="o">Semgrep</span><span>code</span></div>
+        <div class="row"><div class="ring" data-step="3" data-out="4" data-anim="ring"></div><span class="o">SonarCloud</span><span>qualité du code</span></div>
+        <div class="row"><div class="ring" data-step="4" data-out="5" data-anim="ring"></div><span class="o">Dependency-Check</span><span>bibliothèques Java</span></div>
+        <div class="row"><div class="ring" data-step="5" data-out="6" data-anim="ring"></div><span class="o">Trivy</span><span>images</span></div>
+        <div class="row"><div class="ring" data-step="6" data-anim="ring"></div><span class="o">Checkov</span><span>infrastructure</span></div>
+      </div>
+    </div>
+    <div class="lnk" style="top:387px" data-step="1" data-out="2" data-anim="fade"></div>
+    <div class="lnk" style="top:473px" data-step="2" data-out="3" data-anim="fade"></div>
+    <div class="lnk" style="top:559px" data-step="3" data-out="4" data-anim="fade"></div>
+    <div class="lnk" style="top:645px" data-step="4" data-out="5" data-anim="fade"></div>
+    <div class="lnk" style="top:731px" data-step="5" data-out="6" data-anim="fade"></div>
+    <div class="lnk" style="top:817px" data-step="6" data-anim="fade"></div>
+    <div class="card" style="top:300px" data-step="1" data-out="2" data-anim="rise"><b>Gitleaks</b><p>Repère les mots de passe, clés et jetons présents dans le code.</p></div>
+    <div class="card" style="top:330px" data-step="2" data-out="3" data-anim="rise"><b>Semgrep</b><p>Analyse le code pour repérer des pratiques à risque.</p></div>
+    <div class="card" style="top:400px" data-step="3" data-out="4" data-anim="rise"><b>SonarCloud</b><p>Vérifie la qualité du code, la couverture des tests et les critères de sécurité configurés.</p></div>
+    <div class="card" style="top:470px" data-step="4" data-out="5" data-anim="rise"><b>Dependency-Check</b><p>Recherche les vulnérabilités connues dans les bibliothèques Java du backend.</p></div>
+    <div class="card" style="top:540px" data-step="5" data-out="6" data-anim="rise"><b>Trivy</b><p>Recherche les vulnérabilités connues dans les images des services.</p></div>
+    <div class="card" style="top:570px" data-step="6" data-anim="rise"><b>Checkov</b><p>Analyse les fichiers d’infrastructure pour repérer des configurations à risque.</p></div>
+    <p class="end" data-step="6" data-anim="rise" data-delay=".6">Les analyses sont choisies selon le composant : dépendances Java pour le backend, images pour les services conteneurisés, configuration pour l’infrastructure.</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="blocage">
+    <style>
+      #blocage .col { position: absolute; top: 310px; width: 510px; min-height: 560px; box-sizing: border-box; border-radius: 22px; padding: 24px 26px; background: var(--card); border: 2px solid var(--line); }
+      #blocage .col h3 { margin: 0 0 6px; font: 600 32px/1.2 var(--display); }
+      #blocage .col .s { margin: 0 0 18px; font: 400 22px/1.3 var(--display); color: var(--muted); }
+      #blocage .col ul { margin: 0; padding: 0; list-style: none; }
+      #blocage .col li { padding: 12px 0; border-top: 2px solid var(--line); font: 400 22px/1.3 var(--display); color: var(--ink); }
+      #blocage .col li b { display: block; font: 600 24px/1.2 var(--mono); }
+      #blocage .r { border-color: var(--red); }
+      #blocage .r h3, #blocage .r li b { color: var(--red-text); }
+      #blocage .a { border-color: var(--amber); background: #fff8ea; }
+      #blocage .a h3, #blocage .a li b { color: var(--amber-text); }
+      #blocage .p h3 { color: var(--ink); }
+    </style>
+    <p class="kicker">Chaîne CI/CD · Contrôles</p>
+    <h2 data-fit="2">Bloquer, signaler, protéger la fusion</h2>
+    <div class="col r" style="left:150px" data-anim="rise">
+      <h3>Arrête le pipeline</h3><p class="s">le job échoue, rien n'est publié</p>
+      <ul><li><b>Gitleaks</b>un secret est trouvé</li><li><b>Dependency-Check</b>faille de score CVSS 9 ou plus</li><li><b>Trivy</b>faille HIGH ou CRITICAL qui a un correctif ; 2 exceptions datées</li><li><b>SonarCloud</b>quality gate, sur PR et main seulement</li></ul>
+    </div>
+    <div class="col a" style="left:705px" data-step="1" data-anim="rise">
+      <h3>Signale seulement</h3><p class="s">un rapport à lire, le job continue</p>
+      <ul><li><b>Semgrep</b>les résultats ne font pas échouer le job</li><li><b>Checkov</b>analyse marquée non bloquante</li></ul>
+    </div>
+    <div class="col p" style="left:1260px" data-step="2" data-anim="rise">
+      <h3>Protège la fusion</h3><p class="s">rôle de GitHub, pas des outils</p>
+      <ul><li><b>Protection de branche</b>règle de GitHub, distincte des pipelines</li><li><b>État actuel</b>non activée ; prévue dans les perspectives</li></ul>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

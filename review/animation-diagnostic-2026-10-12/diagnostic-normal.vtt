@@ -1,0 +1,31 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.950
+Révélation de texte : probleme-0 → probleme-1
+
+00:00:01.950 --> 00:00:03.900
+Changement de capture : parcours-app-1 → parcours-app-2
+
+00:00:03.900 --> 00:00:05.850
+Nouvelle slide, caméra fixe : startup-1 → probleme-0
+
+00:00:05.850 --> 00:00:08.870
+Rapprochement vers les preuves de l’atelier : plateforme-2 → sequence-0
+
+00:00:08.870 --> 00:00:11.890
+Rapprochement vers le cycle 3D : devsecops-0 → devsecops-1
+
+00:00:11.890 --> 00:00:20.760
+Retour au monde : retour-0 → retour-1
+
+00:00:20.760 --> 00:00:27.450
+Déplacement entre chapitres : methodologie-1 → ch2-0
+
+00:00:27.450 --> 00:00:32.723
+Interruption d’un déplacement par retour : methodologie-1 → methodologie-1
+
+00:00:32.723 --> 00:00:35.014
+Clics rapprochés sans déplacement : sequence-0 → sequence-2
+
+00:00:35.014 --> 00:00:44.635
+Rafale pendant une occultation : methodologie-1 → ch2-0

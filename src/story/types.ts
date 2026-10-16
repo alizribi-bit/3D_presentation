@@ -1,5 +1,5 @@
-export type Chapter = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-export type PlaceId = '01' | '02' | '03' | '04' | '05' | '06';
+export type Chapter = 0 | 1 | 2 | 3 | 4 | 5;
+export type PlaceId = '01' | '03' | '04' | '05' | '06';
 export type Note = [kind: 'say' | 'read' | 'added', text: string, source?: string];
 export interface Sequence {
   id: string; seq: number; chapter: number; title: string; steps: number; speech: string[]; visual: string;

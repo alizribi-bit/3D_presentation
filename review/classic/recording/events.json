@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-12T16:16:00.504Z",
+  "start": 1791821705323,
+  "normalSpeed": true,
+  "audioRecorded": false,
+  "events": [
+    {
+      "id": "sequence-0",
+      "at": 1791821703487,
+      "jury": "sequence-0",
+      "presenter": "sequence-0"
+    },
+    {
+      "id": "sequence-1",
+      "at": 1791821708589,
+      "jury": "sequence-1",
+      "presenter": "sequence-1"
+    },
+    {
+      "id": "sequence-2",
+      "at": 1791821713673,
+      "jury": "sequence-2",
+      "presenter": "sequence-2"
+    },
+    {
+      "id": "parcours-app-0",
+      "at": 1791821718753,
+      "jury": "parcours-app-0",
+      "presenter": "parcours-app-0"
+    },
+    {
+      "id": "parcours-app-1",
+      "at": 1791821723840,
+      "jury": "parcours-app-1",
+      "presenter": "parcours-app-1"
+    },
+    {
+      "id": "parcours-app-2",
+      "at": 1791821728919,
+      "jury": "parcours-app-2",
+      "presenter": "parcours-app-2"
+    },
+    {
+      "id": "parcours-app-3",
+      "at": 1791821733999,
+      "jury": "parcours-app-3",
+      "presenter": "parcours-app-3"
+    },
+    {
+      "id": "parcours-app-4",
+      "at": 1791821739130,
+      "jury": "parcours-app-4",
+      "presenter": "parcours-app-4"
+    },
+    {
+      "id": "parcours-app-3",
+      "at": 1791821744549,
+      "jury": "parcours-app-3",
+      "presenter": "parcours-app-3"
+    },
+    {
+      "id": "parcours-app-4",
+      "at": 1791821749782,
+      "jury": "parcours-app-4",
+      "presenter": "parcours-app-4"
+    },
+    {
+      "id": "bilan-1",
+      "at": 1791821751724,
+      "jury": "bilan-1",
+      "presenter": "bilan-1"
+    },
+    {
+      "id": "bilan-2",
+      "at": 1791821756820,
+      "jury": "bilan-2",
+      "presenter": "bilan-2"
+    }
+  ],
+  "errors": []
+}

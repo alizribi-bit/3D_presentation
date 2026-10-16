@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZAWEDNI — vue présentateur</title>
+  <link rel="icon" href="assets/deck/logo-green.png">
+  <link rel="stylesheet" href="/src/presenter/presenter.css">
+</head>
+<body>
+  <header>
+    <div id="where"><span id="src"></span><h1 id="title">Connexion au jury…</h1><b id="step">—</b></div>
+    <div id="status" class="off">Fenêtre jury absente</div>
+  </header>
+  <main>
+    <section id="now" aria-label="Discours du clic actuel"><div id="script"></div></section>
+    <aside>
+      <p id="next"></p>
+      <div class="navigation"><button id="prev" aria-label="Clic précédent">← Précédent</button><button id="advance">Suivant →</button></div>
+      <details id="after"><summary>Aperçu du prochain clic</summary><div id="afterBody"></div></details>
+      <details id="map"><summary>Aller à une étape</summary><ol id="list"></ol></details>
+      <div class="type-controls"><button id="smaller" aria-label="Réduire le texte">A−</button><button id="larger" aria-label="Agrandir le texte">A+</button></div>
+    </aside>
+  </main>
+  <footer><button id="timer" title="Cliquer pour remettre à zéro">00:00</button><span id="pos"></span><progress id="progress" max="1" value="0" aria-label="Progression"></progress><p id="keys" class="keys"></p></footer>
+  <script type="module" src="/src/presenter/presenter.ts"></script>
+</body>
+</html>

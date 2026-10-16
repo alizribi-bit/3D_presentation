@@ -1,0 +1,400 @@
+[
+  {
+    "t": 17.35519999998808,
+    "elapsed": null,
+    "id": "probleme-0",
+    "display": "probleme-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 17.633699999988078,
+    "elapsed": 0.003099999994038427,
+    "id": "probleme-1",
+    "display": "probleme-0",
+    "phase": "exit",
+    "stageOpacity": 0.998032,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 17.927,
+    "elapsed": 0.2964000000059599,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "enter",
+    "stageOpacity": 0.998816,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 18.22719999998808,
+    "elapsed": 0.5965999999940408,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.12,
+      "movement": 0,
+      "settle": 0,
+      "enter": 0.18,
+      "arrival": 0.12,
+      "total": 0.3
+    }
+  },
+  {
+    "t": 18.526300000011922,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 18.838800000011922,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 19.14840000000596,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 19.478400000005962,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 19.76569999998808,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 20.085199999988077,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 20.39140000000596,
+    "elapsed": null,
+    "id": "probleme-1",
+    "display": "probleme-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "probleme-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  }
+]

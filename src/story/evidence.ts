@@ -1,4 +1,9 @@
+import { isDeliveryReveal } from './delivery-layout.ts';
 import rows from '../../content/source/sequences.json';
+import { localReveals } from './reveal.ts';
+import { LocalRevealMotion } from './reveal-motion.ts';
+import { captureSvgFrame, SvgSlideMotion } from './svg-slide-motion.ts';
+import { motion } from '../nav/prefs.js';
 import type { StoryState } from './types.ts';
 interface EvidenceFile { id: string; frames: string[]; }
 const cache = new Map<string, EvidenceFile>();
@@ -20,6 +25,11 @@ export class EvidencePanel {
   readonly element: HTMLDivElement;
   private readonly content: HTMLDivElement;
   private key='';
+  private readonly reveals = new LocalRevealMotion();
+  private readonly svg = new SvgSlideMotion(running => {
+    const status = running ? 'running' : 'idle';
+    if (this.element.dataset['svgMotion'] !== status) this.element.dataset['svgMotion'] = status;
+  });
   constructor(stage: HTMLElement) {
     this.element=document.createElement('div');this.element.id='p-evidence';this.element.className='pane evidence-board';this.element.dataset['panel']='evidence';
     const shadow=this.element.attachShadow({mode:'open'});
@@ -45,10 +55,10 @@ export class EvidencePanel {
   position: absolute;
   width: 1920px;
   height: 1080px;
-  transform: scale(.86);
+  transform: scale(.8);
   transform-origin: 0 0;
-  left: -95px;
-  top: -38px;
+  left: 24px;
+  top: 24px;
   background: transparent;
 }
 .slide {
@@ -78,25 +88,44 @@ export class EvidencePanel {
 .slide.night hr, .slide.night div[style*="border"] {
   border-color: rgba(13, 123, 60, 0.16) !important;
 }
+/* Preserve the accepted text scale; compact only the blank vertical staging space. */
+:host([data-layout="delivery"]) .deck { top: 14px; }
+:host([data-layout="delivery"]) .slide { padding-top: 28px; }
+:host([data-layout="delivery"]) .slide#chaine .art { transform: translateY(-230px); }
+:host([data-layout="delivery"]) .slide#log4j .art { transform: translateY(-190px); }
+:host([data-layout="delivery"]) .slide#log4j .note { top: 660px; }
+.slide#chaine, .slide#log4j { transition: padding-top .45s ease; }
+.slide#chaine .art, .slide#log4j .art { transition: transform .45s ease; }
+.deck { transition: top .45s ease; }
 .notes { display: none !important; }
 [data-no-advance] { pointer-events: none; }
 .dk-frame { border-radius: 20px; }
+@media (prefers-reduced-motion: reduce) { .deck * { animation: none !important; transition: none !important; } }
 `;
     this.content=document.createElement('div');this.content.className='deck';shadow.append(style,this.content);stage.append(this.element);
   }
   show(state: Pick<StoryState,'evidence'>, visible: boolean): void {
+    const animate = visible && !motion.reduced && !document.body.classList.contains('instant');
+    const ref=state.evidence;
+    const key=ref ? `${ref.seq}-${ref.step}` : '';
+    const sameSequence = !!ref && this.key.startsWith(`${ref.seq}-`);
+    const morphSvg = animate && ref && ['chaine', 'log4j'].includes(ref.seq) && key !== this.key && sameSequence;
+    if (morphSvg) this.svg.freeze();
+    const svgBefore = morphSvg ? captureSvgFrame(this.content) : null;
+    if (!animate) { this.reveals.stop(); this.svg.stop(); }
     if (typeof document !== 'undefined') {
       this.element.classList.toggle('quality-light', document.body.classList.contains('quality-light'));
     }
-    const ref=state.evidence;
     this.element.classList.toggle('on',visible&&!!ref);this.element.inert=!visible||!ref;
+    const layout = ref && isDeliveryReveal(ref) ? 'delivery' : 'full';
+    if (this.element.dataset['layout'] !== layout) this.element.dataset['layout'] = layout;
     if(!ref)return;
     const isSplit = ['probleme', 'reponse', 'grille', 'acteurs', 'sommaire'].includes(ref.seq);
     const isWide = ['supervision', 'alerte', 'dashboard', 'journaux', 'grafana'].includes(ref.seq);
     this.element.classList.toggle('comp-split', isSplit);
     this.element.classList.toggle('comp-wide', isWide);
     this.element.classList.toggle('comp-balanced', !isSplit && !isWide);
-    const key=`${ref.seq}-${ref.step}`;if(key===this.key)return;
+    if(key===this.key)return;
     const html=cache.get(ref.seq)?.frames[ref.step];if(!html)throw new Error(`Missing frame ${key}`);
     // Only our generated immutable content is accepted. Defensive check keeps the renderer safe if an export is tampered with.
     const template=document.createElement('template');template.innerHTML=html;
@@ -104,6 +133,14 @@ export class EvidencePanel {
     for(const e of template.content.querySelectorAll('*'))for(const a of e.attributes) {
       if((a.name==='style'&&/url\s*\(\s*["']?\s*(?:https?:|javascript:|\/\/)/i.test(a.value))||/^on/i.test(a.name)||(/^(src|href|xlink:href)$/i.test(a.name)&&/^(https?:|javascript:|\/\/)/i.test(a.value)))throw new Error('Unsafe evidence attribute');
     }
+    // Diff snapshots before the atomic replacement: only a newly visible reveal node gets a
+    // local entrance. Existing headings/images never fade again with the whole slide.
+    const fresh = sameSequence ? localReveals(this.content, template.content) : [];
+    this.reveals.stop(); this.svg.stop();
     this.key=key;this.content.replaceChildren(template.content);this.element.dataset['frame']=key;
+    if (animate) {
+      this.reveals.play(svgBefore ? fresh.filter(node => node.namespaceURI !== 'http://www.w3.org/2000/svg') : fresh);
+      if (svgBefore) this.svg.play(svgBefore, this.content);
+    }
   }
 }

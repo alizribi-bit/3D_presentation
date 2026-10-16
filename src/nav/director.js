@@ -1,15 +1,16 @@
-// The only owner of "where are we": one index into STATES. A key press = go(i ± 1). A press during a transition
-// first lands the transition on its arrival state (settle), then starts the next one: never two transitions at once.
-// Every frame is a pure function of (from, to, t): the same state always ends on the same image.
+// Navigation has one interruptible timeline. Every frame samples absolute time; a new command
+// starts from the rendered camera/actor poses without landing or revealing the interrupted target.
 import * as THREE from 'three';
 import { STATES } from '../content/states.js';
 import { updatePanels, setCover, panelStagePoint } from '../content/panels.js';
-import { shotAt } from '../camera/rig.js';
+import { shotAt, shotDistance, captureShot } from '../camera/rig.js';
 import { buildShots, LIFT } from '../camera/shots.js';
 import { anchors, roadCurve, setFeedback } from '../world/world.js';
 import { motion } from './prefs.js';
-import { routePath } from '../characters/path.ts';
+import { TravelPath, routePath } from '../characters/path.ts';
 import { arrivalWalk } from '../characters/arrival.ts';
+import { transitionTiming, transitionFrame, contentStart } from './timeline.ts';
+import { classifyTransition, visiblePanels } from './transition-plan.ts';
 import { getEvidenceTargetPoint, calculatePointWeight } from '../characters/pose.ts';
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -20,73 +21,141 @@ export class Director {
   constructor({ camera, actors, onState, onFrame, still = false, fast = false }) {
     Object.assign(this, { camera, actors, onState, onFrame, still, fast });
     this.shots = buildShots();
-    this.i = 0; this.tr = null; this.instantFrames = 0;
+    this.i = 0; this.tr = null; this.instantUntil = 0;
+    this.renderedState = STATES[0]; this.renderedPoses = {}; this.contentOpacity = 1;
     this.stateT0 = performance.now() / 1000;
     this.evidencePointCache = new Map();
   }
 
   get state() { return STATES[this.i]; }
   get settled() { return !this.tr; }
-  get moving() { return !!this.tr && performance.now() / 1000 - this.tr.t0 < this.tr.D; }
+  get moving() { return !!this.tr && transitionFrame(this.tr.timing, performance.now() / 1000 - this.tr.t0).phase === 'move'; }
 
-  go(i, { instant = false } = {}) {
+  go(i, { instant = false, intent = 'jump' } = {}) {
     if (!Number.isInteger(i) || !Number.isFinite(i)) return;
     i = clamp(i, 0, STATES.length - 1);
-    if (this.tr) this.settle();
     if (i === this.i && !instant) return;
-    const from = this.i; this.i = i;
-    const to = STATES[i], back = i < from, jump = Math.abs(i - from) > 1;
-    this.stateT0 = performance.now() / 1000;
-    if (instant) { this.tr = null; this.instantFrames = 2; }
+    const from = this.renderedState;
+    const shot = this.camera.userData.lookTarget ? captureShot(this.camera) : this.shots[from.shot];
+    const starts = { ...this.renderedPoses };
+    const to = STATES[i], now = performance.now() / 1000;
+    const previous = this.tr;
+    this.i = i;
+    // Retarget content at the same arrival anchors without restarting the flight, relocation or walk.
+    // Camera alone gets a remaining-time segment from its actually rendered pose.
+    if (!instant && previous && ['travel', 'relocate'].includes(previous.plan.kind) && to.place === previous.to.place
+      && (now - previous.t0 < previous.timing.arrival || shotDistance(shot, this.shots[to.shot]) < 1e-5)
+      && Object.entries(to.actors).every(([name, spec]) => spec.at === previous.to.actors[name].at)) {
+      previous.to = to;
+      const retargetPlan = classifyTransition(previous.from, to, 'next', 1, 1);
+      previous.plan = { ...previous.plan, hiddenPanels: [...new Set([...previous.plan.hiddenPanels, ...retargetPlan.hiddenPanels])] };
+      for (const id of previous.plan.hiddenPanels) {
+        const el = document.getElementById(`p-${id}`);
+        if (el) el.dataset.directed = 'true';
+      }
+      previous.shot = shot; previous.cameraStart = Math.max(0, now - previous.t0 - previous.timing.exit);
+      previous.cameraDuration = Math.max(0, previous.D - previous.cameraStart);
+      previous.lift = 0;
+      this.evidencePointCache.clear();
+      this.notify(to);
+      return;
+    }
+    this.releasePanels();
+    this.stateT0 = now;
+    this.evidencePointCache.clear();
+    if (instant) { this.tr = null; this.instantUntil = now + .05; }
     else {
-      const D = this.fast ? .03 : motion.reduced ? .35 : back || jump ? .8 : to.duration || .9;
-      this.tr = { from: STATES[from], to, t0: performance.now() / 1000, D, back: back || jump, paths: {}, walks: {} };
-      for (const [name, spec] of Object.entries(to.actors)) {
-        if (spec.route && !back && !jump) {
-          this.tr.paths[name] = routePath(roadCurve, anchors[STATES[from].actors[name].at], anchors[spec.at], anchors[`stopT${spec.route.from}`], anchors[`stopT${spec.route.to}`]);
-        }
-        if (spec.walk) {
-          const segs = [[]]; for (const n of spec.walk) n === '|' ? segs.push([]) : segs.at(-1).push(anchors[n].clone());
-          const lens = segs.map(seg => seg.slice(1).reduce((length, p, j) => length + p.distanceTo(seg[j]), 0));
-          this.tr.walks[name] = { segs, lens, total: lens.reduce((x, y) => x + y, 0) };
-        }
+      const lift = LIFT[`${from.shot}>${to.shot}`] ?? 0;
+      const distance = shotDistance(shot, this.shots[to.shot]);
+      const actorDistance = Math.max(0, ...Object.entries(to.actors).map(([name, spec]) =>
+        (starts[name]?.pos ?? anchors[from.actors[name].at]).distanceTo(anchors[spec.at])));
+      const plan = classifyTransition(from, to, intent, distance, actorDistance);
+      const paths = {};
+      for (const [name, spec] of plan.walk ? Object.entries(to.actors) : []) {
+        const start = starts[name]?.pos ?? anchors[from.actors[name].at];
+        const end = anchors[spec.at];
+        if (start.distanceTo(end) < 1e-5) continue;
+        if (from.place && to.place && from.place !== to.place) {
+          paths[name] = routePath(roadCurve, start, end, anchors[`stopT${from.place}`], anchors[`stopT${to.place}`]);
+        } else if (spec.walk && !spec.walk.includes('|') && from.move !== 'travel') {
+          paths[name] = new TravelPath([start, ...spec.walk.slice(1).map(n => anchors[n]), end]);
+        } else paths[name] = new TravelPath([start, end]);
+      }
+      const walkingLength = Math.max(0, ...Object.values(paths).map(path => path.length));
+      const travelLift = plan.kind === 'travel' ? lift : 0;
+      const timing = transitionTiming(shotDistance(shot, this.shots[to.shot], travelLift),
+        plan.walk ? walkingLength : 0, motion.reduced, this.fast, plan.kind, plan.hiddenPanels.length > 0, this.contentOpacity);
+      this.tr = { from, to, shot, starts, t0: now, timing, D: timing.movement, lift: travelLift, paths: plan.walk ? paths : {}, plan,
+        cameraStart: 0, cameraDuration: timing.movement,
+        reduced: motion.reduced, initialOpacity: this.contentOpacity };
+      for (const id of plan.hiddenPanels) {
+        const el = document.getElementById(`p-${id}`);
+        if (el) el.dataset.directed = 'true';
       }
     }
+    this.notify(to);
+  }
+  notify(to) {
     try { history.replaceState(null, '', `#${to.id}`); } catch { /* file:// in some browsers */ }
     this.onState?.(this);
   }
-  next() { this.go(this.i + 1); }
-  prev() { this.go(this.i - 1); }
-  settle() { this.tr = null; this.instantFrames = 2; }
+  next() { this.go(this.i + 1, { intent: 'next' }); }
+  prev() { this.go(this.i - 1, { intent: 'prev' }); }
+  releasePanels() {
+    for (const el of document.querySelectorAll('[data-directed]')) {
+      delete el.dataset.directed; el.style.removeProperty('opacity'); el.style.removeProperty('transform');
+    }
+  }
+  settle() { this.releasePanels(); this.tr = null; this.instantUntil = performance.now() / 1000 + .05; }
 
   // ── per frame ─────────────────────────────────────────────────────────────────────────────────
   frame(now) {
     const tr = this.tr, to = this.state;
-    let t = now - this.stateT0, D = 1, from = to;
-    if (tr) { t = now - tr.t0; D = tr.D; from = tr.from; if (t >= D + (this.fast ? .05 : 2.6)) this.tr = null; }
-    const k = tr ? clamp(t / D) : 1;
-    document.body.classList.toggle('instant', this.instantFrames > 0 || this.fast); if (this.instantFrames > 0) this.instantFrames--;
+    const elapsed = tr ? now - tr.t0 : now - this.stateT0;
+    const timeline = tr ? transitionFrame(tr.timing, elapsed, tr.initialOpacity)
+      : { phase: 'done', opacity: 1, progress: 1, movementTime: 0, complete: true };
+    const outgoing = timeline.phase === 'exit';
+    const display = outgoing ? tr.from : to;
+    const from = tr?.from ?? to, k = timeline.progress;
+    this.contentOpacity = timeline.opacity;
+    this.renderedState = display;
+    document.body.classList.toggle('instant', now < this.instantUntil || this.fast);
 
-    // camera
-    const a = this.shots[from.shot], b = this.shots[to.shot];
-    const lift = tr && !tr.back ? (LIFT[`${from.shot}>${to.shot}`] ?? 0) : 0;
-    shotAt(this.camera, a, b, motion.reduced && tr ? 1 : k, lift);
+    const cameraK = tr ? (tr.cameraDuration ? clamp((timeline.movementTime - tr.cameraStart) / tr.cameraDuration) : k) : 1;
+    shotAt(this.camera, tr?.shot ?? this.shots[to.shot], this.shots[to.shot], cameraK, tr?.lift ?? 0,
+      tr && ['approach', 'object', 'world', 'relocate'].includes(tr.plan.kind) ? 'soft' : 'travel');
     this.camera.updateMatrixWorld(true);
 
-    // panels: what leaves goes at once, what arrives shows after the camera lands (travel) or right away (reveal)
-    const appear = !tr ? 0 : motion.reduced ? 0 : tr.back ? D * .6 : to.move === 'travel' ? D * .96 : from.shot !== to.shot ? D * .82 : .25;
-    const vis = new Set();
-    to.panels.forEach((p, n) => {
-      const lab = /^l0\d$/.test(p) && !from.panels.includes(p) ? n * .22 : 0;
-      if (from.panels.includes(p) || t >= appear + lab) vis.add(p);
-    });
-    setCover(to.cover || 'gone');
-    updatePanels(vis, this.camera, to);
-    this.onFrame?.(vis, to, k, from);
-    setFeedback(to.feedback ? smooth((t - appear - .2) / .8) : from.feedback && tr ? 1 - smooth(t / .4) : 0);
+    // The stage stays stable; only explicitly selected blocking panels use this clock.
+    const stage = document.getElementById('stage');
+    stage.style.opacity = '1'; stage.style.visibility = 'visible'; stage.inert = false;
+    stage.dataset.phase = timeline.phase;
+    stage.dataset.transition = tr?.plan.kind ?? 'content';
+    const vis = tr ? visiblePanels(tr.from.panels, to.panels, tr.plan, timeline.phase, timeline.opacity) : new Set(to.panels);
+    for (const id of tr?.plan.hiddenPanels ?? []) {
+      const el = document.getElementById(`p-${id}`);
+      if (el) { el.style.opacity = String(vis.has(id) ? timeline.opacity : 0); el.style.transform = 'none'; }
+    }
+    if (tr && timeline.phase !== 'enter' && timeline.phase !== 'done' && !outgoing) vis.delete('film-title');
+    setCover(display.cover || 'gone');
+    updatePanels(vis, this.camera, display);
+    this.onFrame?.(vis, display, k, from);
+    const appear = tr ? contentStart(tr.timing, tr.plan.hiddenPanels.length > 0) - tr.timing.exit : 0;
+    const poseTime = tr ? Math.max(0, elapsed - tr.timing.exit) : elapsed;
+    setFeedback(display.feedback ? (outgoing ? 1 : smooth((poseTime - appear) / .8)) : 0);
 
-    // characters
-    for (const [name, actor] of Object.entries(this.actors)) actor.apply(this.pose(name, from, to, tr, t, D, appear), now);
+    for (const [name, actor] of Object.entries(this.actors)) {
+      const pose = outgoing && tr.starts[name] ? tr.starts[name]
+        : this.pose(name, from, to, tr, poseTime, tr?.D ?? 1, appear);
+      this.renderedPoses[name] = pose;
+      actor.apply(pose, now);
+    }
+    if (tr && timeline.complete) {
+      this.tr = null;
+      this.releasePanels();
+      // Keep pointing/reveal time continuous after completion rather than replaying the gesture.
+      this.stateT0 = tr.t0 + contentStart(tr.timing, tr.plan.hiddenPanels.length > 0);
+    }
   }
 
   point(ref) {
@@ -120,8 +189,9 @@ export class Director {
               sx = (rect.left + rect.width / 2 - sRect.left) / s;
               sy = (rect.top + rect.height / 2 - sRect.top) / s;
               foundDom = true;
-              // Surface reveal/layout transitions last at most 0.65 s. Cache only their stable geometry.
-              if (performance.now() / 1000 - this.stateT0 > .7) this.evidencePointCache.set(cacheKey, [sx, sy]);
+              // Hidden recycled panels still have their off-state transform. Cache only the
+              // fully revealed geometry, so pointing cannot retain a travel-phase offset.
+              if (stageEl.dataset.phase === 'done' && evEl.classList.contains('on')) this.evidencePointCache.set(cacheKey, [sx, sy]);
             }
           }
         }
@@ -143,11 +213,11 @@ export class Director {
 
   pose(name, from, to, tr, t, D, appear) {
     const sA = from.actors[name], sB = to.actors[name], still = this.still || /[?&]still/.test(location.search);
-    const end = anchors[sB.at].clone(), start = anchors[sA.at].clone();
+    const end = anchors[sB.at].clone(), start = tr?.starts[name]?.pos.clone() ?? anchors[sA.at].clone();
     const yawTo = (p, q) => Math.atan2(q.x - p.x, q.z - p.z);
     const targetLook = this.target(sB.face, end, to);
     const faceB = yawTo(end, targetLook);
-    const faceA = yawTo(start, this.target(sA.face, start, from));
+    const faceA = tr?.starts[name]?.yaw ?? yawTo(start, this.target(sA.face, start, from));
 
     const pointTarget = sB.point ? this.target(sB.point, end, to) : null;
     const pointW = sB.point ? calculatePointWeight(t, appear) : 0;
@@ -163,48 +233,27 @@ export class Director {
       look: targetLook,
       opacity: 1,
       still,
-      instant: this.instantFrames > 0 || still || motion.reduced
+      instant: performance.now() / 1000 < this.instantUntil || still || tr?.reduced || this.fast
     };
-    if (!tr) return pose;
+    if (!tr || tr.reduced || this.fast || !D) return pose;
 
     const route = tr.paths[name];
-    if (route && !motion.reduced) {
+    if (route) {
       const arrival = arrivalWalk(t, D, route.length), u = arrival.progress;
-      if (arrival.departure) return { ...pose, pos: start, yaw: faceA, opacity: arrival.opacity, pointW: 0, lookW: 0 };
+      if (arrival.departure) return { ...pose, pos: start, yaw: faceA, opacity: arrival.opacity * (tr.starts[name]?.opacity ?? 1), pointW: 0, lookW: 0 };
       const sample = route.sample((arrival.offset + arrival.distance) / Math.max(route.length, 1e-6));
       pose.pos = sample.position; pose.walkDist = arrival.distance; pose.opacity = arrival.opacity;
-      pose.walkW = u > 0 && u < 1 ? 1 : u >= 1 ? 1 - smooth((t - D * .9) / .3) : 0;
+      // Blend the walk only while translating; the distance drives its clip phase.
+      pose.walkW = arrival.walking ? smooth(u / .08) * (1 - smooth((u - .88) / .12)) : 0;
       pose.yaw = u < 1 ? sample.yaw : lerpAngle(sample.yaw, faceB, smooth((t - D * .9) / .45));
       pose.lookW *= u >= 1 ? smooth((t - D * .9) / .5) : 0;
       pose.pointW *= u >= 1 ? smooth((t - appear) / .45) : 0;
       return pose;
     }
-    const forwardWalk = !tr.back && sB.walk && !motion.reduced;
-    if (forwardWalk) {
-      // path: anchor names, '|' = an off-screen jump between two places (done while the camera is high)
-      const { segs, lens, total } = tr.walks[name];
-      const w1 = D * .92;
-      const arrival = arrivalWalk(t, D, total), u = arrival.progress;
-      if (arrival.departure) return { ...pose, pos: start, yaw: faceA, opacity: arrival.opacity, pointW: 0, lookW: 0 };
-      const d = arrival.offset + arrival.distance;
-      pose.opacity = arrival.opacity;
-      let left = d, si = 0; while (si < segs.length - 1 && left > lens[si]) { left -= lens[si]; si++; }
-      const s = segs[si]; let j = 0; while (j < s.length - 2 && left > s[j].distanceTo(s[j + 1])) { left -= s[j].distanceTo(s[j + 1]); j++; }
-      const p0 = s[j], p1 = s[Math.min(j + 1, s.length - 1)], segL = Math.max(1e-6, p0.distanceTo(p1));
-      pose.pos = p0.clone().lerp(p1, clamp(left / segL));
-      const moving = u > 0 && u < 1;
-      pose.walkDist = arrival.distance; pose.walkW = moving ? 1 : u >= 1 ? 1 - smooth((t - w1) / .3) : 0;
-      const yawWalk = yawTo(p0, p1);
-      pose.yaw = u < 1 ? yawWalk : lerpAngle(yawWalk, faceB, smooth((t - w1) / .45));
-      if (segs.length > 1) {   // fade around the jump so no one sees it
-        const dj = lens[0], near = Math.abs(d - dj) / Math.max(.01, total);
-        pose.opacity = clamp(near / .06);
-      }
-      pose.lookW = u >= 1 ? smooth((t - w1) / .5) * pose.lookW : 0;
-    } else if (!start.equals(end)) {
-      // no walk to show (going back, a jump, reduced motion): fade out, move, fade in
+    if (!start.equals(end)) {
       pose.pos = t < D / 2 ? start : end; pose.yaw = t < D / 2 ? faceA : faceB;
-      pose.opacity = clamp(Math.abs(t - D / 2) / (D / 2) * 2 - .2);
+      pose.opacity = t < D / 2 ? (tr.starts[name]?.opacity ?? 1) * (1 - smooth(t / (D / 2)))
+        : smooth((t - D / 2) / (D / 2));
     } else {
       pose.yaw = lerpAngle(faceA, faceB, smooth(t / .5));
       pose.lookW = (sA.face === 'camera' ? 0 : 1) + (pose.lookW - (sA.face === 'camera' ? 0 : 1)) * smooth(t / .5);

@@ -1,0 +1,3143 @@
+{
+  "checks": [
+    {
+      "name": "1920 canonical resting content startup-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance startup-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible startup-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content probleme-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance probleme-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible probleme-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content modele-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance modele-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible modele-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content architecture-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance architecture-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible architecture-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content architecture-2",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance architecture-2",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible architecture-2",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content architecture-3",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance architecture-3",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible architecture-3",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content analyses-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance analyses-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible analyses-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content analyses-3",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance analyses-3",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible analyses-3",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content argocd-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance argocd-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible argocd-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content argocd-2",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance argocd-2",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible argocd-2",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content supervision-1",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance supervision-1",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible supervision-1",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content supervision-3",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance supervision-3",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible supervision-3",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content bilan-2",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance bilan-2",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible bilan-2",
+      "pass": true
+    },
+    {
+      "name": "1920 canonical resting content limites-3",
+      "pass": true
+    },
+    {
+      "name": "1920 bounded local entrance limites-3",
+      "pass": true
+    },
+    {
+      "name": "1920 board stays visible limites-3",
+      "pass": true
+    },
+    {
+      "name": "1920 native intermediate opacity observed",
+      "pass": true
+    },
+    {
+      "name": "1920 subtle translation observed",
+      "pass": true
+    },
+    {
+      "name": "1920 rapid reversal leaves no detached animation",
+      "pass": true
+    },
+    {
+      "name": "1920 M finishes owned entrances",
+      "pass": true
+    },
+    {
+      "name": "1920 reduced motion creates no entrances",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content startup-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance startup-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible startup-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content probleme-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance probleme-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible probleme-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content modele-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance modele-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible modele-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content architecture-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance architecture-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible architecture-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content architecture-2",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance architecture-2",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible architecture-2",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content architecture-3",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance architecture-3",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible architecture-3",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible chaine-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible chaine-2",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible chaine-3",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content analyses-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance analyses-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible analyses-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content analyses-3",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance analyses-3",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible analyses-3",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible log4j-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible log4j-2",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content argocd-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance argocd-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible argocd-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content argocd-2",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance argocd-2",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible argocd-2",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible tracabilite-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible tracabilite-4",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content supervision-1",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance supervision-1",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible supervision-1",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content supervision-3",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance supervision-3",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible supervision-3",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content bilan-2",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance bilan-2",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible bilan-2",
+      "pass": true
+    },
+    {
+      "name": "1366 canonical resting content limites-3",
+      "pass": true
+    },
+    {
+      "name": "1366 bounded local entrance limites-3",
+      "pass": true
+    },
+    {
+      "name": "1366 board stays visible limites-3",
+      "pass": true
+    },
+    {
+      "name": "1366 native intermediate opacity observed",
+      "pass": true
+    },
+    {
+      "name": "1366 subtle translation observed",
+      "pass": true
+    },
+    {
+      "name": "1366 rapid reversal leaves no detached animation",
+      "pass": true
+    },
+    {
+      "name": "1366 M finishes owned entrances",
+      "pass": true
+    },
+    {
+      "name": "1366 reduced motion creates no entrances",
+      "pass": true
+    },
+    {
+      "name": "no exceptions, missing assets or external requests",
+      "pass": true
+    }
+  ],
+  "entrances": [
+    {
+      "width": 1920,
+      "id": "startup-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "probleme-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "modele-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "architecture-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "architecture-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "text",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "text",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "text",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "architecture-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "chaine-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "circle",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "circle",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "chaine-2",
+      "canonical": true,
+      "entrances": [],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "chaine-3",
+      "canonical": true,
+      "entrances": [],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "analyses-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "analyses-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "log4j-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "log4j-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "argocd-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "argocd-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "FIGURE",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "tracabilite-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "SPAN",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "tracabilite-4",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "SPAN",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "supervision-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "supervision-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "bilan-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "LI",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "LI",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "LI",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1920,
+      "id": "limites-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "startup-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "probleme-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "modele-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "architecture-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "architecture-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "text",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "text",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "text",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 96,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "architecture-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "chaine-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "circle",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "circle",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "chaine-2",
+      "canonical": true,
+      "entrances": [],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "chaine-3",
+      "canonical": true,
+      "entrances": [],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "analyses-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "analyses-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "log4j-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "log4j-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "argocd-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "argocd-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "FIGURE",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "tracabilite-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "SPAN",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "tracabilite-4",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "SPAN",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 380,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "supervision-1",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "supervision-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "bilan-2",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "LI",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "LI",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "LI",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    },
+    {
+      "width": 1366,
+      "id": "limites-3",
+      "canonical": true,
+      "entrances": [
+        {
+          "tag": "path",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 0,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "g",
+          "namespace": "http://www.w3.org/2000/svg",
+          "frames": [
+            {
+              "opacity": 0
+            },
+            {
+              "opacity": 1
+            }
+          ],
+          "options": {
+            "duration": 320,
+            "delay": 24,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "DIV",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 48,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        },
+        {
+          "tag": "P",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "frames": [
+            {
+              "opacity": 0,
+              "translate": "0 8px"
+            },
+            {
+              "opacity": 1,
+              "translate": "0 0"
+            }
+          ],
+          "options": {
+            "duration": 300,
+            "delay": 72,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "fill": "backwards"
+          }
+        }
+      ],
+      "boardOpacity": 1,
+      "stageOpacity": 1,
+      "idle": true
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "missing": [],
+  "clockModified": false,
+  "continuousGPUDrawing": false
+}

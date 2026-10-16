@@ -1,0 +1,24 @@
+import {chromium} from '/home/ali/Desktop/zawedni-story-3d/node_modules/playwright-core/index.mjs';
+import {mkdirSync,writeFileSync,renameSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const out='/home/ali/Desktop/zawedni-story-3d/review/animation-diagnostic-2026-10-12/rapid';
+mkdirSync(`${out}/raw`,{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:false,args:['--use-angle=gl','--use-gl=angle','--ignore-gpu-blocklist','--disable-background-timer-throttling','--disable-renderer-backgrounding','--disable-backgrounding-occluded-windows']});
+const context=await browser.newContext({viewport:{width:960,height:540},reducedMotion:'no-preference',recordVideo:{dir:`${out}/raw`,size:{width:960,height:540}}});
+const jury=await context.newPage(),video=jury.video();
+const report={normalSpeed:true,timeManipulated:false,syntheticButtonClicks:true,intervalRequestedMs:65,cases:[],errors:[]};
+jury.on('pageerror',e=>report.errors.push(e.message));
+try{
+ const popup=context.waitForEvent('page');await jury.goto('http://127.0.0.1:4318/?pv=auto#sequence-0',{waitUntil:'domcontentloaded'});const notes=await popup;
+ await jury.waitForFunction(()=>window.__story?.ready,null,{timeout:60000});await notes.waitForFunction(()=>window.__presenter?.cur==='sequence-0');
+ await jury.bringToFront();
+ await jury.evaluate(()=>{window.__rapid={samples:[],commands:[],active:false};const d=__story.director,f=d.frame.bind(d),g=d.go.bind(d);d.frame=t=>{f(t);if(__rapid.active)__rapid.samples.push({t,id:d.state.id,display:d.renderedState.id,phase:document.getElementById('stage').dataset.phase,opacity:d.contentOpacity,camera:d.camera.position.toArray(),guide:d.renderedPoses.guide.pos.toArray(),walk:d.renderedPoses.guide.walkW})};d.go=(i,options)=>{const before={t:performance.now()/1000,id:d.state.id,display:d.renderedState.id,opacity:d.contentOpacity,camera:d.camera.position.toArray(),guide:d.renderedPoses.guide.pos.toArray()};g(i,options);if(__rapid.active)__rapid.commands.push({before,id:d.state.id,t0:d.tr?.t0,timing:d.tr?.timing,initialOpacity:d.tr?.initialOpacity,capturedCamera:d.tr?.shot.pos,capturedGuide:d.tr?.starts.guide?.pos.toArray()})}});
+ async function prepare(id){await jury.evaluate(id=>{__rapid.active=false;__story.go(__story.states.findIndex(s=>s.id===id),{instant:true})},id);await jury.waitForFunction(id=>__story.director.renderedState.id===id&&__story.settled,id);await notes.waitForFunction(id=>__presenter.cur===id,id);await jury.waitForTimeout(800)}
+ async function burst(actions){await notes.evaluate(actions=>new Promise(resolve=>{window.__buttonEvents=[];actions.forEach((action,i)=>setTimeout(()=>{__buttonEvents.push({action,t:performance.now()/1000});document.getElementById(action==='next'?'advance':'prev').click();if(i===actions.length-1)resolve()},i*65))}),actions)}
+ async function finish(id,label){await jury.bringToFront();await jury.waitForFunction(id=>__story.state===id&&__story.settled&&__story.director.renderedState.id===id,id,{timeout:20000});await jury.waitForTimeout(1000);const x=await jury.evaluate(()=>({...__rapid,end:performance.now()/1000}));const events=await notes.evaluate(()=>__buttonEvents);report.cases.push({label,...x,buttonEvents:events});assert.equal(x.samples.at(-1).opacity,1);assert.equal(x.samples.at(-1).walk,0);console.log(label,x.commands.map(c=>({id:c.id,t:c.before.t,opacity:c.initialOpacity,total:c.timing?.total})));}
+ await prepare('sequence-0');await jury.evaluate(()=>{__rapid.active=true;__rapid.samples=[];__rapid.commands=[]});await burst(['next','next','next','prev']);await finish('sequence-2','Clics rapprochés sans déplacement');
+ await prepare('methodologie-1');await jury.evaluate(()=>{__rapid.active=true;__rapid.samples=[];__rapid.commands=[]});await jury.keyboard.press('ArrowRight');await jury.waitForFunction(()=>document.getElementById('stage').dataset.phase==='move');await burst(['next','next','prev','next','prev','prev']);await finish('ch2-0','Rafale pendant une occultation');
+ for(const c of report.cases)for(const cmd of c.commands){if(cmd.capturedCamera)assert.deepEqual(cmd.capturedCamera,cmd.before.camera);if(cmd.capturedGuide)assert.deepEqual(cmd.capturedGuide,cmd.before.guide);assert.equal(cmd.initialOpacity,cmd.before.opacity)}
+ assert.equal(report.errors.length,0);
+}catch(e){report.failure=e.stack;console.error(e)}finally{await context.close();await browser.close();renameSync(await video.path(),`${out}/jury.webm`);writeFileSync(`${out}/report.json`,JSON.stringify(report,null,2)+'\n')}
+if(report.failure)process.exitCode=1;

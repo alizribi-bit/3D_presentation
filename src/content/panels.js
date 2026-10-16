@@ -61,23 +61,26 @@ export const PANELS = {
   secline: { cls: 'sec-line', fixed: [150, 966, 1620], html: `<b>Sécurité :</b> analyses avant publication · accès protégés au déploiement · surveillance pendant l’exploitation` },
 };
 for (const seq of sequences.filter(s => ['architecture','routage','isolation','secrets','chaine','log4j'].includes(s.id))) {
-  PANELS[`story-title-${seq.id}`] = { cls:'title-chip', fixed:[96,64,1050], html:`<p class="kicker">${seq.chapter === 4 ? 'Chaîne CI/CD et déploiement' : 'Architecture et démarche DevSecOps'}</p><h2>${esc(seq.title)}</h2>` };
+  PANELS[`story-title-${seq.id}`] = { cls:'title-chip', fixed:[96,64,1050], html:`<p class="kicker">${seq.chapter === 3 ? 'Chaîne CI/CD et déploiement' : 'Architecture et démarche DevSecOps'}</p><h2>${esc(seq.title)}</h2>` };
 }
 const NODE_OFFSETS = [[-50,35],[0,-5],[0,115],[-70,-25],[-20,20],[-25,-55],[40,-5],[60,20],[20,45]];
 ['Utilisateurs', 'Ingress NGINX', 'site client · administration', 'API', "service d'IA", 'PostgreSQL + volume', 'GitHub', 'ArgoCD', 'ACR'].forEach((text,i) => {
   PANELS[`node-${i}`] = { cls:'node-tag architecture-tag', anchor:()=>anchors[`nodeTag${i}`], offset:NODE_OFFSETS[i], html:esc(text) };
 });
 ['Contrôles', 'Images', 'GitOps'].forEach((text,i) => {
-  PANELS[`gate-${i}`] = { cls:'node-tag', anchor:()=>anchors[`gateTag${i}`], html:esc(text) };
+  PANELS[`gate-${i}`] = { cls:'node-tag delivery-tag', anchor:()=>anchors[`gateTag${i}`], html:esc(text) };
+});
+['Log4j 2.14.1', 'Dependency-Check', 'Publication'].forEach((text,i) => {
+  PANELS[`log4j-gate-${i}`] = { cls:'node-tag delivery-tag log4j-tag', anchor:()=>anchors[`gateTag${i}`], html:esc(text) };
 });
 PANELS['blocked-proof'] = { cls:'board blocked-proof', fixed:[1150,230,680], html:'<p class="kicker">CVE-2021-44228 (Log4Shell)</p><h2>Rien n’est publié.</h2><p>Exemple : pipeline backend, avec la dépendance log4j 2.14.1 ajoutée exprès</p><p>CVE-2021-44228 (Log4Shell) : le pipeline devient rouge</p>' };
 PANELS['delivery-caption'] = { cls:'board', fixed:[200,900,1520], html:'<div class="chain"><div class="link"><b>GitHub</b></div><div class="link"><b>ACR</b></div><div class="link"><b>ArgoCD</b></div><div class="link"><b>AKS</b></div></div>' };
 PANELS['film-title'] = { cls: 'title-chip', fixed: [330, 64, 1470], html: `<p class="kicker">Bilan, perspectives et conclusion · Vidéo</p><h2>Le parcours d'une version, du code au suivi</h2>` };
-PLACES.forEach(p => { PANELS[`chapter-${p.id}`] = { cls: 'chapter-card', fixed: [1150, 85, 670], html: `<p class="kicker">${p.id}</p><h2>${esc(p.title)}</h2><p>${esc(p.line)}</p>` }; });
+PLACES.forEach(p => { PANELS[`chapter-${p.id}`] = { cls: 'chapter-card', fixed: [1150, 85, 670], html: `<p class="kicker">${String(p.chapter).padStart(2, '0')}</p><h2>${esc(p.title)}</h2><p>${esc(p.line)}</p>` }; });
 STAGES.forEach(([, name], i) => { PANELS[`stage${i}`] = { cls: 'stage-tag', anchor: () => anchors[`stageTag${i}`], html: name }; });
 PLACES.forEach(p => {
   PANELS[`l${p.id}`] = { cls: `label${p.below ? ' below' : ''}`, anchor: () => anchors[`label${p.id}`], pin: 64,
-    html: `<i class="pin"></i><div class="tag" style="--role:${ROLE[p.role]}"><span class="num">${p.id}</span><div><b>${p.title}</b><span>${p.line}</span></div></div>` };
+    html: `<i class="pin"></i><div class="tag" style="--role:${ROLE[p.role]}"><span class="num">${String(p.chapter).padStart(2, '0')}</span><div><b>${p.title}</b><span>${p.line}</span></div></div>` };
 });
 
 const els = {};

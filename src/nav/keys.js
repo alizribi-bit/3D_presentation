@@ -5,7 +5,7 @@ export const NAV = {
   ArrowRight: 'next', ' ': 'next', PageDown: 'next',
   ArrowLeft: 'prev', PageUp: 'prev',
   Home: 'home', End: 'end',
-  ...(PROTOTYPE ? {1:'scene:A',2:'scene:B',3:'scene:C',4:'scene:D'} : {0:'home',1:'scene:1',2:'scene:2',3:'scene:3',4:'scene:4',5:'scene:5',6:'scene:6'}),
+  ...(PROTOTYPE ? {1:'scene:A',2:'scene:B',3:'scene:C',4:'scene:D'} : {0:'home',1:'scene:1',2:'scene:2',3:'scene:3',4:'scene:4',5:'scene:5'}),
 };
 export const LOCAL = { f: 'fullscreen', F: 'fullscreen', l: 'quality', L: 'quality', m: 'motion', M: 'motion', n: 'notes', N: 'notes' };
 

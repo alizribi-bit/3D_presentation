@@ -1,0 +1,846 @@
+[
+  {
+    "t": 61.14459999999404,
+    "elapsed": null,
+    "id": "methodologie-1",
+    "display": "methodologie-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "methodologie-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 61.455,
+    "elapsed": 0.007099999994039763,
+    "id": "ch2-0",
+    "display": "methodologie-1",
+    "phase": "exit",
+    "stageOpacity": 0.997426,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "methodologie-1",
+    "evidenceOpacity": 1,
+    "camera": [
+      -25.4,
+      5.4,
+      14.1
+    ],
+    "target": [
+      -26.6,
+      1.5,
+      0.8999999999999999
+    ],
+    "fov": 38,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 61.76369999998808,
+    "elapsed": 0.3157999999821186,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -25.391237415969034,
+      5.420446029405589,
+      14.135363285553543
+    ],
+    "target": [
+      -26.584769794422368,
+      1.4984352528516132,
+      0.9188812822572016
+    ],
+    "fov": 38.00417265906236,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 62.08280000001192,
+    "elapsed": 0.6349000000059632,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -25.162169224384936,
+      5.954938476435146,
+      15.059817058732214
+    ],
+    "target": [
+      -26.186627461430966,
+      1.4575302186401675,
+      1.4124686950753125
+    ],
+    "fov": 38.11325275029289,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 62.36880000001192,
+    "elapsed": 0.9209000000059646,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -24.692933187868753,
+      7.0498225616395755,
+      16.95351963467253
+    ],
+    "target": [
+      -25.371050540819503,
+      1.3737380692622774,
+      2.4235606309018527
+    ],
+    "fov": 38.33669848196726,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 62.678699999988076,
+    "elapsed": 1.2307999999821178,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -23.972227194038656,
+      8.731469880576471,
+      19.862083109772566
+    ],
+    "target": [
+      -24.11839488487671,
+      1.2450405703640457,
+      3.976510450940516
+    ],
+    "fov": 38.67989181236255,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 0.4218514872139858,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 63.82140000000596,
+    "elapsed": 2.3735,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -21.26226590619137,
+      15.05471288555347,
+      30.798712592870544
+    ],
+    "target": [
+      -19.408224075046906,
+      0.7611189118198874,
+      9.81583179737336
+    ],
+    "fov": 39.9703495684803,
+    "guide": [
+      -31.690761712766953,
+      0.34,
+      3.5328466505503924
+    ],
+    "guideOpacity": 0,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 64.1235,
+    "elapsed": 2.6755999999940485,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -20.545823003391224,
+      16.726412992087145,
+      33.6900714505997
+    ],
+    "target": [
+      -18.16297807732284,
+      0.6331826791770043,
+      11.359595671264149
+    ],
+    "fov": 40.31151285552799,
+    "guide": [
+      -17.80844588439973,
+      0.31043491597340456,
+      19.744220950820633
+    ],
+    "guideOpacity": 0.29825169229047016,
+    "walkW": 0.8810729886793406,
+    "walkDist": 0.04853533683386558,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 64.47419999998807,
+    "elapsed": 3.0262999999821147,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -19.71412314901052,
+      18.66704598564212,
+      37.0465744343504
+    ],
+    "target": [
+      -16.717404520899237,
+      0.4846648480375928,
+      13.151710833679715
+    ],
+    "fov": 40.70756040523309,
+    "guide": [
+      -17.96862286189525,
+      0.31728274710035914,
+      20.313025700327373
+    ],
+    "guideOpacity": 1,
+    "walkW": 1,
+    "walkDist": 0.6395026793936439,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 64.7855,
+    "elapsed": 3.3375999999940404,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -18.97586205780025,
+      20.389655198466087,
+      40.02598526673471
+    ],
+    "target": [
+      -15.434236433795672,
+      0.3528325103214729,
+      14.74248770878756
+    ],
+    "fov": 41.059113305809404,
+    "guide": [
+      -18.120498542849983,
+      0.323775684048794,
+      20.852351700932182
+    ],
+    "guideOpacity": 1,
+    "walkW": 1,
+    "walkDist": 1.1998426794151102,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 65.07930000001193,
+    "elapsed": 3.631400000005968,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -18.279102955332938,
+      22.015426437556478,
+      42.837905930263496
+    ],
+    "target": [
+      -14.223202755697725,
+      0.22841124202373897,
+      16.243837679580217
+    ],
+    "fov": 41.39090335460336,
+    "guide": [
+      -18.26383640042982,
+      0.3299036149047352,
+      21.361359021773985
+    ],
+    "guideOpacity": 1,
+    "walkW": 1,
+    "walkDist": 1.72868267943658,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 65.3805,
+    "elapsed": 3.9325999999940393,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -17.59938438468902,
+      23.601436435725617,
+      45.58105587607645
+    ],
+    "target": [
+      -13.041787144816633,
+      0.10703292583732527,
+      17.70846936156294
+    ],
+    "fov": 41.7145788644338,
+    "guide": [
+      -18.410784537596548,
+      0.3361858911935761,
+      21.88318681287425
+    ],
+    "guideOpacity": 1,
+    "walkW": 1,
+    "walkDist": 2.270842679415109,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 65.6395,
+    "elapsed": 4.19159999999404,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -17.20643298410637,
+      24.518323037085132,
+      47.16689545699928
+    ],
+    "target": [
+      -12.358800186661076,
+      0.036863032876138124,
+      18.555186069961266
+    ],
+    "fov": 41.901698578996964,
+    "guide": [
+      -18.49938136313942,
+      0.3399735522494156,
+      22.197803157544737
+    ],
+    "guideOpacity": 1,
+    "walkW": 0.03570398733185365,
+    "walkDist": 2.597717560992707,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 65.96130000001192,
+    "elapsed": 4.513400000005959,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      -17.003242656558598,
+      24.992433801363276,
+      47.98691356460281
+    ],
+    "target": [
+      -12.005636045923273,
+      0.0005790458140348953,
+      18.99301284717731
+    ],
+    "fov": 41.998455877829244,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 2.6,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 66.25209999999404,
+    "elapsed": 4.804199999988086,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "enter",
+    "stageOpacity": 0.119437,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 2.6,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 66.5865,
+    "elapsed": 5.138599999994042,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 2.6,
+    "activePanels": [
+      "p-evidence"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 4.319510898458266,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 4.739510898458266,
+      "total": 5.039510898458266
+    }
+  },
+  {
+    "t": 66.88390000000597,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 67.184,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 67.48240000000597,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 67.7955,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 68.08740000000596,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  },
+  {
+    "t": 68.40169999998808,
+    "elapsed": null,
+    "id": "ch2-0",
+    "display": "ch2-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": true,
+    "evidenceFrame": "ch2-0",
+    "evidenceOpacity": 1,
+    "camera": [
+      -17,
+      25,
+      48
+    ],
+    "target": [
+      -12,
+      0,
+      19
+    ],
+    "fov": 42,
+    "guide": [
+      -18.5,
+      0.34,
+      22.2
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-evidence"
+    ]
+  }
+]

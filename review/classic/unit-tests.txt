@@ -1,0 +1,159 @@
+
+> test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: long camera journeys keep the visible human walk below two metres per second
+ok 1 - long camera journeys keep the visible human walk below two metres per second
+  ---
+  duration_ms: 33.409146
+  ...
+# Subtest: relocation between places occurs while the guide is fully out of frame
+ok 2 - relocation between places occurs while the guide is fully out of frame
+  ---
+  duration_ms: 13.34897
+  ...
+# Subtest: head and neck direction clamps to natural anatomical limits, never flips backwards
+ok 3 - head and neck direction clamps to natural anatomical limits, never flips backwards
+  ---
+  duration_ms: 4.914878
+  ...
+# Subtest: targets behind trigger soft body orientation instead of twisting neck
+ok 4 - targets behind trigger soft body orientation instead of twisting neck
+  ---
+  duration_ms: 0.739007
+  ...
+# Subtest: evidence cards have distinct specific focal targets within screen bounds
+ok 5 - evidence cards have distinct specific focal targets within screen bounds
+  ---
+  duration_ms: 2.517752
+  ...
+# Subtest: pointing is brief on appearance then returns to calm rest pose
+ok 6 - pointing is brief on appearance then returns to calm rest pose
+  ---
+  duration_ms: 0.574945
+  ...
+# Subtest: repeated application produces zero drift and zero accumulation
+ok 7 - repeated application produces zero drift and zero accumulation
+  ---
+  duration_ms: 14.914699
+  ...
+# Subtest: current reference determines counts, order and every exact speech chunk
+ok 8 - current reference determines counts, order and every exact speech chunk
+  ---
+  duration_ms: 9.469459
+  ...
+# Subtest: exported rendered diagrams and images cannot drift from current classic frames
+ok 9 - exported rendered diagrams and images cannot drift from current classic frames
+  ---
+  duration_ms: 53.107375
+  ...
+# Subtest: presenter grouping preserves alternating read passages and speech without reordering
+ok 10 - presenter grouping preserves alternating read passages and speech without reordering
+  ---
+  duration_ms: 0.939083
+  ...
+# Subtest: corrected bilan keeps the accepted read instruction, and architecture/delivery keep all source frames
+ok 11 - corrected bilan keeps the accepted read instruction, and architecture/delivery keep all source frames
+  ---
+  duration_ms: 0.728949
+  ...
+# Subtest: Sequence count and state totals
+ok 12 - Sequence count and state totals
+  ---
+  duration_ms: 4.061603
+  ...
+# Subtest: Chapter 1 extension sequences exist and are ordered after modele and before ch2
+ok 13 - Chapter 1 extension sequences exist and are ordered after modele and before ch2
+  ---
+  duration_ms: 1.556945
+  ...
+# Subtest: Specific sequence step numbers and states
+ok 14 - Specific sequence step numbers and states
+  ---
+  duration_ms: 0.868096
+  ...
+# Subtest: Evidence JSON files exist and have matching frame count for all sequences
+ok 15 - Evidence JSON files exist and have matching frame count for all sequences
+  ---
+  duration_ms: 23.129551
+  ...
+# Subtest: Speech exactness for modified and added sequences
+ok 16 - Speech exactness for modified and added sequences
+  ---
+  duration_ms: 0.950726
+  ...
+# Subtest: only the forward film reveal can start playback automatically
+ok 17 - only the forward film reveal can start playback automatically
+  ---
+  duration_ms: 9.101267
+  ...
+# Subtest: leaving and rewinding restores the native poster, while presenter synchronization preserves playback
+ok 18 - leaving and rewinding restores the native poster, while presenter synchronization preserves playback
+  ---
+  duration_ms: 4.326721
+  ...
+# Subtest: the actual local monitor asset faces the viewer and preserves the original logo proportions
+ok 19 - the actual local monitor asset faces the viewer and preserves the original logo proportions
+  ---
+  duration_ms: 50.694433
+  ...
+# Subtest: all accepted source steps and speech are present once, in order
+ok 20 - all accepted source steps and speech are present once, in order
+  ---
+  duration_ms: 11.038083
+  ...
+# Subtest: read instructions preserve the full accepted quote and surrounding speech
+ok 21 - read instructions preserve the full accepted quote and surrounding speech
+  ---
+  duration_ms: 0.707796
+  ...
+# Subtest: invalid or duplicate source content is rejected
+ok 22 - invalid or duplicate source content is rejected
+  ---
+  duration_ms: 1.488576
+  ...
+# Subtest: chapter entries follow the six locations without skipping chapter 2
+ok 23 - chapter entries follow the six locations without skipping chapter 2
+  ---
+  duration_ms: 1.348554
+  ...
+# Subtest: untrusted channel commands cannot crash navigation or address nonexistent states
+ok 24 - untrusted channel commands cannot crash navigation or address nonexistent states
+  ---
+  duration_ms: 4.303429
+  ...
+# Subtest: travel uses arc distance, clamps progress and follows the road between places
+ok 25 - travel uses arc distance, clamps progress and follows the road between places
+  ---
+  duration_ms: 17.02609
+  ...
+# Subtest: leaving or rewinding the film stops audio and resets playback; rejections are handled
+ok 26 - leaving or rewinding the film stops audio and resets playback; rejections are handled
+  ---
+  duration_ms: 2.443185
+  ...
+# Subtest: late video play resolution cannot restart audio after leaving the scene
+ok 27 - late video play resolution cannot restart audio after leaving the scene
+  ---
+  duration_ms: 4.950075
+  ...
+# Subtest: the same version moves through gates, stops on failure and resumes after correction
+ok 28 - the same version moves through gates, stops on failure and resumes after correction
+  ---
+  duration_ms: 7.066369
+  ...
+# Subtest: manual native playback also rejects a late start after scene exit
+ok 29 - manual native playback also rejects a late start after scene exit
+  ---
+  duration_ms: 1.324414
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1762.54869

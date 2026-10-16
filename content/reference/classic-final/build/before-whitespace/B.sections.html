@@ -1,0 +1,108 @@
+  <section class="slide" id="scrum" data-pos="1.1 2.4">
+    <style>
+      /* batch B: browser frames and the manual-update stamp (slide en-ligne) */
+      #en-ligne .shot { position: absolute; margin: 0; background: var(--card); border: 2px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(16,38,26,.08); }
+      #en-ligne .shot .bar { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; background: #e9efea; border-bottom: 2px solid var(--line); font: 500 20px/1 var(--display); color: var(--muted); }
+      #en-ligne .shot .bar i { width: 13px; height: 13px; border-radius: 50%; background: var(--line); display: inline-block; }
+      #en-ligne .shot .bar span { margin-left: 10px; }
+      #en-ligne .shot img { display: block; width: 100%; height: auto; }
+      #en-ligne .stamp-pos { position: absolute; left: 520px; top: 560px; transform: rotate(-7deg); }
+      #en-ligne .stamp { padding: 22px 40px; border: 6px solid var(--amber); border-radius: 18px; background: rgba(255,255,255,.94); color: var(--amber-text); font: 700 44px/1.15 var(--display); text-align: center; }
+      #en-ligne .stamp small { display: block; font: 500 24px/1.3 var(--display); color: var(--ink); margin-top: 6px; }
+    </style>
+    <p class="kicker">Méthode · Scrum</p>
+    <h2 data-fit="2">Le travail a suivi Scrum : six sprints en trois releases, sur onze semaines</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="docker" data-pos="2.2 2.4" data-transition="dip" data-color="#03140d">
+    <p class="kicker">Release 1 · Sprint 1 · Docker</p>
+    <h2 data-fit="2">Docker met chaque composant dans une image qui marche partout</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="image-ia" data-pos="3.3 2.4">
+    <p class="kicker">Release 1 · Sprint 1 · Taille des images</p>
+    <h2 data-fit="2">L'image IA tombe de plus de 4 Go à 928 Mo</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="terraform" data-pos="4.4 2.4" data-layout="code-side">
+    <p class="kicker">Release 1 · Sprint 2 · Terraform</p>
+    <h2 data-fit="2">Terraform crée toute l'infrastructure Azure à partir de code</h2>
+    <div data-code="hcl" data-file="main.tf" data-numbers data-lines="*|1|5-9">
+      <pre data-code-step>resource "azurerm_kubernetes_cluster" "zawedni" {
+  name                = var.cluster_name
+  resource_group_name = azurerm_resource_group.zawedni.name
+  dns_prefix          = "zawedni"
+  default_node_pool {
+    name       = "default"
+    node_count = 2
+    vm_size    = "Standard_B2s"
+  }
+  identity { type = "SystemAssigned" }
+}</pre>
+    </div>
+    <div class="dk-companion"><svg class="infra" width="520" height="560" viewBox="0 0 520 560"></svg></div>
+    <p class="src">Extrait du rapport, chapitre 5 (état des sprints), une ligne retirée</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="environnements" data-pos="5.5 2.4">
+    <p class="kicker">Release 1 · Sprint 2 · Environnements</p>
+    <h2 data-fit="2">Un seul cluster porte deux environnements : staging et production</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="panne-ip" data-pos="6.6 2.4">
+    <p class="kicker">Release 1 · Sprint 2 · Incident</p>
+    <h2 data-fit="2">Un jour, Azure a perdu notre adresse IP publique</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="en-ligne" data-pos="7.7 2.4">
+    <p class="kicker">Release 1 · Bilan</p>
+    <h2 data-fit="2">La plateforme était en ligne, mais chaque mise à jour restait manuelle</h2>
+    <figure class="shot" style="left:150px; top:350px; width:1000px">
+      <div class="bar"><i></i><i></i><i></i><span>Site client · adresse publique</span></div>
+      <img src="assets/ch5_sec4_interface-client.jpg" alt="Page d'accueil du site client ZAWEDNI">
+    </figure>
+    <figure class="shot" style="left:1190px; top:350px; width:580px">
+      <div class="bar"><i></i><i></i><i></i><span>Site admin</span></div>
+      <img src="assets/ch5_sec4_interface-admin.jpg" alt="Site d'administration ZAWEDNI">
+    </figure>
+    <figure class="shot" style="left:1190px; top:728px; width:580px">
+      <div class="bar"><i></i><i></i><i></i><span>Pods en état Running</span></div>
+      <img src="assets/ch5_sec4_pods-running.jpg" alt="Pods ZAWEDNI en état Running">
+    </figure>
+    <div class="stamp-pos"><div class="stamp" data-step="1" data-anim="pop">Mise à jour manuelle<small>à chaque nouvelle version</small></div></div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="dix-pipelines" data-pos="8.8 2.4" data-transition="dip" data-color="#03140d">
+    <p class="kicker">Release 2 · Sprint 3 · GitHub Actions</p>
+    <h2 data-fit="2">Cinq pipelines suivent chacun un composant, cinq autres surveillent tout le dépôt</h2>
+    <svg class="art world" viewBox="0 0 1920 1080"></svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

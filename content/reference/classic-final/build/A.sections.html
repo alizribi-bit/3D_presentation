@@ -1,0 +1,205 @@
+  <!-- ══ 1 · Contexte et objectifs ═════════════════════════════ -->
+  <section class="slide" id="startup">
+    <style>
+      /* batch A: shared look for the context slides */
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) .cd { position: absolute; box-sizing: border-box; background: var(--card); border: 2px solid var(--line); border-radius: 24px; padding: 28px 34px; }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) .cd h3 { margin: 0; font: 600 34px/1.2 var(--display); color: var(--ink); }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) .tag { display: inline-block; margin: 0 0 12px; padding: 7px 14px; border-radius: 999px; font: 600 20px/1 var(--display); letter-spacing: .08em; background: var(--green-l); color: var(--green-d); }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) ul.pt { margin: 18px 0 0; padding: 0; list-style: none; }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) ul.pt li { position: relative; padding: 0 0 14px 34px; font: 400 27px/1.32 var(--display); color: var(--ink); }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) ul.pt li::before { content: ''; position: absolute; left: 4px; top: 13px; width: 13px; height: 13px; border-radius: 50%; background: var(--green); }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) .cap { position: absolute; margin: 0; font: 400 23px/1.35 var(--display); color: var(--muted); }
+      :is(#startup,#probleme,#reponse,#acteurs,#modele) svg.art text { font-family: var(--display); }
+      #startup .id { left: 150px; top: 300px; width: 760px; min-height: 640px; display: flex; flex-direction: column; }
+      #startup .id ul.pt li { font-size: 30px; padding-bottom: 18px; }
+      #startup .id .brand { display: flex; align-items: center; gap: 20px; margin-bottom: 8px; }
+      #startup .id .brand img { height: 78px; width: auto; }
+      #startup .id .brand b { font: 700 44px/1 var(--display); color: var(--green); letter-spacing: .04em; }
+      #startup .loc { margin-top: auto; display: flex; align-items: center; gap: 22px; padding: 24px 26px; border-radius: 18px; background: var(--green-l); }
+      #startup .loc svg { flex: none; }
+      #startup .loc small { display: block; font: 500 21px/1.2 var(--display); letter-spacing: .06em; color: var(--green-d); }
+      #startup .loc b { display: block; margin-top: 6px; font: 600 31px/1.25 var(--display); color: var(--ink); }
+      #startup .mis { left: 970px; top: 300px; width: 800px; background: var(--green); border-color: var(--green); color: #fff; }
+      #startup .mis .tag { background: #083f1f; color: #fff; }
+      #startup .mis p { margin: 0; font: 600 33px/1.3 var(--display); }
+      #startup .mis small { display: block; margin-top: 14px; font: 400 25px/1.35 var(--display); color: #ffffff; }
+      #startup .me { left: 970px; top: 640px; width: 800px; }
+      #startup .me .row { display: flex; align-items: center; gap: 20px; margin-top: 16px; }
+      #startup .me .row i { flex: none; width: 50px; height: 50px; border-radius: 50%; background: var(--green-l); color: var(--green-d); font: 700 26px/50px var(--display); font-style: normal; text-align: center; }
+      #startup .me .row span { font: 500 29px/1.3 var(--display); color: var(--ink); }
+    </style>
+    <p class="kicker">01 · Contexte et objectifs</p>
+    <h2 data-fit="2">La startup ZAWEDNI</h2>
+    <div class="cd id" data-anim="rise">
+      <div class="brand"><img src="assets/logo-green.png" alt="Logo ZAWEDNI"><b>ZAWEDNI</b></div>
+      <ul class="pt"><li>Startup tunisienne</li><li>Forme juridique : SARL</li><li>Création : décembre 2025</li><li>Fondée par Ali Zribi et Hadil Ben Masseoud</li></ul>
+      <div class="loc" data-anim="fade" data-delay=".35">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#083f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span><small>INSTALLÉE À LA</small><b>Pépinière d’entreprises de Mahdia, Tunisie</b></span>
+      </div>
+    </div>
+    <div class="cd mis" data-step="1" data-anim="rise">
+      <p class="tag">LE SERVICE</p>
+      <p>Relier l’achat local à une démarche RSE.</p>
+      <small>Évaluation, achat local, guide pour une stratégie RSE et suivi des résultats. RSE : responsabilité sociétale des entreprises.</small>
+    </div>
+    <div class="cd me" data-step="1" data-anim="rise" data-delay=".35">
+      <h3>Le projet ZAWEDNI</h3>
+      <div class="row"><i>1</i><span>Une plateforme web et mobile</span></div>
+      <div class="row"><i>2</i><span>Une infrastructure pour son déploiement</span></div>
+      <div class="row"><i>3</i><span>Des contrôles de sécurité et une supervision</span></div>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="probleme">
+    <style>
+      #probleme .k3 { top: 320px; width: 510px; min-height: 560px; padding: 30px 34px; }
+      #probleme .k3 .no { margin: 0; font: 700 56px/1 var(--display); color: var(--green); letter-spacing: -.02em; }
+      #probleme .k3 .ic { width: 64px; height: 64px; border-radius: 18px; background: var(--green-l); display: flex; align-items: center; justify-content: center; margin: 22px 0 26px; }
+      #probleme .k3 p.say { margin: 0; font: 600 36px/1.32 var(--display); color: var(--ink); }
+    </style>
+    <p class="kicker">Contexte et objectifs</p>
+    <h2 data-fit="2">Le problème à résoudre</h2>
+    <div class="cd k3" style="left:150px" data-anim="rise">
+      <p class="no">01</p>
+      <div class="ic"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#083f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 21V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+      <p class="say" data-step="1" data-anim="rise">Les actions RSE restent parfois ponctuelles, comme des dons.</p>
+    </div>
+    <div class="cd k3" style="left:705px" data-anim="rise" data-delay=".1">
+      <p class="no">02</p>
+      <div class="ic"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#083f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+      <p class="say" data-step="1" data-anim="rise" data-delay=".35">Il manque une stratégie claire pour agir et suivre les résultats.</p>
+    </div>
+    <div class="cd k3" style="left:1260px" data-anim="rise" data-delay=".2">
+      <p class="no">03</p>
+      <div class="ic"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#083f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></div>
+      <p class="say" data-step="1" data-anim="rise" data-delay=".7">Il est difficile de comparer les fournisseurs locaux sur leurs pratiques responsables.</p>
+    </div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="reponse">
+    <style>
+      #reponse .st { top: 320px; width: 375px; min-height: 500px; padding: 26px 28px; }
+      #reponse .st h3 { font-size: 33px; color: var(--green-d); }
+      #reponse .st p.say { margin: 18px 0 0; font: 500 28px/1.35 var(--display); color: var(--ink); }
+      #reponse .st.key { background: var(--green); border-color: var(--green); }
+      #reponse .st.key .tag { background: #083f1f; color: #fff; }
+      #reponse .st.key h3, #reponse .st.key p.say { color: #fff; }
+      #reponse .loop { position: absolute; left: 150px; top: 905px; width: 1620px; margin: 0; text-align: center; font: 500 24px/1.3 var(--display); color: var(--green-d); }
+    </style>
+    <p class="kicker">Contexte et objectifs · La solution</p>
+    <h2 data-fit="2">La réponse de ZAWEDNI</h2>
+    <div class="cd st key" style="left:150px" data-anim="rise"><p class="tag">VALEUR AJOUTÉE</p><h3>Grille d’évaluation</h3><p class="say" data-step="1" data-anim="rise">Une grille d’évaluation pour mesurer les pratiques de l’entreprise.</p></div>
+    <div class="cd st" style="left:565px" data-anim="rise" data-delay=".12"><h3>Validation</h3><p class="say" data-step="1" data-anim="rise" data-delay=".3">Une validation pour rendre les fournisseurs évalués visibles sur le marché.</p></div>
+    <div class="cd st" style="left:980px" data-anim="rise" data-delay=".24"><h3>Marché local</h3><p class="say" data-step="1" data-anim="rise" data-delay=".6">Un marché local pour trouver des partenaires et suivre les achats.</p></div>
+    <div class="cd st" style="left:1395px" data-anim="rise" data-delay=".36"><h3>Suivi des résultats</h3><p class="say" data-step="1" data-anim="rise" data-delay=".9">Des recommandations, un guide pour une stratégie RSE et un rapport ESG pour suivre les résultats.</p></div>
+    <svg class="art" viewBox="0 0 1920 1080">
+      <defs><marker id="rp-ar" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#0d7b3c"/></marker></defs>
+      <g fill="none" stroke="#0d7b3c" stroke-width="4" stroke-linecap="round">
+        <path d="M527,410 H559" marker-end="url(#rp-ar)" data-anim="draw" data-delay=".3" data-dur=".3"/>
+        <path d="M942,410 H974" marker-end="url(#rp-ar)" data-anim="draw" data-delay=".42" data-dur=".3"/>
+        <path d="M1357,410 H1389" marker-end="url(#rp-ar)" data-anim="draw" data-delay=".54" data-dur=".3"/>
+        <path d="M1582,822 V850 Q1582,880 1552,880 H368 Q338,880 338,850 V828" marker-end="url(#rp-ar)" stroke-dasharray="10 10" data-step="1" data-anim="draw" data-delay="1.3" data-dur=".9"/>
+      </g>
+    </svg>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="acteurs">
+    <style>
+      #acteurs .ac { top: 320px; min-height: 560px; padding: 32px 40px; }
+      #acteurs .ac h3 { font-size: 42px; }
+      #acteurs .ac ul.pt li { font-size: 34px; padding-bottom: 18px; }
+      #acteurs .ac ul.pt li::before { top: 17px; }
+      #acteurs .ac.adm { border-color: var(--green-d); }
+      #acteurs .ac.adm .tag { background: var(--green-d); color: #fff; }
+      #acteurs .both { position: absolute; left: 40px; right: 40px; bottom: 30px; margin: 0; padding-top: 18px; border-top: 2px solid var(--line); font: 400 23px/1.35 var(--display); color: var(--muted); }
+    </style>
+    <p class="kicker">Contexte et objectifs · Les utilisateurs</p>
+    <h2 data-fit="2">Les acteurs de la plateforme</h2>
+    <div class="cd ac" style="left:150px; width:1000px" data-anim="rise"><p class="tag">ACHETEUR · FOURNISSEUR</p><h3>Entreprises</h3>
+      <ul class="pt"><li>Évaluation</li><li>Consultation des résultats</li><li>Marché local</li><li>Recommandations et rapports</li></ul>
+      <p class="both">Fonctions communes aux deux rôles ; leur distinction prépare les évolutions de la plateforme.</p></div>
+    <div class="cd ac adm" style="left:1210px; width:560px" data-step="1" data-anim="rise"><p class="tag">ZAWEDNI</p><h3>Administrateur</h3>
+      <ul class="pt"><li>Gestion des comptes</li><li>Examen des grilles d’évaluation</li><li>Validation des dossiers</li></ul></div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide" id="modele">
+    <style>
+      /* the real BMC (report, annex B, fig. B.1): whole canvas on the left, the active part outlined and enlarged on the right.
+         Ring and hole boxes = the image boxes (build/crop-v6.py) x 880/1326, minus the 6 px ring border. */
+      #modele .bmc { position: absolute; left: 150px; top: 300px; width: 880px; height: 601px; border: 2px solid var(--line); border-radius: 14px; background: #fff; }
+      #modele .bmc img { display: block; width: 100%; border-radius: 12px; }
+      #modele .bmc .dim { position: absolute; inset: 0; overflow: hidden; border-radius: 12px; }
+      #modele .bmc .hole { position: absolute; border-radius: 12px; box-shadow: 0 0 0 1400px rgba(244,247,242,.66); }
+      #modele .bmc .ring { position: absolute; box-sizing: border-box; border: 6px solid var(--green); border-radius: 14px; }
+      #modele .zm { position: absolute; left: 1080px; top: 300px; width: 690px; height: 700px; display: flex; justify-content: center; align-items: flex-start; }
+      #modele .zm img { display: block; max-width: 690px; max-height: 700px; border: 3px solid var(--green); border-radius: 14px; background: #fff; box-shadow: 0 18px 50px rgba(16,38,26,.12); }
+      #modele .parts { position: absolute; left: 1080px; top: 300px; width: 690px; margin: 0; padding: 0; list-style: none; }
+      #modele .parts li { display: flex; align-items: center; gap: 20px; margin-bottom: 22px; padding: 22px 26px; border-radius: 18px; background: var(--card); border: 2px solid var(--line); font: 600 31px/1.2 var(--display); color: var(--ink); }
+      #modele .parts li i { flex: none; width: 50px; height: 50px; border-radius: 50%; background: var(--green-l); color: var(--green-d); font: 700 26px/50px var(--display); font-style: normal; text-align: center; }
+      /* click 2: the zoom is narrower so a card can sit beside it; the card is an addition for the talk, not a line of the annex */
+      #modele .zm.zv { justify-content: flex-start; }
+      #modele .zm.zv img { max-height: 560px; }
+      #modele .lnk { position: absolute; left: 1411px; top: 578px; width: 32px; height: 5px; background: var(--green); }
+      #modele .gc { position: absolute; left: 1443px; top: 392px; width: 327px; box-sizing: border-box; padding: 24px 26px; border-radius: 22px; background: var(--green); color: #fff; }
+      #modele .gc small { display: block; margin-bottom: 8px; font: 600 21px/1.2 var(--display); letter-spacing: .08em; color: #fff; }
+      #modele .gc b { display: block; margin-bottom: 12px; font: 600 28px/1.2 var(--display); }
+      #modele .gc p { margin: 0; font: 500 27px/1.33 var(--display); }
+    </style>
+    <p class="kicker">Contexte et objectifs · Modèle économique</p>
+    <h2 data-fit="2">Business Model Canvas</h2>
+    <div class="bmc" data-anim="rise" data-lint-skip>
+      <img src="assets/v6-bmc.png" alt="Business Model Canvas de ZAWEDNI : partenaires, activités et ressources clés, propositions de valeur, relation client, canaux, segments de clientèle, coûts et source de revenu">
+      <div class="dim">
+        <div class="hole" style="left:709px; top:13px; width:159px; height:391px" data-step="1" data-out="2" data-anim="fade"></div>
+        <div class="hole" style="left:356px; top:13px; width:179px; height:391px" data-step="2" data-out="3" data-anim="fade"></div>
+        <div class="hole" style="left:439px; top:407px; width:429px; height:180px" data-step="3" data-anim="fade"></div>
+      </div>
+      <div class="ring" style="left:703px; top:7px; width:171px; height:403px" data-step="1" data-out="2" data-anim="ring"></div>
+      <div class="ring" style="left:350px; top:7px; width:191px; height:403px" data-step="2" data-out="3" data-anim="ring"></div>
+      <div class="ring" style="left:433px; top:401px; width:441px; height:192px" data-step="3" data-anim="ring"></div>
+    </div>
+    <p class="cap" style="left:150px; top:918px; width:880px" data-anim="fade" data-delay=".4">Business Model Canvas de ZAWEDNI, annexe B du mémoire</p>
+    <ol class="parts" data-out="1" data-anim="rise" data-stagger=".1" data-delay=".3">
+      <li><i>1</i>Segments de clientèle</li>
+      <li><i>2</i>Propositions de valeur</li>
+      <li><i>3</i>Sources de revenus</li>
+    </ol>
+    <div class="zm" data-step="1" data-out="2" data-anim="fade" data-lint-skip><img src="assets/v6-bmc-segments.png" alt="Segments de clientèle : acheteurs (hôtels, maisons d'hôte) ; vendeurs (producteurs bio, producteurs agroalimentaires, artisans du terroir, fournisseurs agroalimentaires)"></div>
+    <div class="zm zv" data-step="2" data-out="3" data-anim="fade" data-lint-skip><img src="assets/v6-bmc-valeur.png" alt="Propositions de valeur : marketplace B2B, matching des fournisseurs, empreinte carbone, reporting ESG, sécurité et protection des données"></div>
+    <ol class="parts" style="top:540px" data-step="3" data-anim="rise" data-delay=".3"><li><i>3</i>Sources de revenus</li></ol>
+    <div class="zm" data-step="3" data-anim="fade" data-lint-skip><img src="assets/v6-bmc-revenus.png" alt="Source de revenu : abonnements des clients (offre de base gratuite), publicités, services premium"></div>
+    <div class="lnk" data-step="2" data-out="3" data-anim="fade" data-delay=".5"></div>
+    <div class="gc" data-step="2" data-out="3" data-anim="rise" data-delay=".5"><small>COMPLÉMENT</small><b>Grille d’évaluation</b><p>Une grille d’évaluation pour mesurer les pratiques responsables de l’entreprise, avant la validation de son dossier.</p></div>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <!-- ══ 3 · Architecture et démarche DevSecOps ═════════════════════════════ -->
+  <section class="slide" id="devsecops">
+    <style>
+      #devsecops svg.art text { font-family: var(--display); }
+      #devsecops .sec { position: absolute; left: 150px; top: 966px; width: 1620px; margin: 0; text-align: center; font: 400 25px/1.35 var(--display); color: var(--muted); }
+      #devsecops .sec b { color: var(--green-d); font-weight: 600; }
+    </style>
+    <p class="kicker">Architecture et démarche DevSecOps · Démarche</p>
+    <h2 data-fit="2">Le cycle DevSecOps</h2>
+    <svg class="art" viewBox="0 0 1920 1080"></svg>
+    <p class="sec" data-step="1" data-anim="fade" data-delay=".9"><b>Sécurité :</b> analyses avant publication · accès protégés au déploiement · surveillance pendant l’exploitation</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

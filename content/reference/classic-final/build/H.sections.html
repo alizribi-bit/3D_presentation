@@ -1,0 +1,138 @@
+  <!-- 1 · Couverture : step 0 = Bismillah alone ; one click runs the whole cover (≈ 3 s, delays only) -->
+  <section class="slide night" id="couverture" data-transition="fade">
+    <style>
+      #couverture .bw { position: absolute; left: 150px; right: 150px; top: 54px; text-align: center; transform-origin: 50% 0; }
+      #couverture .bism { margin: 0; font: 400 42px/1.4 'Amiri', 'Noto Naskh Arabic', serif; color: var(--on-night); direction: rtl; }
+      #couverture .tile { position: absolute; top: 132px; height: 112px; box-sizing: border-box; background: #fff; border: 2px solid var(--line); border-radius: 20px; display: flex; align-items: center; gap: 16px; padding: 12px 24px; }
+      #couverture .tile img { display: block; height: 88px; width: auto; }
+      #couverture .tile.zw { right: 150px; padding-right: 30px; }
+      #couverture .tile.zw img { height: 72px; }
+      #couverture .tile.zw b { font: 700 36px/1 var(--display); color: var(--green); letter-spacing: .04em; }
+      #couverture .tile.is { left: 150px; }
+      #couverture .tile.is span { font: 500 21px/1.25 var(--display); color: #154e78; max-width: 290px; }
+      #couverture .kick { position: absolute; left: 150px; top: 296px; margin: 0; font: 600 26px/1 var(--display); color: var(--mint); letter-spacing: .14em; }
+      #couverture h1 { position: absolute; left: 150px; top: 340px; width: 1620px; max-width: none; font-size: 60px; line-height: 1.14; }
+      #couverture .who { position: absolute; left: 150px; top: 576px; width: 1620px; display: grid; grid-template-columns: 420px 1fr; column-gap: 40px; }
+      #couverture .who div, #couverture .jury div { border-top: 2px solid var(--line); padding-top: 12px; }
+      #couverture p.l { margin: 0; font: 400 21px/1.3 var(--display); color: var(--on-night-muted); }
+      #couverture .who b, #couverture .jury b { display: block; margin-top: 4px; font: 600 27px/1.3 var(--display); color: var(--on-night); }
+      #couverture .jh { position: absolute; left: 150px; top: 716px; margin: 0; font: 600 25px/1 var(--display); color: var(--mint); }
+      #couverture .jury { position: absolute; left: 150px; top: 760px; width: 1620px; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto; grid-auto-flow: column; column-gap: 40px; row-gap: 18px; }
+      #couverture .jury b { font-size: 25px; }
+      #couverture .yr { position: absolute; right: 150px; bottom: 44px; margin: 0; font: 400 21px/1 var(--display); color: var(--on-night-muted); }
+    </style>
+    <div class="bw"><p class="bism" data-anim="fade" data-dur=".9">بسم الله الرحمن الرحيم</p></div>
+    <div class="tile is" data-step="1" data-anim="rise" data-delay=".45"><img src="assets/logo-isima.png" alt="Logo ISIMa"><span>Institut Supérieur d'Informatique de Mahdia</span></div>
+    <div class="tile zw" data-step="1" data-anim="rise" data-delay=".57"><img src="assets/logo-green.png" alt="Logo ZAWEDNI"><b>ZAWEDNI</b></div>
+    <p class="kick" data-step="1" data-anim="tracking" data-delay=".85" data-dur="1.1">MEMOIRE DE FIN D’ETUDES</p>
+    <h1 data-step="1" data-anim="mask" data-delay="1.05" data-dur=".9" data-fit="3">Conception et déploiement d’une plateforme web et mobile pour l’achat local intégrant une approche DevSecOps</h1>
+    <div class="who" data-step="1" data-anim="rise" data-delay="1.6" data-stagger=".12">
+      <div><p class="l">Élaboré par</p><b>Ali Zribi</b></div>
+      <div><p class="l">Formation</p><b>Master Professionnel Computer Engineering : Expert Réseaux</b></div>
+    </div>
+    <p class="jh" data-step="1" data-anim="fade" data-delay="2.0">Les membres du jury :</p>
+    <div class="jury" data-step="1" data-anim="rise" data-delay="2.1" data-stagger=".1">
+      <div><p class="l">Présidente</p><b>Mme. Ines Ben Hassine</b></div>
+      <div><p class="l">Rapporteure</p><b>Mme. Ben Aichaa Takwa</b></div>
+      <div><p class="l">Encadrante académique</p><b>Mme. Amel Zidi</b></div>
+      <div><p class="l">Co-encadrante académique</p><b>Mme. Gannay Sana</b></div>
+      <div><p class="l">Encadrante professionnelle</p><b>Mme. Hadil Ben Masseoud</b></div>
+    </div>
+    <p class="yr" data-step="1" data-anim="fade" data-delay="2.5">Année universitaire 2026-2027</p>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <!-- 2 · Sommaire : step 0 = the title alone ; one click lists the six parts (≈ 2.5 s, delays only) -->
+  <section class="slide" id="sommaire">
+    <style>
+      #sommaire h2 { transform-origin: 0 50%; }
+      #sommaire .list { position: absolute; left: 150px; top: 300px; width: 1620px; margin: 0; padding: 0; list-style: none; }
+      #sommaire .list li { position: relative; display: grid; grid-template-columns: 130px 700px 1fr; align-items: center; column-gap: 30px; min-height: 104px; box-sizing: border-box; padding: 14px 0; border-bottom: 2px solid var(--line); }
+      #sommaire .list i { font: 700 52px/1 var(--display); font-style: normal; color: var(--green); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+      #sommaire .list b { font: 600 34px/1.2 var(--display); color: var(--ink); }
+      #sommaire .list span { font: 400 25px/1.3 var(--display); color: var(--muted); }
+      #sommaire .list li:first-child { border-top: 2px solid var(--line); }
+      #sommaire .list li::before { content: ''; position: absolute; left: -26px; top: 22px; bottom: 22px; width: 6px; border-radius: 3px; background: var(--green-l); }
+    </style>
+    <p class="kicker" data-step="1" data-anim="fade">Plan de la présentation</p>
+    <h2 data-fit="2">Sommaire</h2>
+    <ol class="list" data-step="1" data-anim="left" data-delay=".15" data-stagger=".36" data-dur=".7">
+      <li><i>01</i><b>Contexte et objectifs</b><span>ZAWEDNI, les objectifs et l’organisation du projet</span></li>
+      <li><i>02</i><b>Développement de la plateforme</b><span>Les choix techniques, la conception et les interfaces</span></li>
+      <li><i>03</i><b>Architecture et démarche DevSecOps</b><span>Les outils, le cluster, le réseau et les secrets</span></li>
+      <li><i>04</i><b>Chaîne CI/CD et déploiement</b><span>Le trajet d’un changement jusqu’au déploiement</span></li>
+      <li><i>05</i><b>Supervision et validation</b><span>Le suivi des services et les résultats des essais</span></li>
+      <li><i>06</i><b>Bilan, perspectives et conclusion</b><span>Les apports du mémoire, ses limites et la suite</span></li>
+    </ol>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <!-- chapter openers: number, title, one line, and the outline with the current chapter lit (chapter 1 opens on the startup slide) -->
+  <section class="slide night" id="ch2">
+    <style>
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .no { position: absolute; left: 150px; top: 300px; margin: 0; font: 700 220px/1 var(--display); color: var(--mint); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) h2 { position: absolute; left: 150px; top: 560px; width: 980px; font-size: 72px; }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .lead { position: absolute; left: 150px; top: 800px; width: 940px; margin: 0; font: 400 30px/1.4 var(--display); color: var(--on-night-muted); }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .toc { position: absolute; left: 1250px; top: 300px; width: 520px; margin: 0; padding: 0; list-style: none; border-left: 2px solid var(--line); }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .toc li { position: relative; padding: 16px 0 16px 34px; font: 500 26px/1.3 var(--display); color: var(--muted); }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .toc li i { font-style: normal; font-family: var(--mono); font-size: 22px; margin-right: 14px; }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .toc li.on { color: var(--on-night); font-weight: 600; }
+      :is(#ch1,#ch2,#ch3,#ch4,#ch5,#ch6) .toc .bar { position: absolute; left: -5px; width: 8px; border-radius: 4px; background: var(--mint); }
+    </style>
+    <p class="kicker">Chapitre 2</p>
+    <p class="no" data-anim="rise">02</p>
+    <h2 data-anim="mask" data-delay=".15" data-fit="2">Développement de la plateforme</h2>
+    <p class="lead" data-anim="fade" data-delay=".5">Les interfaces, l'API, le service d'IA et les données.</p>
+    <ol class="toc" data-anim="fade" data-delay=".3"><li><i>01</i>Contexte et objectifs</li><li class="on"><i>02</i>Développement de la plateforme</li><li><i>03</i>Architecture et DevSecOps</li><li><i>04</i>Chaîne CI/CD et déploiement</li><li><i>05</i>Supervision et validation</li><li><i>06</i>Bilan, perspectives et conclusion</li><span class="bar"></span></ol>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="ch3">
+    <p class="kicker">Chapitre 3</p>
+    <p class="no" data-anim="rise">03</p>
+    <h2 data-anim="mask" data-delay=".15" data-fit="2">Architecture et démarche DevSecOps</h2>
+    <p class="lead" data-anim="fade" data-delay=".5">Où tournent les services, et comment on les protège.</p>
+    <ol class="toc" data-anim="fade" data-delay=".3"><li><i>01</i>Contexte et objectifs</li><li><i>02</i>Développement de la plateforme</li><li class="on"><i>03</i>Architecture et DevSecOps</li><li><i>04</i>Chaîne CI/CD et déploiement</li><li><i>05</i>Supervision et validation</li><li><i>06</i>Bilan, perspectives et conclusion</li><span class="bar"></span></ol>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="ch4">
+    <p class="kicker">Chapitre 4</p>
+    <p class="no" data-anim="rise">04</p>
+    <h2 data-anim="mask" data-delay=".15" data-fit="2">Chaîne CI/CD et déploiement</h2>
+    <p class="lead" data-anim="fade" data-delay=".5">Le trajet d'un changement, des contrôles jusqu'au déploiement.</p>
+    <ol class="toc" data-anim="fade" data-delay=".3"><li><i>01</i>Contexte et objectifs</li><li><i>02</i>Développement de la plateforme</li><li><i>03</i>Architecture et DevSecOps</li><li class="on"><i>04</i>Chaîne CI/CD et déploiement</li><li><i>05</i>Supervision et validation</li><li><i>06</i>Bilan, perspectives et conclusion</li><span class="bar"></span></ol>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="ch5">
+    <p class="kicker">Chapitre 5</p>
+    <p class="no" data-anim="rise">05</p>
+    <h2 data-anim="mask" data-delay=".15" data-fit="2">Supervision et validation</h2>
+    <p class="lead" data-anim="fade" data-delay=".5">Voir ce qui se passe, et prouver que cela fonctionne.</p>
+    <ol class="toc" data-anim="fade" data-delay=".3"><li><i>01</i>Contexte et objectifs</li><li><i>02</i>Développement de la plateforme</li><li><i>03</i>Architecture et DevSecOps</li><li><i>04</i>Chaîne CI/CD et déploiement</li><li class="on"><i>05</i>Supervision et validation</li><li><i>06</i>Bilan, perspectives et conclusion</li><span class="bar"></span></ol>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>
+
+  <section class="slide night" id="ch6">
+    <p class="kicker">Chapitre 6</p>
+    <p class="no" data-anim="rise">06</p>
+    <h2 data-anim="mask" data-delay=".15" data-fit="2">Bilan, perspectives et conclusion</h2>
+    <p class="lead" data-anim="fade" data-delay=".5">Ce qui est réalisé, ses limites et la suite.</p>
+    <ol class="toc" data-anim="fade" data-delay=".3"><li><i>01</i>Contexte et objectifs</li><li><i>02</i>Développement de la plateforme</li><li><i>03</i>Architecture et DevSecOps</li><li><i>04</i>Chaîne CI/CD et déploiement</li><li><i>05</i>Supervision et validation</li><li class="on"><i>06</i>Bilan, perspectives et conclusion</li><span class="bar"></span></ol>
+    <aside class="notes">
+      <p></p>
+    </aside>
+  </section>

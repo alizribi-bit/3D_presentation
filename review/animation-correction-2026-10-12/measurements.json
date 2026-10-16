@@ -1,0 +1,1518 @@
+{
+  "measurements": [
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Texte",
+      "from": "probleme-0",
+      "to": "probleme-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0032999999821186066,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Capture administration",
+      "from": "parcours-app-1",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0020999999940407577,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Nouvelle slide fixe",
+      "from": "startup-1",
+      "to": "probleme-0",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.00309999999404198,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Atelier preuves",
+      "from": "plateforme-2",
+      "to": "sequence-0",
+      "kind": "approach",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 0.6834000000059604,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Cycle 3D",
+      "from": "devsecops-0",
+      "to": "devsecops-1",
+      "kind": "object",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 1.2355000000000018,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Voyage chapitre",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 4.687399999976151,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Atelier sans marche",
+      "from": "ch2-0",
+      "to": "outils-dev-0",
+      "kind": "approach",
+      "movementBudget": 1,
+      "totalBudget": 1,
+      "observedArrivalFromFirstCommand": 1.1776999999880786,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Retour au monde",
+      "from": "retour-0",
+      "to": "retour-1",
+      "kind": "world",
+      "movementBudget": 1.75,
+      "totalBudget": 2.11,
+      "observedArrivalFromFirstCommand": 1.9181999999880759,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Pr\u00e9c\u00e9dent rapide",
+      "from": "ch2-0",
+      "to": "methodologie-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.283200000017871,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0014000000059581907,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0010000000000047748,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-3",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.004500000000007276,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-4",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0025999999940609086,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Rafale au m\u00eame lieu",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 5.192600000023845,
+      "requests": 6,
+      "retainedCommands": 5,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Interruption par retour",
+      "from": "methodologie-1",
+      "to": "methodologie-1",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 3.20539999997618,
+      "requests": 2,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Rafale pendant entr\u00e9e",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 6.710699999988066,
+      "requests": 3,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Rafale sur saut direct",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.429900000005972,
+      "requests": 2,
+      "retainedCommands": 1,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Saut chapitre",
+      "from": "startup-0",
+      "to": "ch6-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.2974999999999852,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Couverture CSS apr\u00e8s voyages",
+      "from": "couverture-0",
+      "to": "couverture-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.004300000011909333,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Film apr\u00e8s relocalisation",
+      "from": "startup-0",
+      "to": "video-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.1875,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Mode r\u00e9duit",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 0,
+      "totalBudget": 0.2,
+      "observedArrivalFromFirstCommand": 0.6554000000059546,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Texte",
+      "from": "probleme-0",
+      "to": "probleme-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0019000000059605782,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Capture administration",
+      "from": "parcours-app-1",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.002500000000001279,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Nouvelle slide fixe",
+      "from": "startup-1",
+      "to": "probleme-0",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.001200000017881564,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Atelier preuves",
+      "from": "plateforme-2",
+      "to": "sequence-0",
+      "kind": "approach",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 0.9522000000178821,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Cycle 3D",
+      "from": "devsecops-0",
+      "to": "devsecops-1",
+      "kind": "object",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 0.8018000000119159,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Voyage chapitre",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 4.900500000000001,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Atelier sans marche",
+      "from": "ch2-0",
+      "to": "outils-dev-0",
+      "kind": "approach",
+      "movementBudget": 1,
+      "totalBudget": 1,
+      "observedArrivalFromFirstCommand": 1.245400000005965,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Retour au monde",
+      "from": "retour-0",
+      "to": "retour-1",
+      "kind": "world",
+      "movementBudget": 1.75,
+      "totalBudget": 2.11,
+      "observedArrivalFromFirstCommand": 2.1014000000059525,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Pr\u00e9c\u00e9dent rapide",
+      "from": "ch2-0",
+      "to": "methodologie-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.195799999982114,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0014999999999929514,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0012999999821232677,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-3",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0010000000000047748,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-4",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0012000000178744585,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Rafale au m\u00eame lieu",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 4.831200000017873,
+      "requests": 6,
+      "retainedCommands": 5,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Interruption par retour",
+      "from": "methodologie-1",
+      "to": "methodologie-1",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 2.476099999994034,
+      "requests": 2,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Rafale pendant entr\u00e9e",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 6.289300000011934,
+      "requests": 3,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Rafale sur saut direct",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.2815000000000225,
+      "requests": 2,
+      "retainedCommands": 1,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Saut chapitre",
+      "from": "startup-0",
+      "to": "ch6-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.0784000000059564,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Couverture CSS apr\u00e8s voyages",
+      "from": "couverture-0",
+      "to": "couverture-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0010999999940395355,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Film apr\u00e8s relocalisation",
+      "from": "startup-0",
+      "to": "video-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.0915999999940595,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "light",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Mode r\u00e9duit",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 0,
+      "totalBudget": 0.2,
+      "observedArrivalFromFirstCommand": 0.4023000000119339,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Texte",
+      "from": "probleme-0",
+      "to": "probleme-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0027999999821179955,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Capture administration",
+      "from": "parcours-app-1",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.002099999994037205,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Nouvelle slide fixe",
+      "from": "startup-1",
+      "to": "probleme-0",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.17419999998807967,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Atelier preuves",
+      "from": "plateforme-2",
+      "to": "sequence-0",
+      "kind": "approach",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 1.013799999982119,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Cycle 3D",
+      "from": "devsecops-0",
+      "to": "devsecops-1",
+      "kind": "object",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 0.6765000000000043,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Voyage chapitre",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 4.8305999999940425,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0.5677962702905752,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Atelier sans marche",
+      "from": "ch2-0",
+      "to": "outils-dev-0",
+      "kind": "approach",
+      "movementBudget": 1,
+      "totalBudget": 1,
+      "observedArrivalFromFirstCommand": 1.5835000000000008,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Retour au monde",
+      "from": "retour-0",
+      "to": "retour-1",
+      "kind": "world",
+      "movementBudget": 1.75,
+      "totalBudget": 2.11,
+      "observedArrivalFromFirstCommand": 2.513899999976161,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Pr\u00e9c\u00e9dent rapide",
+      "from": "ch2-0",
+      "to": "methodologie-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.3409000000059592,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.1530000000000058,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.1422000000178798,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-3",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.1492000000178848,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-4",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.15019999998808942,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Rafale au m\u00eame lieu",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 5.046800000011913,
+      "requests": 6,
+      "retainedCommands": 5,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Interruption par retour",
+      "from": "methodologie-1",
+      "to": "methodologie-1",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 2.618900000005965,
+      "requests": 2,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Rafale pendant entr\u00e9e",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 6.605000000000018,
+      "requests": 3,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Rafale sur saut direct",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.6970000000000027,
+      "requests": 2,
+      "retainedCommands": 1,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Saut chapitre",
+      "from": "startup-0",
+      "to": "ch6-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.3522000000178593,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Couverture CSS apr\u00e8s voyages",
+      "from": "couverture-0",
+      "to": "couverture-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0014000000059866125,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Film apr\u00e8s relocalisation",
+      "from": "startup-0",
+      "to": "video-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 0.9286999999880834,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "case": "Mode r\u00e9duit",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 0,
+      "totalBudget": 0.2,
+      "observedArrivalFromFirstCommand": 0.13900000000001,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Texte",
+      "from": "probleme-0",
+      "to": "probleme-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.002299999982119161,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Capture administration",
+      "from": "parcours-app-1",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.004099999994039649,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Nouvelle slide fixe",
+      "from": "startup-1",
+      "to": "probleme-0",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0032999999821186066,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Atelier preuves",
+      "from": "plateforme-2",
+      "to": "sequence-0",
+      "kind": "approach",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 1.0768000000119216,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Cycle 3D",
+      "from": "devsecops-0",
+      "to": "devsecops-1",
+      "kind": "object",
+      "movementBudget": 0.65,
+      "totalBudget": 0.65,
+      "observedArrivalFromFirstCommand": 0.8515000000000015,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Voyage chapitre",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 5.049199999988076,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Atelier sans marche",
+      "from": "ch2-0",
+      "to": "outils-dev-0",
+      "kind": "approach",
+      "movementBudget": 1,
+      "totalBudget": 1,
+      "observedArrivalFromFirstCommand": 1.3350000000000009,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Retour au monde",
+      "from": "retour-0",
+      "to": "retour-1",
+      "kind": "world",
+      "movementBudget": 1.75,
+      "totalBudget": 2.11,
+      "observedArrivalFromFirstCommand": 2.21220000001788,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Pr\u00e9c\u00e9dent rapide",
+      "from": "ch2-0",
+      "to": "methodologie-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 0.9224000000059647,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.07169999998808407,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-2",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.000999999999990564,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-3",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.07170000001788424,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "T\u00e9l\u00e9phone local",
+      "from": "parcours-app",
+      "to": "parcours-app-4",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.00130000001192343,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Rafale au m\u00eame lieu",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 5.02020000001788,
+      "requests": 6,
+      "retainedCommands": 5,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Interruption par retour",
+      "from": "methodologie-1",
+      "to": "methodologie-1",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 2.6038000000119155,
+      "requests": 2,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Rafale pendant entr\u00e9e",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 4.5,
+      "totalBudget": 4.86,
+      "observedArrivalFromFirstCommand": 6.3359999999999985,
+      "requests": 3,
+      "retainedCommands": 0,
+      "maxWalkWeight": 1,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Rafale sur saut direct",
+      "from": "methodologie-1",
+      "to": "outils-dev-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.0735999999940304,
+      "requests": 2,
+      "retainedCommands": 1,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Saut chapitre",
+      "from": "startup-0",
+      "to": "ch6-0",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.558599999994044,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Couverture CSS apr\u00e8s voyages",
+      "from": "couverture-0",
+      "to": "couverture-1",
+      "kind": "content",
+      "movementBudget": 0,
+      "totalBudget": 0,
+      "observedArrivalFromFirstCommand": 0.0014999999999929514,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Film apr\u00e8s relocalisation",
+      "from": "startup-0",
+      "to": "video-1",
+      "kind": "relocate",
+      "movementBudget": 0.75,
+      "totalBudget": 1.11,
+      "observedArrivalFromFirstCommand": 1.1376999999880866,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    },
+    {
+      "quality": "normal",
+      "viewport": [
+        1366,
+        768
+      ],
+      "case": "Mode r\u00e9duit",
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "kind": "travel",
+      "movementBudget": 0,
+      "totalBudget": 0.2,
+      "observedArrivalFromFirstCommand": 0.44839999997617497,
+      "requests": 1,
+      "retainedCommands": 0,
+      "maxWalkWeight": 0,
+      "minimumStageOpacity": 1
+    }
+  ],
+  "medianSampleInterval": 0.4903500000089398,
+  "approximateSampleFPS": 2.0393596410355226
+}

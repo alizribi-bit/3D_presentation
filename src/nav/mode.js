@@ -1,1 +1,2 @@
-export const PROTOTYPE = typeof location !== 'undefined' && new URLSearchParams(location.search).has('prototype');
+// This edition exposes only the validated 20-minute itinerary.
+export const PROTOTYPE = false;

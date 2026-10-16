@@ -1,0 +1,12 @@
+{
+  "changedExistingFiles": [
+    "src/story/reveal-motion.ts",
+    "src/story/evidence.ts"
+  ],
+  "canonicalFramesAndSpeechUnchanged": true,
+  "cameraWorldItineraryLayoutsUnchanged": true,
+  "newFiles": [
+    "src/story/animation-group.ts",
+    "src/story/svg-slide-motion.ts"
+  ]
+}

@@ -1,41 +1,36 @@
-# Handoff — révision 44, 12 octobre 2026
+# Livraison ZAWEDNI_3D_20MIN
 
-La révision autorisée est implantée dans `/home/ali/Desktop/zawedni-story-3d`, sur le code existant. La présentation classique reste en lecture seule. Le checkpoint sélectif avant modification est `7458d7c` ; les changements Spec Kit et configurations préexistants sans rapport sont préservés hors des commits de cette révision.
+Source 3D réellement lancée : `/home/ali/Desktop/zawedni-story-3d`. Le lanceur historique de `zawedni-video-pfe/zawedni-story-3d` délègue à ce dossier. La copie complète conserve les modifications locales et son historique Git ; aucun retour Git n’a été effectué.
 
-Le plan et les responsabilités agy1/agy2 sont dans `docs/PLAN-44.md`. Les contributions sont terminées et ont été revues par le coordinateur. Celui-ci a corrigé l’inclinaison du cycle et de l’architecture, l’accumulation des poses animées, les textes à lire, les diagrammes, les trajets visibles, les retours vidéo et la provenance. Les règles temporaires des comptes agy ont été restaurées. Les rapports des travailleurs décrivent leurs contributions ; `docs/REVIEW.md` fait foi pour les vérifications intégrées.
+Source du contenu : `/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN`, état final local de 35 slides. L’archive POUR_IA de 28 slides n’est pas utilisée. Le modèle de discours est `build/content_20min.py`, vérifié contre les notes intégrées du deck exécuté avant export. Les mêmes fichiers et assets sont figés dans `content/reference/classic-final/` pour rendre la copie autonome.
 
-## Contenu et interface
+Avant modification : `docs/PLAN-ADAPTATION-20MIN.md`. Correspondance finale : `docs/CORRESPONDANCE-COURTE.md`, `docs/CORRESPONDANCE.json`. Notes actives : `docs/SCRIPT-ACTUEL.md`, générées depuis le même parcours typé que le présentateur. 86 états, aucune avance supplémentaire.
 
-44 séquences, 70 révélations internes, 114 états et 113 pressions Suivant du début à la fin. Les trois séquences académiques suivent `modele` et précèdent `ch2`, dans le premier lieu. Six chapitres et six lieux sont conservés. `src/story/itinerary.ts` définit les états ; `content/source/sequences.json` définit les discours actifs.
+Zones : suppression du développement, identifiant stable `02` ; conservation de l’architecture, identifiant stable `03`, nouveau chapitre éditorial 2. Les ouvertures `ch1,ch3,ch4,ch5,ch6` suivent les cinq chapitres. Les anciennes scènes non retenues et leurs exports servis sont retirés. Le BMC garde deux états ; aucun focus revenu. Caméra fixe dans chaque construction locale, sauf le retour final au monde.
 
-Le diagramme technique Entreprise/API Spring Boot/PostgreSQL/Administrateur est un SVG en trois états, avec lignes de vie et alternative d’accès contrôlé. Le parcours des captures comporte cinq états ; les deux états d’administration montrent une seule image, sans téléphone ni APK. L’isolation utilise un tableau propre à quatre colonnes, fidèle aux manifestes staging lus localement. Alerte, validation, startup, plan et conclusion reprennent les formulations acceptées. Le moteur conserve `[lire]` et chaque phrase est contrôlée dans son état projeté.
+L’animation corrigée actuelle de l’original est préservée : navigation interruptible depuis la pose affichée, fondu réservé aux panneaux gênant un vrai déplacement, marche terminale à vitesse bornée. L’adaptation ajoute la comparaison des révélations SVG et des captures pour animer leurs seuls éléments nouveaux. Aucun schéma converti en image.
 
-La capture réelle `public/assets/deck/admin-envoi-grille.png` a été obtenue depuis l’application locale, avec les images Docker existantes et une base de démonstration isolée. Elle montre la modale « Envoyer le Questionnaire » et le bouton « Envoyer la Grille CSR ». Aucune attribution n’a été soumise, aucune réponse n’a été simulée, aucune donnée de production n’a été modifiée. Les conteneurs de capture sont arrêtés. Provenance et empreinte : `content/revision-assets.json`, contexte complet : `review/revision/admin-envoi-grille-full.png`.
+Lancement : `/home/ali/Desktop/ZAWEDNI_3D_20MIN/present.sh`. Construction dans cette copie : `npm run build`. Serveur 4320 et profil Chrome propres. Voir `README.md`, `docs/VERIFICATION-20MIN.md` et `docs/DUREE-20MIN.md` pour les résultats, les hypothèses et les limites matérielles.
+# Dernier ajustement : chapitre 3
 
-Le thème est clair avec verre blanc translucide, texte opaque et vert original #0d7b3c. Le mode léger désactive le flou. Le cycle et l’architecture font face au spectateur ; le cadrage de livraison est conservé. Les poses du mixer sont restaurées avant les rotations procédurales, le regard est borné et lissé, le pointage vise le contenu visible puis cesse. Les longs déplacements de caméra montrent une courte marche locale à l’arrivée.
+Disposition confirmée : slide en haut, convoyeur 3D en bas pour `chaine-1..3` et `log4j-1..2`. Retour au grand tableau sur la slide suivante. Le discours, les 86 états et les 85 avances restent identiques à la base acceptée sauvegardée dans `.backups/chapter3-validated-base/`. Les 81 autres états sont identiques à cette base.
 
-Le film final local de 90 secondes et son unique piste audio sont inchangés. Le lecteur natif permet pause, reprise et lecture de secours ; sortie, retour et rechargement arrêtent/rembobinent la lecture. Le présentateur reste sans média ni WebGL.
+Build actuel : `30fd6ccf027f4abe`. 50 tests, 229 contrôles ciblés aux deux résolutions, 192 contrôles du parcours complet et 14 contrôles vidéo réussis. Voir `docs/VERIFICATION-CHAPITRE3.md` et `docs/PLAN-CHAPITRE3.md`. Le rapport de la livraison précédente ci-dessous décrit la base avant cet ajustement.
 
-## Lancement et livraison
+# Polissage des animations des slides
 
-`./present.sh` fonctionne depuis tout répertoire, attend le serveur du build local puis ouvre jury et présentateur. Port par défaut 4318 ; `--swap` inverse les placements, `--prototype` donne accès au prototype conservé. Python 3 et Chrome doivent être présents ; aucune installation ou téléchargement n’est nécessaire pour présenter le build préparé. `ZS3D_PORT` et `ZS3D_CHROME_PROFILE` permettent une configuration locale.
+Dernier ajustement : entrées locales douces, décalage plafonné à 96 ms, mouvement HTML de 8 px et aucun déplacement des coordonnées SVG. Les cadres, la caméra, le monde et l’itinéraire du chapitre 3 restent identiques. Les 86 états et 85 avances sont conservés. Voir `docs/ANIMATIONS-SLIDES.md` et `review/slide-polish/`. Base précédente sauvegardée dans `.backups/slide-polish-accepted-base/`.
 
-Le serveur ancien sur 4317 appartient à une copie sous le projet classique : ne pas l’arrêter ni le reconstruire. Le serveur de validation de cette révision sert `dist/` sur 4318.
+# Dernière correction : lignes du chapitre 3
 
-L’estimation est **24,0 minutes** à 125 mots/minute, plage **22,1–26,5 minutes** à 140–110 mots/minute. Elle comprend 2 250 mots, les transitions, les pauses de lecture et le film. Aucune phrase n’a été supprimée pour compenser les animations. `docs/DURATION.json` expose le calcul ; une répétition orale chronométrée reste à faire.
+Les changements des SVG de `chaine` et `log4j` sont désormais animés : trait progressif d’une seconde, repères synchronisés, coude conservé, arrêt puis reprise Log4j, compaction du schéma lissée. Les effets sont natifs et ne réécrivent aucun attribut canonique. Disposition haut/bas, caméra, monde, notes, contenu, 86 états et 85 avances conservés. Voir `docs/LIGNES-CHAPITRE3.md` et `review/chapter3-lines/`. Base précédente : `.backups/chapter3-line-base/`.
 
-`docs/SCRIPT-44.md` contient le discours synchronisé complet, `PRESENTER.md` les commandes, `docs/CAPTURES.md` les sources, `docs/FICHE-PRIVEE.md` les périmètres techniques. La provenance v7 est conservée dans `content/history/v7`, la nouvelle révision dans `content/revision`. Ne pas relancer l’ancien import de contenu : il annulerait les corrections locales. Utiliser `node scripts/revise-content.mjs` pour régénérer les cadres actifs.
 
-## Vérification
 
-Voir `docs/REVIEW.md` et `review/revision/index.html` pour les résultats, captures et l’enregistrement à vitesse normale. Les tests unitaires, le typage des modules TypeScript, le build et les contrôles de contenu/provenance passent. Le JavaScript historique conserve `checkJs: false` ; ce projet n’a pas été entièrement converti en TypeScript.
+## Discours synchronisé depuis la classique actuelle
 
-La QA Chrome couvre les deux résolutions 1920×1080 et 1366×768. Elle ne remplace ni un essai sur deux écrans physiques, ni l’écoute réelle du son, ni une vérification du cluster. Les mesures GPU et leurs limites sont rapportées séparément. Les licences locales des modèles, fontes et runtime accompagnent la livraison.
+Seul le discours a été actualisé depuis `/home/ali/Desktop/zawedni-video-pfe/ZAWEDNI_CLASSIQUE_20MIN/build/content_20min.py`. Les 35 slides et 86 états ont été comparés par ID et clic ; quatre passages différaient encore : ouverture, outils d’infrastructure, tests à l’entrée et au clic. Les autres passages restent exacts. Le texte est synchronisé dans les notes natives et `docs/SCRIPT-ACTUEL.md`.
 
-## Changement de référence détecté pendant la session
+Les frames, captures, caméra, parcours, animations, film et clics 3D sont inchangés. La référence visuelle figée `content/reference/classic-final/` est préservée. Le discours actuel a son instantané indépendant `content/reference/speech-content_20min.py` et son empreinte `speechSource` dans le manifeste. `sync:classic` reste une réimportation complète de l’ancienne référence figée, pas une commande de mise à jour du seul discours.
 
-Le contrôle optionnel `node scripts/check-provenance.mjs --classic-readonly` détecte désormais quatre différences dans les fichiers actifs classiques (deck.html, script_rows.py, soutenance.zip et soutenance-v9.zip), datées de 12:59–13:25 UTC le 12 octobre. Cette tâche n’a écrit aucun de ces fichiers. Le snapshot et les empreintes de départ restent conservés : ne pas les remplacer pour faire passer le contrôle, ni restaurer les fichiers classiques. Détails : `review/revision/classic-drift.json`. Les contrôles des sources historiques et des assets locaux de la révision 3D passent.
-
-## Résultats de livraison
-
-25/25 tests unitaires ; 35/35 contrôles complets et 38/38 contrôles ciblés à chacune des résolutions. Lecteur natif : 7/7 ; prototype conservé : 21/21. Archive extraite : tous les hashes du manifeste vérifiés et 6/6 contrôles Chrome sur serveur distinct. GPU Intel UHD : moyennes de 44,4–59,2 FPS normal et 42,9–52,9 FPS léger ; mesures headless, navigateurs de QA séquentiels. L’extrait de revue fait 60 secondes, sans accélération ni piste sonore ; le film final original conserve son audio.
+Build reconstruit ; 55 tests TypeScript et 2 tests serveur réussis. Durée estimée du script classique actuellement lu : 19:06 à 110 mots/min, film et pauses inclus, pas une répétition chronométrée. Vérification dans `review/speech-sync/`.

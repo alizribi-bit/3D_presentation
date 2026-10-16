@@ -1,0 +1,90 @@
+{
+  "normalSpeed": true,
+  "audioRecorded": false,
+  "notesDelay": 21.600000000000023,
+  "editing": "Cuts between cases only; no acceleration, no slowed playback, no reconstructed 3D frames.",
+  "clips": [
+    {
+      "from": "sommaire-1",
+      "to": "startup-0",
+      "start": 45.31269999998808,
+      "end": 59.75809999999404
+    },
+    {
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "start": 80.59150000000001,
+      "end": 88.16719999998809
+    },
+    {
+      "from": "ch2-0",
+      "to": "outils-dev-0",
+      "start": 104.93100000000001,
+      "end": 111.20739999997616
+    },
+    {
+      "from": "outils-dev-0",
+      "to": "ch2-0",
+      "start": 116.37839999997617,
+      "end": 122.58109999999404
+    },
+    {
+      "from": "parcours-app-4",
+      "to": "ch3-0",
+      "start": 149.77409999999404,
+      "end": 158.46869999998808
+    },
+    {
+      "from": "secrets-3",
+      "to": "ch4-0",
+      "start": 244.51309999999404,
+      "end": 253.37
+    },
+    {
+      "from": "tracabilite-4",
+      "to": "ch5-0",
+      "start": 286.151599999994,
+      "end": 294.40169999998807
+    },
+    {
+      "from": "validation-1",
+      "to": "ch6-0",
+      "start": 325.7438999999761,
+      "end": 333.70639999997616
+    },
+    {
+      "from": "methodologie-1",
+      "to": "ch2-0 → interruption → methodologie-1",
+      "start": 420.58759999999404,
+      "end": 427.68769999998807
+    }
+  ],
+  "shortClips": [
+    {
+      "from": "methodologie-1",
+      "to": "ch2-0",
+      "start": 14.44540000000596,
+      "end": 22.021099999994036
+    },
+    {
+      "from": "ch2-0",
+      "to": "outils-dev-0",
+      "start": 22.021099999994036,
+      "end": 28.297499999970185
+    },
+    {
+      "from": "outils-dev-0",
+      "to": "ch2-0",
+      "start": 28.297499999970185,
+      "end": 34.500199999988055
+    },
+    {
+      "from": "methodologie-1",
+      "to": "ch2-0 → interruption → methodologie-1",
+      "start": 68.26429999998216,
+      "end": 75.36439999997619
+    }
+  ],
+  "shortDuration": 27.154899999976124,
+  "duration": 75.36439999997623
+}

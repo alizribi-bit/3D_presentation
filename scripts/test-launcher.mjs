@@ -6,6 +6,7 @@ import { execFileSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 const temp = mkdtempSync(path.join(tmpdir(), 'zs3d-launch-'));
 const launcher = new URL('../present.sh', import.meta.url).pathname;
+const build = JSON.parse(readFileSync(new URL('../dist/build-info.json', import.meta.url), 'utf8')).buildId;
 mkdirSync(`${temp}/bin`);
 const executable = (name, body) => writeFileSync(`${temp}/bin/${name}`, '#!/usr/bin/env bash\n' + body, { mode: 0o755 });
 executable('google-chrome', 'printf "%s\\n" "$@" > "$ZS3D_LAUNCH_LOG"\n');
@@ -15,7 +16,6 @@ const cases = [
   { args: [], layout: 'dual', position: '1920,0', presenter: 'pv=0,0,1920,1080' },
   { args: ['--swap'], layout: 'dual', position: '0,0', presenter: 'pv=1920,0,1366,768' },
   { args: [], layout: 'single', position: null, presenter: 'pv=auto' },
-  { args: ['--prototype'], layout: 'dual', position: '1920,0', presenter: 'prototype&pv=0,0,1920,1080' },
 ];
 try {
   for (const [i, item] of cases.entries()) {
@@ -28,9 +28,11 @@ try {
       try { flags = readFileSync(log, 'utf8'); break; } catch { await new Promise(resolve => setTimeout(resolve, 50)); }
     }
     assert.ok(flags?.includes(item.presenter));
+    assert.ok(flags.includes(`/?build=${build}&${item.presenter}`), 'launcher opens the verified build URL');
     if (item.position) assert.ok(flags.includes(`--window-position=${item.position}`));
     else assert.ok(flags.includes('--start-maximized'));
   }
   assert.throws(() => execFileSync('/bin/bash', [launcher, '--invalid'], { cwd: tmpdir(), stdio: 'pipe' }));
-  console.log('PASS launcher from /tmp: dual screens, swap, single screen, prototype and invalid flags; geometry simulated, no physical screen test.');
+  assert.throws(() => execFileSync('/bin/bash', [launcher, '--prototype'], { cwd: tmpdir(), stdio: 'pipe' }));
+  console.log('PASS launcher from /tmp: current build URL, dual screens, swap, single screen and invalid flags; geometry simulated.');
 } finally { rmSync(temp, { recursive: true, force: true }); }

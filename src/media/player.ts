@@ -17,8 +17,10 @@ export class FilmPlayer {
     this.element.addEventListener('pointerup',()=>setTimeout(()=>{const active=document.activeElement;if(active instanceof HTMLElement&&this.element.contains(active))active.blur();},0));
     this.element.append(this.video,this.button);stage.append(this.element);this.lifecycle=new VideoLifecycle(this.video);
   }
-  show(state: Pick<StoryState,'media'>, autoplay: boolean): void {
-    this.element.hidden=!state.media;this.element.inert=!state.media;
-    void this.lifecycle.enter(state.media?.step??null,autoplay);
+  suspend(): void { this.video.pause(); }
+  show(state: Pick<StoryState,'media'>, autoplay: boolean, visible = true): void {
+    const media = visible ? state.media : undefined;
+    this.element.hidden=!media;this.element.inert=!media;
+    void this.lifecycle.enter(media?.step??null,autoplay);
   }
 }

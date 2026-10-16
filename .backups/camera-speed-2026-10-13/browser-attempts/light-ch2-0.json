@@ -1,0 +1,84 @@
+{
+  "active": false,
+  "samples": [
+    {
+      "time": 24.87190000000596,
+      "phase": "done",
+      "walk": 0,
+      "opacity": 1,
+      "distance": 2.6,
+      "projected": [
+        -0.24426330032690952,
+        -0.18511488928009798,
+        0.9839214615474777
+      ],
+      "heightPixels": 35.76788411654862,
+      "onScreen": true,
+      "stageOpacity": "1",
+      "evidence": true,
+      "camera": [
+        -17,
+        25,
+        48
+      ]
+    },
+    {
+      "time": 32.0405,
+      "phase": "done",
+      "walk": 0,
+      "opacity": 1,
+      "distance": 0,
+      "projected": [
+        -0.24426330032690952,
+        -0.18511488928009798,
+        0.9839214615474777
+      ],
+      "heightPixels": 35.76788411654862,
+      "onScreen": true,
+      "stageOpacity": "1",
+      "evidence": true,
+      "camera": [
+        -17,
+        25,
+        48
+      ]
+    },
+    {
+      "time": 32.079,
+      "phase": "done",
+      "walk": 0,
+      "opacity": 1,
+      "distance": 0,
+      "projected": [
+        -0.24426330032690952,
+        -0.18511488928009798,
+        0.9839214615474777
+      ],
+      "heightPixels": 35.76788411654862,
+      "onScreen": true,
+      "stageOpacity": "1",
+      "evidence": true,
+      "camera": [
+        -17,
+        25,
+        48
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "id": "ch2-0",
+      "kind": "travel",
+      "timing": {
+        "exit": 0.16,
+        "movement": 2.25,
+        "settle": 0,
+        "enter": 0.2,
+        "arrival": 2.41,
+        "total": 2.6100000000000003
+      },
+      "t0": 21.0645,
+      "retained": false
+    }
+  ]
+}

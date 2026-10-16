@@ -5,7 +5,7 @@
 # Préparation, une seule fois et avec Internet : npm install && npm run build   (voir PRESENTER.md)
 set -eu
 DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
-PORT="${ZS3D_PORT:-4318}"
+PORT="${ZS3D_PORT:-4320}"
 if ! [[ "$PORT" =~ ^[0-9]+$ ]] || (( PORT < 1024 || PORT > 65535 )); then
   echo "ZS3D_PORT doit être un port compris entre 1024 et 65535."
   exit 2
@@ -15,29 +15,38 @@ SWAP=; MODE_QUERY=
 for arg in "$@"; do
   case "$arg" in
     --swap) SWAP=1 ;;
-    --prototype) MODE_QUERY="prototype&" ;;
-    *) echo "Usage: $0 [--swap] [--prototype]"; exit 2 ;;
+    *) echo "Usage: $0 [--swap]"; exit 2 ;;
   esac
 done
-LOG="${XDG_RUNTIME_DIR:-/tmp}/zawedni-story-3d-server.log"
+LOG="${XDG_RUNTIME_DIR:-/tmp}/ZAWEDNI_3D_20MIN-server.log"
 
-if [ ! -f "$DIR/dist/index.html" ] || [ ! -f "$DIR/dist/presenter.html" ]; then
+if [ ! -f "$DIR/dist/index.html" ] || [ ! -f "$DIR/dist/presenter.html" ] || [ ! -f "$DIR/dist/build-info.json" ]; then
   echo "La version de présentation n'est pas construite. Une seule fois, avec Internet :"
   echo "  cd \"$DIR\" && npm install && npm run build"
   exit 1
 fi
 
+# Refuse a stale build before opening the jury. Checks also work in the extracted standalone archive.
+python3 "$DIR/scripts/check-build.py" "$DIR" || { echo "Reconstruisez le projet 3D : cd \"$DIR\" && npm run build"; exit 1; }
+
 # 1 · serveur local : réutilisé s'il est déjà lancé (fichier témoin), sinon démarré depuis dist/
-ours() { curl -fsS -m 1 "$URL/index.html" 2>/dev/null | cmp -s - "$DIR/dist/index.html"; }
+ours() { curl -fsS -m 1 "$URL/build-info.json" 2>/dev/null | cmp -s - "$DIR/dist/build-info.json" && curl -fsSI -m 1 "$URL/media/zawedni-devsecops.mp4" 2>/dev/null | python3 -c 'import sys; sys.exit(0 if any(line.lower().startswith("accept-ranges: bytes") for line in sys.stdin) else 1)'; }
 if ! ours; then
   if curl -s -m 1 -o /dev/null "$URL/"; then
     echo "Le port $PORT est déjà pris par une autre application. Choisissez un port libre avec ZS3D_PORT."
     exit 1
   fi
-  nohup python3 -m http.server "$PORT" --bind 127.0.0.1 --directory "$DIR/dist" >"$LOG" 2>&1 &
+  nohup python3 -B "$DIR/scripts/serve.py" --port "$PORT" --directory "$DIR/dist" >"$LOG" 2>&1 &
   for _ in $(seq 50); do ours && break; sleep 0.2; done
   ours || { echo "Le serveur local ne répond pas (journal : $LOG)."; exit 1; }
 fi
+echo "Projet servi : $DIR/dist · $URL · mode ${MODE_QUERY:-complet}"
+BUILD_ID=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["buildId"])' "$DIR/dist/build-info.json")
+echo "Build : $BUILD_ID"
+# A dedicated Chrome profile retains its HTML cache across launches. A new build
+# must have a new document URL so it cannot load an older set of hashed assets.
+MODE_QUERY="build=$BUILD_ID&"
+[ "${ZS3D_NO_BROWSER:-0}" = 1 ] && exit 0
 
 # 2 · écrans : l'écran intégré (eDP/LVDS) reçoit les notes, l'autre la présentation
 geo() { xrandr --query 2>/dev/null | awk -v want="$1" '/ connected/ { isint = ($1 ~ /^(eDP|LVDS|DSI)/); if ((want == "int") == isint && match($0, /[0-9]+x[0-9]+\+-?[0-9]+\+-?[0-9]+/)) { print substr($0, RSTART, RLENGTH); exit } }'; }
@@ -45,7 +54,7 @@ EXT=$(geo ext); INT=$(geo int)
 
 # un profil Chrome dédié : nos options sont appliquées même si Chrome est déjà ouvert, et la page a le droit
 # de placer la fenêtre présentateur sur l'autre écran (gestion des fenêtres) et de l'ouvrir sans bloqueur.
-PROF="${ZS3D_CHROME_PROFILE:-${XDG_CACHE_HOME:-$HOME/.cache}/zawedni-story-3d-chrome}"
+PROF="${ZS3D_CHROME_PROFILE:-${XDG_CACHE_HOME:-$HOME/.cache}/ZAWEDNI_3D_20MIN-chrome}"
 mkdir -p "$PROF/Default"
 [ -f "$PROF/Default/Preferences" ] || printf '{"translate":{"enabled":false},"profile":{"content_settings":{"exceptions":{"window_placement":{"%s,*":{"setting":1}},"popups":{"%s,*":{"setting":1}}}}}}\n' "$URL" "$URL" > "$PROF/Default/Preferences"
 if pkill -f "user-data-dir=$PROF" 2>/dev/null; then sleep 1; fi

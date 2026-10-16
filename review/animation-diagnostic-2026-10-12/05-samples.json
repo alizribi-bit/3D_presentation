@@ -1,0 +1,632 @@
+[
+  {
+    "t": 43.59359999999404,
+    "elapsed": null,
+    "id": "devsecops-0",
+    "display": "devsecops-0",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      15,
+      10.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -9
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  },
+  {
+    "t": 43.88309999999404,
+    "elapsed": 0.0011999999880742962,
+    "id": "devsecops-1",
+    "display": "devsecops-0",
+    "phase": "exit",
+    "stageOpacity": 0.999925,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      15,
+      10.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -9
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 44.14069999998808,
+    "elapsed": 0.25879999998211645,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.998583088792163,
+      10.497166177584328
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.999149853275298
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 44.39969999998808,
+    "elapsed": 0.5177999999821168,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.794277673562743,
+      10.088555347125485
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.876566604137645
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 44.64940000000596,
+    "elapsed": 0.7674999999999983,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "move",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.56003752345216,
+      9.620075046904319
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.736022514071294
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 44.942,
+    "elapsed": 1.060099999994037,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "settle",
+    "stageOpacity": 0,
+    "stageVisibility": "hidden",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 45.22140000000596,
+    "elapsed": 1.339499999999994,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "enter",
+    "stageOpacity": 0.971093,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 45.45780000001192,
+    "elapsed": 1.5759000000059586,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ],
+    "timing": {
+      "exit": 0.24,
+      "movement": 0.65,
+      "settle": 0.18,
+      "enter": 0.3,
+      "arrival": 1.07,
+      "total": 1.37
+    }
+  },
+  {
+    "t": 45.706800000011924,
+    "elapsed": null,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  },
+  {
+    "t": 45.95890000000596,
+    "elapsed": null,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  },
+  {
+    "t": 46.2685,
+    "elapsed": null,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  },
+  {
+    "t": 46.54309999999404,
+    "elapsed": null,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  },
+  {
+    "t": 46.78959999999404,
+    "elapsed": null,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  },
+  {
+    "t": 47.04640000000596,
+    "elapsed": null,
+    "id": "devsecops-1",
+    "display": "devsecops-1",
+    "phase": "done",
+    "stageOpacity": 1,
+    "stageVisibility": "visible",
+    "evidenceOn": false,
+    "evidenceFrame": "sequence-0",
+    "evidenceOpacity": 0,
+    "camera": [
+      5,
+      14.5,
+      9.5
+    ],
+    "target": [
+      5,
+      2.2,
+      -8.7
+    ],
+    "fov": 38,
+    "guide": [
+      -3.8000000000000003,
+      0.36,
+      -6.1
+    ],
+    "guideOpacity": 1,
+    "walkW": 0,
+    "walkDist": 0,
+    "activePanels": [
+      "p-cycle-title",
+      "p-side-dev",
+      "p-side-ops",
+      "p-secu",
+      "p-fb",
+      "p-secline",
+      "p-stage0",
+      "p-stage1",
+      "p-stage2",
+      "p-stage3",
+      "p-stage4",
+      "p-stage5"
+    ]
+  }
+]

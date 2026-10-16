@@ -29,11 +29,24 @@ canvas#world { position: fixed; inset: 0; width: 100vw; height: 100vh; display: 
 
 /* The DOM layer is laid out on a 1920×1080 stage scaled to the window (same coordinates as the deck). */
 #stage { position: fixed; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; pointer-events: none; }
+/* Keep slide/chapter context in the stage margins, above every panel and the film. */
+.slide-chrome { position: absolute; z-index: 70; pointer-events: none; color: var(--muted); }
+#slide-chapters { top: 8px; right: 36px; display: flex; align-items: center; gap: 14px; font: 500 18px/1 var(--display); }
+#slide-chapters ol { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
+#slide-chapters li { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--bg); border: 1px solid var(--green-l); color: var(--green-d); font: 600 18px/1 var(--mono); }
+#slide-chapters li[aria-current="step"] { background: var(--green); border-color: var(--green); color: #fff; }
+#slide-number { right: 36px; bottom: 8px; padding: 4px 10px; border-radius: 8px; background: var(--bg);
+  font: 500 22px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
 #stage .pane { position: absolute; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
 #stage .pane.on { opacity: 1; transform: none; }
 /* Hidden legacy panels must not allocate glass compositor surfaces underneath the active view. */
 #stage .pane:not(.on) { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 .instant #stage .pane, .instant #stage .pane * { transition: none !important; }
+/* A selected panel has one opacity owner during travel. Descendant/cover animations
+   remain independent; removing the attribute does not replay their current state. */
+#stage .pane[data-directed] { transition: none !important; }
+@media (prefers-reduced-motion: reduce) { #stage .pane { transition: none; } }
 
 /* loading veil (before the first state is shown) */
 #veil { position: fixed; inset: 0; background: #f4f7f2; z-index: 20; transition: opacity .6s; }
@@ -151,13 +164,10 @@ canvas#world { position: fixed; inset: 0; width: 100vw; height: 100vh; display: 
 #leaders circle { fill: var(--green); stroke: #fff; stroke-width: 3; }
 
 /* Full itinerary: evidence reads at original aspect ratio with clear translucent glass background */
-#p-evidence { left: 380px; top: 104px; width: 1460px; height: 900px; overflow: hidden; border-radius: 28px;
+#p-evidence { left: 300px; top: 80px; width: 1584px; height: 920px; overflow: hidden; border-radius: 28px;
   background: var(--card-glass); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--glass-border); box-shadow: 0 20px 70px rgba(13,123,60,.14), 0 4px 16px rgba(21,26,23,.04); pointer-events: none;
-  transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1), left .45s ease, width .45s ease, top .45s ease; }
-#p-evidence.comp-split { left: 420px; top: 96px; width: 1420px; height: 908px; }
-#p-evidence.comp-wide { left: 340px; top: 88px; width: 1510px; height: 920px; }
-#p-evidence.comp-balanced { left: 360px; top: 108px; width: 1480px; height: 896px; }
+  transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1), left .45s ease, width .45s ease, top .45s ease, height .45s ease; }
 .film { position: absolute; left: 330px; top: 235px; width: 1470px; height: 827px; border-radius: 24px; overflow: hidden;
   background: #06251a; box-shadow: 0 20px 70px rgba(13,123,60,.24); pointer-events: auto; }
 .film[hidden] { display: none; }
@@ -195,3 +205,10 @@ canvas#world { position: fixed; inset: 0; width: 100vw; height: 100vh; display: 
   -webkit-backdrop-filter: none !important;
   background: rgba(255, 255, 255, 0.96) !important;
 }
+
+/* Selected chapter-3 explanations share the stage with the conveyor below. */
+#p-evidence[data-layout="delivery"] { top: 24px; height: 600px; }
+
+/* Scope the anchor-centering fix to the newly exposed conveyor legends. */
+#stage .pane.node-tag.delivery-tag, #stage .pane.node-tag.delivery-tag.on { transform: translate(-50%, -50%); }
+#stage .pane.node-tag.log4j-tag { font-size: 21px; }
